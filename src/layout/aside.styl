@@ -1,12 +1,12 @@
 @import '../vars'
 
-asideBackground = #424242
+asideBackground = #2E3E4E
 
 .{namespace}-aside
   position fixed!important
   top 0
   left 0
-  width 11.25rem
+  width asideWidth
   height 100%
   z-index baseIndex+1
   overflow hidden
@@ -27,6 +27,13 @@ asideBackground = #424242
     &:hover, &:active
       background-color rgba(0, 0, 0, .065)
 
+  li ul
+    display none
+  li > ul
+    background-color rgba(0, 0, 0, .15)
+  li > ul > li > ul
+    background-color rgba(0, 0, 0, .2)
+
   .navside
     display flex
     -webkit-flex-direction column
@@ -40,7 +47,7 @@ asideBackground = #424242
     background asideBackground
 
   nav.scroll
-    width 11.25rem
+    width 12.5rem
 
 .{namespace}-hide-scroll
   overflow auto
