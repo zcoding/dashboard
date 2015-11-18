@@ -1,0 +1,31 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "ui lib for dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zcoding/dashboard.git"
+  },
+  "keywords": [
+    "ui",
+    "framework",
+    "lib",
+    "dashboard"
+  ],
+  "author": "zcoding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zcoding/dashboard/issues"
+  },
+  "homepage": "https://github.com/zcoding/dashboard#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-stylus": "^2.1.0"
+  }
+}
