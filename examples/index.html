@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="icon" type="image/png" href="./favicon.png">
 
   <link rel="stylesheet" href="../build/dashboard.css">
 </head>
@@ -23,12 +24,12 @@
             <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
             <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
             <li>
-              <a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span><span class="db-icon-toggle"></span></a>
-              <ul>
+              <a href="#" data-collapse="{target: '#collapse-1'}"><span class="db-icon"></span><span class="nav-text">Dashboard</span><span class="db-icon-toggle"></span></a>
+              <ul id="collapse-1">
                 <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
                 <li>
-                  <a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a>
-                  <ul>
+                  <a href="#" data-collapse="{target: '#collapse-2'}"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a>
+                  <ul id="collapse-2">
                     <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
                     <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
                     <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
@@ -45,8 +46,8 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span><span class="db-icon-toggle"></span></a>
-                  <ul>
+                  <a href="#" data-collapse="{target: '#collapse-3'}"><span class="db-icon"></span><span class="nav-text">Dashboard</span><span class="db-icon-toggle"></span></a>
+                  <ul id="collapse-3">
                     <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
                     <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
                     <li><a href="#"><span class="db-icon"></span><span class="nav-text">Dashboard</span></a></li>
@@ -127,5 +128,14 @@
     </div>
   </div>
   <!-- content end -->
+
+  <!-- jQuery -->
+  <script src="./lib/jquery-2.1.4.min.js"></script>
+  <script src="./plugins/jquery.collapse.js"></script>
+  <script>
+  $(function() {
+    $('[data-collapse]').collapse();
+  });
+  </script>
 </body>
 </html>

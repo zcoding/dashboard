@@ -48,9 +48,6 @@ a {
 .db-aside li a:active {
   background-color: rgba(0,0,0,0.065);
 }
-.db-aside li ul {
-  display: none;
-}
 .db-aside li > ul {
   background-color: rgba(0,0,0,0.15);
 }
@@ -85,7 +82,7 @@ a {
 }
 .db-content {
   margin-left: 12.5rem;
-  margin-top: 3.5rem;
+  padding-top: 3.5rem;
 }
 .db-header {
   position: fixed !important;
