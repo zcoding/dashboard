@@ -1,0 +1,40 @@
+$namespace: 'db';
+
+$white: #FFFFFF;
+$blue: #32B7F9;
+
+$baseIndex: 1000;
+
+$rootFontSize: 16px;
+
+$asideWidth: 12.5rem;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 544px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+) !default;
+
+$grid-columns:               16 !default;
+$grid-gutter-width:          1.875rem !default; // 30px
+
+$enable-flex: false;
+
+// ========== 主要颜色 ========== //
+$flatColors: (
+  dark: #2e3e4e,
+  primary: #0cc2aa,
+  secondary: #3bb4f2,
+  success: #6cc788,
+  danger: #f44455,
+  warning: #fcc100,
+  tips: #f77a99,
+  info: #6887ff
+) !default;
