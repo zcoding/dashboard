@@ -162,6 +162,11 @@
       <div class="u-sm-16">
         <div class="db-panel">
           <div class="db-panel"><button class="db-btn db-btn-primary db-float db-radius" type="button" id="open-modal">Open Modal</button></div>
+          <pre>
+$('#open-modal').click(function(evt) {
+  $('.db-modal,.db-modal-dimmer').show();
+});
+          </pre>
 
           <div class="db-modal"></div>
           <div class="db-modal-dimmer"></div>

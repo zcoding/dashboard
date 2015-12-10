@@ -1055,6 +1055,19 @@ th, td {
   -webkit-transition: background-color 150ms linear 0s;
   transition: background-color 150ms linear 0s; }
 
+code, pre {
+  font-family: Consolas, "Courier New"; }
+
+pre {
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #555;
+  border: 1px solid #dedede;
+  border-radius: 0; }
+
 html {
   height: 100%;
   font-size: 16px; }
