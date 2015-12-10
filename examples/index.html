@@ -162,7 +162,7 @@
     <div class="db-g db-padding">
       <div class="u-sm-16">
         <div class="db-panel">
-          <div class="db-panel"><button class="db-btn db-btn-primary db-float db-radius" type="button" id="open-modal">Open Modal</button></div>
+          <button class="db-btn db-btn-primary db-float db-radius" type="button" id="open-modal">Open Modal</button>
           <pre>
             <code class="javascript">
 $('#open-modal').click(function(evt) {
@@ -174,6 +174,33 @@ $('#open-modal').click(function(evt) {
           <div class="db-modal"></div>
           <div class="db-modal-dimmer"></div>
 
+        </div>
+      </div>
+    </div>
+
+    <div class="db-g db-padding">
+      <div class="u-sm-16">
+        <div class="db-panel">
+          <form action="/" class="form">
+            <fieldset>
+              <div class="form-control">
+                <label for="name">Name</label>
+                <input type="text" placeholder="type your name">
+              </div>
+              <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" placeholder="type password">
+              </div>
+              <div class="form-control">
+                <label for="select">Select</label>
+                <select name="select" id="select">
+                  <option value="1">options 1</option>
+                  <option value="2">options 2</option>
+                  <option value="3">options 3</option>
+                </select>
+              </div>
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
