@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" href="./favicon.png">
 
   <link rel="stylesheet" href="../build/dashboard.css">
+  <link rel="stylesheet" href="./lib/rainbow.css">
 </head>
 <body>
   <!-- aside start -->
@@ -163,9 +164,11 @@
         <div class="db-panel">
           <div class="db-panel"><button class="db-btn db-btn-primary db-float db-radius" type="button" id="open-modal">Open Modal</button></div>
           <pre>
+            <code class="javascript">
 $('#open-modal').click(function(evt) {
   $('.db-modal,.db-modal-dimmer').show();
 });
+            </code>
           </pre>
 
           <div class="db-modal"></div>
@@ -180,6 +183,10 @@ $('#open-modal').click(function(evt) {
   <!-- jQuery -->
   <script src="./lib/jquery-2.1.4.min.js"></script>
   <script src="./plugins/jquery.collapse.js"></script>
+  <script src="./lib/highlight.pack.js"></script>
+  <script>
+  hljs.initHighlightingOnLoad();
+  </script>
   <script>
   $(function() {
     $('[data-collapse]').collapse();
