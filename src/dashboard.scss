@@ -29,3 +29,13 @@ body {
 .#{$namespace}-padding {
   padding: 1.5rem;
 }
+
+@each $pos in (top, bottom, left, right) {
+  .#{$namespace}-padding-#{$pos} {
+    padding-#{$pos}: 1.5rem;
+  }
+}
+
+.#{$namespace}-radius {
+  border-radius: 5px;
+}

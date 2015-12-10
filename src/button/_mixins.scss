@@ -1,0 +1,28 @@
+@mixin make-colorful-buttons($colors: $flatColors) {
+  @each $name, $color in $colors {
+    .#{$namespace}-btn-#{$name} {
+      color: $white;
+      background-color: $color;
+    }
+  }
+}
+
+@mixin make-ghost-buttons($colors: $flatColors) {
+  @each $name, $color in $colors {
+    .#{$namespace}-btn-g-#{$name} {
+      font-weight: 700;
+      color: $color;
+      background-color: rgba(0, 0, 0, 0);
+      border: 2px solid $color;
+
+      $transition-duration: 100ms;
+
+      -webkit-transition: background-color $transition-duration linear 0s, color $transition-duration linear 0s;
+      transition: background-color $transition-duration linear 0s, color $transition-duration linear 0s;
+      &:hover {
+        color: $white;
+        background-color: $color;
+      }
+    }
+  }
+}
