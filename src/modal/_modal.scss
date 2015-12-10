@@ -1,0 +1,29 @@
+$baseIndex: $baseIndex+1;
+
+.#{$namespace}-modal-dimmer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+  z-index: $baseIndex;
+}
+
+$baseIndex: $baseIndex+1;
+
+.#{$namespace}-modal {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  width: 640px;
+  min-height: 50px;
+  margin: 0 0 0 -320px;
+  padding: 0;
+  background-color: $white;
+  z-index: $baseIndex;
+  -webkit-transition: background-color 150ms linear 0s;
+  transition: background-color 150ms linear 0s;
+}
