@@ -24,9 +24,10 @@ body {
   height: auto;
   min-height: 100%;
   font-size: .875rem;
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font-default;
   background-color: $bodyBackground;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .#{$namespace}-padding {

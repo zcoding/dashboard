@@ -9,6 +9,7 @@
   <meta http-equiv="Cache-Control" content="no-siteapp">
   <link rel="icon" type="image/png" href="./favicon.png">
 
+  <link rel="stylesheet" href="./lib/fa/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../build/dashboard.css">
   <link rel="stylesheet" href="./lib/rainbow.css">
 </head>
@@ -23,7 +24,7 @@
         <nav class="scroll">
           <ul>
             <li><a href="#"><span class="db-icon"></span><span class="nav-text">Home</span></a></li>
-            <li><a href="#"><span class="db-icon"></span><span class="nav-text">Buttons</span></a></li>
+            <li><a href="#"><span class="db-icon"></span><span class="nav-text">按钮(Buttons)</span></a></li>
             <li>
               <a href="#" data-collapse="{target: '#collapse-1'}"><span class="db-icon"></span><span class="nav-text">Level 1</span><span class="db-icon-toggle"></span></a>
               <ul id="collapse-1">
@@ -85,43 +86,43 @@
     <div class="db-g db-padding">
       <div class="u-sm-4">
         <div class="db-panel">
-          <button class="db-btn db-btn-primary" type="button">primary style</button>
-          <button class="db-btn db-btn-secondary" type="button">secondary style</button>
-          <button class="db-btn db-btn-success" type="button">success style</button>
-          <button class="db-btn db-btn-warning" type="button">warning style</button>
-          <button class="db-btn db-btn-danger" type="button">danger style</button>
-          <button class="db-btn db-btn-tips" type="button">tips style</button>
-          <button class="db-btn db-btn-info" type="button">info style</button>
-          <button class="db-btn db-btn-dark" type="button">dark style</button>
-          <button class="db-btn" type="button">default style</button>
+          <button class="db-btn db-btn-primary" type="button">primary 样式</button>
+          <button class="db-btn db-btn-secondary" type="button">secondary 样式</button>
+          <button class="db-btn db-btn-success" type="button">success 样式</button>
+          <button class="db-btn db-btn-warning" type="button">warning 样式</button>
+          <button class="db-btn db-btn-danger" type="button">danger 样式</button>
+          <button class="db-btn db-btn-tips" type="button">tips 样式</button>
+          <button class="db-btn db-btn-info" type="button">info 样式</button>
+          <button class="db-btn db-btn-dark" type="button">dark 样式</button>
+          <button class="db-btn" type="button">default 样式</button>
         </div>
       </div>
       <div class="u-sm-4">
         <div class="db-panel">
-          <button class="db-btn db-btn-primary db-radius" type="button">primary style</button>
-          <button class="db-btn db-btn-secondary db-round" type="button">secondary style</button>
-          <button class="db-btn db-btn-success" type="button">success style</button>
-          <button class="db-btn db-btn-warning" type="button">warning style</button>
-          <button class="db-btn db-btn-danger" type="button">danger style</button>
-          <button class="db-btn db-btn-tips" type="button">tips style</button>
-          <button class="db-btn db-btn-info" type="button">info style</button>
-          <button class="db-btn db-btn-dark" type="button">dark style</button>
+          <button class="db-btn db-btn-primary db-radius" type="button">primary radius 样式</button>
+          <button class="db-btn db-btn-secondary db-round" type="button">secondary round 样式</button>
+          <button class="db-btn db-btn-success" type="button">success 样式</button>
+          <button class="db-btn db-btn-warning" type="button">warning 样式</button>
+          <button class="db-btn db-btn-danger" type="button">danger 样式</button>
+          <button class="db-btn db-btn-tips" type="button">tips 样式</button>
+          <button class="db-btn db-btn-info" type="button">info 样式</button>
+          <button class="db-btn db-btn-dark" type="button">dark 样式</button>
         </div>
       </div>
       <div class="u-sm-4">
         <div class="db-panel">
-          <button class="db-btn db-btn-g-primary db-radius" type="button">primary style</button>
-          <button class="db-btn db-btn-g-secondary db-round" type="button">secondary style</button>
-          <button class="db-btn db-btn-g-success" type="button">success style</button>
-          <button class="db-btn db-btn-g-warning" type="button">warning style</button>
-          <button class="db-btn db-btn-g-danger" type="button">danger style</button>
-          <button class="db-btn db-btn-g-tips" type="button">tips style</button>
-          <button class="db-btn db-btn-g-info" type="button">info style</button>
-          <button class="db-btn db-btn-g-dark" type="button">dark style</button>
+          <button class="db-btn db-btn-g-primary db-radius" type="button">primary radius 样式</button>
+          <button class="db-btn db-btn-g-secondary db-round" type="button">secondary round 样式</button>
+          <button class="db-btn db-btn-g-success" type="button">success 样式</button>
+          <button class="db-btn db-btn-g-warning" type="button">warning 样式</button>
+          <button class="db-btn db-btn-g-danger" type="button">danger 样式</button>
+          <button class="db-btn db-btn-g-tips" type="button">tips 样式</button>
+          <button class="db-btn db-btn-g-info" type="button">info 样式</button>
+          <button class="db-btn db-btn-g-dark" type="button">dark 样式</button>
         </div>
       </div>
       <div class="u-sm-4">
-        <div class="db-panel"><button class="db-btn db-btn-primary db-float db-radius" type="button">primary float style</button></div>
+        <div class="db-panel"><button class="db-btn db-btn-primary db-float db-radius" type="button">primary float radius 样式</button></div>
       </div>
     </div>
     <div class="db-g db-padding">
@@ -198,6 +199,34 @@ $('#open-modal').click(function(evt) {
                   <option value="2">options 2</option>
                   <option value="3">options 3</option>
                 </select>
+              </div>
+              <div class="form-control">
+                <label for="name">Name</label>
+                <input type="text" class="db-field-m" placeholder="type your name">
+              </div>
+              <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" class="db-field-m" placeholder="type password">
+              </div>
+              <div>
+                <label class="db-check"><input type="checkbox" name="check1"><i></i>Option1</label>
+                <label class="db-check"><input type="checkbox" name="check1"><i></i>Option2</label>
+                <label class="db-check"><input type="checkbox" name="check1"><i></i>Option3</label>
+              </div>
+              <div>
+                <label class="db-radio"><input type="radio" name="radio1"><i></i>Option1</label>
+                <label class="db-radio"><input type="radio" name="radio1"><i></i>Option2</label>
+                <label class="db-radio"><input type="radio" name="radio1"><i></i>Option3</label>
+              </div>
+              <div>
+                <label class="db-switch"><input type="checkbox" name="check2"><i></i></label>
+                <label class="db-switch"><input type="checkbox" name="check2"><i></i></label>
+                <label class="db-switch"><input type="checkbox" name="check2"><i></i></label>
+              </div>
+              <div>
+                <label class="db-switch"><input type="radio" name="radio2"><i></i></label>
+                <label class="db-switch"><input type="radio" name="radio2"><i></i></label>
+                <label class="db-switch"><input type="radio" name="radio2"><i></i></label>
               </div>
             </fieldset>
           </form>
