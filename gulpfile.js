@@ -9,11 +9,13 @@ gulp.task('sass', function() {
   return gulp.src(Path.resolve(__dirname, './src/**/*.scss'))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(Path.resolve(__dirname, './build/')))
+    .pipe(gulp.dest(Path.resolve(__dirname, './examples-react/public/lib/dashboard/')))
     .pipe(sourcemaps.init())
     .pipe(minifyCss())
     .pipe(rename({ suffix: ".min" }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(Path.resolve(__dirname, './build/')));
+    .pipe(gulp.dest(Path.resolve(__dirname, './build/')))
+    .pipe(gulp.dest(Path.resolve(__dirname, './examples-react/public/lib/dashboard/')));
 });
 
 gulp.task('dev', ['sass'], function () {
