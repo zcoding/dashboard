@@ -7,9 +7,9 @@
   border: 0;
   background-image: none;
   color: $black;
-  background-color: #cecece;
+  background-color: #e6e6e6;
   cursor: pointer;
-  outline: 0 none rgba(255, 255, 255, 0);
+  outline: 0;
   vertical-align: middle;
   font-family: $font-default;
   font-size: 14px;
@@ -30,3 +30,4 @@
 
 @include make-colorful-buttons();
 @include make-ghost-buttons();
+@include make-3d-buttons();

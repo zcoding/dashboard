@@ -154,10 +154,10 @@ form, .form {
 .#{$namespace}-switch {
   display: inline-block;
   position: relative;
-  width: 32px;
+  padding: 0 0 0 38px;
   height: 16px;
+  line-height: 16px;
   border-radius: 8px;
-  padding: 0;
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle;

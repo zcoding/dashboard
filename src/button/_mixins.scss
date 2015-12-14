@@ -26,3 +26,26 @@
     }
   }
 }
+
+@mixin make-3d-buttons($colors: $flatColors) {
+  @each $name, $color in $colors {
+    .#{$namespace}-btn-d-#{$name} {
+      position: relative;
+      top: 0;
+      color: $white;
+      background-color: $color;
+      $shadow-color: darken($color, 15%);
+      box-shadow: 0 2px 0 $shadow-color;
+      margin-bottom: 2px;
+
+      $transition-duration: 100ms;
+
+      -webkit-transition: box-shadow $transition-duration linear 0s, top $transition-duration linear 0s;
+      transition: box-shadow $transition-duration linear 0s, top $transition-duration linear 0s;
+      &:active {
+        top: 1px;
+        box-shadow: 0 1px 0 $shadow-color;
+      }
+    }
+  }
+}

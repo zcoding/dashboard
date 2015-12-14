@@ -792,9 +792,9 @@ a {
   border: 0;
   background-image: none;
   color: #333;
-  background-color: #cecece;
+  background-color: #e6e6e6;
   cursor: pointer;
-  outline: 0 none rgba(255, 255, 255, 0);
+  outline: 0;
   vertical-align: middle;
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
   font-size: 14px;
@@ -927,6 +927,110 @@ a {
   .db-btn-g-info:hover {
     color: #FFFFFF;
     background-color: #6887ff; }
+
+.db-btn-d-dark {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #2e3e4e;
+  box-shadow: 0 2px 0 #12181e;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-dark:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #12181e; }
+
+.db-btn-d-primary {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #0cc2aa;
+  box-shadow: 0 2px 0 #087a6b;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-primary:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #087a6b; }
+
+.db-btn-d-secondary {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #3bb4f2;
+  box-shadow: 0 2px 0 #0e90d3;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-secondary:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #0e90d3; }
+
+.db-btn-d-success {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #6cc788;
+  box-shadow: 0 2px 0 #40a75f;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-success:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #40a75f; }
+
+.db-btn-d-danger {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #f44455;
+  box-shadow: 0 2px 0 #de0d21;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-danger:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #de0d21; }
+
+.db-btn-d-warning {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #fcc100;
+  box-shadow: 0 2px 0 #b08600;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-warning:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #b08600; }
+
+.db-btn-d-tips {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #f77a99;
+  box-shadow: 0 2px 0 #f33262;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-tips:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #f33262; }
+
+.db-btn-d-info {
+  position: relative;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #6887ff;
+  box-shadow: 0 2px 0 #1c4aff;
+  margin-bottom: 2px;
+  -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
+  transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
+  .db-btn-d-info:active {
+    top: 1px;
+    box-shadow: 0 1px 0 #1c4aff; }
 
 .db-aside {
   position: fixed !important;
@@ -1204,10 +1308,10 @@ form fieldset, .form fieldset {
 .db-switch {
   display: inline-block;
   position: relative;
-  width: 32px;
+  padding: 0 0 0 38px;
   height: 16px;
+  line-height: 16px;
   border-radius: 8px;
-  padding: 0;
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle; }
