@@ -1,5 +1,7 @@
 import React from 'react'
-import Button from 'components/Button'
+import Button from 'components/dashboard/Button'
+import Button3d from 'components/dashboard/Button3d'
+import ButtonGhost from 'components/dashboard/ButtonGhost'
 
 export default class App extends React.Component {
 
@@ -27,32 +29,32 @@ export default class App extends React.Component {
         </div>
         <div className="u-sm-4">
           <div className="db-panel">
-            <button className="db-btn db-btn-d-primary" type="button">primary样式</button>
-            <button className="db-btn db-btn-d-secondary" type="button">secondary样式</button>
-            <button className="db-btn db-btn-d-success" type="button">success 样式</button>
-            <button className="db-btn db-btn-d-warning" type="button">warning 样式</button>
-            <button className="db-btn db-btn-d-danger" type="button">danger 样式</button>
-            <button className="db-btn db-btn-d-tips" type="button">tips 样式</button>
-            <button className="db-btn db-btn-d-info" type="button">info 样式</button>
-            <button className="db-btn db-btn-d-dark" type="button">dark 样式</button>
-            <button className="db-btn db-btn-d-dark db-radius" type="button">dark radius 样式</button>
-            <button className="db-btn db-btn-d-dark db-round" type="button">dark round 样式</button>
+            <Button3d color="primary">primary样式</Button3d>
+            <Button3d color="secondary">secondary样式</Button3d>
+            <Button3d color="success">success 样式</Button3d>
+            <Button3d color="warning">warning 样式</Button3d>
+            <Button3d color="danger">danger 样式</Button3d>
+            <Button3d color="tips">tips 样式</Button3d>
+            <Button3d color="info">info 样式</Button3d>
+            <Button3d color="dark">dark 样式</Button3d>
+            <Button3d color="dark" radius>dark radius 样式</Button3d>
+            <Button3d color="dark" round>dark round 样式</Button3d>
           </div>
         </div>
         <div className="u-sm-4">
           <div className="db-panel">
-            <button className="db-btn db-btn-g-primary db-radius" type="button">primary radius 样式</button>
-            <button className="db-btn db-btn-g-secondary db-round" type="button">secondary round 样式</button>
-            <button className="db-btn db-btn-g-success" type="button">success 样式</button>
-            <button className="db-btn db-btn-g-warning" type="button">warning 样式</button>
-            <button className="db-btn db-btn-g-danger" type="button">danger 样式</button>
-            <button className="db-btn db-btn-g-tips" type="button">tips 样式</button>
-            <button className="db-btn db-btn-g-info" type="button">info 样式</button>
-            <button className="db-btn db-btn-g-dark" type="button">dark 样式</button>
+            <ButtonGhost color="primary" radius>primary radius 样式</ButtonGhost>
+            <ButtonGhost color="secondary" round>secondary round 样式</ButtonGhost>
+            <ButtonGhost color="success">success 样式</ButtonGhost>
+            <ButtonGhost color="warning">warning 样式</ButtonGhost>
+            <ButtonGhost color="danger">danger 样式</ButtonGhost>
+            <ButtonGhost color="tips">tips 样式</ButtonGhost>
+            <ButtonGhost color="info">info 样式</ButtonGhost>
+            <ButtonGhost color="dark">dark 样式</ButtonGhost>
           </div>
         </div>
         <div className="u-sm-4">
-          <div className="db-panel"><button className="db-btn db-btn-primary db-float db-radius" type="button">primary float radius 样式</button></div>
+          <div className="db-panel"><Button color="primary" radius float>primary float radius 样式</Button></div>
         </div>
       </div>
     )

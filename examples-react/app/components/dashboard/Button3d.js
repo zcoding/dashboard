@@ -8,7 +8,7 @@ export default class Button extends React.Component {
   }
 
   render() {
-    let classnames = ClassNames('db-btn', `db-btn-${this.props.color}`, {'db-radius': this.props.radius}, {'db-round': this.props.round})
+    let classnames = ClassNames('db-btn', `db-btn-d-${this.props.color}`, {'db-radius': this.props.radius}, {'db-round': this.props.round})
     return <button className={classnames} type="button">{this.props.children}</button>
   }
 
