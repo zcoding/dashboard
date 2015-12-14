@@ -1220,7 +1220,18 @@ form fieldset, .form fieldset {
       border-bottom-color: #0cc2aa;
       border-bottom-width: 2px; }
   .form-control textarea {
-    resize: none; }
+    resize: vertical; }
+    .form-control textarea.db-field-m {
+      padding-bottom: 2px;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 1px solid #CECECE;
+      border-radius: 0; }
+      .form-control textarea.db-field-m:focus {
+        padding-bottom: 1px;
+        border-bottom-color: #0cc2aa;
+        border-bottom-width: 2px; }
 
 .db-check {
   display: inline-block;

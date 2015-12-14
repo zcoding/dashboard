@@ -47,7 +47,21 @@ form, .form {
   }
 
   textarea {
-    resize: none;
+    resize: vertical;
+
+    &.#{$namespace}-field-m {
+      padding-bottom: 2px;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 1px solid #CECECE;
+      border-radius: 0;
+      &:focus {
+        padding-bottom: 1px;
+        border-bottom-color: #0cc2aa;
+        border-bottom-width: 2px;
+      }
+    }
   }
 
 }
