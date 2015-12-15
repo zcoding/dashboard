@@ -104,6 +104,10 @@
 
 	var _badges2 = _interopRequireDefault(_badges);
 
+	var _echarts = __webpack_require__(268);
+
+	var _echarts2 = _interopRequireDefault(_echarts);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = (function (_React$Component) {
@@ -142,7 +146,8 @@
 	    _react2.default.createElement(_reactRouter.Route, { path: 'buttons', components: { content: _buttons2.default } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'forms', components: { content: _forms2.default } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'tables', components: { content: _tables2.default } }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'badges', components: { content: _badges2.default } })
+	    _react2.default.createElement(_reactRouter.Route, { path: 'badges', components: { content: _badges2.default } }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'echarts', components: { content: _echarts2.default } })
 	  )
 	), document.getElementById('app-main'));
 
@@ -25874,6 +25879,20 @@
 	                  'li',
 	                  null,
 	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/echarts' },
+	                    _react2.default.createElement('span', { className: 'db-icon' }),
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'nav-text' },
+	                      '图表(ECharts)'
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
 	                    'a',
 	                    { href: 'javascript:;' },
 	                    _react2.default.createElement('span', { className: 'db-icon' }),
@@ -27406,6 +27425,191 @@
 	})(_react2.default.Component);
 
 	exports.default = Badges;
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _getPrototypeOf = __webpack_require__(1);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(13);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(14);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(18);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(43);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Echarts = (function (_React$Component) {
+	  (0, _inherits3.default)(Echarts, _React$Component);
+
+	  function Echarts(props) {
+	    (0, _classCallCheck3.default)(this, Echarts);
+	    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Echarts).call(this, props));
+	  }
+
+	  (0, _createClass3.default)(Echarts, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var myChart = echarts.init(this.refs.chart, 'macarons');
+	      var option = {
+	        tooltip: {
+	          show: true
+	        },
+	        legend: {
+	          data: ['销量']
+	        },
+	        xAxis: [{
+	          type: 'category',
+	          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+	        }],
+	        yAxis: [{
+	          type: 'value'
+	        }],
+	        series: [{
+	          "name": "销量",
+	          "type": "bar",
+	          "data": [5, 20, 40, 10, 10, 20]
+	        }]
+	      };
+	      myChart.setOption(option);
+
+	      var myChart2 = echarts.init(this.refs.chart2, 'macarons');
+	      var option2 = {
+	        title: {
+	          text: '某楼盘销售情况',
+	          subtext: '纯属虚构'
+	        },
+	        tooltip: {
+	          trigger: 'axis'
+	        },
+	        legend: {
+	          data: ['意向', '预购', '成交']
+	        },
+	        toolbox: {
+	          show: true,
+	          feature: {
+	            mark: {
+	              show: true
+	            },
+	            dataView: {
+	              show: true,
+	              readOnly: false
+	            },
+	            magicType: {
+	              show: true,
+	              type: ['line', 'bar', 'stack', 'tiled']
+	            },
+	            restore: {
+	              show: true
+	            },
+	            saveAsImage: {
+	              show: true
+	            }
+	          }
+	        },
+	        calculable: true,
+	        xAxis: [{
+	          type: 'category',
+	          boundaryGap: false,
+	          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+	        }],
+	        yAxis: [{
+	          type: 'value'
+	        }],
+	        series: [{
+	          name: '成交',
+	          type: 'line',
+	          smooth: true,
+	          itemStyle: {
+	            normal: {
+	              areaStyle: {
+	                type: 'default'
+	              }
+	            }
+	          },
+	          data: [10, 12, 21, 54, 260, 830, 710]
+	        }, {
+	          name: '预购',
+	          type: 'line',
+	          smooth: true,
+	          itemStyle: {
+	            normal: {
+	              areaStyle: {
+	                type: 'default'
+	              }
+	            }
+	          },
+	          data: [30, 182, 434, 791, 390, 30, 10]
+	        }, {
+	          name: '意向',
+	          type: 'line',
+	          smooth: true,
+	          itemStyle: {
+	            normal: {
+	              areaStyle: {
+	                type: 'default'
+	              }
+	            }
+	          },
+	          data: [1320, 1132, 601, 234, 120, 90, 20]
+	        }]
+	      };
+	      myChart2.setOption(option2);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'db-g db-padding' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'u-sm-16' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'db-panel' },
+	            _react2.default.createElement('div', { ref: 'chart', style: { height: '450px' } })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'u-sm-16' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'db-panel' },
+	            _react2.default.createElement('div', { ref: 'chart2', style: { height: '450px' } })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return Echarts;
+	})(_react2.default.Component);
+
+	exports.default = Echarts;
 
 /***/ }
 /******/ ]);

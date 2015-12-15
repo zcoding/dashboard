@@ -9,6 +9,7 @@ import Home                    from 'components/home.js'
 import Forms                   from 'components/forms.js'
 import Tables                  from 'components/tables.js'
 import Badges                  from 'components/badges.js'
+import Echarts                 from 'components/echarts.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ ReactDOM.render((
       <Route path="forms" components={ {content: Forms} }></Route>
       <Route path="tables" components={ {content: Tables} }></Route>
       <Route path="badges" components={ {content: Badges} }></Route>
+      <Route path="echarts" components={ {content: Echarts} }></Route>
     </Route>
   </Router>
 ),  document.getElementById('app-main'))
