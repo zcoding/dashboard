@@ -1,6 +1,6 @@
-import React from 'react'
-import Button from 'components/dashboard/Button'
-import Button3d from 'components/dashboard/Button3d'
+import React       from 'react'
+import Button      from 'components/dashboard/Button'
+import Button3d    from 'components/dashboard/Button3d'
 import ButtonGhost from 'components/dashboard/ButtonGhost'
 
 export default class App extends React.Component {
