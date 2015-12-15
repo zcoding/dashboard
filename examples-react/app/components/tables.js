@@ -11,7 +11,7 @@ export default class Tables extends React.Component {
       <div className="db-g db-padding">
         <div className="u-sm-8">
           <div className={'db-box'}>
-            <table className={'db-table'}>
+            <table className={'table table-hover'}>
               <thead>
                 <tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr>
               </thead>
@@ -30,7 +30,7 @@ export default class Tables extends React.Component {
 
         <div className="u-sm-8">
           <div className={'db-box'}>
-            <table className={'db-table db-table-striped'}>
+            <table className={'table table-striped'}>
               <thead>
                 <tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr>
               </thead>

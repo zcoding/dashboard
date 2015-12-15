@@ -26813,7 +26813,7 @@
 	            { className: 'db-box' },
 	            _react2.default.createElement(
 	              "table",
-	              { className: 'db-table' },
+	              { className: 'table table-hover' },
 	              _react2.default.createElement(
 	                "thead",
 	                null,
@@ -27145,7 +27145,7 @@
 	            { className: 'db-box' },
 	            _react2.default.createElement(
 	              "table",
-	              { className: 'db-table db-table-striped' },
+	              { className: 'table table-striped' },
 	              _react2.default.createElement(
 	                "thead",
 	                null,

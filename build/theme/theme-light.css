@@ -1109,23 +1109,26 @@ table {
 th, td {
   text-align: left; }
 
-.db-table {
+.table {
   width: 100%;
   max-width: 100%;
   background-color: transparent; }
-  .db-table > thead > tr > th {
+  .table > thead > tr > th {
     padding: 10px 16px;
     vertical-align: bottom;
     line-height: 1.5;
     border-top: 1px solid #eceeef;
     border-bottom: 2px solid rgba(120, 130, 140, 0.045); }
-  .db-table > tbody > tr > td {
+  .table > tbody > tr > td {
     padding: .75rem 16px;
     line-height: 1.5;
     vertical-align: top;
     border-top: 1px solid rgba(120, 130, 140, 0.045); }
-  .db-table.db-table-striped > tbody > tr:nth-of-type(odd) {
+  .table.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9; }
+  .table.table-hover > tbody > tr:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF; }
 
 .db-panel {
   background: #FFFFFF;
