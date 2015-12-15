@@ -1232,6 +1232,22 @@ form fieldset, .form fieldset {
         padding-bottom: 1px;
         border-bottom-color: #0cc2aa;
         border-bottom-width: 2px; }
+  .form-control input.input-dark {
+    border-color: #2e3e4e; }
+  .form-control input.input-primary {
+    border-color: #0cc2aa; }
+  .form-control input.input-secondary {
+    border-color: #3bb4f2; }
+  .form-control input.input-success {
+    border-color: #6cc788; }
+  .form-control input.input-danger {
+    border-color: #f44455; }
+  .form-control input.input-warning {
+    border-color: #fcc100; }
+  .form-control input.input-tips {
+    border-color: #f77a99; }
+  .form-control input.input-info {
+    border-color: #6887ff; }
 
 .db-check {
   display: inline-block;

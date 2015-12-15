@@ -21,7 +21,7 @@ export default class Aside extends React.Component {
                 <li><Link to={'/buttons'}><span className="db-icon"></span><span className="nav-text">按钮(Buttons)</span></Link></li>
                 <li><Link to={'/forms'}><span className="db-icon"></span><span className="nav-text">表单(Forms)</span></Link></li>
                 <li>
-                  <a href="javascript:;"><span className="db-icon"></span><span className="nav-text">多级菜单</span><span className="db-icon-toggle"></span></a>
+                  <a href="javascript:;"><span className="db-icon"></span><span className="nav-text">多级菜单 Level 1</span><span className="db-icon-toggle"></span></a>
                   <ul>
                     <li><Link to={'/'}><span className="db-icon"></span><span className="nav-text">第二级 Level 2</span></Link></li>
                     <li>

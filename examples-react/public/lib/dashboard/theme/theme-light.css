@@ -1,3 +1,4 @@
+/* overwrite variables */
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
@@ -1385,34 +1386,3 @@ form fieldset, .form fieldset {
       .db-switch input[type=checkbox]:checked + i:before, .db-switch input[type=radio]:checked + i:before {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); }
-
-html {
-  height: 100%;
-  font-size: 16px; }
-
-body {
-  height: auto;
-  min-height: 100%;
-  font-size: .875rem;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
-  background-color: #F0F0F0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.db-padding {
-  padding: 1.5rem; }
-
-.db-padding-top {
-  padding-top: 1.5rem; }
-
-.db-padding-bottom {
-  padding-bottom: 1.5rem; }
-
-.db-padding-left {
-  padding-left: 1.5rem; }
-
-.db-padding-right {
-  padding-right: 1.5rem; }
-
-.db-radius {
-  border-radius: 5px; }

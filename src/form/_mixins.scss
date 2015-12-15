@@ -1,0 +1,7 @@
+@mixin colorful-inputs($colors: $flatColors) {
+  @each $name, $color in $colors {
+    input.input-#{$name} {
+      border-color: $color;
+    }
+  }
+}

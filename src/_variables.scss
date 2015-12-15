@@ -29,15 +29,16 @@ $grid-gutter-width:          1.875rem !default; // 30px
 $enable-flex: false;
 
 // ========== 主要颜色 ========== //
-$flatColors: (
-  dark: #2e3e4e,
-  primary: #0cc2aa,
-  secondary: #3bb4f2,
-  success: #6cc788,
-  danger: #f44455,
-  warning: #fcc100,
-  tips: #f77a99,
-  info: #6887ff
+
+$flatColors: (                            // theme main colors
+  dark: #2e3e4e,                            // theme main color: dark
+  primary: #0cc2aa,                         // theme main color: primary
+  secondary: #3bb4f2,                       // theme main color: secondary
+  success: #6cc788,                         // theme main color: success
+  danger: #f44455,                          // theme main color: danger
+  warning: #fcc100,                         // theme main color: warning
+  tips: #f77a99,                            // theme main color: tips
+  info: #6887ff                             // theme main color: info
 ) !default;
 
 $font-default: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;

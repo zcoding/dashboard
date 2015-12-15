@@ -25842,7 +25842,7 @@
 	                    _react2.default.createElement(
 	                      'span',
 	                      { className: 'nav-text' },
-	                      '多级菜单'
+	                      '多级菜单 Level 1'
 	                    ),
 	                    _react2.default.createElement('span', { className: 'db-icon-toggle' })
 	                  ),
@@ -26605,6 +26605,86 @@
 	                    _react2.default.createElement("i", null),
 	                    "A3"
 	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "danger" },
+	                    "Danger Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-danger', id: "danger", type: "text", placeholder: "error input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "warning" },
+	                    "Warning Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-warning', id: "warning", type: "text", placeholder: "warning input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "primary" },
+	                    "Primary Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-primary', id: "primary", type: "text", placeholder: "primary input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "success" },
+	                    "Success Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-success', id: "success", type: "text", placeholder: "success input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "secondary" },
+	                    "Secondary Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-secondary', id: "secondary", type: "text", placeholder: "secondary input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "tips" },
+	                    "Tips Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-tips', id: "tips", type: "text", placeholder: "tips input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "info" },
+	                    "Info Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-info', id: "info", type: "text", placeholder: "info input" })
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: 'form-control' },
+	                  _react2.default.createElement(
+	                    "label",
+	                    { htmlFor: "dark" },
+	                    "Dark Style"
+	                  ),
+	                  _react2.default.createElement("input", { className: 'input-dark', id: "dark", type: "text", placeholder: "dark input" })
 	                )
 	              )
 	            )
