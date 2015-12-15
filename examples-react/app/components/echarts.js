@@ -117,12 +117,12 @@ export default class Echarts extends React.Component {
   render() {
     return (
       <div className="db-g db-padding">
-        <div className="u-sm-16">
+        <div className="u-sm-8">
           <div className="db-panel">
             <div ref="chart" style={ {height: '450px'} }></div>
           </div>
         </div>
-        <div className="u-sm-16">
+        <div className="u-sm-8">
           <div className="db-panel">
             <div ref="chart2" style={ {height: '450px'} }></div>
           </div>

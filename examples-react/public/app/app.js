@@ -26807,7 +26807,7 @@
 	        { className: "db-g db-padding" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "u-sm-16" },
+	          { className: "u-sm-8" },
 	          _react2.default.createElement(
 	            "div",
 	            { className: 'db-box' },
@@ -26977,6 +26977,221 @@
 	                    "7"
 	                  )
 	                ),
+	                _react2.default.createElement(
+	                  "tr",
+	                  null,
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "1"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "2"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "3"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "4"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "5"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "6"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "7"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "tr",
+	                  null,
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "1"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "2"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "3"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "4"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "5"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "6"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "7"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "tr",
+	                  null,
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "1"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "2"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "3"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "4"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "5"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "6"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "7"
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "tr",
+	                  null,
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "1"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "2"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "3"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "4"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "5"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "6"
+	                  ),
+	                  _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    "7"
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "u-sm-8" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: 'db-box' },
+	            _react2.default.createElement(
+	              "table",
+	              { className: 'db-table db-table-striped' },
+	              _react2.default.createElement(
+	                "thead",
+	                null,
+	                _react2.default.createElement(
+	                  "tr",
+	                  null,
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "A"
+	                  ),
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "B"
+	                  ),
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "C"
+	                  ),
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "D"
+	                  ),
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "E"
+	                  ),
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "F"
+	                  ),
+	                  _react2.default.createElement(
+	                    "th",
+	                    null,
+	                    "G"
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "tbody",
+	                null,
 	                _react2.default.createElement(
 	                  "tr",
 	                  null,
@@ -27587,7 +27802,7 @@
 	        { className: 'db-g db-padding' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'u-sm-16' },
+	          { className: 'u-sm-8' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'db-panel' },
@@ -27596,7 +27811,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'u-sm-16' },
+	          { className: 'u-sm-8' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'db-panel' },

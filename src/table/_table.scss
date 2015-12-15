@@ -20,10 +20,17 @@ th, td {
     border-bottom: 2px solid rgba(120,130,140,.045);
   }
 
-  & > tbody > tr > td {
-    padding: .75rem 16px;
-    line-height: 1.5;
-    vertical-align: top;
-    border-top: 1px solid rgba(120, 130, 140, .045);
+  & > tbody > tr {
+    & > td {
+      padding: .75rem 16px;
+      line-height: 1.5;
+      vertical-align: top;
+      border-top: 1px solid rgba(120, 130, 140, .045);
+    }
   }
+
+  &.#{$namespace}-table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+
 }
