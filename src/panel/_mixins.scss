@@ -1,0 +1,10 @@
+@mixin make-colorful-panels($colors: $flatColors) {
+  @each $name, $color in $colors {
+    .panel-#{$name} {
+      .panel-header {
+        background-color: $color;
+        color: $white;
+      }
+    }
+  }
+}

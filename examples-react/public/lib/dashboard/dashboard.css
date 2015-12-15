@@ -987,6 +987,7 @@ a {
   color: #FFFFFF;
   background-color: #2e3e4e;
   box-shadow: 0 3px 0 0 #12181e, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-dark:active {
@@ -1000,6 +1001,7 @@ a {
   color: #FFFFFF;
   background-color: #0cc2aa;
   box-shadow: 0 3px 0 0 #087a6b, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-primary:active {
@@ -1013,6 +1015,7 @@ a {
   color: #FFFFFF;
   background-color: #3bb4f2;
   box-shadow: 0 3px 0 0 #0e90d3, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-secondary:active {
@@ -1026,6 +1029,7 @@ a {
   color: #FFFFFF;
   background-color: #6cc788;
   box-shadow: 0 3px 0 0 #40a75f, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-success:active {
@@ -1039,6 +1043,7 @@ a {
   color: #FFFFFF;
   background-color: #f44455;
   box-shadow: 0 3px 0 0 #de0d21, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-danger:active {
@@ -1052,6 +1057,7 @@ a {
   color: #FFFFFF;
   background-color: #fcc100;
   box-shadow: 0 3px 0 0 #b08600, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-warning:active {
@@ -1065,6 +1071,7 @@ a {
   color: #FFFFFF;
   background-color: #f77a99;
   box-shadow: 0 3px 0 0 #f33262, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-tips:active {
@@ -1078,6 +1085,7 @@ a {
   color: #FFFFFF;
   background-color: #6887ff;
   box-shadow: 0 3px 0 0 #1c4aff, 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-transition: box-shadow 100ms linear 0s, top 100ms linear 0s;
   transition: box-shadow 100ms linear 0s, top 100ms linear 0s; }
   .db-btn-d-info:active {
@@ -1185,7 +1193,44 @@ th, td {
 .db-panel {
   background: #FFFFFF;
   margin-bottom: 1.5rem;
-  padding: 1rem; }
+  padding: 0; }
+  .db-panel .panel-header {
+    padding: 1em;
+    background-color: #CCCCCC; }
+  .db-panel .panel-footer {
+    padding: 1em; }
+
+.panel-dark .panel-header {
+  background-color: #2e3e4e;
+  color: #FFFFFF; }
+
+.panel-primary .panel-header {
+  background-color: #0cc2aa;
+  color: #FFFFFF; }
+
+.panel-secondary .panel-header {
+  background-color: #3bb4f2;
+  color: #FFFFFF; }
+
+.panel-success .panel-header {
+  background-color: #6cc788;
+  color: #FFFFFF; }
+
+.panel-danger .panel-header {
+  background-color: #f44455;
+  color: #FFFFFF; }
+
+.panel-warning .panel-header {
+  background-color: #fcc100;
+  color: #FFFFFF; }
+
+.panel-tips .panel-header {
+  background-color: #f77a99;
+  color: #FFFFFF; }
+
+.panel-info .panel-header {
+  background-color: #6887ff;
+  color: #FFFFFF; }
 
 .db-box {
   background: #FFFFFF;
@@ -1193,13 +1238,36 @@ th, td {
   padding: 0; }
 
 .db-pagination {
-  display: inline-block;
+  display: block;
   margin: 0;
   padding: 0; }
+  .db-pagination:before, .db-pagination:after {
+    content: ' ';
+    display: table; }
+  .db-pagination:after {
+    clear: both; }
   .db-pagination, .db-pagination li {
     list-style-type: none; }
   .db-pagination li {
-    display: inline; }
+    display: block;
+    float: left; }
+    .db-pagination li a {
+      display: block;
+      font-size: 14px;
+      width: 32px;
+      margin-left: -1px;
+      padding: 5px 0;
+      line-height: 20px;
+      text-align: center;
+      background-color: #FFFFFF;
+      color: #333;
+      border: 1px solid rgba(120, 130, 140, 0.13); }
+    .db-pagination li:first-child a {
+      margin-left: 0; }
+    .db-pagination li.active a {
+      background-color: #0cc2aa;
+      color: #FFFFFF;
+      border-color: #0cc2aa; }
 
 .db-modal-dimmer {
   display: none;
@@ -1539,3 +1607,16 @@ body {
 
 .db-radius {
   border-radius: 5px; }
+
+.db-fl {
+  float: left; }
+
+.db-fr {
+  float: right; }
+
+.db-cf:before, .db-cf:after {
+  content: ' ';
+  display: table; }
+
+.db-cf:after {
+  clear: both; }

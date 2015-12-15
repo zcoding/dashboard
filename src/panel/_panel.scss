@@ -1,8 +1,21 @@
+@import 'mixins';
+
 .#{$namespace}-panel {
   background: $white;
   margin-bottom: 1.5rem;
-  padding: 1rem;
+  padding: 0;
+
+  .panel-header {
+    padding: 1em;
+    background-color: $gray;
+  }
+
+  .panel-footer {
+    padding: 1em;
+  }
 }
+
+@include make-colorful-panels();
 
 .#{$namespace}-box {
   background: $white;

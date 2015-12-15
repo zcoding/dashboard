@@ -27,6 +27,13 @@ App.use(_.get('/buttons', function *(next) {
 
 }));
 
+App.use(_.get('/tables', function *(next) {
+
+  this.type = 'text/html';
+  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/tables.html'));
+
+}));
+
 const port = 10241;
 
 App.listen(port, () => {

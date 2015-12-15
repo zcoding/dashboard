@@ -46,6 +46,7 @@
       background-color: $color;
       $shadow-color: darken($color, 15%);
       box-shadow: 0 3px 0 0 $shadow-color, 0 2px 5px 0 rgba(0, 0, 0, .5);
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 
       $transition-duration: 100ms;
 

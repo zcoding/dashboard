@@ -44,3 +44,21 @@ body {
 .#{$namespace}-radius {
   border-radius: 5px;
 }
+
+.#{$namespace}-fl {
+  float: left;
+}
+
+.#{$namespace}-fr {
+  float: right;
+}
+
+.#{$namespace}-cf {
+  &:before, &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
