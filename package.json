@@ -7,6 +7,7 @@
     "test": "node scripts/test.js",
     "dev": "gulp dev",
     "build:example": "webpack --colors --progress --config examples-react/webpack.config.js",
+    "example": "node examples-jquery/server.js",
     "example:react": "node examples-react/server.js"
   },
   "repository": {

@@ -1,13 +1,14 @@
 @import "mixins";
+$default-button-background: #e6e6e6;
 
 .#{$namespace}-btn {
   display: inline-block;
-  margin: 0;
+  margin: 0 0 .5em 0;
   padding: .5em 2em;
   border: 0;
   background-image: none;
   color: $black;
-  background-color: #e6e6e6;
+  background-color: $default-button-background;
   cursor: pointer;
   outline: 0;
   vertical-align: middle;
@@ -15,14 +16,24 @@
   font-size: 14px;
   line-height: 1;
 
+  $transition-duration: 100ms;
+
+  -webkit-transition: background-color $transition-duration linear 0s;
+  transition: background-color $transition-duration linear 0s;
+
+  &:active {
+    background-color: darken($default-button-background, 5%);
+  }
+
   &.#{$namespace}-round {
     border-radius: 1000px;
   }
   &.#{$namespace}-float {
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .3);
-    -webkit-transition: box-shadow 100ms linear 0s;
-    transition: box-shadow 100ms linear 0s;
+    -webkit-transition: box-shadow $transition-duration linear 0s;
+    transition: box-shadow $transition-duration linear 0s;
     &:active {
+      background-color: $default-button-background;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
     }
   }
