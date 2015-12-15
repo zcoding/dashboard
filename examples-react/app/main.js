@@ -8,6 +8,7 @@ import Header                  from 'components/header.js'
 import Home                    from 'components/home.js'
 import Forms                   from 'components/forms.js'
 import Tables                  from 'components/tables.js'
+import Badges                  from 'components/badges.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ ReactDOM.render((
       <Route path="buttons" components={ {content: Buttons} }></Route>
       <Route path="forms" components={ {content: Forms} }></Route>
       <Route path="tables" components={ {content: Tables} }></Route>
+      <Route path="badges" components={ {content: Badges} }></Route>
     </Route>
   </Router>
 ),  document.getElementById('app-main'))

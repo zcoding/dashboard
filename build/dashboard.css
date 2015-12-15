@@ -1391,6 +1391,66 @@ form fieldset, .form fieldset {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); }
 
+.db-badge {
+  display: inline-block;
+  margin-right: .5em;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 7px;
+  line-height: 1;
+  border-radius: 10px;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #333;
+  color: #FFFFFF; }
+  .db-badge.db-badge-dark {
+    background-color: #2e3e4e; }
+  .db-badge.db-badge-primary {
+    background-color: #0cc2aa; }
+  .db-badge.db-badge-secondary {
+    background-color: #3bb4f2; }
+  .db-badge.db-badge-success {
+    background-color: #6cc788; }
+  .db-badge.db-badge-danger {
+    background-color: #f44455; }
+  .db-badge.db-badge-warning {
+    background-color: #fcc100; }
+  .db-badge.db-badge-tips {
+    background-color: #f77a99; }
+  .db-badge.db-badge-info {
+    background-color: #6887ff; }
+
+.db-label {
+  display: inline-block;
+  margin-right: .5em;
+  font-size: 12px;
+  font-weight: 700;
+  padding: .5em .8em;
+  line-height: 1;
+  border-radius: 4px;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: baseline;
+  background-color: #333;
+  color: #FFFFFF; }
+  .db-label.db-label-dark {
+    background-color: #2e3e4e; }
+  .db-label.db-label-primary {
+    background-color: #0cc2aa; }
+  .db-label.db-label-secondary {
+    background-color: #3bb4f2; }
+  .db-label.db-label-success {
+    background-color: #6cc788; }
+  .db-label.db-label-danger {
+    background-color: #f44455; }
+  .db-label.db-label-warning {
+    background-color: #fcc100; }
+  .db-label.db-label-tips {
+    background-color: #f77a99; }
+  .db-label.db-label-info {
+    background-color: #6887ff; }
+
 html {
   height: 100%;
   font-size: 16px; }

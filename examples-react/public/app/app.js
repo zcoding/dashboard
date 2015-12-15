@@ -100,6 +100,10 @@
 
 	var _tables2 = _interopRequireDefault(_tables);
 
+	var _badges = __webpack_require__(267);
+
+	var _badges2 = _interopRequireDefault(_badges);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = (function (_React$Component) {
@@ -137,7 +141,8 @@
 	    { path: '/', component: App },
 	    _react2.default.createElement(_reactRouter.Route, { path: 'buttons', components: { content: _buttons2.default } }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'forms', components: { content: _forms2.default } }),
-	    _react2.default.createElement(_reactRouter.Route, { path: 'tables', components: { content: _tables2.default } })
+	    _react2.default.createElement(_reactRouter.Route, { path: 'tables', components: { content: _tables2.default } }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'badges', components: { content: _badges2.default } })
 	  )
 	), document.getElementById('app-main'));
 
@@ -25855,6 +25860,20 @@
 	                  'li',
 	                  null,
 	                  _react2.default.createElement(
+	                    _reactRouter.Link,
+	                    { to: '/badges' },
+	                    _react2.default.createElement('span', { className: 'db-icon' }),
+	                    _react2.default.createElement(
+	                      'span',
+	                      { className: 'nav-text' },
+	                      '标签(Badge)'
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
 	                    'a',
 	                    { href: 'javascript:;' },
 	                    _react2.default.createElement('span', { className: 'db-icon' }),
@@ -27223,6 +27242,170 @@
 	})(_react2.default.Component);
 
 	exports.default = Tables;
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _getPrototypeOf = __webpack_require__(1);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(13);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(14);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(18);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(43);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Badges = (function (_React$Component) {
+	  (0, _inherits3.default)(Badges, _React$Component);
+
+	  function Badges(props) {
+	    (0, _classCallCheck3.default)(this, Badges);
+	    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Badges).call(this, props));
+	  }
+
+	  (0, _createClass3.default)(Badges, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "db-g db-padding" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "u-sm-16" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "db-panel" },
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge" },
+	              "12"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-danger" },
+	              "7"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-warning" },
+	              "1"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-tips" },
+	              "10"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-primary" },
+	              "12"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-secondary" },
+	              "12"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-dark" },
+	              "12"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-success" },
+	              "12"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-badge db-badge-info" },
+	              "12"
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "u-sm-16" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "db-panel" },
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label" },
+	              "Default"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-danger" },
+	              "Danger"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-warning" },
+	              "Warning"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-tips" },
+	              "Tips"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-primary" },
+	              "Primary"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-secondary" },
+	              "Secondary"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-dark" },
+	              "Dark"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-success" },
+	              "Success"
+	            ),
+	            _react2.default.createElement(
+	              "span",
+	              { className: "db-label db-label-info" },
+	              "Info"
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return Badges;
+	})(_react2.default.Component);
+
+	exports.default = Badges;
 
 /***/ }
 /******/ ]);
