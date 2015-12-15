@@ -1196,9 +1196,42 @@ th, td {
   margin-bottom: 1.5rem;
   padding: 0; }
   .db-panel .panel-header {
-    padding: 1em; }
+    padding: 1em;
+    background-color: #CCCCCC; }
   .db-panel .panel-footer {
     padding: 1em; }
+
+.panel-dark .panel-header {
+  background-color: #2e3e4e;
+  color: #FFFFFF; }
+
+.panel-primary .panel-header {
+  background-color: #0cc2aa;
+  color: #FFFFFF; }
+
+.panel-secondary .panel-header {
+  background-color: #3bb4f2;
+  color: #FFFFFF; }
+
+.panel-success .panel-header {
+  background-color: #6cc788;
+  color: #FFFFFF; }
+
+.panel-danger .panel-header {
+  background-color: #f44455;
+  color: #FFFFFF; }
+
+.panel-warning .panel-header {
+  background-color: #fcc100;
+  color: #FFFFFF; }
+
+.panel-tips .panel-header {
+  background-color: #f77a99;
+  color: #FFFFFF; }
+
+.panel-info .panel-header {
+  background-color: #6887ff;
+  color: #FFFFFF; }
 
 .db-box {
   background: #FFFFFF;

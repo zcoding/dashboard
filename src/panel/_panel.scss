@@ -1,5 +1,7 @@
 @import 'mixins';
 
+$default-panel-color: #CCCCCC;
+
 .#{$namespace}-panel {
   background: $white;
   margin-bottom: 1.5rem;
@@ -7,7 +9,7 @@
 
   .panel-header {
     padding: 1em;
-    background-color: $gray;
+    background-color: $default-panel-color;
   }
 
   .panel-footer {
