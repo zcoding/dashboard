@@ -1194,12 +1194,19 @@ th, td {
 .db-panel {
   background: #FFFFFF;
   margin-bottom: 1.5rem;
-  padding: 0; }
+  padding: 0;
+  min-height: 1em; }
   .db-panel .panel-header {
     padding: 1em;
     background-color: #CCCCCC; }
-  .db-panel .panel-footer {
+  .db-panel .panel-body {
     padding: 1em; }
+  .db-panel .panel-footer {
+    padding: 1em;
+    border-top: 1px solid rgba(120, 130, 140, 0.13); }
+  .db-panel.db-radius {
+    border-radius: 5px;
+    overflow: hidden; }
 
 .panel-dark .panel-header {
   background-color: #2e3e4e;

@@ -6,14 +6,25 @@ $default-panel-color: #CCCCCC;
   background: $white;
   margin-bottom: 1.5rem;
   padding: 0;
+  min-height: 1em;
 
   .panel-header {
     padding: 1em;
     background-color: $default-panel-color;
   }
 
+  .panel-body {
+    padding: 1em;
+  }
+
   .panel-footer {
     padding: 1em;
+    border-top: 1px solid rgba(120, 130, 140, 0.13);
+  }
+
+  &.#{$namespace}-radius {
+    border-radius: 5px;
+    overflow: hidden;
   }
 }
 
