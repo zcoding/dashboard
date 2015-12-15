@@ -1129,6 +1129,11 @@ th, td {
   margin-bottom: 1.5rem;
   padding: 1rem; }
 
+.db-box {
+  background: #FFFFFF;
+  margin-bottom: 1.5rem;
+  padding: 0; }
+
 .db-pagination {
   display: inline-block;
   margin: 0;
