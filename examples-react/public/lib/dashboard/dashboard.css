@@ -1270,6 +1270,10 @@ th, td {
     overflow: hidden; }
   .panel > table {
     margin-bottom: 0; }
+  .panel > .list li:last-child {
+    border-bottom: 0; }
+  .panel > .list li:first-child {
+    border-top: 0; }
 
 .panel-dark .panel-header {
   background-color: #2e3e4e;
@@ -1647,6 +1651,27 @@ form fieldset, .form fieldset {
     background-color: #f77a99; }
   .db-label.db-label-info {
     background-color: #6887ff; }
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .list li {
+    list-style-type: none;
+    padding: 0;
+    border-top: 1px solid #eceeef; }
+    .list li:last-child {
+      border-bottom: 1px solid #eceeef; }
+    .list li a {
+      display: block;
+      padding: 1em; }
+      .list li a:hover {
+        background-color: rgba(0, 0, 0, 0.08); }
+  .list.list-static li {
+    padding: 1em; }
+    .list.list-static li a {
+      display: inline;
+      padding: 0; }
 
 html {
   height: 100%;

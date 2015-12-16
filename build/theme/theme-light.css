@@ -1271,6 +1271,10 @@ th, td {
     overflow: hidden; }
   .panel > table {
     margin-bottom: 0; }
+  .panel > .list li:last-child {
+    border-bottom: 0; }
+  .panel > .list li:first-child {
+    border-top: 0; }
 
 .panel-dark .panel-header {
   background-color: #2e3e4e;

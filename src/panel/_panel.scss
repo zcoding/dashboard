@@ -31,6 +31,15 @@ $default-panel-color: #CCCCCC;
   & > table {
     margin-bottom: 0;
   }
+
+  & > .list {
+    li:last-child {
+      border-bottom: 0;
+    }
+    li:first-child {
+      border-top: 0;
+    }
+  }
 }
 
 @include make-colorful-panels();

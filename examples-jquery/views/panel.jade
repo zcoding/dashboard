@@ -1,7 +1,7 @@
 extends ./layout.jade
 
 block content
-  .db-g.padding
+  .grid.padding
     .u-sm-8
       .panel.panel-primary.db-radius
         .panel-header panel header
@@ -117,4 +117,22 @@ block content
       .panel.panel-tips
         .panel-header Header Title
         .panel-body panel body content
+        .panel-footer panel footer
+
+    .u-sm-8
+      .box.padding
+        h2 box is a simple panel without header or footer
+        pre
+          code.
+            &lt;div class="box"&gt;&lt;/box&gt;
+
+    .u-sm-8
+      .panel.panel-success
+        .panel-header panel with list
+        ul.list
+          li 1
+          li 1
+          li 1
+          li 1
+          li 1
         .panel-footer panel footer
