@@ -1,3 +1,13 @@
+-
+  var menus = [
+      {name: '首页(Home)', path: '/'}
+    , {name: '按钮(Button)', path: '/button'}
+    , {name: '表格(Table)', path: '/table'}
+    , {name: '面板(Panel)', path: '/panel'}
+    , {name: '表单(Form)', path: '/form'}
+    , {name: '网格(Grid System)', path: '/grid'}
+  ];
+
 div.db-aside
   div.navside
     div.nav-brand
@@ -5,30 +15,11 @@ div.db-aside
     div.db-hide-scroll.flex
       nav.scroll
         ul
-          li
-            a(href="/")
-              span.db-icon
-              span.nav-text 首页(Home)
-          li
-            a(href="/button")
-              span.db-icon
-              span.nav-text 按钮(Button)
-          li
-            a(href="/table")
-              span.db-icon
-              span.nav-text 表格(Table)
-          li
-            a(href="/panel")
-              span.db-icon
-              span.nav-text 面板(Panel)
-          li
-            a(href="/form")
-              span.db-icon
-              span.nav-text 表单(Form)
-          li
-            a(href="/grid")
-              span.db-icon
-              span.nav-text 网格(Grid System)
+          each menu in menus
+            li
+              a(href=menu.path)
+                span.db-icon
+                span.nav-text= menu.name
     div.nav-footer
       nav
         ul
