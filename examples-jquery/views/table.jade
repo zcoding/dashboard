@@ -3,27 +3,109 @@ extends ./layout.jade
 block content
   .grid.padding
     .u-sm-8
-      table.table
-        thead
-          tr
-            th #
-            th Name
-            th Email
-            th Age
-            th Address
-            th Last-login-time
-            th Operation
-        tbody
-          each item in list
+      .box.padding
+        h2 default table
+        table.table
+          thead
             tr
-              td= item.id
-              td= item.name
-              td= item.email
-              td= item.age
-              td= item.address
-              td= item.lastLoginTime
-              td
-                button(type="button").btn.btn-danger Delete
+              th #
+              th Name
+              th Email
+              th Age
+              th Address
+              th Last-login-time
+              th Operation
+          tbody
+            each item in list
+              tr
+                td= item.id
+                td= item.name
+                td= item.email
+                td= item.age
+                td= item.address
+                td= item.lastLoginTime
+                td
+                  button(type="button").btn.btn-danger
+                    | <i class="fa fa-trash"></i> Delete
+
+    .u-sm-8
+      .box.padding
+        h2 bordered table
+        table.table.table-bordered
+          thead
+            tr
+              th #
+              th Name
+              th Email
+              th Age
+              th Address
+              th Last-login-time
+              th Operation
+          tbody
+            each item in list
+              tr
+                td= item.id
+                td= item.name
+                td= item.email
+                td= item.age
+                td= item.address
+                td= item.lastLoginTime
+                td
+                  button(type="button").btn.btn-danger
+                    | <i class="fa fa-trash"></i> Delete
+
+    .u-sm-8
+      .box.padding
+        h2 striped table
+        table.table.table-striped
+          thead
+            tr
+              th #
+              th Name
+              th Email
+              th Age
+              th Address
+              th Last-login-time
+              th Operation
+          tbody
+            each item in list
+              tr
+                td= item.id
+                td= item.name
+                td= item.email
+                td= item.age
+                td= item.address
+                td= item.lastLoginTime
+                td
+                  button(type="button").btn.btn-danger
+                    | <i class="fa fa-trash"></i> Delete
+
+    .u-sm-8
+      .box.padding
+        h2 hover bordered table
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th #
+              th Name
+              th Email
+              th Age
+              th Address
+              th Last-login-time
+              th Operation
+          tbody
+            each item in list
+              tr
+                td= item.id
+                td= item.name
+                td= item.email
+                td= item.age
+                td= item.address
+                td= item.lastLoginTime
+                td
+                  button(type="button").btn.btn-danger
+                    | <i class="fa fa-trash"></i> Delete
+
     .u-sm-8
       .panel.panel-primary
         .panel-header Table in panel (random data created by mock.js)

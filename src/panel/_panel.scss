@@ -35,7 +35,7 @@ $default-panel-color: #CCCCCC;
 
 @include make-colorful-panels();
 
-.#{$namespace}-box {
+.box {
   background: $white;
   margin-bottom: 1.5rem;
   padding: 0;

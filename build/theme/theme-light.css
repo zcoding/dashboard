@@ -834,6 +834,7 @@ textarea {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
   font-size: 14px;
   line-height: 1;
+  white-space: nowrap;
   -webkit-transition: background-color 100ms linear 0s;
   transition: background-color 100ms linear 0s; }
   .btn:active {
@@ -1225,6 +1226,13 @@ th, td {
   .table.table-hover > tbody > tr:hover {
     background-color: rgba(0, 0, 0, 0.5);
     color: #FFFFFF; }
+  .table.table-bordered {
+    border-bottom: 1px solid #eceeef;
+    border-right: 1px solid #eceeef; }
+    .table.table-bordered > thead > tr > th {
+      border-left: 1px solid #eceeef; }
+    .table.table-bordered > tbody > tr > td {
+      border-left: 1px solid #eceeef; }
 
 .panel {
   background: #FFFFFF;
@@ -1278,7 +1286,7 @@ th, td {
   background-color: #6887ff;
   color: #FFFFFF; }
 
-.db-box {
+.box {
   background: #FFFFFF;
   margin-bottom: 1.5rem;
   padding: 0; }
