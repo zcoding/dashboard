@@ -1,0 +1,22 @@
+extends ./layout.jade
+
+block content
+  div.db-g.padding
+    div.u-sm-8
+      form(action="/" class="form")
+        fieldset
+          div.form-control
+            label(for="name") Name
+            input(type="text" id="name" placeholder="input your name")
+          div.form-control
+            label(for="passwrod") Password
+            input(type="password" id="password" placeholder="input password")
+          div.form-control
+            label(for="number") Number
+            input(type="number" id="number" placeholder="input number")
+          div.form-control
+            label(for="email") Email
+            input(type="email" id="email" placeholder="input email")
+          div.form-control
+            label(for="url") URL
+            input(type="url" id="url" placeholder="input url")

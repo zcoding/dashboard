@@ -31,29 +31,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.#{$namespace}-padding {
+.padding {
   padding: 1.5rem;
 }
 
 @each $pos in (top, bottom, left, right) {
-  .#{$namespace}-padding-#{$pos} {
+  .padding-#{$pos} {
     padding-#{$pos}: 1.5rem;
   }
 }
 
-.#{$namespace}-radius {
+.radius {
   border-radius: 5px;
 }
 
-.#{$namespace}-fl {
+.fl {
   float: left;
 }
 
-.#{$namespace}-fr {
+.fr {
   float: right;
 }
 
-.#{$namespace}-cf {
+.cf {
   &:before, &:after {
     content: ' ';
     display: table;

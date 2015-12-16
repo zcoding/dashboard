@@ -1,0 +1,36 @@
+extends ./layout.jade
+
+block content
+  div.db-g.padding
+    div.u-sm-8
+      div.db-panel.panel-primary
+        div.panel-header i am header
+        table.table
+          thead
+            tr
+              th A
+              th B
+              th C
+          tbody
+            tr
+              td 1
+              td 2
+              td 3
+        div.panel-footer.cf
+          ul.pagination.fr
+            li
+              a(href="#/page=3")
+                i.fa.fa-chevron-left
+            li
+              a(href="#/page=1") 1
+            li
+              a(href="#/page=2") 2
+            li.active
+              a(href="#/page=3") 3
+            li
+              a(href="#/page=4") 4
+            li
+              a(href="#/page=5") 5
+            li
+              a(href="#/page=4")
+                i.fa.fa-chevron-right

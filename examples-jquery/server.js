@@ -7,6 +7,7 @@ const Path  = require('path');
 const Fs    = require('fs');
 const Chalk = require('chalk');
 const Open  = require('open');
+const Jade  = require('jade');
 
 let App = Koa();
 
@@ -20,33 +21,17 @@ App.use(_.get('/', function *(next) {
 
 }));
 
-App.use(_.get('/buttons', function *(next) {
+let pages = ['button', 'table', 'form', 'panel', 'grid'];
 
-  this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/buttons.html'));
+pages.forEach((page) => {
+  App.use(_.get(`/${page}`, function *(next) {
+    var render = Jade.compileFile(Path.resolve(__dirname, `./views/${page}.jade`), {});
 
-}));
-
-App.use(_.get('/tables', function *(next) {
-
-  this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/tables.html'));
-
-}));
-
-App.use(_.get('/panels', function *(next) {
-
-  this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/panels.html'));
-
-}));
-
-App.use(_.get('/forms', function *(next) {
-
-  this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/forms.html'));
-
-}));
+    this.type = 'text/html';
+    // this.body = Fs.createReadStream(Path.resolve(__dirname, `./views/${page}.html`));
+    this.body = render();
+  }));
+});
 
 const port = 10241;
 

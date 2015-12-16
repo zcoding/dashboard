@@ -1246,21 +1246,21 @@ th, td {
   margin-bottom: 1.5rem;
   padding: 0; }
 
-.db-pagination {
+.pagination {
   display: block;
   margin: 0;
   padding: 0; }
-  .db-pagination:before, .db-pagination:after {
+  .pagination:before, .pagination:after {
     content: ' ';
     display: table; }
-  .db-pagination:after {
+  .pagination:after {
     clear: both; }
-  .db-pagination, .db-pagination li {
+  .pagination, .pagination li {
     list-style-type: none; }
-  .db-pagination li {
+  .pagination li {
     display: block;
     float: left; }
-    .db-pagination li a {
+    .pagination li a {
       display: block;
       font-size: 14px;
       width: 32px;
@@ -1271,9 +1271,9 @@ th, td {
       background-color: #FFFFFF;
       color: #333;
       border: 1px solid rgba(120, 130, 140, 0.13); }
-    .db-pagination li:first-child a {
+    .pagination li:first-child a {
       margin-left: 0; }
-    .db-pagination li.active a {
+    .pagination li.active a {
       background-color: #0cc2aa;
       color: #FFFFFF;
       border-color: #0cc2aa; }
