@@ -41,6 +41,13 @@ App.use(_.get('/panels', function *(next) {
 
 }));
 
+App.use(_.get('/forms', function *(next) {
+
+  this.type = 'text/html';
+  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/forms.html'));
+
+}));
+
 const port = 10241;
 
 App.listen(port, () => {
