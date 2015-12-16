@@ -16,21 +16,22 @@ App.use(Serve(Path.resolve(__dirname, '../build')));
 
 App.use(_.get('/', function *(next) {
 
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/index.jade`), {});
   this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/index.html'));
+  this.body = render();
 
 }));
 
 let pages = ['button', 'table', 'form', 'panel', 'grid'];
 
 pages.forEach((page) => {
+
   App.use(_.get(`/${page}`, function *(next) {
     var render = Jade.compileFile(Path.resolve(__dirname, `./views/${page}.jade`), {});
-
     this.type = 'text/html';
-    // this.body = Fs.createReadStream(Path.resolve(__dirname, `./views/${page}.html`));
     this.body = render();
   }));
+
 });
 
 const port = 10241;
