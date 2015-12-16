@@ -847,6 +847,24 @@ textarea {
     .btn.float:active {
       background-color: #FFF;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5); }
+  .btn.btn-xs {
+    padding: .2em 1em;
+    font-size: 12px; }
+  .btn.btn-sm {
+    padding: .3em 1.5em;
+    font-size: 12px; }
+  .btn.btn-md {
+    padding: .75em 2.25em;
+    font-size: 14px; }
+  .btn.btn-lg {
+    padding: 1em 2.5em;
+    font-size: 16px; }
+  .btn.btn-xl {
+    padding: 1em 3em;
+    font-size: 18px; }
+  .btn.btn-block {
+    display: block;
+    width: 100%; }
 
 .btn-dark {
   color: #FFFFFF;
