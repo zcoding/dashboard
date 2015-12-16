@@ -22,7 +22,7 @@ App.use(_.get('/', function *(next) {
 
 }));
 
-let pages = ['button', 'table', 'form', 'panel', 'grid'];
+let pages = ['button', 'table', 'form', 'panel', 'grid', 'color'];
 
 pages.forEach((page) => {
 

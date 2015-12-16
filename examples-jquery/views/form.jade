@@ -1,25 +1,28 @@
 extends ./layout.jade
 
 block content
-  div.db-g.padding
-    div.u-sm-8
+  .grid.padding
+    .u-sm-8
       form(action="/" class="form")
         fieldset
-          div.form-control
+          .form-control
             label(for="name") Name
-            input(type="text" id="name" placeholder="input your name")
-          div.form-control
-            label(for="passwrod") Password
-            input(type="password" id="password" placeholder="input password")
-          div.form-control
+            input#name(type="text" placeholder="input your name")
+          .form-control
+            label(for="password") Password
+            input#password(type="password" placeholder="input password")
+          .form-control
             label(for="number") Number
-            input(type="number" id="number" placeholder="input number")
-          div.form-control
+            input#number(type="number" placeholder="input number")
+          .form-control
             label(for="email") Email
-            input(type="email" id="email" placeholder="input email")
-          div.form-control
+            input#email(type="email" placeholder="input email")
+          .form-control
             label(for="url") URL
-            input(type="url" id="url" placeholder="input url")
+            input#url(type="url" placeholder="input url")
+          .form-control
+            label(for="textarea") Textarea
+            textarea#textarea(rows="5")
           div
             label.db-check
               input(type="checkbox" name="check1")

@@ -3,7 +3,13 @@
   box-sizing: border-box;
 }
 
-html, body, div, nav, article, header, footer, aside {
+html, body {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+div, article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
   margin: 0;
   padding: 0;
@@ -12,4 +18,38 @@ html, body, div, nav, article, header, footer, aside {
 a {
   text-decoration: none;
   color: $blue;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 0.67em 0;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h3, h4, h5, h6 {
+  font-size: 1em;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+textarea {
+  overflow: auto;
 }
