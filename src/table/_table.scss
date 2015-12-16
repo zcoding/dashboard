@@ -33,8 +33,8 @@ th, td {
   }
 
   &.table-hover > tbody > tr:hover {
-    background-color: rgba(0, 0, 0, .5);
-    color: $white;
+    background-color: rgba(0, 0, 0, .08);
+    color: $black;
   }
 
   &.table-bordered {

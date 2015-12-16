@@ -1,7 +1,7 @@
 {
   "name": "dashboard",
   "version": "0.1.0",
-  "description": "ui lib for dashboard",
+  "description": "ui framework for developing dashboard projects on the web",
   "main": "index.js",
   "scripts": {
     "test": "node scripts/test.js",
@@ -18,7 +18,6 @@
   "keywords": [
     "ui",
     "framework",
-    "lib",
     "dashboard"
   ],
   "author": "zcoding",

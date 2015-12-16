@@ -1241,8 +1241,8 @@ th, td {
   .table.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #f9f9f9; }
   .table.table-hover > tbody > tr:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #FFFFFF; }
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #333; }
   .table.table-bordered {
     border-bottom: 1px solid #eceeef;
     border-right: 1px solid #eceeef; }
