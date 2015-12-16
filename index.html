@@ -2,20 +2,35 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="A fully featured dashboard framework which can be used to build CRM, CMS, etc.">
+  <meta name="keywords" content="HTML,HTML5,CSS3,dashboard,admin,front-end">
   <title>Dashboard</title>
+  <link rel="shortcut icon" href="build/favicon.png" type="image/png">
+  <link rel="stylesheet" href="lib/fa/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="build/dashboard.min.css">
+  <style>
+  .main-content {
+    width: 1024px;
+    margin: 1em auto;
+  }
+  h2 a {
+    color: #333;
+  }
+  </style>
 </head>
 <body>
-  <div class="grid">
-    <div class="u-sm-12">
+  <div class="grid main-content">
+    <div class="u-sm-16">
       <h1>Hello, dashboard!</h1>
       <article>
-        <h2>Introduction</h2>
+        <h2 id="introduction"><a href="#introduction">Introduction</a></h2>
         <p>Dashboard is a UI framework for developing dashboard projects on the web.It's free, flexible, and responsible.</p>
-        <h2>Theme colors</h2>
+        <h2 id="development"><a href="#development">Development</a></h2>
+        <p><i class="fa fa-github"></i> Github: <a href="https://github.com/zcoding/dashboard" target="_blank">https://github.com/zcoding/dashboard</a></p>
+        <h2 id="theme-colors"><a href="#theme-folors">Theme colors</a></h2>
         <p>There are 8 theme colors in dashboard: primary, secondary, success, danger, warning, tips, info and dark.Theme colors are used for ui-kits such as buttons, panels and labels.</p>
         <p>Theme colors can be customized by overwriting.</p>
-        <h2>Buttons</h2>
+        <h2 id="buttons"><a href="#buttons">Buttons</a></h2>
         <p>There are 3 types of buttons: flat, ghost and 3d.</p>
         <p>
           <button type="button" class="btn btn-primary">Flat button</button>
@@ -48,6 +63,93 @@
           <button type="button" class="btn btn-primary float radius">Float button</button>
           <button type="button" class="btn btn-primary float round">Float button</button>
         </p>
+        <h2 id="panels"><a href="#panels">Panels</a></h2>
+        <p>Theme colors are supported for panels:</p>
+        <div class="u-sm-8">
+          <div class="panel panel-primary">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-secondary">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-success">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-info">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-tips">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-danger">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-warning">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <div class="u-sm-8">
+          <div class="panel panel-dark">
+            <div class="panel-header">Header</div>
+            <div class="panel-body">content body</div>
+            <div class="panel-footer">footer</div>
+          </div>
+        </div>
+        <p>Use panel with a table:</p>
+        <div class="panel panel-primary">
+          <div class="panel-header">Panel with table</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Use panel with a lsit:</p>
+        <div class="panel panel-primary">
+          <div class="panel-header">Panel with list:</div>
+          <ul class="list">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+          </ul>
+        </div>
       </article>
     </div>
   </div>
