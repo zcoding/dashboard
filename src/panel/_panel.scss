@@ -27,6 +27,10 @@ $default-panel-color: #CCCCCC;
     border-radius: 5px;
     overflow: hidden;
   }
+
+  & > table {
+    margin-bottom: 0;
+  }
 }
 
 @include make-colorful-panels();

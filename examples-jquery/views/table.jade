@@ -1,22 +1,54 @@
 extends ./layout.jade
 
 block content
-  div.db-g.padding
-    div.u-sm-8
-      div.db-panel.panel-primary
-        div.panel-header i am header
+  .grid.padding
+    .u-sm-8
+      table.table
+        thead
+          tr
+            th #
+            th Name
+            th Email
+            th Age
+            th Address
+            th Last-login-time
+            th Operation
+        tbody
+          each item in list
+            tr
+              td= item.id
+              td= item.name
+              td= item.email
+              td= item.age
+              td= item.address
+              td= item.lastLoginTime
+              td
+                button(type="button").btn.btn-danger Delete
+    .u-sm-8
+      .panel.panel-primary
+        .panel-header Table in panel (random data created by mock.js)
         table.table
           thead
             tr
-              th A
-              th B
-              th C
+              th #
+              th Name
+              th Email
+              th Age
+              th Address
+              th Last-login-time
+              th Operation
           tbody
-            tr
-              td 1
-              td 2
-              td 3
-        div.panel-footer.cf
+            each item in list
+              tr
+                td= item.id
+                td= item.name
+                td= item.email
+                td= item.age
+                td= item.address
+                td= item.lastLoginTime
+                td
+                  button(type="button").btn.btn-danger Delete
+        .panel-footer.cf
           ul.pagination.fr
             li
               a(href="#/page=3")

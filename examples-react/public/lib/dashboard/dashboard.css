@@ -21,13 +21,15 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 1.5em;
-  margin: 0.67em 0; }
+  margin: .8em 0; }
 
 h2 {
-  font-size: 1.25em; }
+  font-size: 1.25em;
+  margin: .6em 0; }
 
 h3, h4, h5, h6 {
-  font-size: 1em; }
+  font-size: 1em;
+  margin: .25em 0; }
 
 button,
 html input[type="button"],
@@ -1202,6 +1204,7 @@ th, td {
   text-align: left; }
 
 .table {
+  margin: 0 0 1em 0;
   width: 100%;
   max-width: 100%;
   background-color: transparent; }
@@ -1239,6 +1242,8 @@ th, td {
   .panel.db-radius {
     border-radius: 5px;
     overflow: hidden; }
+  .panel > table {
+    margin-bottom: 0; }
 
 .panel-dark .panel-header {
   background-color: #2e3e4e;
