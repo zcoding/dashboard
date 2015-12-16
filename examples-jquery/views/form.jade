@@ -1,0 +1,65 @@
+extends ./layout.jade
+
+block content
+  .grid.padding
+    .u-sm-8
+      form(action="/" class="form")
+        fieldset
+          .form-control
+            label(for="name") Name
+            input#name(type="text" placeholder="input your name")
+          .form-control
+            label(for="password") Password
+            input#password(type="password" placeholder="input password")
+          .form-control
+            label(for="number") Number
+            input#number(type="number" placeholder="input number")
+          .form-control
+            label(for="email") Email
+            input#email(type="email" placeholder="input email")
+          .form-control
+            label(for="url") URL
+            input#url(type="url" placeholder="input url")
+          .form-control
+            label(for="textarea") Textarea
+            textarea#textarea(rows="5")
+          div
+            label.db-check
+              input(type="checkbox" name="check1")
+              | <i></i>Option1
+            label.db-check
+              input(type="checkbox" name="check1")
+              | <i></i>Option2
+            label.db-check
+              input(type="checkbox" name="check1")
+              | <i></i>Option3
+          div
+            label.db-radio
+              input(type="radio" name="radio1")
+              | <i></i>Option1
+            label.db-radio
+              input(type="radio" name="radio1")
+              | <i></i>Option2
+            label.db-radio
+              input(type="radio" name="radio1")
+              | <i></i>Option3
+          div
+            label.db-switch
+              input(type="checkbox" name="check2")
+              | <i></i>A
+            label.db-switch
+              input(type="checkbox" name="check2")
+              | <i></i>B
+            label.db-switch
+              input(type="checkbox" name="check2")
+              | <i></i>C
+          div
+            label.db-switch
+              input(type="radio" name="radio2")
+              | <i></i>A1
+            label.db-switch
+              input(type="radio" name="radio2")
+              | <i></i>A2
+            label.db-switch
+              input(type="radio" name="radio2")
+              | <i></i>A3

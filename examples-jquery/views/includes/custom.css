@@ -1,0 +1,12 @@
+.grid-example {
+  margin: 1em auto;
+  padding: 0 1em;
+}
+
+.grid-example [class^=u-] {
+  min-height: 32px;
+  background-color: #FFF;
+  border: 1px solid #525252;
+  line-height: 30px;
+  text-align: center;
+}

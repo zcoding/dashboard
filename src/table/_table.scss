@@ -8,6 +8,7 @@ th, td {
 }
 
 .table {
+  margin: 0 0 1em 0;
   width: 100%;
   max-width: 100%;
   background-color: transparent;
@@ -20,13 +21,11 @@ th, td {
     border-bottom: 2px solid rgba(120,130,140,.045);
   }
 
-  & > tbody > tr {
-    & > td {
-      padding: .75rem 16px;
-      line-height: 1.5;
-      vertical-align: top;
-      border-top: 1px solid rgba(120, 130, 140, .045);
-    }
+  & > tbody > tr > td {
+    padding: .75rem 16px;
+    line-height: 1.5;
+    vertical-align: top;
+    border-top: 1px solid rgba(120, 130, 140, .045);
   }
 
   &.table-striped > tbody > tr:nth-of-type(odd) {
@@ -34,8 +33,19 @@ th, td {
   }
 
   &.table-hover > tbody > tr:hover {
-    background-color: rgba(0, 0, 0, .5);
-    color: $white;
+    background-color: rgba(0, 0, 0, .08);
+    color: $black;
+  }
+
+  &.table-bordered {
+    border-bottom: 1px solid #eceeef;
+    border-right: 1px solid #eceeef;
+    & > thead > tr > th {
+      border-left: 1px solid #eceeef;
+    }
+    & > tbody > tr > td {
+      border-left: 1px solid #eceeef;
+    }
   }
 
 }

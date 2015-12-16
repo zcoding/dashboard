@@ -1,0 +1,33 @@
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+    padding: 0;
+    border-top: 1px solid #eceeef;
+    &:last-child {
+      border-bottom: 1px solid #eceeef;
+    }
+
+    a {
+      display: block;
+      padding: 1em;
+      &:hover {
+        background-color: rgba(0, 0, 0, .08);
+      }
+    }
+  }
+
+  &.list-static {
+    li {
+      padding: 1em;
+      a {
+        display: inline;
+        padding: 0;
+      }
+    }
+  }
+
+}

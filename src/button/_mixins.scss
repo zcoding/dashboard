@@ -1,13 +1,13 @@
 @mixin make-colorful-buttons($colors: $flatColors) {
   @each $name, $color in $colors {
-    .#{$namespace}-btn-#{$name} {
+    .btn-#{$name} {
       color: $white;
       background-color: $color;
 
       &:active {
         background-color: darken($color, 5%);
       }
-      &.#{$namespace}-float:active {
+      &.float:active {
         background-color: $color;
       }
     }
@@ -16,7 +16,7 @@
 
 @mixin make-ghost-buttons($colors: $flatColors) {
   @each $name, $color in $colors {
-    .#{$namespace}-btn-g-#{$name} {
+    .btn-g-#{$name} {
       font-weight: 700;
       color: $color;
       background-color: rgba(0, 0, 0, 0);
@@ -39,7 +39,7 @@
 
 @mixin make-3d-buttons($colors: $flatColors) {
   @each $name, $color in $colors {
-    .#{$namespace}-btn-d-#{$name} {
+    .btn-d-#{$name} {
       position: relative;
       top: 0;
       color: $white;

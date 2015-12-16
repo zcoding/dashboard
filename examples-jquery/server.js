@@ -7,6 +7,8 @@ const Path  = require('path');
 const Fs    = require('fs');
 const Chalk = require('chalk');
 const Open  = require('open');
+const Jade  = require('jade');
+const Mock  = require('mockjs');
 
 let App = Koa();
 
@@ -15,31 +17,43 @@ App.use(Serve(Path.resolve(__dirname, '../build')));
 
 App.use(_.get('/', function *(next) {
 
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/index.jade`), {});
   this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/index.html'));
+  this.body = render();
 
 }));
 
-App.use(_.get('/buttons', function *(next) {
+App.use(_.get('/table', function *(next) {
+
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/table.jade`), {});
+
+  var data = Mock.mock({
+    'list|5': [{
+      'id|+1': 1,
+      'name': '@name',
+      'email': '@email',
+      'age': '@integer(22,33)',
+      'address': '@area',
+      'lastLoginTime': '@datetime'
+    }]
+  })
 
   this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/buttons.html'));
+  this.body = render(data);
 
 }));
 
-App.use(_.get('/tables', function *(next) {
+let pages = ['button', 'form', 'panel', 'grid', 'color', 'list'];
 
-  this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/tables.html'));
+pages.forEach((page) => {
 
-}));
+  App.use(_.get(`/${page}`, function *(next) {
+    var render = Jade.compileFile(Path.resolve(__dirname, `./views/${page}.jade`), {});
+    this.type = 'text/html';
+    this.body = render();
+  }));
 
-App.use(_.get('/panels', function *(next) {
-
-  this.type = 'text/html';
-  this.body = Fs.createReadStream(Path.resolve(__dirname, './views/panels.html'));
-
-}));
+});
 
 const port = 10241;
 

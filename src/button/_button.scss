@@ -1,7 +1,7 @@
 @import "mixins";
-$default-button-background: #e6e6e6;
+$default-button-background: #FFF;
 
-.#{$namespace}-btn {
+.btn {
   display: inline-block;
   margin: 0 0 .5em 0;
   padding: .5em 2em;
@@ -15,6 +15,7 @@ $default-button-background: #e6e6e6;
   font-family: $font-default;
   font-size: 14px;
   line-height: 1;
+  white-space: nowrap;
 
   $transition-duration: 100ms;
 
@@ -25,10 +26,11 @@ $default-button-background: #e6e6e6;
     background-color: darken($default-button-background, 5%);
   }
 
-  &.#{$namespace}-round {
+  &.round {
     border-radius: 1000px;
   }
-  &.#{$namespace}-float {
+
+  &.float {
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .3);
     -webkit-transition: box-shadow $transition-duration linear 0s;
     transition: box-shadow $transition-duration linear 0s;
@@ -37,6 +39,33 @@ $default-button-background: #e6e6e6;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
     }
   }
+
+  &.btn-xs {
+    padding: .2em 1em;
+    font-size: 12px;
+  }
+  &.btn-sm {
+    padding: .3em 1.5em;
+    font-size: 12px;
+  }
+  &.btn-md {
+    padding: .75em 2.25em;
+    font-size: 14px;
+  }
+  &.btn-lg {
+    padding: 1em 2.5em;
+    font-size: 16px;
+  }
+  &.btn-xl {
+    padding: 1em 3em;
+    font-size: 18px;
+  }
+
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+
 }
 
 @include make-colorful-buttons();

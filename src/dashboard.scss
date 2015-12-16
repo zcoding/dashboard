@@ -13,6 +13,7 @@
 @import "code/code";
 @import "form/form";
 @import "badge/badge";
+@import "list/list";
 
 $bodyBackground: #F0F0F0;
 
@@ -29,31 +30,32 @@ body {
   background-color: $bodyBackground;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $black;
 }
 
-.#{$namespace}-padding {
+.padding {
   padding: 1.5rem;
 }
 
 @each $pos in (top, bottom, left, right) {
-  .#{$namespace}-padding-#{$pos} {
+  .padding-#{$pos} {
     padding-#{$pos}: 1.5rem;
   }
 }
 
-.#{$namespace}-radius {
+.radius {
   border-radius: 5px;
 }
 
-.#{$namespace}-fl {
+.fl {
   float: left;
 }
 
-.#{$namespace}-fr {
+.fr {
   float: right;
 }
 
-.#{$namespace}-cf {
+.cf {
   &:before, &:after {
     content: ' ';
     display: table;
