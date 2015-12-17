@@ -1782,6 +1782,123 @@ input.input-info {
       display: inline;
       padding: 0; }
 
+.tab {
+  position: relative;
+  list-style-type: none;
+  background-color: #FFF;
+  margin: 0;
+  padding: 0; }
+  .tab:before, .tab:after {
+    display: table;
+    content: ' '; }
+  .tab:after {
+    clear: both; }
+  .tab li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: left; }
+    .tab li:not(:first-child) {
+      border-left: 1px solid #efefef; }
+    .tab li a {
+      display: block;
+      padding: 0 2em;
+      height: 3em;
+      line-height: 3em;
+      text-align: center;
+      font-weight: 500;
+      color: #333;
+      -webkit-transition: color 300ms ease 0s;
+      transition: color 300ms ease 0s; }
+      .tab li a:hover {
+        color: #0cc2aa; }
+    .tab li.active a {
+      color: #0cc2aa; }
+  .tab .indicator {
+    position: absolute;
+    background-color: #0cc2aa;
+    bottom: 0;
+    height: 2px;
+    position: absolute;
+    will-change: left, right; }
+  .tab + .tab-content {
+    background-color: #FFF;
+    margin-bottom: 1em;
+    border-top: 1px solid #efefef;
+    padding: 1em; }
+
+.tab-dark li a:hover {
+  color: #2e3e4e; }
+
+.tab-dark li.active a {
+  color: #2e3e4e; }
+
+.tab-dark .indicator {
+  background-color: #2e3e4e; }
+
+.tab-primary li a:hover {
+  color: #0cc2aa; }
+
+.tab-primary li.active a {
+  color: #0cc2aa; }
+
+.tab-primary .indicator {
+  background-color: #0cc2aa; }
+
+.tab-secondary li a:hover {
+  color: #3bb4f2; }
+
+.tab-secondary li.active a {
+  color: #3bb4f2; }
+
+.tab-secondary .indicator {
+  background-color: #3bb4f2; }
+
+.tab-success li a:hover {
+  color: #6cc788; }
+
+.tab-success li.active a {
+  color: #6cc788; }
+
+.tab-success .indicator {
+  background-color: #6cc788; }
+
+.tab-danger li a:hover {
+  color: #f44455; }
+
+.tab-danger li.active a {
+  color: #f44455; }
+
+.tab-danger .indicator {
+  background-color: #f44455; }
+
+.tab-warning li a:hover {
+  color: #fcc100; }
+
+.tab-warning li.active a {
+  color: #fcc100; }
+
+.tab-warning .indicator {
+  background-color: #fcc100; }
+
+.tab-tips li a:hover {
+  color: #f77a99; }
+
+.tab-tips li.active a {
+  color: #f77a99; }
+
+.tab-tips .indicator {
+  background-color: #f77a99; }
+
+.tab-info li a:hover {
+  color: #6887ff; }
+
+.tab-info li.active a {
+  color: #6887ff; }
+
+.tab-info .indicator {
+  background-color: #6887ff; }
+
 .radius {
   border-radius: 5px; }
 

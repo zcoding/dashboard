@@ -1,0 +1,20 @@
+@mixin make-colorful-tabs($colors: $flatColors) {
+  @each $name, $color in $colors {
+    .tab-#{$name} {
+      li {
+        a:hover {
+          color: $color;
+        }
+        &.active {
+          a {
+            color: $color;
+          }
+        }
+      }
+
+      .indicator {
+        background-color: $color;
+      }
+    }
+  }
+}
