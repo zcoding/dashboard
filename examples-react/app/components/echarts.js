@@ -116,15 +116,21 @@ export default class Echarts extends React.Component {
 
   render() {
     return (
-      <div className="db-g db-padding">
+      <div className="grid padding">
         <div className="u-sm-8">
-          <div className="db-panel">
-            <div ref="chart" style={ {height: '450px'} }></div>
+          <div className="panel panel-dark">
+            <div className="panel-header">Charts in panel</div>
+            <div className="panel-body">
+              <div ref="chart" style={ {height: '450px'} }></div>
+            </div>
           </div>
         </div>
         <div className="u-sm-8">
-          <div className="db-panel">
-            <div ref="chart2" style={ {height: '450px'} }></div>
+          <div className="panel panel-info">
+            <div className="panel-header">Charts in panel</div>
+            <div className="panel-body">
+              <div ref="chart2" style={ {height: '450px'} }></div>
+            </div>
           </div>
         </div>
       </div>

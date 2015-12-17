@@ -1,4 +1,4 @@
-.#{$namespace}-badge {
+.badge {
   display: inline-block;
   margin-right: .5em;
   font-size: 12px;
@@ -13,13 +13,13 @@
   color: $white;
 
   @each $name, $color in $flatColors {
-    &.#{$namespace}-badge-#{$name} {
+    &.badge-#{$name} {
       background-color: $color;
     }
   }
 }
 
-.#{$namespace}-label {
+.label {
   display: inline-block;
   margin-right: .5em;
   font-size: 12px;
@@ -34,7 +34,7 @@
   color: $white;
 
   @each $name, $color in $flatColors {
-    &.#{$namespace}-label-#{$name} {
+    &.label-#{$name} {
       background-color: $color;
     }
   }

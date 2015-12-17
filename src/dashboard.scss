@@ -14,6 +14,8 @@
 @import "form/form";
 @import "badge/badge";
 @import "list/list";
+@import "tab/tab";
+@import "helpers";
 
 $bodyBackground: #F0F0F0;
 
@@ -31,36 +33,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $black;
-}
-
-.padding {
-  padding: 1.5rem;
-}
-
-@each $pos in (top, bottom, left, right) {
-  .padding-#{$pos} {
-    padding-#{$pos}: 1.5rem;
-  }
-}
-
-.radius {
-  border-radius: 5px;
-}
-
-.fl {
-  float: left;
-}
-
-.fr {
-  float: right;
-}
-
-.cf {
-  &:before, &:after {
-    content: ' ';
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
 }

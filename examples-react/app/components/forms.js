@@ -8,9 +8,9 @@ export default class Forms extends React.Component {
 
   render() {
     return (
-      <div className="db-g db-padding">
+      <div className="grid">
         <div className="u-sm-16">
-          <div className="db-panel">
+          <div className="box padding margin-top">
             <form action="/" className="form">
               <fieldset>
                 <div className="form-control">

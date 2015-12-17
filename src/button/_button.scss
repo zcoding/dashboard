@@ -1,5 +1,5 @@
 @import "mixins";
-$default-button-background: #FFF;
+$default-button-background: #f2f2f2;
 
 .btn {
   display: inline-block;
@@ -17,7 +17,7 @@ $default-button-background: #FFF;
   line-height: 1;
   white-space: nowrap;
 
-  $transition-duration: 100ms;
+  $transition-duration: 150ms;
 
   -webkit-transition: background-color $transition-duration linear 0s;
   transition: background-color $transition-duration linear 0s;
@@ -64,6 +64,7 @@ $default-button-background: #FFF;
   &.btn-block {
     display: block;
     width: 100%;
+    margin-top: .5em;
   }
 
 }
@@ -71,3 +72,20 @@ $default-button-background: #FFF;
 @include make-colorful-buttons();
 @include make-ghost-buttons();
 @include make-3d-buttons();
+
+// button group
+.btn-group {
+  display: inline-block;
+  margin: 0 0 .5em 0;
+  vertical-align: middle;
+  .btn {
+    margin: 0;
+    float: left;
+    border: 1px solid #eaeaea;
+  }
+  .btn + .btn { // lib-sass bug
+    margin-left: -1px;
+  }
+}
+
+@include make-colorful-button-group();

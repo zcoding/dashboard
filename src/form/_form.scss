@@ -9,33 +9,44 @@ form, .form {
   }
 }
 
-.form-control {
-  margin-bottom: .5em;
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+  -webkit-text-fill-color: #333;
+}
 
-  label {
-    color: $black;
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: 700;
+input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 10px;
+  background-color: $white;
+  font-family: $font-default;
+}
+
+input.field-md {
+  height: 32px;
+  padding: 2px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #CECECE;
+  border-radius: 0;
+  &:focus {
+    padding-bottom: 1px;
+    border-bottom-color: #0cc2aa;
+    border-bottom-width: 2px;
   }
+}
 
-  input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea {
-    display: block;
-    width: 100%;
-    border: 1px solid #CECECE;
-    border-radius: 4px;
-    outline: 0;
-    font-size: 14px;
-    line-height: 1.2;
-    padding: 8px 10px;
-    background-color: $white;
-    font-family: $font-default;
-  }
+textarea {
+  resize: vertical;
 
-  input.#{$namespace}-field-m {
-    height: 32px;
-    padding: 2px;
+  &.field-md {
+    padding-bottom: 2px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -47,30 +58,24 @@ form, .form {
       border-bottom-width: 2px;
     }
   }
+}
 
-  textarea {
-    resize: vertical;
+@include colorful-inputs();
 
-    &.#{$namespace}-field-m {
-      padding-bottom: 2px;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      border-bottom: 1px solid #CECECE;
-      border-radius: 0;
-      &:focus {
-        padding-bottom: 1px;
-        border-bottom-color: #0cc2aa;
-        border-bottom-width: 2px;
-      }
-    }
+.form-control {
+  margin-bottom: .5em;
+
+  label {
+    color: $black;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
   }
-
-  @include colorful-inputs();
 
 }
 
-.#{$namespace}-check {
+.field-check {
   display: inline-block;
   position: relative;
   height: 16px;
@@ -79,6 +84,9 @@ form, .form {
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle;
+  .form-control & {
+    font-weight: 400;
+  }
 
   i {
     position: absolute;
@@ -119,7 +127,7 @@ form, .form {
   }
 }
 
-.#{$namespace}-radio {
+.field-radio {
   display: inline-block;
   position: relative;
   height: 16px;
@@ -128,6 +136,10 @@ form, .form {
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle;
+
+  .form-control & {
+    font-weight: 400;
+  }
 
   i {
     position: absolute;
@@ -169,7 +181,7 @@ form, .form {
   }
 }
 
-.#{$namespace}-switch {
+.field-switch {
   display: inline-block;
   position: relative;
   padding: 0 0 0 38px;
@@ -179,6 +191,10 @@ form, .form {
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle;
+
+  .form-control & {
+    font-weight: 400;
+  }
 
   i {
     position: absolute;

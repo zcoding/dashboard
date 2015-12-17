@@ -11,6 +11,8 @@ const Open  = require('open');
 let App = Koa();
 
 App.use(Serve(Path.resolve(__dirname, './public')));
+App.use(Serve(Path.resolve(__dirname, '../build')));
+App.use(Serve(Path.resolve(__dirname, '../assets')));
 
 App.use(_.get('/', function *(next) {
 
