@@ -1,0 +1,35 @@
+$default-animation-duration: 1000ms;
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation-name: fadeIn;
+  animation-duration: $default-animation-duration;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation-name: fadeOut;
+  animation-duration: $default-animation-duration;
+  animation-fill-mode: both;
+}
+
+@keyframes shake {
+
+}
