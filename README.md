@@ -7,10 +7,10 @@ UI framework for developing dashboard projects on the web. [https://zcoding.gith
 `npm run example`
 
 ### run example for dashboard with React
-`npm run example:react`
+`npm run example-react`
 
 ### run example for dashboard with Vue
-`npm run example:vue`
+`npm run example-vue`
 
 ## Development
 
