@@ -12,14 +12,15 @@ html
     div.db-content
       block content
 
-    script(src="/lib/jquery/2.1.4/jquery-2.1.4.min.js")
-    script(src="/plugins/jquery.collapse.js")
-    script(src="/lib/highlight/highlight.pack.js")
-    script.
-      hljs.initHighlightingOnLoad();
-      $(function() {
-        $('[data-collapse]').collapse();
-      });
-      $('#open-modal').click(function(evt) {
-        $('.db-modal,.db-modal-dimmer').show();
-      });
+    block script
+      script(src="/lib/jquery/2.1.4/jquery-2.1.4.min.js")
+      script(src="/plugins/jquery.collapse.js")
+      script(src="/lib/highlight/highlight.pack.js")
+      script.
+        hljs.initHighlightingOnLoad();
+        $(function() {
+          $('[data-collapse]').collapse();
+        });
+        $('#open-modal').click(function(evt) {
+          $('.db-modal,.db-modal-dimmer').show();
+        });

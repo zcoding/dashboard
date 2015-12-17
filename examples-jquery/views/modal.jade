@@ -1,0 +1,26 @@
+extends ./layout.jade
+
+block content
+  .grid.margin-top
+    .u-sm-16
+      p
+        button(type="button" data-target="#modal")#trigger.btn.btn-primary.radius.float Open Modal
+  .modal#modal i am a modal
+
+append script
+  script.
+    $('#trigger').click(function(evt) {
+      var $target = $($(this).data('target')).show(300);
+      var $dimmer = $('<div class="modal-dimmer">');
+      $(document.body).append($dimmer);
+      setTimeout(function() {
+        $dimmer.addClass('active');
+      }, 0);
+      $dimmer.click(function(evt) {
+        $dimmer.on('webkitTransitionEnd', function() {
+          $dimmer.remove();
+        });
+        $dimmer.removeClass('active');
+        $target.hide(300);
+      });
+    });

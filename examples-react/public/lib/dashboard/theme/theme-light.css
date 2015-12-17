@@ -1433,17 +1433,21 @@ th, td {
       color: #FFFFFF;
       border-color: #0cc2aa; }
 
-.db-modal-dimmer {
-  display: none;
+.modal-dimmer {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  -webkit-transition: background-color 300ms ease 0s;
+  transition: background-color 300ms ease 0s;
   z-index: 1001; }
+  .modal-dimmer.active {
+    background-color: rgba(0, 0, 0, 0.8); }
 
-.db-modal {
+.modal {
   display: none;
   position: fixed;
   top: 100px;
