@@ -1433,6 +1433,18 @@ th, td {
       color: #FFFFFF;
       border-color: #0cc2aa; }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
 .modal-dimmer {
   display: block;
   position: fixed;
@@ -1490,6 +1502,14 @@ th, td {
   .modal .modal-footer {
     padding: 1em;
     border-top: 1px solid rgba(46, 62, 78, 0.38); }
+  .modal.animate-fade-in {
+    animation-name: fadeIn;
+    animation-duration: 300ms; }
+  .modal.animate-fade-out {
+    animation-name: fadeOut;
+    animation-duration: 300ms; }
+  .modal.show {
+    display: block; }
 
 code, pre {
   font-family: Consolas, "Courier New"; }

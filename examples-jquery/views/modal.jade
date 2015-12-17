@@ -18,17 +18,25 @@ block content
 append script
   script.
     $('#trigger').click(function(evt) {
-      var $target = $($(this).data('target')).show(300);
+      var $target = $($(this).data('target'));
+      $target.addClass('show animate-fade-in');
+      $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
+        $target.removeClass('animate-fade-in');
+      });
+
       var $dimmer = $('<div class="modal-dimmer">');
       $(document.body).append($dimmer);
       setTimeout(function() {
         $dimmer.addClass('active');
       }, 0);
       $dimmer.click(function(evt) {
-        $dimmer.on('webkitTransitionEnd', function() {
+        $dimmer.one('webkitTransitionEnd', function() {
           $dimmer.remove();
         });
         $dimmer.removeClass('active');
-        $target.hide(300);
+        $target.addClass('animate-fade-out');
+        $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
+          $target.removeClass('show animate-fade-out');
+        });
       });
     });
