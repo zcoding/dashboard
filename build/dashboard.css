@@ -1394,6 +1394,73 @@ form fieldset, .form fieldset {
   margin: 0 0 1em;
   padding: 0; }
 
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
+  -webkit-text-fill-color: #333; }
+
+input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 10px;
+  background-color: #FFFFFF;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; }
+
+input.field-md {
+  height: 32px;
+  padding: 2px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #CECECE;
+  border-radius: 0; }
+  input.field-md:focus {
+    padding-bottom: 1px;
+    border-bottom-color: #0cc2aa;
+    border-bottom-width: 2px; }
+
+textarea {
+  resize: vertical; }
+  textarea.field-md {
+    padding-bottom: 2px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #CECECE;
+    border-radius: 0; }
+    textarea.field-md:focus {
+      padding-bottom: 1px;
+      border-bottom-color: #0cc2aa;
+      border-bottom-width: 2px; }
+
+input.input-dark {
+  border-color: #2e3e4e; }
+
+input.input-primary {
+  border-color: #0cc2aa; }
+
+input.input-secondary {
+  border-color: #3bb4f2; }
+
+input.input-success {
+  border-color: #6cc788; }
+
+input.input-danger {
+  border-color: #f44455; }
+
+input.input-warning {
+  border-color: #fcc100; }
+
+input.input-tips {
+  border-color: #f77a99; }
+
+input.input-info {
+  border-color: #6887ff; }
+
 .form-control {
   margin-bottom: .5em; }
   .form-control label {
@@ -1402,60 +1469,8 @@ form fieldset, .form fieldset {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 700; }
-  .form-control input[type=text], .form-control input[type=email], .form-control input[type=number], .form-control input[type=url], .form-control input[type=password], .form-control select, .form-control textarea {
-    display: block;
-    width: 100%;
-    border: 1px solid #CECECE;
-    border-radius: 4px;
-    outline: 0;
-    font-size: 14px;
-    line-height: 1.2;
-    padding: 8px 10px;
-    background-color: #FFFFFF;
-    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; }
-  .form-control input.db-field-m {
-    height: 32px;
-    padding: 2px;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 1px solid #CECECE;
-    border-radius: 0; }
-    .form-control input.db-field-m:focus {
-      padding-bottom: 1px;
-      border-bottom-color: #0cc2aa;
-      border-bottom-width: 2px; }
-  .form-control textarea {
-    resize: vertical; }
-    .form-control textarea.db-field-m {
-      padding-bottom: 2px;
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
-      border-bottom: 1px solid #CECECE;
-      border-radius: 0; }
-      .form-control textarea.db-field-m:focus {
-        padding-bottom: 1px;
-        border-bottom-color: #0cc2aa;
-        border-bottom-width: 2px; }
-  .form-control input.input-dark {
-    border-color: #2e3e4e; }
-  .form-control input.input-primary {
-    border-color: #0cc2aa; }
-  .form-control input.input-secondary {
-    border-color: #3bb4f2; }
-  .form-control input.input-success {
-    border-color: #6cc788; }
-  .form-control input.input-danger {
-    border-color: #f44455; }
-  .form-control input.input-warning {
-    border-color: #fcc100; }
-  .form-control input.input-tips {
-    border-color: #f77a99; }
-  .form-control input.input-info {
-    border-color: #6887ff; }
 
-.db-check {
+.field-check {
   display: inline-block;
   position: relative;
   height: 16px;
@@ -1464,7 +1479,9 @@ form fieldset, .form fieldset {
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle; }
-  .db-check i {
+  .form-control .field-check {
+    font-weight: 400; }
+  .field-check i {
     position: absolute;
     left: 0;
     top: 0;
@@ -1474,7 +1491,7 @@ form fieldset, .form fieldset {
     background-color: #FFF;
     border: 1px solid #CDCDCD;
     border-radius: 2px; }
-    .db-check i:before {
+    .field-check i:before {
       position: absolute;
       content: ' ';
       display: block;
@@ -1482,7 +1499,7 @@ form fieldset, .form fieldset {
       height: 6px;
       left: 4px;
       top: 4px; }
-  .db-check input[type=checkbox] {
+  .field-check input[type=checkbox] {
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -1493,10 +1510,10 @@ form fieldset, .form fieldset {
     height: 16px;
     opacity: 0;
     z-index: -1; }
-    .db-check input[type=checkbox]:checked + i:before {
+    .field-check input[type=checkbox]:checked + i:before {
       background-color: #0cc2aa; }
 
-.db-radio {
+.field-radio {
   display: inline-block;
   position: relative;
   height: 16px;
@@ -1505,7 +1522,9 @@ form fieldset, .form fieldset {
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle; }
-  .db-radio i {
+  .form-control .field-radio {
+    font-weight: 400; }
+  .field-radio i {
     position: absolute;
     left: 0;
     top: 0;
@@ -1515,7 +1534,7 @@ form fieldset, .form fieldset {
     background-color: #FFF;
     border: 1px solid #CDCDCD;
     border-radius: 8px; }
-    .db-radio i:before {
+    .field-radio i:before {
       display: block;
       content: ' ';
       position: absolute;
@@ -1524,7 +1543,7 @@ form fieldset, .form fieldset {
       width: 6px;
       height: 6px;
       border-radius: 3px; }
-  .db-radio input[type=radio] {
+  .field-radio input[type=radio] {
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -1535,10 +1554,10 @@ form fieldset, .form fieldset {
     height: 16px;
     opacity: 0;
     z-index: -1; }
-    .db-radio input[type=radio]:checked + i:before {
+    .field-radio input[type=radio]:checked + i:before {
       background-color: #0cc2aa; }
 
-.db-switch {
+.field-switch {
   display: inline-block;
   position: relative;
   padding: 0 0 0 38px;
@@ -1548,7 +1567,9 @@ form fieldset, .form fieldset {
   cursor: pointer;
   margin-right: 1em;
   vertical-align: middle; }
-  .db-switch i {
+  .form-control .field-switch {
+    font-weight: 400; }
+  .field-switch i {
     position: absolute;
     left: 0;
     top: 0;
@@ -1561,7 +1582,7 @@ form fieldset, .form fieldset {
     box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5) inset;
     -webkit-transition: all 300ms ease 0s;
     transition: all 300ms ease 0s; }
-    .db-switch i:before {
+    .field-switch i:before {
       position: absolute;
       content: ' ';
       display: block;
@@ -1575,7 +1596,7 @@ form fieldset, .form fieldset {
       box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5);
       -webkit-transition: left 300ms ease 0s;
       transition: left 300ms ease 0s; }
-  .db-switch input[type=checkbox], .db-switch input[type=radio] {
+  .field-switch input[type=checkbox], .field-switch input[type=radio] {
     display: inline-block;
     margin: 0;
     padding: 0;
@@ -1586,9 +1607,9 @@ form fieldset, .form fieldset {
     height: 16px;
     opacity: 0;
     z-index: -1; }
-    .db-switch input[type=checkbox]:checked + i, .db-switch input[type=radio]:checked + i {
+    .field-switch input[type=checkbox]:checked + i, .field-switch input[type=radio]:checked + i {
       background-color: #0cc2aa; }
-      .db-switch input[type=checkbox]:checked + i:before, .db-switch input[type=radio]:checked + i:before {
+      .field-switch input[type=checkbox]:checked + i:before, .field-switch input[type=radio]:checked + i:before {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); }
 
@@ -1673,35 +1694,6 @@ form fieldset, .form fieldset {
       display: inline;
       padding: 0; }
 
-html {
-  height: 100%;
-  font-size: 16px; }
-
-body {
-  height: auto;
-  min-height: 100%;
-  font-size: .875rem;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
-  background-color: #F0F0F0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333; }
-
-.padding {
-  padding: 1.5rem; }
-
-.padding-top {
-  padding-top: 1.5rem; }
-
-.padding-bottom {
-  padding-bottom: 1.5rem; }
-
-.padding-left {
-  padding-left: 1.5rem; }
-
-.padding-right {
-  padding-right: 1.5rem; }
-
 .radius {
   border-radius: 5px; }
 
@@ -1717,3 +1709,71 @@ body {
 
 .cf:after {
   clear: both; }
+
+.margin {
+  margin: 1.5rem; }
+
+.padding {
+  padding: 1.5rem; }
+
+.padding-top {
+  padding-top: 1.5rem; }
+
+.margin-top {
+  margin-top: 1.5rem; }
+
+.padding-bottom {
+  padding-bottom: 1.5rem; }
+
+.margin-bottom {
+  margin-bottom: 1.5rem; }
+
+.padding-left {
+  padding-left: 1.5rem; }
+
+.margin-left {
+  margin-left: 1.5rem; }
+
+.padding-right {
+  padding-right: 1.5rem; }
+
+.margin-right {
+  margin-right: 1.5rem; }
+
+.text-dark {
+  color: #2e3e4e; }
+
+.text-primary {
+  color: #0cc2aa; }
+
+.text-secondary {
+  color: #3bb4f2; }
+
+.text-success {
+  color: #6cc788; }
+
+.text-danger {
+  color: #f44455; }
+
+.text-warning {
+  color: #fcc100; }
+
+.text-tips {
+  color: #f77a99; }
+
+.text-info {
+  color: #6887ff; }
+
+html {
+  height: 100%;
+  font-size: 16px; }
+
+body {
+  height: auto;
+  min-height: 100%;
+  font-size: .875rem;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+  background-color: #F0F0F0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333; }
