@@ -1,4 +1,4 @@
-(function($) {
+(($) => {
 
   function parseOptions(string) {
     if ($.isPlainObject(string)) {
