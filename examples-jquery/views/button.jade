@@ -1,55 +1,88 @@
 extends ./layout.jade
 
 block content
-  .grid.padding
+  .grid
     .u-sm-16
-      button(type="button").btn.btn-primary primary 样式
-      button(type="button").btn.btn-secondary secondary 样式
-      button(type="button").btn.btn-success success 样式
-      button(type="button").btn.btn-warning warning 样式
-      button(type="button").btn.btn-danger danger 样式
-      button(type="button").btn.btn-tips tips 样式
-      button(type="button").btn.btn-info info 样式
-      button(type="button").btn.btn-dark dark 样式
-      button(type="button").btn default 样式
-      button(type="button").btn.radius radius 样式
-      button(type="button").btn.round round 样式
-    .u-sm-16
-      button(type="button").btn.btn-d-primary primary 样式
-      button(type="button").btn.btn-d-secondary secondary 样式
-      button(type="button").btn.btn-d-success success 样式
-      button(type="button").btn.btn-d-warning warning 样式
-      button(type="button").btn.btn-d-danger danger 样式
-      button(type="button").btn.btn-d-tips tips 样式
-      button(type="button").btn.btn-d-info info 样式
-      button(type="button").btn.btn-d-dark dark 样式
-      button(type="button").btn.btn-d-dark.radius dark radius 样式
-      button(type="button").btn.btn-d-dark.round dark round 样式
-    .u-sm-16
-      button(type="button").btn.btn-g-primary.radius primary radius 样式
-      button(type="button").btn.btn-g-success success 样式
-      button(type="button").btn.btn-g-secondary.round secondary round 样式
-      button(type="button").btn.btn-g-warning warning 样式
-      button(type="button").btn.btn-g-danger danger 样式
-      button(type="button").btn.btn-g-tips tips 样式
-      button(type="button").btn.btn-g-info info 样式
-      button(type="button").btn.btn-g-dark dark 样式
-    .u-sm-16
-      button(type="button").btn.btn-primary.float.radius primary float radius 样式
-      button(type="button").btn.btn-secondary.float.radius secondary float radius 样式
-      button(type="button").btn.btn-success.float.radius success float radius 样式
-      button(type="button").btn.btn-tips.float.radius tips float radius 样式
-      button(type="button").btn.btn-info.float.radius info float radius 样式
-      button(type="button").btn.btn-dark.float.radius dark float radius 样式
-      button(type="button").btn.btn-danger.float.radius danger float radius 样式
-      button(type="button").btn.btn-warning.float.radius warning float radius 样式
-    .u-sm-16
-      button(type="button").btn.btn-primary.btn-xs xs button
-      button(type="button").btn.btn-secondary.btn-sm sm button
-      button(type="button").btn.btn-success.btn-md md button
-      button(type="button").btn.btn-warning.btn-lg lg button
-      button(type="button").btn.btn-danger.btn-xl xl button
-    .u-sm-16
-      button(type="button").btn.btn-danger.btn-block block button
-      button(type="button").btn.btn-primary.btn-block.btn-lg block button
-      button(type="button").btn.btn-success.btn-block.btn-lg.radius block button
+      .box.padding.margin-top
+        h3 Flat button 普通按钮
+        p
+          button(type="button").btn.btn-primary primary 样式
+          button(type="button").btn.btn-secondary secondary 样式
+          button(type="button").btn.btn-success success 样式
+          button(type="button").btn.btn-warning warning 样式
+          button(type="button").btn.btn-danger danger 样式
+          button(type="button").btn.btn-tips tips 样式
+          button(type="button").btn.btn-info info 样式
+          button(type="button").btn.btn-dark dark 样式
+          button(type="button").btn.btn-dark.radius dark radius 样式
+          button(type="button").btn.btn-dark.round dark round 样式
+        h3 3d button 三维按钮
+        p
+          button(type="button").btn.btn-d-primary primary 样式
+          button(type="button").btn.btn-d-secondary secondary 样式
+          button(type="button").btn.btn-d-success success 样式
+          button(type="button").btn.btn-d-warning warning 样式
+          button(type="button").btn.btn-d-danger danger 样式
+          button(type="button").btn.btn-d-tips tips 样式
+          button(type="button").btn.btn-d-info info 样式
+          button(type="button").btn.btn-d-dark dark 样式
+          button(type="button").btn.btn-d-dark.radius dark radius 样式
+          button(type="button").btn.btn-d-dark.round dark round 样式
+        h3 Ghost button 幽灵按钮
+        p
+          button(type="button").btn.btn-g-primary primary 样式
+          button(type="button").btn.btn-g-secondary secondary 样式
+          button(type="button").btn.btn-g-success success 样式
+          button(type="button").btn.btn-g-warning warning 样式
+          button(type="button").btn.btn-g-danger danger 样式
+          button(type="button").btn.btn-g-tips tips 样式
+          button(type="button").btn.btn-g-info info 样式
+          button(type="button").btn.btn-g-dark dark 样式
+          button(type="button").btn.btn-g-dark.radius dark radius 样式
+          button(type="button").btn.btn-g-dark.round dark round 样式
+        h3 Float button 悬浮按钮
+        p
+          button(type="button").btn.btn-primary.float.radius primary float radius 样式
+          button(type="button").btn.btn-secondary.float.radius secondary float radius 样式
+          button(type="button").btn.btn-success.float.radius success float radius 样式
+          button(type="button").btn.btn-warning.float.radius warning float radius 样式
+          button(type="button").btn.btn-danger.float.radius danger float radius 样式
+          button(type="button").btn.btn-tips.float.radius tips float radius 样式
+          button(type="button").btn.btn-info.float.radius info float radius 样式
+          button(type="button").btn.btn-dark.float.radius dark float radius 样式
+        h3 Button size 按钮大小
+        p
+          button(type="button").btn.btn-primary.btn-xs btn-xs
+          button(type="button").btn.btn-secondary.btn-sm btn-sm
+          button(type="button").btn.btn-info default size
+          button(type="button").btn.btn-success.btn-md btn-md
+          button(type="button").btn.btn-warning.btn-lg btn-lg
+          button(type="button").btn.btn-danger.btn-xl btn-xl
+          button(type="button").btn.btn-tips.float.btn-lg btn-lg
+          button(type="button").btn.btn-d-info.btn-md btn-md
+          button(type="button").btn.btn-g-dark default size
+          button(type="button").btn.btn-primary.btn-sm.round btn-sm
+          button(type="button").btn.btn-secondary.btn-xs.radius btn-xs
+        h3 Block button 块级按钮
+        p
+          button(type="button").btn.btn-danger.btn-block block button 块级按钮
+          button(type="button").btn.btn-primary.btn-block.btn-lg block button 块级按钮
+          button(type="button").btn.btn-success.btn-block.btn-xl.radius block button 块级按钮
+          button(type="button").btn.btn-success.btn-block.btn-md.round block button 块级按钮
+        h3 Link button 按钮样式的链接
+        p
+          a.btn.btn-primary(href="/") This is a link tag.
+        h3 Button group 按钮组
+        p
+          .btn-group
+            button.btn(type="button") button 1
+            button.btn(type="button") button 2
+            button.btn(type="button") button 3
+          .btn-group.btn-group-primary
+            button.btn(type="button") button 1
+            button.btn(type="button") button 2
+            button.btn(type="button") button 3
+          .btn-group.btn-group-secondary
+            button.btn(type="button") button 1
+            button.btn(type="button") button 2
+            button.btn(type="button") button 3

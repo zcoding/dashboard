@@ -37,7 +37,7 @@
     "gulp": "^3.9.0",
     "gulp-minify-css": "^1.2.2",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.1.0",
+    "gulp-sass": "^2.1.1",
     "gulp-sourcemaps": "^1.6.0",
     "history": "^1.13.1",
     "jade": "^1.11.0",

@@ -30,7 +30,11 @@ h2 {
 
 h3, h4, h5, h6 {
   font-size: 1em;
-  margin: .25em 0; }
+  margin: .5em 0; }
+
+p {
+  margin: 1em 0;
+  padding: 0; }
 
 button,
 html input[type="button"],
@@ -835,16 +839,16 @@ textarea {
   font-size: 14px;
   line-height: 1;
   white-space: nowrap;
-  -webkit-transition: background-color 100ms linear 0s;
-  transition: background-color 100ms linear 0s; }
+  -webkit-transition: background-color 150ms linear 0s;
+  transition: background-color 150ms linear 0s; }
   .btn:active {
     background-color: #f2f2f2; }
   .btn.round {
     border-radius: 1000px; }
   .btn.float {
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3);
-    -webkit-transition: box-shadow 100ms linear 0s;
-    transition: box-shadow 100ms linear 0s; }
+    -webkit-transition: box-shadow 150ms linear 0s;
+    transition: box-shadow 150ms linear 0s; }
     .btn.float:active {
       background-color: #FFF;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5); }
@@ -865,7 +869,8 @@ textarea {
     font-size: 18px; }
   .btn.btn-block {
     display: block;
-    width: 100%; }
+    width: 100%;
+    margin-top: .5em; }
 
 .btn-dark {
   color: #FFFFFF;
@@ -936,8 +941,8 @@ textarea {
   color: #2e3e4e;
   background-color: transparent;
   border: 2px solid #2e3e4e;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-dark:hover {
     color: #FFFFFF;
     background-color: #2e3e4e; }
@@ -949,8 +954,8 @@ textarea {
   color: #0cc2aa;
   background-color: transparent;
   border: 2px solid #0cc2aa;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-primary:hover {
     color: #FFFFFF;
     background-color: #0cc2aa; }
@@ -962,8 +967,8 @@ textarea {
   color: #3bb4f2;
   background-color: transparent;
   border: 2px solid #3bb4f2;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-secondary:hover {
     color: #FFFFFF;
     background-color: #3bb4f2; }
@@ -975,8 +980,8 @@ textarea {
   color: #6cc788;
   background-color: transparent;
   border: 2px solid #6cc788;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-success:hover {
     color: #FFFFFF;
     background-color: #6cc788; }
@@ -988,8 +993,8 @@ textarea {
   color: #f44455;
   background-color: transparent;
   border: 2px solid #f44455;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-danger:hover {
     color: #FFFFFF;
     background-color: #f44455; }
@@ -1001,8 +1006,8 @@ textarea {
   color: #fcc100;
   background-color: transparent;
   border: 2px solid #fcc100;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-warning:hover {
     color: #FFFFFF;
     background-color: #fcc100; }
@@ -1014,8 +1019,8 @@ textarea {
   color: #f77a99;
   background-color: transparent;
   border: 2px solid #f77a99;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-tips:hover {
     color: #FFFFFF;
     background-color: #f77a99; }
@@ -1027,8 +1032,8 @@ textarea {
   color: #6887ff;
   background-color: transparent;
   border: 2px solid #6887ff;
-  -webkit-transition: background-color 100ms linear 0s, color 100ms linear 0s;
-  transition: background-color 100ms linear 0s, color 100ms linear 0s; }
+  -webkit-transition: background-color 300ms ease 0s, color 300ms ease 0s;
+  transition: background-color 300ms ease 0s, color 300ms ease 0s; }
   .btn-g-info:hover {
     color: #FFFFFF;
     background-color: #6887ff; }
@@ -1146,6 +1151,89 @@ textarea {
     background-color: #6887ff;
     top: 2px;
     box-shadow: 0 1px 0 0 #1c4aff, 0 1px 2px 0 rgba(0, 0, 0, 0.5); }
+
+.btn-group {
+  display: inline-block;
+  margin: 0 0 .5em 0;
+  vertical-align: middle; }
+  .btn-group .btn {
+    margin: 0;
+    float: left;
+    border: 1px solid #eaeaea; }
+  .btn-group .btn + .btn {
+    margin-left: -1px; }
+
+.btn-group-dark .btn {
+  color: #FFFFFF;
+  background-color: #2e3e4e;
+  border-color: #25313e; }
+  .btn-group-dark .btn:active {
+    background-color: #25313e; }
+  .btn-group-dark .btn.float:active {
+    background-color: #2e3e4e; }
+
+.btn-group-primary .btn {
+  color: #FFFFFF;
+  background-color: #0cc2aa;
+  border-color: #0baa95; }
+  .btn-group-primary .btn:active {
+    background-color: #0baa95; }
+  .btn-group-primary .btn.float:active {
+    background-color: #0cc2aa; }
+
+.btn-group-secondary .btn {
+  color: #FFFFFF;
+  background-color: #3bb4f2;
+  border-color: #23abf0; }
+  .btn-group-secondary .btn:active {
+    background-color: #23abf0; }
+  .btn-group-secondary .btn.float:active {
+    background-color: #3bb4f2; }
+
+.btn-group-success .btn {
+  color: #FFFFFF;
+  background-color: #6cc788;
+  border-color: #5ac079; }
+  .btn-group-success .btn:active {
+    background-color: #5ac079; }
+  .btn-group-success .btn.float:active {
+    background-color: #6cc788; }
+
+.btn-group-danger .btn {
+  color: #FFFFFF;
+  background-color: #f44455;
+  border-color: #f32c3f; }
+  .btn-group-danger .btn:active {
+    background-color: #f32c3f; }
+  .btn-group-danger .btn.float:active {
+    background-color: #f44455; }
+
+.btn-group-warning .btn {
+  color: #FFFFFF;
+  background-color: #fcc100;
+  border-color: #e3ad00; }
+  .btn-group-warning .btn:active {
+    background-color: #e3ad00; }
+  .btn-group-warning .btn.float:active {
+    background-color: #fcc100; }
+
+.btn-group-tips .btn {
+  color: #FFFFFF;
+  background-color: #f77a99;
+  border-color: #f66287; }
+  .btn-group-tips .btn:active {
+    background-color: #f66287; }
+  .btn-group-tips .btn.float:active {
+    background-color: #f77a99; }
+
+.btn-group-info .btn {
+  color: #FFFFFF;
+  background-color: #6887ff;
+  border-color: #4f73ff; }
+  .btn-group-info .btn:active {
+    background-color: #4f73ff; }
+  .btn-group-info .btn.float:active {
+    background-color: #6887ff; }
 
 .db-aside {
   position: fixed !important;

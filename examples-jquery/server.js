@@ -17,7 +17,7 @@ App.use(Serve(Path.resolve(__dirname, '../build')));
 
 App.use(_.get('/', function *(next) {
 
-  var render = Jade.compileFile(Path.resolve(__dirname, `./views/index.jade`), {});
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/index.jade`), {pretty: true});
   this.type = 'text/html';
   this.body = render();
 
@@ -25,7 +25,7 @@ App.use(_.get('/', function *(next) {
 
 App.use(_.get('/table', function *(next) {
 
-  var render = Jade.compileFile(Path.resolve(__dirname, `./views/table.jade`), {});
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/table.jade`), {pretty: true});
 
   var data = Mock.mock({
     'list|5': [{
@@ -43,12 +43,12 @@ App.use(_.get('/table', function *(next) {
 
 }));
 
-let pages = ['button', 'form', 'panel', 'grid', 'color', 'list'];
+let pages = ['button', 'form', 'panel', 'grid', 'color', 'list', 'typography'];
 
 pages.forEach((page) => {
 
   App.use(_.get(`/${page}`, function *(next) {
-    var render = Jade.compileFile(Path.resolve(__dirname, `./views/${page}.jade`), {});
+    var render = Jade.compileFile(Path.resolve(__dirname, `./views/${page}.jade`), {pretty: true});
     this.type = 'text/html';
     this.body = render();
   }));
