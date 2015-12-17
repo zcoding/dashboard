@@ -830,7 +830,7 @@ textarea {
   border: 0;
   background-image: none;
   color: #333;
-  background-color: #FFF;
+  background-color: #f2f2f2;
   cursor: pointer;
   outline: 0;
   vertical-align: middle;
@@ -841,7 +841,7 @@ textarea {
   -webkit-transition: background-color 150ms linear 0s;
   transition: background-color 150ms linear 0s; }
   .btn:active {
-    background-color: #f2f2f2; }
+    background-color: #e5e5e5; }
   .btn.round {
     border-radius: 1000px; }
   .btn.float {
@@ -849,7 +849,7 @@ textarea {
     -webkit-transition: box-shadow 150ms linear 0s;
     transition: box-shadow 150ms linear 0s; }
     .btn.float:active {
-      background-color: #FFF;
+      background-color: #f2f2f2;
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5); }
   .btn.btn-xs {
     padding: .2em 1em;
@@ -1444,7 +1444,7 @@ th, td {
   transition: background-color 300ms ease 0s;
   z-index: 1001; }
   .modal-dimmer.active {
-    background-color: rgba(0, 0, 0, 0.8); }
+    background-color: rgba(0, 0, 0, 0.6); }
 
 .modal {
   display: none;
@@ -1459,6 +1459,36 @@ th, td {
   z-index: 1002;
   -webkit-transition: background-color 150ms linear 0s;
   transition: background-color 150ms linear 0s; }
+  .modal .modal-header {
+    position: relative;
+    padding: 1em;
+    background-color: #2e3e4e;
+    min-height: 32px; }
+    .modal .modal-header .title {
+      color: #FFF;
+      font-weight: 500; }
+    .modal .modal-header .close {
+      position: absolute;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 24px;
+      text-align: center;
+      line-height: 32px;
+      top: 50%;
+      margin-top: -16px;
+      right: 16px;
+      cursor: pointer;
+      -webkit-transition: color 300ms ease 0s;
+      transition: color 300ms ease 0s; }
+      .modal .modal-header .close:hover {
+        color: rgba(255, 255, 255, 0.8); }
+  .modal .modal-body {
+    padding: 1em; }
+  .modal .modal-footer {
+    padding: 1em;
+    border-top: 1px solid rgba(46, 62, 78, 0.38); }
 
 code, pre {
   font-family: Consolas, "Courier New"; }

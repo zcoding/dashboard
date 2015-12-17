@@ -5,7 +5,15 @@ block content
     .u-sm-16
       p
         button(type="button" data-target="#modal")#trigger.btn.btn-primary.radius.float Open Modal
-  .modal#modal i am a modal
+  .modal#modal
+    .modal-header
+      .title Modal header
+      span.fa.fa-close.close
+    .modal-body modal body
+    .modal-footer.cf
+      .fr
+        button.btn.radius(type="button") Cancel
+        button.btn.btn-dark.radius(type="button") Confirm
 
 append script
   script.

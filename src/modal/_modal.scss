@@ -13,7 +13,7 @@ $baseIndex: $baseIndex+1;
   z-index: $baseIndex;
 
   &.active {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, .6);
   }
 }
 
@@ -32,4 +32,41 @@ $baseIndex: $baseIndex+1;
   z-index: $baseIndex;
   -webkit-transition: background-color 150ms linear 0s;
   transition: background-color 150ms linear 0s;
+
+  .modal-header {
+    position: relative;
+    padding: 1em;
+    background-color: #2e3e4e;
+    min-height: 32px;
+    .title {
+      color: #FFF;
+      font-weight: 500;
+    }
+    .close {
+      position: absolute;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      color: rgba(255, 255, 255, .5);
+      font-size: 24px;
+      text-align: center;
+      line-height: 32px;
+      top: 50%;
+      margin-top: -16px;
+      right: 16px;
+      cursor: pointer;
+      -webkit-transition: color 300ms ease 0s;
+      transition: color 300ms ease 0s;
+      &:hover {
+        color: rgba(255, 255, 255, .8);
+      }
+    }
+  }
+  .modal-body {
+    padding: 1em;
+  }
+  .modal-footer {
+    padding: 1em;
+    border-top: 1px solid rgba(46, 62, 78, 0.38);
+  }
 }
