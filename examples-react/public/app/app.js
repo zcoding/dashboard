@@ -25295,67 +25295,71 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'db-g db-padding' },
+	        { className: 'grid padding' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'u-sm-4' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'db-panel' },
+	            { className: 'panel' },
 	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'primary' },
-	              'primary 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'secondary' },
-	              'secondary 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'success' },
-	              'success 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'warning', type: 'button' },
-	              'warning 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'danger', type: 'button' },
-	              'danger 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'tips', type: 'button' },
-	              'tips 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'info', type: 'button' },
-	              'info 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'dark', type: 'button' },
-	              'dark 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              null,
-	              'default 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { radius: true },
-	              'radius 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button2.default,
-	              { round: true },
-	              'round 样式'
+	              'div',
+	              { className: 'panel-body' },
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'primary' },
+	                'primary 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'secondary' },
+	                'secondary 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'success' },
+	                'success 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'warning', type: 'button' },
+	                'warning 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'danger', type: 'button' },
+	                'danger 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'tips', type: 'button' },
+	                'tips 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'info', type: 'button' },
+	                'info 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'dark', type: 'button' },
+	                'dark 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                null,
+	                'default 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { radius: true },
+	                'radius 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { round: true },
+	                'round 样式'
+	              )
 	            )
 	          )
 	        ),
@@ -25364,56 +25368,60 @@
 	          { className: 'u-sm-4' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'db-panel' },
+	            { className: 'panel' },
 	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'primary' },
-	              'primary样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'secondary' },
-	              'secondary样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'success' },
-	              'success 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'warning' },
-	              'warning 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'danger' },
-	              'danger 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'tips' },
-	              'tips 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'info' },
-	              'info 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'dark' },
-	              'dark 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'dark', radius: true },
-	              'dark radius 样式'
-	            ),
-	            _react2.default.createElement(
-	              _Button3d2.default,
-	              { color: 'dark', round: true },
-	              'dark round 样式'
+	              'div',
+	              { className: 'panel-body' },
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'primary' },
+	                'primary样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'secondary' },
+	                'secondary样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'success' },
+	                'success 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'warning' },
+	                'warning 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'danger' },
+	                'danger 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'tips' },
+	                'tips 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'info' },
+	                'info 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'dark' },
+	                'dark 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'dark', radius: true },
+	                'dark radius 样式'
+	              ),
+	              _react2.default.createElement(
+	                _Button3d2.default,
+	                { color: 'dark', round: true },
+	                'dark round 样式'
+	              )
 	            )
 	          )
 	        ),
@@ -25422,46 +25430,50 @@
 	          { className: 'u-sm-4' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'db-panel' },
+	            { className: 'panel' },
 	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'primary', radius: true },
-	              'primary radius 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'secondary', round: true },
-	              'secondary round 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'success' },
-	              'success 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'warning' },
-	              'warning 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'danger' },
-	              'danger 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'tips' },
-	              'tips 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'info' },
-	              'info 样式'
-	            ),
-	            _react2.default.createElement(
-	              _ButtonGhost2.default,
-	              { color: 'dark' },
-	              'dark 样式'
+	              'div',
+	              { className: 'panel-body' },
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'primary', radius: true },
+	                'primary radius 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'secondary', round: true },
+	                'secondary round 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'success' },
+	                'success 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'warning' },
+	                'warning 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'danger' },
+	                'danger 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'tips' },
+	                'tips 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'info' },
+	                'info 样式'
+	              ),
+	              _react2.default.createElement(
+	                _ButtonGhost2.default,
+	                { color: 'dark' },
+	                'dark 样式'
+	              )
 	            )
 	          )
 	        ),
@@ -25470,11 +25482,15 @@
 	          { className: 'u-sm-4' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'db-panel' },
+	            { className: 'panel' },
 	            _react2.default.createElement(
-	              _Button2.default,
-	              { color: 'primary', radius: true, float: true },
-	              'primary float radius 样式'
+	              'div',
+	              { className: 'panel-body' },
+	              _react2.default.createElement(
+	                _Button2.default,
+	                { color: 'primary', radius: true, float: true },
+	                'primary float radius 样式'
+	              )
 	            )
 	          )
 	        )
@@ -25537,7 +25553,7 @@
 	  (0, _createClass3.default)(Button, [{
 	    key: 'render',
 	    value: function render() {
-	      var classnames = (0, _classnames2.default)('db-btn', 'db-btn-' + this.props.color, { 'db-radius': this.props.radius }, { 'db-round': this.props.round }, { 'db-float': this.props.float });
+	      var classnames = (0, _classnames2.default)('btn', 'btn-' + this.props.color, { 'radius': this.props.radius }, { 'round': this.props.round }, { 'float': this.props.float });
 	      return _react2.default.createElement(
 	        'button',
 	        { className: classnames, type: 'button' },
@@ -25655,7 +25671,7 @@
 	  (0, _createClass3.default)(Button, [{
 	    key: 'render',
 	    value: function render() {
-	      var classnames = (0, _classnames2.default)('db-btn', 'db-btn-d-' + this.props.color, { 'db-radius': this.props.radius }, { 'db-round': this.props.round });
+	      var classnames = (0, _classnames2.default)('btn', 'btn-d-' + this.props.color, { 'radius': this.props.radius }, { 'round': this.props.round });
 	      return _react2.default.createElement(
 	        'button',
 	        { className: classnames, type: 'button' },
@@ -25719,7 +25735,7 @@
 	  (0, _createClass3.default)(Button, [{
 	    key: 'render',
 	    value: function render() {
-	      var classnames = (0, _classnames2.default)('db-btn', 'db-btn-g-' + this.props.color, { 'db-radius': this.props.radius }, { 'db-round': this.props.round });
+	      var classnames = (0, _classnames2.default)('btn', 'btn-g-' + this.props.color, { 'radius': this.props.radius }, { 'round': this.props.round });
 	      return _react2.default.createElement(
 	        'button',
 	        { className: classnames, type: 'button' },
@@ -26462,13 +26478,13 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "db-g db-padding" },
+	        { className: "grid" },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "u-sm-16" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "db-panel" },
+	            { className: "box padding margin-top" },
 	            _react2.default.createElement(
 	              "form",
 	              { action: "/", className: "form" },
@@ -26804,16 +26820,21 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "db-g db-padding" },
+	        { className: "grid padding" },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "u-sm-8" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: 'db-box' },
+	            { className: "panel panel-primary" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "panel-header" },
+	              "Table in panel"
+	            ),
 	            _react2.default.createElement(
 	              "table",
-	              { className: 'table table-hover' },
+	              { className: "table table-hover" },
 	              _react2.default.createElement(
 	                "thead",
 	                null,
@@ -27142,10 +27163,15 @@
 	          { className: "u-sm-8" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: 'db-box' },
+	            { className: "panel panel-secondary" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "panel-header" },
+	              "Table in panel"
+	            ),
 	            _react2.default.createElement(
 	              "table",
-	              { className: 'table table-striped' },
+	              { className: "table table-striped" },
 	              _react2.default.createElement(
 	                "thead",
 	                null,
@@ -27526,7 +27552,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "db-g db-padding" },
+	        { className: "grid padding" },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "u-sm-16" },
@@ -27535,47 +27561,47 @@
 	            { className: "db-panel" },
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge" },
+	              { className: "badge" },
 	              "12"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-danger" },
+	              { className: "badge badge-danger" },
 	              "7"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-warning" },
+	              { className: "badge badge-warning" },
 	              "1"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-tips" },
+	              { className: "badge badge-tips" },
 	              "10"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-primary" },
+	              { className: "badge badge-primary" },
 	              "12"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-secondary" },
+	              { className: "badge badge-secondary" },
 	              "12"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-dark" },
+	              { className: "badge badge-dark" },
 	              "12"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-success" },
+	              { className: "badge badge-success" },
 	              "12"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-badge db-badge-info" },
+	              { className: "badge badge-info" },
 	              "12"
 	            )
 	          )
@@ -27588,47 +27614,47 @@
 	            { className: "db-panel" },
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label" },
+	              { className: "label" },
 	              "Default"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-danger" },
+	              { className: "label label-danger" },
 	              "Danger"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-warning" },
+	              { className: "label label-warning" },
 	              "Warning"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-tips" },
+	              { className: "label label-tips" },
 	              "Tips"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-primary" },
+	              { className: "label label-primary" },
 	              "Primary"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-secondary" },
+	              { className: "label label-secondary" },
 	              "Secondary"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-dark" },
+	              { className: "label label-dark" },
 	              "Dark"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-success" },
+	              { className: "label label-success" },
 	              "Success"
 	            ),
 	            _react2.default.createElement(
 	              "span",
-	              { className: "db-label db-label-info" },
+	              { className: "label label-info" },
 	              "Info"
 	            )
 	          )
@@ -27799,14 +27825,23 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'db-g db-padding' },
+	        { className: 'grid padding' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'u-sm-8' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'db-panel' },
-	            _react2.default.createElement('div', { ref: 'chart', style: { height: '450px' } })
+	            { className: 'panel panel-dark' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel-header' },
+	              'Charts in panel'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel-body' },
+	              _react2.default.createElement('div', { ref: 'chart', style: { height: '450px' } })
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -27814,8 +27849,17 @@
 	          { className: 'u-sm-8' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'db-panel' },
-	            _react2.default.createElement('div', { ref: 'chart2', style: { height: '450px' } })
+	            { className: 'panel panel-info' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel-header' },
+	              'Charts in panel'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel-body' },
+	              _react2.default.createElement('div', { ref: 'chart2', style: { height: '450px' } })
+	            )
 	          )
 	        )
 	      );
