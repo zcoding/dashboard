@@ -6,37 +6,20 @@ block content
       p
         button(type="button" data-target="#modal")#trigger.btn.btn-primary.radius.float Open Modal
   .modal#modal
-    .modal-header
-      .title Modal header
-      span.fa.fa-close.close
-    .modal-body modal body
-    .modal-footer.cf
-      .fr
-        button.btn.radius(type="button") Cancel
-        button.btn.btn-dark.radius(type="button") Confirm
+    .modal-dialog
+      .modal-header
+        .title Modal header
+        span.fa.fa-close.close
+      .modal-body modal body
+      .modal-footer.cf
+        .fr
+          button.btn.radius(type="button") Cancel
+          button.btn.btn-dark.radius(type="button") Confirm
 
 append script
   script.
     $('#trigger').click(function(evt) {
-      var $target = $($(this).data('target'));
-      $target.addClass('show animate-fade-in');
-      $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
-        $target.removeClass('animate-fade-in');
-      });
-
-      var $dimmer = $('<div class="modal-dimmer">');
-      $(document.body).append($dimmer);
-      setTimeout(function() {
-        $dimmer.addClass('active');
-      }, 0);
-      $dimmer.click(function(evt) {
-        $dimmer.one('webkitTransitionEnd', function() {
-          $dimmer.remove();
-        });
-        $dimmer.removeClass('active');
-        $target.addClass('animate-fade-out');
-        $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
-          $target.removeClass('show animate-fade-out');
-        });
-      });
+      $('#modal').one('db.modal.opened', function() {
+        console.log('opened');
+      }).modal();
     });

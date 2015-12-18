@@ -3,7 +3,6 @@ $namespace: 'db';
 $white: #FFFFFF;
 $blue: #32B7F9;
 $black: #333;
-$dark: #2e3e4e;
 
 $baseIndex: 1000;
 
@@ -43,5 +42,3 @@ $flatColors: (                            // theme main colors
 ) !default;
 
 $font-default: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
-
-$modal-color-default: $dark;               // default modal color: #2e3e4e

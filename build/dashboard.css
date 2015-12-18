@@ -1447,10 +1447,10 @@ th, td {
 .modal-dimmer {
   display: block;
   position: fixed;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
   background-color: transparent;
   -webkit-transition: background-color 300ms ease 0s;
   transition: background-color 300ms ease 0s;
@@ -1459,27 +1459,43 @@ th, td {
     background-color: rgba(0, 0, 0, 0.6); }
 
 .modal {
-  display: none;
   position: fixed;
-  top: 100px;
-  left: 50%;
+  display: none;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1002; }
+  .modal.animate-fade-in {
+    animation-name: fadeIn;
+    animation-duration: 300ms; }
+  .modal.animate-fade-out {
+    animation-name: fadeOut;
+    animation-duration: 300ms; }
+  .modal.show {
+    display: block; }
+
+.modal-dialog {
   width: 640px;
   min-height: 50px;
-  margin: 0 0 0 -320px;
+  margin: 50px auto;
   padding: 0;
   background-color: #FFFFFF;
-  z-index: 1002;
+  z-index: 1003;
   -webkit-transition: background-color 150ms linear 0s;
-  transition: background-color 150ms linear 0s; }
-  .modal .modal-header {
+  transition: background-color 150ms linear 0s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+  .modal-dialog .modal-header {
     position: relative;
     padding: 1em;
     background-color: #2e3e4e;
     min-height: 32px; }
-    .modal .modal-header .title {
+    .modal-dialog .modal-header .title {
       color: #FFF;
       font-weight: 500; }
-    .modal .modal-header .close {
+    .modal-dialog .modal-header .close {
       position: absolute;
       display: inline-block;
       width: 32px;
@@ -1494,21 +1510,16 @@ th, td {
       cursor: pointer;
       -webkit-transition: color 300ms ease 0s;
       transition: color 300ms ease 0s; }
-      .modal .modal-header .close:hover {
+      .modal-dialog .modal-header .close:hover {
         color: rgba(255, 255, 255, 0.8); }
-  .modal .modal-body {
+  .modal-dialog .modal-body {
     padding: 1em; }
-  .modal .modal-footer {
+  .modal-dialog .modal-footer {
     padding: 1em;
     border-top: 1px solid rgba(46, 62, 78, 0.38); }
-  .modal.animate-fade-in {
-    animation-name: fadeIn;
-    animation-duration: 300ms; }
-  .modal.animate-fade-out {
-    animation-name: fadeOut;
-    animation-duration: 300ms; }
-  .modal.show {
-    display: block; }
+
+.modal-open {
+  overflow: hidden; }
 
 code, pre {
   font-family: Consolas, "Courier New"; }
