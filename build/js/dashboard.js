@@ -14,6 +14,7 @@
     collapse: function collapse(options) {
       return this.each(function (index, ele) {
         var $this = $(ele);
+        $this.slideToggle(300);
       });
     }
   });
