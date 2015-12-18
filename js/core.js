@@ -5,7 +5,7 @@
 
   const element = document.createElement('dashboard');
 
-  function transitionEnd() {
+  function getTransitionEnd() {
 
     var transEndEventNames = {
       WebkitTransition : 'webkitTransitionEnd',
@@ -16,34 +16,47 @@
 
     for (var name in transEndEventNames) {
       if (element.style[name] !== undefined) {
-        return { end: transEndEventNames[name] }
+        return { end: transEndEventNames[name] };
       }
     }
 
     return false;
   }
 
-  Dashboard.support.transition = transitionEnd();
+  Dashboard.support.transition = getTransitionEnd();
 
-  let rAF = (function() {
-    return window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-        // if all else fails, use setTimeout
-      function(callback) {
-        return window.setTimeout(callback, 1000 / 60); // shoot for 60 fps
-      };
-  })();
+  function getRequestAnimationFrame() {
 
-  let cancelAF = (function() {
-    return window.cancelAnimationFrame ||
-      window.webkitCancelAnimationFrame ||
-      window.mozCancelAnimationFrame ||
-      window.oCancelAnimationFrame ||
-      function(id) {
-        window.clearTimeout(id);
-      };
-  })();
+    var requestAnimationFrameNames = ['requestAnimationFrame', 'webkitRequestAnimationFrame', 'mozRequestAnimationFrame', 'oRequestAnimationFrame'];
+
+    for (let i = 0; i < requestAnimationFrameNames.length; ++i) {
+      if (window[requestAnimationFrameNames[i]] !== undefined) {
+        return requestAnimationFrameNames[i];
+      }
+    }
+
+    return function(callback) {
+      return window.setTimeout(callback, 1000 / 60);
+    };
+  }
+
+  Dashboard.requestAnimationFrame = getRequestAnimationFrame();
+
+  function getCancelAnimationFrame() {
+
+    var cancelAnimationFrameNames = ['cancelAnimationFrame', 'webkitCancelAnimationFrame', 'mozCancelAnimationFrame', 'oCancelAnimationFrame'];
+
+    for (let i = 0; i < cancelAnimationFrameNames.length; ++i) {
+      if (window[cancelAnimationFrameNames[i]] !== undefined) {
+        return cancelAnimationFrameNames[i];
+      }
+    }
+
+    return function(callback) {
+      window.clearTimeout(id);
+    };
+  }
+
+  Dashboard.cancelAnimationFrame = getCancelAnimationFrame();
 
 })(jQuery, window);
