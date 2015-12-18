@@ -1,24 +1,3 @@
-"use strict";
-
-(function ($) {
-
-  $.fn.button = function (options) {
-    return $(this).each(function (index, ele) {});
-  };
-})(jQuery);
-"use strict";
-
-(function ($) {
-
-  $.fn.extend({
-    collapse: function collapse(options) {
-      return this.each(function (index, ele) {
-        var $this = $(ele);
-        $this.slideToggle(300);
-      });
-    }
-  });
-})(jQuery);
 'use strict';
 
 (function ($, window) {
@@ -65,6 +44,27 @@
 
 (function ($) {
 
+  $.fn.button = function (options) {
+    return $(this).each(function (index, ele) {});
+  };
+})(jQuery);
+"use strict";
+
+(function ($) {
+
+  $.fn.extend({
+    collapse: function collapse(options) {
+      return this.each(function (index, ele) {
+        var $this = $(ele);
+        $this.slideToggle(300);
+      });
+    }
+  });
+})(jQuery);
+"use strict";
+
+(function ($) {
+
   $.fn.extend({
     dropdown: function dropdown(options) {
       return this.each(function (index, ele) {
@@ -99,18 +99,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this = this;
 
         var $element = this.$element;
+        var $dimmer = this.$dimmer = $('<div class="modal-dimmer">');
 
         $element.trigger('db.modal.open');
+
         $element.addClass('show');
-        var $dimmer = this.$dimmer = $('<div class="modal-dimmer">');
         $dimmer.appendTo(this.$body);
 
-        var forceReflow = $element[0].offsetWidth;
-
-        $element.one('webkitTransitionEnd', function () {
+        if (Dashboard.support.transition) {
+          var forceReflow = $element[0].offsetWidth; // force reflow
+          $element.one(Dashboard.support.transition.end, function () {
+            $element.trigger('db.modal.opened');
+            _this.state.show = true;
+          });
+        } else {
           $element.trigger('db.modal.opened');
-          _this.state.show = true;
-        });
+          this.state.show = true;
+        }
+
         $element.addClass('in');
         $dimmer.addClass('in');
 
@@ -126,17 +132,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var $element = this.$element,
             $dimmer = this.$dimmer;
         $element.trigger('db.modal.close');
-        $dimmer.one('webkitTransitionEnd', function () {
+        var transition = Dashboard.support.transition;
+        if (transition) {
+          $dimmer.one(transition.end, function () {
+            $dimmer.remove();
+            _this2.$dimmer = null;
+          });
+          $element.one(Dashboard.support.transition.end, function () {
+            $element.removeClass('show');
+            $element.trigger('db.modal.closed');
+            _this2.state.show = false;
+          });
+          $dimmer.removeClass('in');
+          $element.removeClass('in');
+        } else {
           $dimmer.remove();
-          _this2.$dimmer = null;
-        });
-        $element.one('webkitTransitionEnd', function () {
-          $element.removeClass('show');
+          this.$dimmer = null;
+          $dimmer.removeClass('in');
+          $element.removeClass('in');
           $element.trigger('db.modal.closed');
-          _this2.state.show = false;
-        });
-        $dimmer.removeClass('in');
-        $element.removeClass('in');
+        }
       }
     }, {
       key: 'toggle',

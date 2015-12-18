@@ -1,6 +1,6 @@
 (($, window) => {
 
-  let Dashboard = window.Dashboard = {};
+  const Dashboard = window.Dashboard = {};
   Dashboard.support = {};
 
   function transitionEnd() {

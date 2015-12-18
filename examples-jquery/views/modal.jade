@@ -4,7 +4,7 @@ block content
   .grid.margin-top
     .u-sm-16
       p
-        button(type="button")#trigger1.btn.btn-primary.radius.float Open Modal1
+        button(type="button")#trigger1.btn.btn-dark.radius.float Open Modal1
         button(type="button")#trigger2.btn.btn-primary.radius.float Open Modal2
   .modal#modal1.fade
     .modal-dialog
@@ -14,7 +14,7 @@ block content
       .modal-body modal body
       .modal-footer.cf
         .fr
-          button.btn.radius(type="button") Cancel
+          button.btn.radius(type="button" data-modal-close) Cancel
           button.btn.btn-dark.radius(type="button") Confirm
 
   .modal#modal2.fade.modal-primary
@@ -25,7 +25,7 @@ block content
       .modal-body modal body
       .modal-footer.cf
         .fr
-          button.btn.radius(type="button") Cancel
+          button.btn.radius(type="button" data-modal-close) Cancel
           button.btn.btn-dark.radius(type="button") Confirm
 
 append script

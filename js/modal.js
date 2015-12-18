@@ -12,18 +12,24 @@
 
     show() {
       let $element = this.$element;
+      let $dimmer = this.$dimmer = $('<div class="modal-dimmer">');
 
       $element.trigger('db.modal.open');
+
       $element.addClass('show');
-      var $dimmer = this.$dimmer = $('<div class="modal-dimmer">');
       $dimmer.appendTo(this.$body);
 
-      var forceReflow = $element[0].offsetWidth;
-
-      $element.one('webkitTransitionEnd', () => {
+      if (Dashboard.support.transition) {
+        var forceReflow = $element[0].offsetWidth; // force reflow
+        $element.one(Dashboard.support.transition.end, () => {
+          $element.trigger('db.modal.opened');
+          this.state.show = true;
+        });
+      } else {
         $element.trigger('db.modal.opened');
         this.state.show = true;
-      });
+      }
+
       $element.addClass('in');
       $dimmer.addClass('in');
 
@@ -35,17 +41,26 @@
     hide() {
       let $element = this.$element, $dimmer = this.$dimmer;
       $element.trigger('db.modal.close');
-      $dimmer.one('webkitTransitionEnd', () => {
+      const transition = Dashboard.support.transition;
+      if (transition) {
+        $dimmer.one(transition.end, () => {
+          $dimmer.remove();
+          this.$dimmer = null;
+        });
+        $element.one(Dashboard.support.transition.end, () => {
+          $element.removeClass('show');
+          $element.trigger('db.modal.closed');
+          this.state.show = false;
+        });
+        $dimmer.removeClass('in');
+        $element.removeClass('in');
+      } else {
         $dimmer.remove();
         this.$dimmer = null;
-      });
-      $element.one('webkitTransitionEnd', () => {
-        $element.removeClass('show');
+        $dimmer.removeClass('in');
+        $element.removeClass('in');
         $element.trigger('db.modal.closed');
-        this.state.show = false;
-      });
-      $dimmer.removeClass('in');
-      $element.removeClass('in');
+      }
     }
 
     toggle() {
