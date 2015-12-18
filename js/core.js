@@ -1,25 +1,29 @@
-(($) => {
+(($, window) => {
 
-  let animation = (function() {
+  const Dashboard = window.Dashboard = {};
+  Dashboard.support = {};
 
-    var animationEnd = (() => {
-      var element = document.body || document.documentElement;
-      var animEndEventNames = {
-        WebkitAnimation: 'webkitAnimationEnd',
-        MozAnimation: 'animationend',
-        OAnimation: 'oAnimationEnd oanimationend',
-        animation: 'animationend'
-      };
+  const element = document.createElement('dashboard');
 
-      for (var name in animEndEventNames) {
-        if (element.style[name] !== undefined) {
-          return animEndEventNames[name];
-        }
+  function transitionEnd() {
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+    };
+
+    for (var name in transEndEventNames) {
+      if (element.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
       }
-    })();
+    }
 
-    return animationEnd && {end: animationEnd};
-  })();
+    return false;
+  }
+
+  Dashboard.support.transition = transitionEnd();
 
   let rAF = (function() {
     return window.requestAnimationFrame ||
@@ -42,4 +46,4 @@
       };
   })();
 
-})(jQuery);
+})(jQuery, window);

@@ -3,8 +3,7 @@
 const Fsxx  = require('./fsxx');
 const Chalk = require('chalk');
 const Path  = require('path');
-
-let dest = Path.resolve(__dirname, '../build');
+const dest  = Path.resolve(__dirname, '../build');
 
 function cleanBuildFolder(dirpath) {
   return Fsxx.emptydir(dirpath).then((dirpath) => {

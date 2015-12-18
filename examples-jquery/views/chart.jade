@@ -1,0 +1,42 @@
+extends ./layout.jade
+
+block content
+  .grid
+    .u-sm-16
+      h2 These charts are supported by <a href="http://echarts.baidu.com/" target="_blank">Echarts</a>.
+    .u-sm-8
+      .box.padding.margin-top
+        h3 Charts in box
+        #chart1(style="height:320px;")
+    .u-sm-8
+      .panel.panel-success.margin-top
+        .panel-header Charts in panel
+        .panel-body
+          #chart2(style="height:300px;")
+        .panel-footer This chart is supported by <a href="http://echarts.baidu.com/" target="_blank">Echarts</a>.
+
+append script
+  script(src="/lib/echarts/echarts-all.js")
+  script.
+    var option = {
+      tooltip: {
+        show: true
+      },
+      legend: {
+        data: ['销量']
+      },
+      xAxis: [{
+        type: 'category',
+        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+      }],
+      yAxis: [{
+        type: 'value'
+      }],
+      series: [{
+        "name": "销量",
+        "type": "bar",
+        "data": [5, 20, 40, 10, 10, 20]
+      }]
+    };
+    echarts.init(document.getElementById('chart1'), 'macarons').setOption(option);
+    echarts.init(document.getElementById('chart2'), 'macarons').setOption(option);

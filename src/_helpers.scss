@@ -42,4 +42,15 @@
   .text-#{$name} {
     color: $color;
   }
+  .bg-#{$name} {
+    background-color: lighten(desaturate($color, 15%), 25%);
+  }
+}
+
+// responsive
+.responsive {
+  width: 100%;
+  min-height: 0.1%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }

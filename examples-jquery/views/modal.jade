@@ -4,39 +4,49 @@ block content
   .grid.margin-top
     .u-sm-16
       p
-        button(type="button" data-target="#modal")#trigger.btn.btn-primary.radius.float Open Modal
-  .modal#modal
-    .modal-header
-      .title Modal header
-      span.fa.fa-close.close
-    .modal-body modal body
-    .modal-footer.cf
-      .fr
-        button.btn.radius(type="button") Cancel
-        button.btn.btn-dark.radius(type="button") Confirm
+        button(type="button")#trigger1.btn.btn-dark.radius.float Open Modal1
+        button(type="button")#trigger2.btn.btn-primary.radius.float Open Modal2
+  .modal#modal1.fade
+    .modal-dialog
+      .modal-header
+        .title Modal header
+        span.fa.fa-close.close(data-modal-close)
+      .modal-body modal body
+      .modal-footer.cf
+        .fr
+          button.btn.radius(type="button" data-modal-close) Cancel
+          button.btn.btn-dark.radius(type="button") Confirm
+
+  .modal#modal2.fade.modal-primary
+    .modal-dialog
+      .modal-header
+        .title Modal header
+        span.fa.fa-close.close(data-modal-close)
+      .modal-body modal body
+      .modal-footer.cf
+        .fr
+          button.btn.radius(type="button" data-modal-close) Cancel
+          button.btn.btn-dark.radius(type="button") Confirm
 
 append script
   script.
-    $('#trigger').click(function(evt) {
-      var $target = $($(this).data('target'));
-      $target.addClass('show animate-fade-in');
-      $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
-        $target.removeClass('animate-fade-in');
-      });
-
-      var $dimmer = $('<div class="modal-dimmer">');
-      $(document.body).append($dimmer);
-      setTimeout(function() {
-        $dimmer.addClass('active');
-      }, 0);
-      $dimmer.click(function(evt) {
-        $dimmer.one('webkitTransitionEnd', function() {
-          $dimmer.remove();
-        });
-        $dimmer.removeClass('active');
-        $target.addClass('animate-fade-out');
-        $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
-          $target.removeClass('show animate-fade-out');
-        });
-      });
+    $('#trigger1').click(function(evt) {
+      $('#modal1')
+        .one('db.modal.open', function() {
+          console.log('open');
+        })
+        .one('db.modal.opened', function() {
+          console.log('opened');
+        })
+        .one('db.modal.close', function() {
+          console.log('close');
+        })
+        .one('db.modal.closed', function() {
+          console.log('closed');
+        })
+        .modal('show');
+    });
+    $('#trigger2').click(function(evt) {
+      $('#modal2')
+        .modal('show');
     });
