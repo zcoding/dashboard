@@ -1,3 +1,5 @@
+'use strict';
+
 var Path       = require('path');
 var gulp       = require('gulp');
 var sass       = require('gulp-sass');
@@ -24,8 +26,14 @@ gulp.task('dev', ['sass', 'js'], function () {
   gulp.watch(Path.resolve(__dirname, './js/**/*.js'), ['js']);
 });
 
+var jss = ['core', 'button', 'collapse', 'dropdown', 'modal', 'tab'];
+
+var jssource = jss.map((name) => {
+  return Path.resolve(__dirname, `./js/${name}.js`);
+});
+
 gulp.task('js', function() {
-  return gulp.src(Path.resolve(__dirname, './js/**/*.js'))
+  return gulp.src(jssource)
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['es2015']

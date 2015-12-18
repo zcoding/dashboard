@@ -2,7 +2,7 @@
 
   $.fn.extend({
 
-    tab(options) {
+    dropdown(options) {
       return this.each((index, ele) => {
         let $this = $(ele);
       });

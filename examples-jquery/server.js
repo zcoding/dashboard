@@ -44,7 +44,7 @@ App.use(_.get('/table', function *(next) {
 
 }));
 
-let pages = ['button', 'form', 'panel', 'grid', 'color', 'list', 'typography', 'label', 'tab', 'modal'];
+let pages = ['button', 'form', 'panel', 'grid', 'color', 'list', 'typography', 'label', 'tab', 'modal', 'chart', 'dropdown'];
 
 pages.forEach((page) => {
 

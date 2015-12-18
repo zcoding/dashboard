@@ -77,12 +77,6 @@ block content
                 i.fa.fa-chevron-right
 
     .u-sm-8
-      .panel.panel-tips
-        .panel-header Header Title
-        .panel-body panel body content
-        .panel-footer panel footer
-
-    .u-sm-8
       .box.padding
         h2 box is a simple panel without header or footer
         pre
@@ -104,3 +98,21 @@ block content
           li
             a(href="/table") Table
         .panel-footer panel footer
+
+    .u-sm-8
+      .panel.panel-tips#collapse-panel
+        .panel-header Collapse panel
+        .panel-body
+          | panel body content<br>
+          | panel body content<br>
+          | panel body content<br>
+        .panel-footer panel footer
+
+append script
+  script.
+    $(function() {
+      var $panel = $('#collapse-panel');
+      $panel.on('click', '.panel-header', function() {
+        $panel.find('.panel-body').collapse('toggle');
+      });
+    });

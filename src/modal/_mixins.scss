@@ -15,3 +15,13 @@
     opacity: 0;
   }
 }
+
+@mixin make-colorful-modals($colors: $flatColors) {
+  @each $name, $color in $colors {
+    .modal-#{$name} {
+      .modal-dialog .modal-header {
+        background-color: $color;
+      }
+    }
+  }
+}
