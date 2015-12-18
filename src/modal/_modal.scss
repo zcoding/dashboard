@@ -38,7 +38,7 @@ $baseIndex: $baseIndex+1;
   .modal-header {
     position: relative;
     padding: 1em;
-    background-color: #2e3e4e;
+    background-color: $modal-color-default;
     min-height: 32px;
     .title {
       color: #FFF;

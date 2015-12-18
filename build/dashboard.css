@@ -2002,26 +2002,56 @@ input.input-info {
 .text-dark {
   color: #2e3e4e; }
 
+.bg-dark {
+  background-color: #707e8b; }
+
 .text-primary {
   color: #0cc2aa; }
+
+.bg-primary {
+  background-color: #66e7d6; }
 
 .text-secondary {
   color: #3bb4f2; }
 
+.bg-secondary {
+  background-color: #b9e0f4; }
+
 .text-success {
   color: #6cc788; }
+
+.bg-success {
+  background-color: #cee5d5; }
 
 .text-danger {
   color: #f44455; }
 
+.bg-danger {
+  background-color: #f6c2c7; }
+
 .text-warning {
   color: #fcc100; }
+
+.bg-warning {
+  background-color: #f5db86; }
 
 .text-tips {
   color: #f77a99; }
 
+.bg-tips {
+  background-color: #fdf3f6; }
+
 .text-info {
   color: #6887ff; }
+
+.bg-info {
+  background-color: #e9edfd; }
+
+.responsive {
+  width: 100%;
+  min-height: 0.1%;
+  overflow-x: auto;
+  overflow-y: hidden; }
 
 html {
   height: 100%;
