@@ -40,7 +40,7 @@ $baseIndex: $baseIndex+1;
     display: block;
   }
 
-  &.in {
+  &.fade.in {
     opacity: 1;
 
     .modal-dialog {
@@ -104,3 +104,5 @@ $baseIndex: $baseIndex+1;
 .modal-open {
   overflow: hidden;
 }
+
+@include make-colorful-modals();

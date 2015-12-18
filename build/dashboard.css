@@ -1471,9 +1471,9 @@ th, td {
   transition: opacity 300ms ease 0s; }
   .modal.show {
     display: block; }
-  .modal.in {
+  .modal.fade.in {
     opacity: 1; }
-    .modal.in .modal-dialog {
+    .modal.fade.in .modal-dialog {
       transform: translate3d(0, 0, 0); }
 
 .modal-dialog {
@@ -1519,6 +1519,30 @@ th, td {
 
 .modal-open {
   overflow: hidden; }
+
+.modal-dark .modal-dialog .modal-header {
+  background-color: #2e3e4e; }
+
+.modal-primary .modal-dialog .modal-header {
+  background-color: #0cc2aa; }
+
+.modal-secondary .modal-dialog .modal-header {
+  background-color: #3bb4f2; }
+
+.modal-success .modal-dialog .modal-header {
+  background-color: #6cc788; }
+
+.modal-danger .modal-dialog .modal-header {
+  background-color: #f44455; }
+
+.modal-warning .modal-dialog .modal-header {
+  background-color: #fcc100; }
+
+.modal-tips .modal-dialog .modal-header {
+  background-color: #f77a99; }
+
+.modal-info .modal-dialog .modal-header {
+  background-color: #6887ff; }
 
 code, pre {
   font-family: Consolas, "Courier New"; }
