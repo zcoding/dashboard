@@ -1,0 +1,38 @@
+.dropdown {
+  position: relative;
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style-type: none;
+    margin: 2px 0;
+    padding: 0;
+    background-color: #FFF;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+
+    li {
+      list-style-type: none;
+      &.separator {
+        height: 1px;
+        margin: 0;
+        overflow: hidden;
+        background-color: #e5e5e5;
+      }
+      &.title {
+        padding: 5px 1em;
+        cursor: default;
+        color: #888;
+        a {
+          display: inline;
+        }
+      }
+
+      a {
+        display: block;
+        padding: 5px 1em;
+      }
+    }
+  }
+}
