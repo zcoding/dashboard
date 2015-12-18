@@ -5,8 +5,9 @@
   var Dashboard = window.Dashboard = {};
   Dashboard.support = {};
 
+  var element = document.createElement('dashboard');
+
   function transitionEnd() {
-    var el = document.createElement('dashboard');
 
     var transEndEventNames = {
       WebkitTransition: 'webkitTransitionEnd',
@@ -16,7 +17,7 @@
     };
 
     for (var name in transEndEventNames) {
-      if (el.style[name] !== undefined) {
+      if (element.style[name] !== undefined) {
         return { end: transEndEventNames[name] };
       }
     }
