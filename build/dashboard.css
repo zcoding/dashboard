@@ -1452,10 +1452,9 @@ th, td {
   bottom: 0;
   right: 0;
   background-color: transparent;
-  -webkit-transition: background-color 300ms ease 0s;
   transition: background-color 300ms ease 0s;
   z-index: 1001; }
-  .modal-dimmer.active {
+  .modal-dimmer.in {
     background-color: rgba(0, 0, 0, 0.6); }
 
 .modal {
@@ -1467,15 +1466,15 @@ th, td {
   right: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 1002; }
-  .modal.animate-fade-in {
-    animation-name: fadeIn;
-    animation-duration: 300ms; }
-  .modal.animate-fade-out {
-    animation-name: fadeOut;
-    animation-duration: 300ms; }
+  z-index: 1002;
+  opacity: 0;
+  transition: opacity 300ms ease 0s; }
   .modal.show {
     display: block; }
+  .modal.in {
+    opacity: 1; }
+    .modal.in .modal-dialog {
+      transform: translate3d(0, 0, 0); }
 
 .modal-dialog {
   width: 640px;
@@ -1484,9 +1483,9 @@ th, td {
   padding: 0;
   background-color: #FFFFFF;
   z-index: 1003;
-  -webkit-transition: background-color 150ms linear 0s;
-  transition: background-color 150ms linear 0s;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transform: translate3d(0, -50px, 0);
+  transition: transform 300ms ease 0s; }
   .modal-dialog .modal-header {
     position: relative;
     padding: 1em;

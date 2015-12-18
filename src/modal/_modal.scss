@@ -1,6 +1,7 @@
 @import "mixins";
 
 $modal-color-default: #2e3e4e;
+$modal-transition-duration: 300ms;
 
 $baseIndex: $baseIndex+1;
 
@@ -12,11 +13,10 @@ $baseIndex: $baseIndex+1;
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0);
-  -webkit-transition: background-color 300ms ease 0s;
-  transition: background-color 300ms ease 0s;
+  transition: background-color $modal-transition-duration ease 0s;
   z-index: $baseIndex;
 
-  &.active {
+  &.in {
     background-color: rgba(0, 0, 0, .6);
   }
 }
@@ -33,19 +33,19 @@ $baseIndex: $baseIndex+1;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: $baseIndex;
-
-  &.animate-fade-in {
-    animation-name: fadeIn;
-    animation-duration: 300ms;
-  }
-
-  &.animate-fade-out {
-    animation-name: fadeOut;
-    animation-duration: 300ms;
-  }
+  opacity: 0;
+  transition: opacity $modal-transition-duration ease 0s;
 
   &.show {
     display: block;
+  }
+
+  &.in {
+    opacity: 1;
+
+    .modal-dialog {
+      transform: translate3d(0, 0, 0);
+    }
   }
 }
 
@@ -58,9 +58,9 @@ $baseIndex: $baseIndex+1;
   padding: 0;
   background-color: $white;
   z-index: $baseIndex;
-  -webkit-transition: background-color 150ms linear 0s;
-  transition: background-color 150ms linear 0s;
   box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  transform: translate3d(0, -50px, 0);
+  transition: transform $modal-transition-duration ease 0s;
 
   .modal-header {
     position: relative;

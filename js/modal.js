@@ -3,32 +3,58 @@
   class Modal {
 
     constructor(element, options) {
-      this.options             = options;
-      this.$body               = $(document.body);
-      this.$element            = $(element);
-      this.$dialog             = this.$element.find('.modal-dialog');
-      this.$backdrop           = null;
-      this.isShown             = null;
-      this.originalBodyPad     = null;
-      this.scrollbarWidth      = 0;
-      this.ignoreBackdropClick = false;
-
-      if (this.options.remote) {
-        this.$element
-          .find('.modal-content')
-          .load(this.options.remote, $.proxy(function () {
-            this.$element.trigger('loaded.bs.modal')
-          }, this));
-      }
+      this.options  = options;
+      this.$body    = $(document.body);
+      this.$element = $(element);
+      this.$dimmer  = null;
+      this.state    = { show: false };
     }
 
-    show() {}
+    show() {
+      let $element = this.$element;
 
-    hide() {}
+      $element.trigger('db.modal.open');
+      $element.addClass('show');
+      var $dimmer = this.$dimmer = $('<div class="modal-dimmer">');
+      $dimmer.appendTo(this.$body);
 
-    toggle() {}
+      var forceReflow = $element[0].offsetWidth;
+
+      $element.one('webkitTransitionEnd', () => {
+        $element.trigger('db.modal.opened');
+        this.state.show = true;
+      });
+      $element.addClass('in');
+      $dimmer.addClass('in');
+
+      $element.on('click', '[data-modal-close]', () => {
+        this.hide();
+      });
+    }
+
+    hide() {
+      let $element = this.$element, $dimmer = this.$dimmer;
+      $element.trigger('db.modal.close');
+      $dimmer.one('webkitTransitionEnd', () => {
+        $dimmer.remove();
+        this.$dimmer = null;
+      });
+      $element.one('webkitTransitionEnd', () => {
+        $element.removeClass('show');
+        $element.trigger('db.modal.closed');
+        this.state.show = false;
+      });
+      $dimmer.removeClass('in');
+      $element.removeClass('in');
+    }
+
+    toggle() {
+      return this.state.show ? this.hide() : this.show();
+    }
 
   }
+
+  Modal.DEFAULTS = {};
 
   /**
    * jQuery.fn.modal
@@ -44,41 +70,24 @@
 
   $.fn.extend({
 
-    modal(options) {
+    modal(option) {
+
       return this.each((index, ele) => {
 
         var $this   = $(ele);
         var data    = $this.data('db.modal');
         var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option);
-        if (!data) $this.data('db.modal', (data = new Modal(this, options)));
-        if (typeof option == 'string') data[option](_relatedTarget);
-        else if (options.show) data.show(_relatedTarget);
+        if (!data) {
+          $this.data('db.modal', (data = new Modal(ele, options)));
+        }
+        if (typeof option == 'string') {
+          data[option]();
+        } else if (options.show) {
+          data.show();
+        }
 
-        // var $target = $(ele);
-        // $target.trigger('db.modal.open');
-        // $target.addClass('show animate-fade-in');
-        // $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
-        //   $target.removeClass('animate-fade-in');
-        //   $target.trigger('db.modal.opened');
-        // });
-        // var $dimmer = $('<div class="modal-dimmer">');
-        // $(document.body).append($dimmer);
-        // setTimeout(function() {
-        //   $dimmer.addClass('active');
-        // }, 0);
-        // $target.click(function(evt) {
-        //   $target.trigger('db.modal.close');
-        //   $dimmer.one('webkitTransitionEnd', function() {
-        //     $dimmer.remove();
-        //   });
-        //   $dimmer.removeClass('active');
-        //   $target.addClass('animate-fade-out');
-        //   $target.off('webkitAnimationEnd').one('webkitAnimationEnd', function() {
-        //     $target.removeClass('show animate-fade-out');
-        //     $target.trigger('db.modal.closed');
-        //   });
-        // });
       });
+
     }
 
   });

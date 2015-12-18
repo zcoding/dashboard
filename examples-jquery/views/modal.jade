@@ -9,7 +9,7 @@ block content
     .modal-dialog
       .modal-header
         .title Modal header
-        span.fa.fa-close.close
+        span.fa.fa-close.close(data-modal-close)
       .modal-body modal body
       .modal-footer.cf
         .fr
@@ -19,7 +19,18 @@ block content
 append script
   script.
     $('#trigger').click(function(evt) {
-      $('#modal').one('db.modal.opened', function() {
-        console.log('opened');
-      }).modal();
+      $('#modal')
+        .one('db.modal.open', function() {
+          console.log('open');
+        })
+        .one('db.modal.opened', function() {
+          console.log('opened');
+        })
+        .one('db.modal.close', function() {
+          console.log('close');
+        })
+        .one('db.modal.closed', function() {
+          console.log('closed');
+        })
+        .modal('show');
     });
