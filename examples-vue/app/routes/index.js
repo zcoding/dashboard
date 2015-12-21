@@ -9,6 +9,17 @@ export default {
         }
       }
     }
+  },
+
+  "/form": {
+    component: {
+      template: '<page-form></page-form>',
+      components: {
+        "pageForm": function(resolve) {
+          require(['views/forms.vue'], resolve);
+        }
+      }
+    }
   }
 
 };

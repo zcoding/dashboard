@@ -12222,7 +12222,18 @@
 	      template: '<home></home>',
 	      components: {
 	        "home": function home(resolve) {
-	          __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(7)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(7)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        }
+	      }
+	    }
+	  },
+
+	  "/form": {
+	    component: {
+	      template: '<page-form></page-form>',
+	      components: {
+	        "pageForm": function pageForm(resolve) {
+	          __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(13)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
