@@ -2,6 +2,7 @@ extends ./layout.jade
 
 block content
   .grid.padding
+
     .u-sm-8
       .box.padding
         form(action="/").form
@@ -70,6 +71,7 @@ block content
               label.field-switch
                 input(type="radio" name="radio2")
                 | <i></i>A3
+
     .u-sm-8
       .box.padding
         form(action="/").form
@@ -141,3 +143,17 @@ block content
             .form-control.u-sm-16
               label(for="textarea") Textarea
               textarea#textarea(rows="5").field-md
+
+    .u-sm-8
+      .box.padding
+        h3 .tag-input
+        .tag-input(contenteditable spellcheck="false")
+          span.label.label-danger danger
+          span.label.label-warning warning
+          span.label.label-primary primary
+          span.label.label-secondary secondary
+          span.label.label-success success
+          span.label.label-tips tips
+          span.label.label-info info
+          span.label.label-dark dark
+          span &nbsp;

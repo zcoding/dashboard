@@ -1574,7 +1574,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
   -webkit-text-fill-color: #333; }
 
-input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea {
+input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea, .tag-input {
   display: block;
   width: 100%;
   border: 1px solid #CECECE;
