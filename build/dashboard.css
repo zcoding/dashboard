@@ -1800,9 +1800,11 @@ input.input-info {
   line-height: 1.2;
   padding: 8px 10px 3px 10px;
   background-color: #FFFFFF;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; }
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+  cursor: text; }
   .tag-input .label {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    cursor: default; }
   .tag-input .holder {
     display: inline-block;
     width: 2px;

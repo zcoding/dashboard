@@ -260,8 +260,10 @@ textarea {
   padding: 8px 10px 3px 10px;
   background-color: $white;
   font-family: $font-default;
+  cursor: text;
   .label {
     margin-bottom: 5px;
+    cursor: default;
   }
   .holder {
     display: inline-block;

@@ -19,16 +19,35 @@
 
       function handleClick(evt) {
         updateWidth();
-        $input.focus();
+        if (evt.target !== evt.currentTarget) {
+          $input.focus();
+        } else {
+          var offsetX = evt.offsetX;
+          var $children = $this.children('.label');
+          var before = false;
+          for (var i = 0; i < $children.length; ++i) {
+            if ($children.eq(i).position().left > offsetX) {
+              before = true;
+              $children.eq(i).before($holder);
+              break;
+            }
+          }
+          if (!before) {
+            $children.eq($children.length - 1).after($holder);
+          }
+          $input.focus();
+        }
       }
       function handleKeydown(evt) {
         switch(evt.which) {
           case 13: // enter
             var newTagText = $input.val().replace(/^\s+|\s+$/g, '');
-            var $newTag = $(`<span class="label label-dark">${newTagText}</span>`);
-            $holder.before($newTag);
-            $input.val('').focus();
-            updateWidth();
+            if (newTagText !== '') {
+              var $newTag = $(`<span class="label label-dark">${newTagText}</span>`);
+              $holder.before($newTag);
+              $input.val('').focus();
+              updateWidth();
+            }
             evt.preventDefault();
             break;
           case 8: // backspace
@@ -70,7 +89,7 @@
       }
       this.on('click.tagsinput.db', handleClick);
       this.on('keydown.tagsinput.db', handleKeydown);
-      this.on('keyup.tagsinput.db', handleKeyup);
+      this.on('input.tagsinput.db', handleKeyup);
     });
   }
 
