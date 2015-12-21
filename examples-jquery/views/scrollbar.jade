@@ -1,0 +1,37 @@
+extends ./layout.jade
+
+block content
+  .grid
+    .u-sm-16
+      .box.padding.margin-top.scroll-y(style="height:300px;")
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+
+    .u-sm-16
+      .box.padding.margin-top#scrollbar(style="height:300px;overflow:hidden;position:relative;")
+        .scroll-content
+          p content
+          p content
+          p content
+          p content
+          p content
+          p content
+          p content
+          p content
+          p content
+          p content
+        .scrollbar
+
+append script
+  script.
+    $(function() {
+      $('#scrollbar').scrollbar();
+    });

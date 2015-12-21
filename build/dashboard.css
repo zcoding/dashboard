@@ -2016,6 +2016,15 @@ input.input-info {
         display: block;
         padding: 5px 1em; }
 
+.scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px; }
+
 .radius {
   border-radius: 5px; }
 
@@ -2115,6 +2124,10 @@ input.input-info {
   min-height: 0.1%;
   overflow-x: auto;
   overflow-y: hidden; }
+
+.scroll-y {
+  overflow-x: hidden;
+  overflow-y: auto; }
 
 html {
   height: 100%;

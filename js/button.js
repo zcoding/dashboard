@@ -21,7 +21,7 @@
 
   $.fn.button.Constructor = Button;
 
-  $.fn.button.noConflit = function() {
+  $.fn.button.noConflict = function() {
     $.fn.button = old;
     return this;
   };

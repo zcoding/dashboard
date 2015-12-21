@@ -94,7 +94,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   $.fn.button.Constructor = Button;
 
-  $.fn.button.noConflit = function () {
+  $.fn.button.noConflict = function () {
     $.fn.button = old;
     return this;
   };
@@ -112,18 +112,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type));
   });
 })(jQuery);
-"use strict";
+'use strict';
+
+function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 (function ($) {
 
-  $.fn.extend({
-    collapse: function collapse(options) {
-      return this.each(function (index, ele) {
-        var $this = $(ele);
-        $this.slideToggle(300);
-      });
-    }
-  });
+  var defaultOptions = {
+    timeout: 300
+  };
+
+  function collapse(options) {
+    var option = $.extend({}, defaultOptions, (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' ? options : null);
+    return this.each(function (index, ele) {
+      var $this = $(ele);
+      $this.slideToggle(option.timeout);
+    });
+  }
+
+  var old = $.fn.collapse;
+
+  $.fn.extend({ collapse: collapse });
+
+  $.fn.collapse.noConflict = function () {
+    $.fn.collapse = old;
+    return this;
+  };
 })(jQuery);
 "use strict";
 
@@ -277,4 +291,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       });
     }
   });
+})(jQuery);
+'use strict';
+
+(function ($) {
+
+  function scrollbar(options) {
+    var _this = this;
+
+    return this.each(function (index, ele) {
+
+      var HEIGHT = _this.innerHeight();
+      var $scrollbar = _this.children('.scrollbar'),
+          $scrollContent = _this.children('.scroll-content');
+
+      var CONTENT_HEIGHT = $scrollContent.outerHeight(true);
+
+      var ratio = HEIGHT / CONTENT_HEIGHT * 100;
+
+      $scrollbar.css({
+        height: ratio + '%'
+      });
+
+      _this.on('mousewheel', function (e) {
+        var delta = e.originalEvent.wheelDeltaY;
+        var move = -delta;
+        _this.scrollTop(move);
+        $scrollbar.css({
+          top: move + 'px'
+        });
+      });
+    });
+  }
+
+  $.fn.extend({ scrollbar: scrollbar });
 })(jQuery);
