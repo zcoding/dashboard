@@ -1789,46 +1789,6 @@ input.input-info {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); }
 
-.tag-input {
-  position: relative;
-  display: block;
-  width: 100%;
-  border: 1px solid #CECECE;
-  border-radius: 4px;
-  outline: 0;
-  font-size: 14px;
-  line-height: 1.2;
-  padding: 8px 10px 3px 10px;
-  background-color: #FFFFFF;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
-  cursor: text; }
-  .tag-input .label {
-    margin-bottom: 5px;
-    cursor: default; }
-    .tag-input .label .close {
-      cursor: pointer; }
-  .tag-input .holder {
-    display: inline-block;
-    width: 2px;
-    margin: 0 .5em 5px 0; }
-    .tag-input .holder input {
-      display: inline-block;
-      width: 100%;
-      margin: 0;
-      padding: .5em 0;
-      border: 0;
-      outline: 0;
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1; }
-  .tag-input .calculate-holder {
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    z-index: -1; }
-
 .badge {
   display: inline-block;
   margin-right: .5em;
@@ -2064,6 +2024,137 @@ input.input-info {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 5px; }
+
+.tag-input {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 10px 3px 10px;
+  background-color: #FFFFFF;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+  cursor: text; }
+  .tag-input .label {
+    margin-bottom: 5px;
+    cursor: default; }
+    .tag-input .label .close {
+      cursor: pointer; }
+  .tag-input .holder {
+    display: inline-block;
+    width: 2px;
+    margin: 0 .5em 5px 0; }
+    .tag-input .holder input {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: .5em 0;
+      border: 0;
+      outline: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1; }
+  .tag-input .calculate-holder {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    z-index: -1; }
+
+.date-picker {
+  display: block;
+  background-color: #FFF;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.3); }
+  .date-picker.float {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 350px;
+    margin-top: 1em; }
+    .date-picker.float:before {
+      position: absolute;
+      display: block;
+      content: '';
+      border: 10px solid transparent;
+      border-bottom-color: #2e3e4e;
+      top: -20px;
+      left: 20px; }
+  .date-picker .header {
+    background-color: #2e3e4e;
+    color: #FFF; }
+    .date-picker .header .prev, .date-picker .header .next {
+      cursor: pointer; }
+  .date-picker table {
+    width: 100%;
+    max-width: 100%;
+    margin: 0; }
+    .date-picker table th, .date-picker table td {
+      text-align: center; }
+    .date-picker table thead > tr > th {
+      padding: 5px; }
+    .date-picker table thead > tr + tr th {
+      border-top: 1px solid #ddd; }
+    .date-picker table tbody > tr > td {
+      border-top: 1px solid #ddd;
+      padding: 5px;
+      cursor: pointer; }
+      .date-picker table tbody > tr > td:not(:first-child) {
+        border-left: 1px solid #ddd; }
+      .date-picker table tbody > tr > td.active {
+        background-color: #2e3e4e;
+        color: #FFF; }
+  .date-picker.date-picker-dark.float:before {
+    border-bottom-color: #2e3e4e; }
+  .date-picker.date-picker-dark .header {
+    background-color: #2e3e4e; }
+  .date-picker.date-picker-dark table tbody > tr > td.active {
+    background-color: #2e3e4e; }
+  .date-picker.date-picker-primary.float:before {
+    border-bottom-color: #0cc2aa; }
+  .date-picker.date-picker-primary .header {
+    background-color: #0cc2aa; }
+  .date-picker.date-picker-primary table tbody > tr > td.active {
+    background-color: #0cc2aa; }
+  .date-picker.date-picker-secondary.float:before {
+    border-bottom-color: #3bb4f2; }
+  .date-picker.date-picker-secondary .header {
+    background-color: #3bb4f2; }
+  .date-picker.date-picker-secondary table tbody > tr > td.active {
+    background-color: #3bb4f2; }
+  .date-picker.date-picker-success.float:before {
+    border-bottom-color: #6cc788; }
+  .date-picker.date-picker-success .header {
+    background-color: #6cc788; }
+  .date-picker.date-picker-success table tbody > tr > td.active {
+    background-color: #6cc788; }
+  .date-picker.date-picker-danger.float:before {
+    border-bottom-color: #f44455; }
+  .date-picker.date-picker-danger .header {
+    background-color: #f44455; }
+  .date-picker.date-picker-danger table tbody > tr > td.active {
+    background-color: #f44455; }
+  .date-picker.date-picker-warning.float:before {
+    border-bottom-color: #fcc100; }
+  .date-picker.date-picker-warning .header {
+    background-color: #fcc100; }
+  .date-picker.date-picker-warning table tbody > tr > td.active {
+    background-color: #fcc100; }
+  .date-picker.date-picker-tips.float:before {
+    border-bottom-color: #f77a99; }
+  .date-picker.date-picker-tips .header {
+    background-color: #f77a99; }
+  .date-picker.date-picker-tips table tbody > tr > td.active {
+    background-color: #f77a99; }
+  .date-picker.date-picker-info.float:before {
+    border-bottom-color: #6887ff; }
+  .date-picker.date-picker-info .header {
+    background-color: #6887ff; }
+  .date-picker.date-picker-info table tbody > tr > td.active {
+    background-color: #6887ff; }
 
 .radius {
   border-radius: 5px; }

@@ -354,11 +354,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (evt.target !== evt.currentTarget) {
           $input.focus();
         } else {
-          var offsetX = evt.offsetX;
+          var offsetX = evt.offsetX,
+              offsetY = evt.offsetY;
           var $children = $this.children('.label');
           var before = false;
           for (var i = 0; i < $children.length; ++i) {
-            if ($children.eq(i).position().left > offsetX) {
+            var position = $children.eq(i).position();
+            if (position.left > offsetX && position.top < offsetY && position.top + 25 > offsetY) {
               before = true;
               $children.eq(i).before($holder);
               break;
