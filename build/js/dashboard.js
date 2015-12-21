@@ -376,7 +376,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // enter
             var newTagText = $input.val().replace(/^\s+|\s+$/g, '');
             if (newTagText !== '') {
-              var $newTag = $('<span class="label label-dark">' + newTagText + '</span>');
+              var $newTag = $('<span class="label label-dark">' + newTagText + ' <i class="fa fa-close close"></i></span>');
               $holder.before($newTag);
               $input.val('').focus();
               updateWidth();
@@ -417,12 +417,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
             break;
           default:
-            console.log(evt.which);
+          // console.log(evt.which);
         }
       }
       function handleKeyup() {
         updateWidth();
       }
+      _this.on('click.tagsinput.db', '.close', function (evt) {
+        evt.stopPropagation();
+        $(evt.target).parent().remove();
+        $input.focus();
+      });
       _this.on('click.tagsinput.db', handleClick);
       _this.on('keydown.tagsinput.db', handleKeydown);
       _this.on('input.tagsinput.db', handleKeyup);

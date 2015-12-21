@@ -1805,6 +1805,8 @@ input.input-info {
   .tag-input .label {
     margin-bottom: 5px;
     cursor: default; }
+    .tag-input .label .close {
+      cursor: pointer; }
   .tag-input .holder {
     display: inline-block;
     width: 2px;

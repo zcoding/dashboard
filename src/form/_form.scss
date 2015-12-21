@@ -264,6 +264,9 @@ textarea {
   .label {
     margin-bottom: 5px;
     cursor: default;
+    .close {
+      cursor: pointer;
+    }
   }
   .holder {
     display: inline-block;
