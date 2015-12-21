@@ -147,7 +147,7 @@ block content
     .u-sm-8
       .box.padding
         h3 .tag-input
-        .tag-input(contenteditable spellcheck="false")
+        .tag-input
           span.label.label-danger danger
           span.label.label-warning warning
           span.label.label-primary primary
@@ -156,4 +156,12 @@ block content
           span.label.label-tips tips
           span.label.label-info info
           span.label.label-dark dark
-          span &nbsp;
+          span.holder
+            input(type="text")
+          .calculate-holder
+
+append script
+  script.
+    $(function() {
+      $('.tag-input').tagsinput();
+    });

@@ -326,3 +326,89 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   $.fn.extend({ scrollbar: scrollbar });
 })(jQuery);
+'use strict';
+
+(function ($) {
+
+  function tagsinput(options) {
+    var _this = this;
+
+    return this.each(function (index, ele) {
+
+      var $holder = _this.children('.holder');
+      var $input = $holder.children('input');
+      var $calculator = _this.children('.calculate-holder');
+      var parentWidth = _this.innerWidth();
+      var minWidth = 64;
+
+      var $this = _this;
+
+      function updateWidth() {
+        $calculator.text($input.val());
+        var width = $calculator.width();
+        $holder.width(width + 2);
+      }
+
+      function handleClick(evt) {
+        updateWidth();
+        $input.focus();
+      }
+      function handleKeydown(evt) {
+        switch (evt.which) {
+          case 13:
+            // enter
+            var newTagText = $input.val().replace(/^\s+|\s+$/g, '');
+            var $newTag = $('<span class="label label-dark">' + newTagText + '</span>');
+            $holder.before($newTag);
+            $input.val('').focus();
+            updateWidth();
+            evt.preventDefault();
+            break;
+          case 8:
+            // backspace
+            if ($input.val() === '') {
+              var deleteLabelIndex = $holder.index() - 1;
+              if (deleteLabelIndex >= 0) {
+                $this.children('span').eq(deleteLabelIndex).remove();
+              }
+            } else {
+              updateWidth();
+            }
+            break;
+          case 37:
+            // left
+            if ($input.val() === '') {
+              var holderIndex = $holder.index();
+              if (holderIndex > 0) {
+                $holder.width(2);
+                $this.children('span').eq(holderIndex - 1).before($holder);
+                $input.focus();
+              }
+            }
+            break;
+          case 39:
+            // right
+            if ($input.val() === '') {
+              var holderIndex = $holder.index();
+              if (holderIndex < $this.children().length - 1) {
+                $holder.width(2);
+                $this.children('span').eq(holderIndex + 1).after($holder);
+                $input.focus();
+              }
+            }
+            break;
+          default:
+            console.log(evt.which);
+        }
+      }
+      function handleKeyup() {
+        updateWidth();
+      }
+      _this.on('click.tagsinput.db', handleClick);
+      _this.on('keydown.tagsinput.db', handleKeydown);
+      _this.on('keyup.tagsinput.db', handleKeyup);
+    });
+  }
+
+  $.fn.extend({ tagsinput: tagsinput });
+})(jQuery);

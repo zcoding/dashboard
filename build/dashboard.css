@@ -1574,7 +1574,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #FFF inset;
   -webkit-text-fill-color: #333; }
 
-input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea, .tag-input {
+input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea {
   display: block;
   width: 100%;
   border: 1px solid #CECECE;
@@ -1788,6 +1788,42 @@ input.input-info {
       .field-switch input[type=checkbox]:checked + i:before, .field-switch input[type=radio]:checked + i:before {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); }
+
+.tag-input {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 10px 3px 10px;
+  background-color: #FFFFFF;
+  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; }
+  .tag-input .label {
+    margin-bottom: 5px; }
+  .tag-input .holder {
+    display: inline-block;
+    width: 2px;
+    margin: 0 .5em 5px 0; }
+    .tag-input .holder input {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: .5em 0;
+      border: 0;
+      outline: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1; }
+  .tag-input .calculate-holder {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    z-index: -1; }
 
 .badge {
   display: inline-block;
