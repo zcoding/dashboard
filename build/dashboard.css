@@ -1586,7 +1586,7 @@ input[type=text], input[type=email], input[type=number], input[type=url], input[
   background-color: #FFFFFF;
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; }
 
-input.field-md {
+input.field-md, select.field-md {
   height: 32px;
   padding: 2px;
   border-top: 0;
@@ -1594,7 +1594,7 @@ input.field-md {
   border-right: 0;
   border-bottom: 1px solid #CECECE;
   border-radius: 0; }
-  input.field-md:focus {
+  input.field-md:focus, select.field-md:focus {
     padding-bottom: 1px;
     border-bottom-color: #0cc2aa;
     border-bottom-width: 2px; }
