@@ -7,7 +7,7 @@
 
   var element = document.createElement('dashboard');
 
-  function transitionEnd() {
+  function getTransitionEnd() {
 
     var transEndEventNames = {
       WebkitTransition: 'webkitTransitionEnd',
@@ -25,29 +25,92 @@
     return false;
   }
 
-  Dashboard.support.transition = transitionEnd();
+  Dashboard.support.transition = getTransitionEnd();
 
-  var rAF = (function () {
-    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame ||
-    // if all else fails, use setTimeout
-    function (callback) {
-      return window.setTimeout(callback, 1000 / 60); // shoot for 60 fps
+  function getRequestAnimationFrame() {
+
+    var requestAnimationFrameNames = ['requestAnimationFrame', 'webkitRequestAnimationFrame', 'mozRequestAnimationFrame', 'oRequestAnimationFrame'];
+
+    for (var i = 0; i < requestAnimationFrameNames.length; ++i) {
+      if (window[requestAnimationFrameNames[i]] !== undefined) {
+        return requestAnimationFrameNames[i];
+      }
+    }
+
+    return function (callback) {
+      return window.setTimeout(callback, 1000 / 60);
     };
-  })();
+  }
 
-  var cancelAF = (function () {
-    return window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || window.oCancelAnimationFrame || function (id) {
+  Dashboard.requestAnimationFrame = getRequestAnimationFrame();
+
+  function getCancelAnimationFrame() {
+
+    var cancelAnimationFrameNames = ['cancelAnimationFrame', 'webkitCancelAnimationFrame', 'mozCancelAnimationFrame', 'oCancelAnimationFrame'];
+
+    for (var i = 0; i < cancelAnimationFrameNames.length; ++i) {
+      if (window[cancelAnimationFrameNames[i]] !== undefined) {
+        return cancelAnimationFrameNames[i];
+      }
+    }
+
+    return function (callback) {
       window.clearTimeout(id);
     };
-  })();
+  }
+
+  Dashboard.cancelAnimationFrame = getCancelAnimationFrame();
 })(jQuery, window);
-"use strict";
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function ($) {
+  var Button = (function () {
+    function Button() {
+      _classCallCheck(this, Button);
+    }
 
-  $.fn.button = function (options) {
+    _createClass(Button, [{
+      key: 'toggle',
+      value: function toggle() {}
+    }, {
+      key: 'setState',
+      value: function setState() {}
+    }]);
+
+    return Button;
+  })();
+
+  var old = $.fn.button;
+
+  function button(options) {
     return $(this).each(function (index, ele) {});
+  }
+
+  $.fn.extend({ button: button });
+
+  $.fn.button.Constructor = Button;
+
+  $.fn.button.noConflit = function () {
+    $.fn.button = old;
+    return this;
   };
+
+  $(document).on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+    var $btn = $(e.target);
+    if (!$btn.hasClass('btn')) {
+      $btn = $btn.closest('.btn');
+    }
+    button.call($btn, 'toggle');
+    if (!($(e.target).is('input[type="radio"]') || $(e.target).is('input[type="checkbox"]'))) {
+      e.preventDefault();
+    }
+  }).on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+    $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type));
+  });
 })(jQuery);
 "use strict";
 
@@ -122,6 +185,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $dimmer.addClass('in');
 
         $element.on('click', '[data-modal-close]', function () {
+          _this.hide();
+        });
+
+        $element.on('click', function (e) {
+          if (e.target !== e.currentTarget) return;
           _this.hide();
         });
       }
