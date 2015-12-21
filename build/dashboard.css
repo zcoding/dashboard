@@ -2070,6 +2070,7 @@ input.input-info {
   background-color: #FFF;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.3); }
   .date-picker.float {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;

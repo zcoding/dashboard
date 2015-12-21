@@ -438,3 +438,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   $.fn.extend({ tagsinput: tagsinput });
 })(jQuery);
+'use strict';
+
+(function ($) {
+
+  function datepicker(options) {
+    var _this = this;
+
+    return this.each(function (index, ele) {
+      if (_this.is('input')) {
+        // init
+      } else {
+          // init
+        }
+    });
+  }
+
+  $.fn.extend({ datepicker: datepicker });
+})(jQuery);

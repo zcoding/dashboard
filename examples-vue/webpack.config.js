@@ -21,16 +21,21 @@ module.exports = {
         , exclude: /node_modules/
         , loader: "babel"
         , query: {
-            presets: ['es2015', 'react']
+            presets: ['es2015']
           , plugins: ['transform-runtime']
         }
+      }
+
+      , {
+          test: /\.vue$/
+        , loader: 'vue'
       }
     ]
   },
 
   resolve: {
     alias: {
-      actions: Path.resolve(__dirname, './app/actions'),
+      views: Path.resolve(__dirname, './app/views'),
       components: Path.resolve(__dirname, './app/components')
     }
   }

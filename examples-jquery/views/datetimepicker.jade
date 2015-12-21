@@ -8,7 +8,7 @@ block content
           fieldset
             .form-control(style="position: relative;")
               label datepicker
-              input(type="text" placeholder="click and select a date")#select-date
+              input(type="text" placeholder="Format: YYYY-MM-DD")#select-date
               .date-picker.float
                 table
                   thead
@@ -65,6 +65,7 @@ block content
                       td 1
                       td 2
                       td 3
+
     .u-sm-4
       .box.padding.margin-top
         .date-picker
@@ -182,3 +183,37 @@ block content
                 td 1
                 td 2
                 td 3
+
+    .u-sm-4
+      .box.padding.margin-top
+        .date-picker.date-picker-secondary
+          table
+            thead
+              tr.header
+                th.prev <i class="fa fa-angle-left"></i>
+                th(colspan="2") 2015-12-21
+                th.next <i class="fa fa-angle-right"></i>
+            tbody
+              tr
+                td(style="width:25%;") 一
+                td(style="width:25%;") 二
+                td(style="width:25%;") 三
+                td(style="width:25%;") 四
+              tr
+                td(style="width:25%;") 五
+                td(style="width:25%;") 六
+                td(style="width:25%;") 七
+                td(style="width:25%;") 八
+              tr
+                td(style="width:25%;") 九
+                td(style="width:25%;") 十
+                td(style="width:25%;") 十一
+                td(style="width:25%;").active 十二
+
+append script
+  script.
+    $(function() {
+      $('#select-date').click(function() {
+        $(this).siblings('.date-picker').show();
+      });
+    });
