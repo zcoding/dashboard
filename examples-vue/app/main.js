@@ -5,6 +5,8 @@ import routes from './routes';
 // components
 import sidebar from 'components/sidebar.vue';
 
+Vue.config.debug = true;
+
 Vue.use(VueRouter);
 
 var router = new VueRouter();

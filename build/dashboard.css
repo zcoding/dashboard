@@ -2046,10 +2046,13 @@ input.input-info {
   .tag-input .holder {
     display: inline-block;
     width: 2px;
-    margin: 0 .5em 5px 0; }
+    margin: 0 .5em 5px 0;
+    font-size: 12px;
+    line-height: 1; }
     .tag-input .holder input {
       display: inline-block;
       width: 100%;
+      height: 25px;
       margin: 0;
       padding: .5em 0;
       border: 0;
@@ -2063,7 +2066,10 @@ input.input-info {
     top: 0;
     left: 0;
     visibility: hidden;
-    z-index: -1; }
+    z-index: -1;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1; }
 
 .date-picker {
   display: block;

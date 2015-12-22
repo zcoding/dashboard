@@ -147,6 +147,11 @@
       h3 .tag-input
       tag-input(v-bind:tags.sync="tags")
 
+  .u-sm-8
+    .box.padding
+      h3 .tag-input
+      tag-input(v-bind:tags.sync="tags2" label-style="primary")
+
 </template>
 
 <script>
@@ -158,7 +163,8 @@ export default {
 
   data() {
     return {
-      tags: ['danger', 'warning']
+      tags: ['hello', 'dashboard'],
+      tags2: ['hello', 'dashboard']
     };
   },
 
