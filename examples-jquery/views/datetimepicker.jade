@@ -6,214 +6,22 @@ block content
       .box.padding.margin-top
         form.form(action="/")
           fieldset
-            .form-control(style="position: relative;")
+            .form-control
               label datepicker
               input(type="text" placeholder="Format: YYYY-MM-DD")#select-date
-              .date-picker.float
-                table
-                  thead
-                    tr.header
-                      th.prev <i class="fa fa-angle-left"></i>
-                      th(colspan="5") 2015-12-21
-                      th.next <i class="fa fa-angle-right"></i>
-                    tr
-                      th 日
-                      th 一
-                      th 二
-                      th 三
-                      th 四
-                      th 五
-                      th 六
-                  tbody
-                    tr
-                      td 31
-                      td 1
-                      td 2
-                      td 3
-                      td 4
-                      td 5
-                      td 6
-                    tr
-                      td 7
-                      td 8
-                      td 9
-                      td 10
-                      td 11
-                      td 12
-                      td 13
-                    tr
-                      td 14
-                      td 15
-                      td 16
-                      td 17
-                      td 18
-                      td 19
-                      td 20
-                    tr
-                      td.active 21
-                      td 22
-                      td 23
-                      td 24
-                      td 25
-                      td 26
-                      td 27
-                    tr
-                      td 28
-                      td 29
-                      td 30
-                      td 31
-                      td 1
-                      td 2
-                      td 3
 
     .u-sm-4
       .box.padding.margin-top
-        .date-picker
-          table
-            thead
-              tr.header
-                th.prev <i class="fa fa-angle-left"></i>
-                th(colspan="5") 2015-12-21
-                th.next <i class="fa fa-angle-right"></i>
-              tr
-                th 日
-                th 一
-                th 二
-                th 三
-                th 四
-                th 五
-                th 六
-            tbody
-              tr
-                td 31
-                td 1
-                td 2
-                td 3
-                td 4
-                td 5
-                td 6
-              tr
-                td 7
-                td 8
-                td 9
-                td 10
-                td 11
-                td 12
-                td 13
-              tr
-                td 14
-                td 15
-                td 16
-                td 17
-                td 18
-                td 19
-                td 20
-              tr
-                td.active 21
-                td 22
-                td 23
-                td 24
-                td 25
-                td 26
-                td 27
-              tr
-                td 28
-                td 29
-                td 30
-                td 31
-                td 1
-                td 2
-                td 3
-
-    .u-sm-4
-      .box.padding.margin-top
-        .date-picker.date-picker-primary
-          table
-            thead
-              tr.header
-                th.prev <i class="fa fa-angle-left"></i>
-                th(colspan="5") 2015-12-21
-                th.next <i class="fa fa-angle-right"></i>
-              tr
-                th 日
-                th 一
-                th 二
-                th 三
-                th 四
-                th 五
-                th 六
-            tbody
-              tr
-                td 31
-                td 1
-                td 2
-                td 3
-                td 4
-                td 5
-                td 6
-              tr
-                td 7
-                td 8
-                td 9
-                td 10
-                td 11
-                td 12
-                td 13
-              tr
-                td 14
-                td 15
-                td 16
-                td 17
-                td 18
-                td 19
-                td 20
-              tr
-                td.active 21
-                td 22
-                td 23
-                td 24
-                td 25
-                td 26
-                td 27
-              tr
-                td 28
-                td 29
-                td 30
-                td 31
-                td 1
-                td 2
-                td 3
-
-    .u-sm-4
-      .box.padding.margin-top
-        .date-picker.date-picker-secondary
-          table
-            thead
-              tr.header
-                th.prev <i class="fa fa-angle-left"></i>
-                th(colspan="2") 2015-12-21
-                th.next <i class="fa fa-angle-right"></i>
-            tbody
-              tr
-                td(style="width:25%;") 一
-                td(style="width:25%;") 二
-                td(style="width:25%;") 三
-                td(style="width:25%;") 四
-              tr
-                td(style="width:25%;") 五
-                td(style="width:25%;") 六
-                td(style="width:25%;") 七
-                td(style="width:25%;") 八
-              tr
-                td(style="width:25%;") 九
-                td(style="width:25%;") 十
-                td(style="width:25%;") 十一
-                td(style="width:25%;").active 十二
+        .date-picker#date-picker
 
 append script
   script.
     $(function() {
-      $('#select-date').click(function() {
-        $(this).siblings('.date-picker').show();
+      $('#select-date').datepicker({
+        date: '2015-12-20'
+      });
+
+      $('#date-picker').datepicker({
+        date: '2015-12-20'
       });
     });

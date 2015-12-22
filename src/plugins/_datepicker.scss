@@ -1,3 +1,6 @@
+$datePickerWidth: 300px;
+$datePickerDefaultColor: #2e3e4e;
+
 .date-picker {
   display: block;
   background-color: #FFF;
@@ -8,7 +11,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 350px;
+    width: $datePickerWidth;
     margin-top: 1em;
 
     &:before {
@@ -16,14 +19,14 @@
       display: block;
       content: '';
       border: 10px solid transparent;
-      border-bottom-color: #2e3e4e;
+      border-bottom-color: $datePickerDefaultColor;
       top: -20px;
       left: 20px;
     }
   }
 
   .header {
-    background-color: #2e3e4e;
+    background-color: $datePickerDefaultColor;
     color: #FFF;
     .prev, .next {
       cursor: pointer;
@@ -42,20 +45,25 @@
       padding: 5px;
     }
 
+    $borderColor: rgba(red($datePickerDefaultColor), green($datePickerDefaultColor), blue($datePickerDefaultColor), .3);
+
     thead > tr + tr th {
-      border-top: 1px solid #ddd;
+      border-top: 1px solid $borderColor;
     }
 
     tbody > tr > td {
-      border-top: 1px solid #ddd;
+      border-top: 1px solid $borderColor;
       padding: 5px;
       cursor: pointer;
       &:not(:first-child) {
-        border-left: 1px solid #ddd;
+        border-left: 1px solid $borderColor;
       }
       &.active {
-        background-color: #2e3e4e;
+        background-color: $datePickerDefaultColor;
         color: #FFF;
+      }
+      &.old, &.new {
+        color: #888;
       }
     }
   }
@@ -68,8 +76,22 @@
       .header {
         background-color: $color;
       }
-      table tbody > tr > td.active {
-        background-color: $color;
+
+      table {
+        $borderColor: rgba(red($color), green($color), blue($color), .3);
+        thead > tr + tr th {
+          border-top: 1px solid $borderColor;
+        }
+
+        tbody > tr > td {
+          border-top: 1px solid $borderColor;
+          &:not(:first-child) {
+            border-left: 1px solid $borderColor;
+          }
+          &.active {
+            background-color: $color;
+          }
+        }
       }
     }
   }

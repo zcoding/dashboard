@@ -440,17 +440,134 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 })(jQuery);
 'use strict';
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (function ($) {
+  var Picker = (function () {
+    function Picker(selectedDate) {
+      _classCallCheck(this, Picker);
+
+      this.selectedDate = selectedDate;
+    }
+
+    _createClass(Picker, [{
+      key: 'render',
+      value: function render($element) {
+        var selectedDate = this.selectedDate;
+        var year = selectedDate.getFullYear(),
+            month = selectedDate.getMonth(),
+            date = selectedDate.getDate();
+
+        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th colspan="5">' + year + '-' + (month + 1) + '-' + date + '</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
+        html += '<tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>';
+        html += '</thead><tbody>';
+
+        var dates = [];
+
+        var thisMonthFirstDateObj = new Date(year, month, 1);
+        var thisMonthFirstDay = thisMonthFirstDateObj.getDay();
+
+        if (thisMonthFirstDay > 0) {
+          var prevMonthLastDate = new Date(year, month, 0).getDate();
+          for (var i = 0; i < thisMonthFirstDay; ++i) {
+            dates.unshift({
+              type: 'old date',
+              show: prevMonthLastDate--
+            });
+          }
+        }
+
+        var thisMonthLastDateObj = new Date(year, month + 1, 0);
+        var thisMonthLastDate = thisMonthLastDateObj.getDate();
+        var thisMonthLastDay = thisMonthLastDateObj.getDay();
+
+        for (var i = 1; i <= thisMonthLastDate; ++i) {
+          var type = i === date ? 'active date' : 'date';
+          dates.push({
+            type: type,
+            show: i
+          });
+        }
+
+        if (thisMonthLastDay !== 6) {
+          for (var i = 1; i <= 6 - thisMonthLastDay; ++i) {
+            dates.push({
+              type: 'new date',
+              show: i
+            });
+          }
+        }
+
+        for (var i = 0; i < dates.length; ++i) {
+          if (i % 7 === 0) {
+            html += '<tr>';
+          }
+          var _date = dates[i];
+          html += '<td class="' + _date.type + '">' + _date.show + '</td>';
+          if (i % 7 === 6) {
+            html += '</tr>';
+          }
+        }
+
+        html += '</tbody></table>';
+        return $element.html(html);
+      }
+    }]);
+
+    return Picker;
+  })();
 
   function datepicker(options) {
     var _this = this;
 
-    return this.each(function (index, ele) {
+    return this.each(function () {
+
+      var dateString = options.date;
+      var selectedDate = dateString ? new Date(dateString) : new Date();
+
+      var picker = new Picker(selectedDate);
+
       if (_this.is('input')) {
-        // init
+        var $wrapper = $('<div class="date-picker float"></div>');
+        _this.parent().css({
+          "position": "relative"
+        }).append($wrapper);
+        picker.render($wrapper);
+        _this.on('click', function () {
+          $wrapper.show();
+        });
+        $wrapper.on('click', function (event) {
+          event.stopPropagation();
+        });
+        $wrapper.on('click', '.date', function (event) {
+          var $target = $(event.target);
+          var date = parseInt(event.target.innerHTML);
+          var selectedDate = picker.selectedDate;
+          var month = undefined;
+          if ($target.hasClass('active')) {
+            return false;
+          } else if ($target.hasClass('old')) {
+            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, date);
+          } else if ($target.hasClass('new')) {
+            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, date);
+          } else {
+            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), date);
+          }
+          picker.render($wrapper);
+        });
+        $(document).on('click.datepicker.close', function (event) {
+          var $target = $(event.target);
+          if (!$target.is(_this)) {
+            $wrapper.hide();
+          }
+        });
       } else {
-          // init
-        }
+        picker.render(_this);
+      }
+
+      return _this;
     });
   }
 
