@@ -12,6 +12,7 @@ block content
 
     .u-sm-4
       .box.padding.margin-top
+        h3#selected-date
         .date-picker#date-picker
 
 append script
@@ -22,8 +23,12 @@ append script
         format: 'YYYY-MM-DD'
       });
 
-      $('#date-picker').datepicker({
-        date: '2015-12-20',
-        format: 'YYYY-MM-DD'
-      });
+      $('#date-picker')
+        .datepicker({
+          date: '2015-12-20',
+          format: 'YYYY-MM-DD'
+        })
+        .on('datechange.datepicker', (event, date) => {
+          $('#selected-date').html(`${date.year}-${date.month}-${date.date}`);
+        });
     });
