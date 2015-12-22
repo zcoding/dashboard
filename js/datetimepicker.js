@@ -79,9 +79,12 @@
         this.parent().css({
           "position": "relative"
         }).append($wrapper);
+        this.val(`${selectedDate.getFullYear()}-${selectedDate.getMonth()+1}-${selectedDate.getDate()}`);
         picker.render($wrapper);
         this.on('click', () => {
-          $wrapper.show();
+          $wrapper.addClass('show');
+          var forceReflow = $wrapper[0].offsetWidth;
+          $wrapper.addClass('in');
         });
         $wrapper.on('click', (event) => {
           event.stopPropagation();
@@ -90,22 +93,29 @@
           let $target = $(event.target);
           let date = parseInt(event.target.innerHTML);
           let selectedDate = picker.selectedDate;
-          let month;
+          let year = selectedDate.getFullYear(), month;
           if ($target.hasClass('active')) {
             return false;
           } else if ($target.hasClass('old')) {
-            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()-1, date);
+            month = selectedDate.getMonth()-1;
           } else if ($target.hasClass('new')) {
-            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth()+1, date);
+            month = selectedDate.getMonth()+1;
           } else {
-            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), date);
+            month = selectedDate.getMonth()
           }
+          picker.selectedDate = new Date(year, month, date);
+          this.val(`${year}-${month+1}-${date}`);
           picker.render($wrapper);
         });
         $(document).on('click.datepicker.close', (event) => {
           let $target = $(event.target);
           if (!$target.is(this)) {
-            $wrapper.hide();
+            $wrapper.one('webkitTransitionEnd', () => {
+              if (!$wrapper.hasClass('in')) {
+                $wrapper.removeClass('show');
+              }
+            });
+            $wrapper.removeClass('in');
           }
         });
       } else {

@@ -2080,8 +2080,19 @@ input.input-info {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 300px;
-    margin-top: 1em; }
+    width: 100%;
+    margin-top: 1em;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-origin: 50% -10px 0;
+    transform: translate3d(0, -10px, 0);
+    opacity: 0;
+    transition: transform 500ms ease 0s, opacity 500ms ease 0s; }
+    .date-picker.float.show {
+      display: block; }
+    .date-picker.float.in {
+      opacity: 1;
+      transform: translate3d(0, 0, 0); }
     .date-picker.float:before {
       position: absolute;
       display: block;
@@ -2090,6 +2101,14 @@ input.input-info {
       border-bottom-color: #2e3e4e;
       top: -20px;
       left: 20px; }
+    .date-picker.float:after {
+      position: absolute;
+      display: block;
+      content: '';
+      border: 10px solid transparent;
+      border-bottom-color: #2e3e4e;
+      top: -20px;
+      right: 20px; }
   .date-picker .header {
     background-color: #2e3e4e;
     color: #FFF; }

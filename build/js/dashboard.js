@@ -534,9 +534,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _this.parent().css({
           "position": "relative"
         }).append($wrapper);
+        _this.val(selectedDate.getFullYear() + '-' + (selectedDate.getMonth() + 1) + '-' + selectedDate.getDate());
         picker.render($wrapper);
         _this.on('click', function () {
-          $wrapper.show();
+          $wrapper.addClass('show');
+          var forceReflow = $wrapper[0].offsetWidth;
+          $wrapper.addClass('in');
         });
         $wrapper.on('click', function (event) {
           event.stopPropagation();
@@ -545,22 +548,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $target = $(event.target);
           var date = parseInt(event.target.innerHTML);
           var selectedDate = picker.selectedDate;
-          var month = undefined;
+          var year = selectedDate.getFullYear(),
+              month = undefined;
           if ($target.hasClass('active')) {
             return false;
           } else if ($target.hasClass('old')) {
-            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() - 1, date);
+            month = selectedDate.getMonth() - 1;
           } else if ($target.hasClass('new')) {
-            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, date);
+            month = selectedDate.getMonth() + 1;
           } else {
-            picker.selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), date);
+            month = selectedDate.getMonth();
           }
+          picker.selectedDate = new Date(year, month, date);
+          _this.val(year + '-' + (month + 1) + '-' + date);
           picker.render($wrapper);
         });
         $(document).on('click.datepicker.close', function (event) {
           var $target = $(event.target);
           if (!$target.is(_this)) {
-            $wrapper.hide();
+            $wrapper.one('webkitTransitionEnd', function () {
+              if (!$wrapper.hasClass('in')) {
+                $wrapper.removeClass('show');
+              }
+            });
+            $wrapper.removeClass('in');
           }
         });
       } else {
