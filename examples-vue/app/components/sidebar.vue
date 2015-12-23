@@ -1,3 +1,5 @@
+<template lang="jade">
+
 -
   var menus = [
       {name: '首页(Home)', path: '/'}
@@ -27,12 +29,14 @@ div.db-aside
         ul
           each menu in menus
             li
-              a(href=menu.path)
+              a(v-link="{ path: '" + menu.path + "' }")
                 span.db-icon
                 span.nav-text= menu.name
     div.nav-footer
       nav
         ul
           li
-            a(href="/") Trending
-            a(href="/") Stars
+            a(v-link="{path: '/'}") Trending
+            a(v-link="{path: '/'}") Stars
+
+</template>

@@ -44,3 +44,12 @@ You can use dashboard as components in your React projects.
 `npm install dashboard-vue`
 
 You can use dashboard as components in your Vue.js projects.
+
+## CSS
+
+### Grid System
+Dashboard includes a responsive fluid grid system that appropriately scales up to 16 columns as the device or viewport size increases. It includes predefined classes for easy layout options.
+
+### Buttons
+Use the button classes on an `<a>`, `<button>`, or `<input>` element.
+Dashboard has 3 types of button: flat buttons, ghost buttons and 3d buttons.

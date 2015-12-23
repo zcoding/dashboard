@@ -36,6 +36,11 @@
       $element.on('click', '[data-modal-close]', () => {
         this.hide();
       });
+
+      $element.on('click', (e) => {
+        if (e.target !== e.currentTarget) return;
+        this.hide();
+      });
     }
 
     hide() {

@@ -27,7 +27,7 @@ input[type=text], input[type=email], input[type=number], input[type=url], input[
   font-family: $font-default;
 }
 
-input.field-md {
+input.field-md, select.field-md {
   height: 32px;
   padding: 2px;
   border-top: 0;
