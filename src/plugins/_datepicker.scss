@@ -1,23 +1,23 @@
-$floatPickerMaxWidth: 300px;
+$pickerDefaultWidth: 300px;
+$pickerDefaultPadding: 4px;
+$tdPadding: 5px;
 $datePickerDefaultColor: #2e3e4e;
 
 .date-picker {
   display: block;
   padding: 4px;
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: 0;
   border-radius: 3px;
   background-color: #FFF;
-
+  width: $pickerDefaultWidth;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
 
   &.float {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    max-width: $floatPickerMaxWidth;
     margin-top: 1em;
-    border: 0;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1), 0 0 5px 0 rgba(0, 0, 0, .3);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -96,13 +96,38 @@ $datePickerDefaultColor: #2e3e4e;
       &.old, &.new {
         color: #888;
       }
+
+      span {
+        display: block;
+
+        $outerWidth: $pickerDefaultWidth - 2 * ($pickerDefaultPadding + $tdPadding);
+        $marginWidth: 2px;
+        $column: 3;
+
+        width: ($outerWidth - $marginWidth * 2 * $column) / $column;
+        height: 35px;
+        line-height: 35px;
+        float: left;
+        margin: $marginWidth;
+        cursor: pointer;
+        border-radius: 5px;
+        &.active {
+          background-color: $datePickerDefaultColor;
+          color: #FFF;
+        }
+      }
     }
   }
 
   @each $name, $color in $flatColors {
     &.date-picker-#{$name} {
-      table tbody > tr > td.active {
-        background-color: $color;
+      table tbody > tr > td {
+        &.active {
+          background-color: $color;
+        }
+        span.active {
+          background-color: $color;
+        }
       }
     }
   }

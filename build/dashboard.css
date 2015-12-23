@@ -2074,18 +2074,17 @@ input.input-info {
 .date-picker {
   display: block;
   padding: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 0;
   border-radius: 3px;
-  background-color: #FFF; }
+  background-color: #FFF;
+  width: 300px;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5); }
   .date-picker.float {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    max-width: 300px;
     margin-top: 1em;
-    border: 0;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.3);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -2142,21 +2141,49 @@ input.input-info {
         color: #FFF; }
       .date-picker table tbody > tr > td.old, .date-picker table tbody > tr > td.new {
         color: #888; }
+      .date-picker table tbody > tr > td span {
+        display: block;
+        width: 90px;
+        height: 35px;
+        line-height: 35px;
+        float: left;
+        margin: 2px;
+        cursor: pointer;
+        border-radius: 5px; }
+        .date-picker table tbody > tr > td span.active {
+          background-color: #2e3e4e;
+          color: #FFF; }
   .date-picker.date-picker-dark table tbody > tr > td.active {
+    background-color: #2e3e4e; }
+  .date-picker.date-picker-dark table tbody > tr > td span.active {
     background-color: #2e3e4e; }
   .date-picker.date-picker-primary table tbody > tr > td.active {
     background-color: #0cc2aa; }
+  .date-picker.date-picker-primary table tbody > tr > td span.active {
+    background-color: #0cc2aa; }
   .date-picker.date-picker-secondary table tbody > tr > td.active {
+    background-color: #3bb4f2; }
+  .date-picker.date-picker-secondary table tbody > tr > td span.active {
     background-color: #3bb4f2; }
   .date-picker.date-picker-success table tbody > tr > td.active {
     background-color: #6cc788; }
+  .date-picker.date-picker-success table tbody > tr > td span.active {
+    background-color: #6cc788; }
   .date-picker.date-picker-danger table tbody > tr > td.active {
+    background-color: #f44455; }
+  .date-picker.date-picker-danger table tbody > tr > td span.active {
     background-color: #f44455; }
   .date-picker.date-picker-warning table tbody > tr > td.active {
     background-color: #fcc100; }
+  .date-picker.date-picker-warning table tbody > tr > td span.active {
+    background-color: #fcc100; }
   .date-picker.date-picker-tips table tbody > tr > td.active {
     background-color: #f77a99; }
+  .date-picker.date-picker-tips table tbody > tr > td span.active {
+    background-color: #f77a99; }
   .date-picker.date-picker-info table tbody > tr > td.active {
+    background-color: #6887ff; }
+  .date-picker.date-picker-info table tbody > tr > td span.active {
     background-color: #6887ff; }
 
 .radius {

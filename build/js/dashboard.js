@@ -606,21 +606,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             selectedMonth = selectedDateObj.getMonth(),
             selectedDate = selectedDateObj.getDate();
 
-        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th class="switch">' + viewYear + '年</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
-        html += '</thead><tbody>';
+        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th colspan="5" class="switch">' + viewYear + '年</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
+        html += '</thead><tbody><tr><td colspan="7">';
         var months = locales['zh_CN'].months;
         for (var i = 0; i < months.length; ++i) {
-          if (i % 3 === 0) {
-            html += '<tr>';
-          }
           var month = months[i];
           if (selectedMonth === i) {
-            html += '<td class="active">' + month + '</td>';
+            html += '<span class="active">' + month + '</span>';
           } else {
-            html += '<td class="">' + month + '</td>';
-          }
-          if (i % 3 === 2) {
-            html += '</tr>';
+            html += '<span class="">' + month + '</span>';
           }
         }
         html += '</tbody></table>';
