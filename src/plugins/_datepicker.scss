@@ -1,0 +1,143 @@
+$pickerDefaultWidth: 300px;
+$pickerDefaultPadding: 4px;
+$tdPadding: 5px;
+$datePickerDefaultColor: #2e3e4e;
+
+.datepicker {
+  display: block;
+  padding: 4px;
+  border: 0;
+  border-radius: 3px;
+  background-color: #FFF;
+  width: $pickerDefaultWidth;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
+
+  &.float {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 1em;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1), 0 0 5px 0 rgba(0, 0, 0, .3);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-origin: 50% -10px 0;
+    transform: translate3d(0, -10px, 0);
+    opacity: 0;
+    transition: transform 500ms ease 0s, opacity 500ms ease 0s;
+
+    &.show {
+      display: block;
+    }
+
+    &.in {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      border: 10px solid transparent;
+      border-bottom-color: rgba(0, 0, 0, .2);
+      top: -20px;
+      left: 20px;
+    }
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      border: 9px solid transparent;
+      border-bottom-color: #FFF;
+      top: -18px;
+      left: 21px;
+    }
+  }
+
+  .header {
+    background-color: #FFF;
+    color: #333;
+    .prev, .next, .switch {
+      cursor: pointer;
+      border-radius: 5px;
+      &:hover {
+        background-color: rgba(0, 0, 0, .1);
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    th, td {
+      text-align: center;
+    }
+
+    thead > tr > th {
+      padding: 5px;
+    }
+
+    thead > tr + tr th {
+      border: 0;
+    }
+
+    tbody > tr > td {
+      border: 0;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      &.old, &.new {
+        color: #888;
+      }
+      &.date {
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+        }
+        &.active {
+          background-color: $datePickerDefaultColor;
+          color: #FFF;
+        }
+      }
+
+      span {
+        display: block;
+
+        $outerWidth: $pickerDefaultWidth - 2 * ($pickerDefaultPadding + $tdPadding);
+        $marginWidth: 2px;
+        $column: 4;
+
+        width: ($outerWidth - $marginWidth * 2 * $column) / $column;
+        height: 35px;
+        line-height: 35px;
+        float: left;
+        margin: $marginWidth;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+        }
+        &.active {
+          background-color: $datePickerDefaultColor;
+          color: #FFF;
+        }
+      }
+    }
+  }
+
+  @each $name, $color in $flatColors {
+    &.date-picker-#{$name} {
+      table tbody > tr > td {
+        &.active {
+          background-color: $color;
+        }
+        span.active {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+}

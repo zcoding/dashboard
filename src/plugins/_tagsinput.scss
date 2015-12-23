@@ -1,0 +1,51 @@
+.tag-input {
+  position: relative;
+  display: block;
+  width: 100%;
+  border: 1px solid #CECECE;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 8px 10px 3px 10px;
+  background-color: $white;
+  font-family: $font-default;
+  cursor: text;
+  .label {
+    margin-bottom: 5px;
+    cursor: default;
+    .close {
+      cursor: pointer;
+    }
+  }
+  .holder {
+    display: inline-block;
+    width: 2px;
+    margin: 0 .5em 5px 0;
+    font-size: 12px;
+    line-height: 1;
+    input {
+      display: inline-block;
+      width: 100%;
+      height: 25px;
+      margin: 0;
+      padding: .5em 0;
+      border: 0;
+      outline: 0;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+  }
+  .calculate-holder {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    z-index: -1;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+  }
+}
