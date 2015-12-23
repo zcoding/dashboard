@@ -4,9 +4,9 @@
     constructor($element, selectedDate) {
       this.$element = $element;
       this.selectedDate = selectedDate;
-      this.currentView = 'date'; // date|month|year
       this.viewDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()); // clone a date
-      $element.on('click', '.date', (event) => {
+      // switch to month view
+      $element.on('click', '.date-picker .date', (event) => {
         let $target = $(event.target);
         let date = parseInt(event.target.innerHTML);
         let viewDate = this.viewDate;
@@ -22,37 +22,96 @@
         }
         this.selectedDate = new Date(year, month, date);
         this.viewDate = new Date(year, month, date);
-        this.render();
+        $datePicker.html(this.renderDate());
         $element.trigger('datechange.datepicker', {
           year: this.selectedDate.getFullYear(),
           month: this.selectedDate.getMonth()+1,
           date: this.selectedDate.getDate()
         });
       });
-      $element.on('click', '.prev', (event) => {
+      // view last month
+      $element.on('click', '.date-picker .prev', (event) => {
         let viewDate = this.viewDate;
-        this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, viewDate.getDate())
-        this.render();
+        this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, viewDate.getDate());
+        $datePicker.html(this.renderDate());
       });
-      $element.on('click', '.next', (event) => {
+      // view next month
+      $element.on('click', '.date-picker .next', (event) => {
         let viewDate = this.viewDate;
-        this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()+1, viewDate.getDate())
-        this.render();
+        this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()+1, viewDate.getDate());
+        $datePicker.html(this.renderDate());
       });
-      $element.on('click', '.switch', (event) => {
-        this.currentView = 'month';
-        this.render();
+      // switch to month view
+      $element.on('click', '.date-picker .switch', (event) => {
+        $monthPicker.show();
+        $datePicker.hide();
+        $yearPicker.hide();
       });
-    }
 
-    render() {
-      switch(this.currentView) {
-        case 'year': break;
-        case 'month': this.renderMonth(); break;
-        case 'date':
-        default: this.renderDate();
-      }
-      return this;
+      // switch to year view
+      $element.on('click', '.month-picker .switch', (event) => {
+        $yearPicker.show();
+        $datePicker.hide();
+        $monthPicker.hide();
+      });
+      // view last year
+      $element.on('click', '.month-picker .prev', (event) => {
+        let viewDate = this.viewDate;
+        this.viewDate = new Date(viewDate.getFullYear()-1, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(this.renderMonth());
+        $datePicker.html(this.renderDate());
+      });
+      // view next year
+      $element.on('click', '.month-picker .next', (event) => {
+        let viewDate = this.viewDate;
+        this.viewDate = new Date(viewDate.getFullYear()+1, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(this.renderMonth());
+        $datePicker.html(this.renderDate());
+      });
+      // select month
+      $element.on('click', '.month-picker .month', (event) => {
+        let $target = $(event.target);
+        let month = parseInt($target.data('month'));
+        let viewDate = this.viewDate;
+        this.viewDate = new Date(viewDate.getFullYear(), month, viewDate.getDate());
+        $datePicker.html(this.renderDate()).show();
+        $monthPicker.html(this.renderMonth()).hide();
+        $yearPicker.html(this.renderYear()).hide();
+      });
+
+      // view last decade
+      $element.on('click', '.year-picker .prev', (event) => {
+        let viewDate = this.viewDate;
+        this.viewDate = new Date(viewDate.getFullYear()-10, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(this.renderMonth());
+        $datePicker.html(this.renderDate());
+        $yearPicker.html(this.renderYear());
+      });
+      // view next decade
+      $element.on('click', '.year-picker .next', (event) => {
+        let viewDate = this.viewDate;
+        this.viewDate = new Date(viewDate.getFullYear()+10, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(this.renderMonth());
+        $datePicker.html(this.renderDate());
+        $yearPicker.html(this.renderYear());
+      });
+      // select year
+      $element.on('click', '.year-picker .year', (event) => {
+        let $target = $(event.target);
+        let year = parseInt($target.data('year'));
+        let viewDate = this.viewDate;
+        this.viewDate = new Date(year, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(this.renderMonth()).show();
+        $datePicker.html(this.renderDate()).hide();
+        $yearPicker.html(this.renderYear()).hide();
+      });
+
+      let $datePicker = $('<div class="date-picker"></div>'), $monthPicker = $('<div class="month-picker"></div>'), $yearPicker = $('<div class="year-picker"></div>');
+      $datePicker.html(this.renderDate());
+      $monthPicker.html(this.renderMonth()).hide();
+      $yearPicker.html(this.renderYear()).hide();
+
+      $element.append($datePicker, $monthPicker, $yearPicker);
     }
 
     renderDate() {
@@ -131,8 +190,7 @@
       }
 
       html += '</tbody></table>';
-      this.$element.html(html);
-      return this;
+      return $(html);
     }
 
     renderMonth() {
@@ -146,15 +204,35 @@
       let months = locales['zh_CN'].months;
       for (let i = 0; i < months.length; ++i) {
         let month = months[i];
-        if (selectedMonth === i) {
-          html += `<span class="active">${month}</span>`;
+        if (viewMonth === i && selectedYear === viewYear) {
+          html += `<span class="active month" data-month="${i}">${month}</span>`;
         } else {
-          html += `<span class="">${month}</span>`;
+          html += `<span class="month" data-month="${i}">${month}</span>`;
         }
       }
-      html += '</tbody></table>';
-      this.$element.html(html);
-      return this;
+      html += '</tr></td></tbody></table>';
+      return $(html);
+    }
+
+    renderYear() {
+      let viewDate = this.viewDate;
+      let viewYear = viewDate.getFullYear(), viewMonth = viewDate.getMonth(), date = viewDate.getDate();
+      let selectedDateObj = this.selectedDate;
+      let selectedYear = selectedDateObj.getFullYear(), selectedMonth = selectedDateObj.getMonth(), selectedDate = selectedDateObj.getDate();
+
+      let html = `<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th colspan="5" class="switch">${viewYear}年</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>`;
+      html += '</thead><tbody><tr><td colspan="7">';
+      let begin = viewYear - viewYear % 10;
+      let end = begin + 10;
+      for (let i = begin - 1; i <= end; ++i) {
+        if (viewYear === i) {
+          html += `<span class="active year" data-year="${i}">${i}</span>`;
+        } else {
+          html += `<span class="year" data-year="${i}">${i}</span>`;
+        }
+      }
+      html += '</tr></td></tbody></table>';
+      return html;
     }
   }
 
@@ -191,13 +269,12 @@
       let selectedDate = dateString ? new Date(dateString) : new Date();
 
       if (this.is('input')) {
-        var $wrapper = $('<div class="date-picker float"></div>');
+        var $wrapper = $('<div class="datepicker float"></div>');
         this.parent().css({
           "position": "relative"
         }).append($wrapper);
         this.val(`${selectedDate.getFullYear()}-${selectedDate.getMonth()+1}-${selectedDate.getDate()}`);
         var picker = new Picker($wrapper, selectedDate);
-        picker.render();
         this.on('click', () => {
           $wrapper.addClass('show');
           var forceReflow = $wrapper[0].offsetWidth;
@@ -222,7 +299,6 @@
         });
       } else {
         let picker = new Picker(this, selectedDate);
-        picker.render();
       }
 
       return this;

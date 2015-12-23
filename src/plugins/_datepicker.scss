@@ -3,7 +3,7 @@ $pickerDefaultPadding: 4px;
 $tdPadding: 5px;
 $datePickerDefaultColor: #2e3e4e;
 
-.date-picker {
+.datepicker {
   display: block;
   padding: 4px;
   border: 0;
@@ -89,12 +89,17 @@ $datePickerDefaultColor: #2e3e4e;
       padding: 5px;
       cursor: pointer;
       border-radius: 5px;
-      &.active {
-        background-color: $datePickerDefaultColor;
-        color: #FFF;
-      }
       &.old, &.new {
         color: #888;
+      }
+      &.date {
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+        }
+        &.active {
+          background-color: $datePickerDefaultColor;
+          color: #FFF;
+        }
       }
 
       span {
@@ -102,7 +107,7 @@ $datePickerDefaultColor: #2e3e4e;
 
         $outerWidth: $pickerDefaultWidth - 2 * ($pickerDefaultPadding + $tdPadding);
         $marginWidth: 2px;
-        $column: 3;
+        $column: 4;
 
         width: ($outerWidth - $marginWidth * 2 * $column) / $column;
         height: 35px;
@@ -111,6 +116,9 @@ $datePickerDefaultColor: #2e3e4e;
         margin: $marginWidth;
         cursor: pointer;
         border-radius: 5px;
+        &:hover {
+          background-color: rgba(0, 0, 0, .1);
+        }
         &.active {
           background-color: $datePickerDefaultColor;
           color: #FFF;

@@ -453,9 +453,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       this.$element = $element;
       this.selectedDate = selectedDate;
-      this.currentView = 'date'; // date|month|year
       this.viewDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()); // clone a date
-      $element.on('click', '.date', function (event) {
+      // switch to month view
+      $element.on('click', '.date-picker .date', function (event) {
         var $target = $(event.target);
         var date = parseInt(event.target.innerHTML);
         var viewDate = _this.viewDate;
@@ -472,44 +472,101 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
         _this.selectedDate = new Date(year, month, date);
         _this.viewDate = new Date(year, month, date);
-        _this.render();
+        $datePicker.html(_this.renderDate());
         $element.trigger('datechange.datepicker', {
           year: _this.selectedDate.getFullYear(),
           month: _this.selectedDate.getMonth() + 1,
           date: _this.selectedDate.getDate()
         });
       });
-      $element.on('click', '.prev', function (event) {
+      // view last month
+      $element.on('click', '.date-picker .prev', function (event) {
         var viewDate = _this.viewDate;
         _this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, viewDate.getDate());
-        _this.render();
+        $datePicker.html(_this.renderDate());
       });
-      $element.on('click', '.next', function (event) {
+      // view next month
+      $element.on('click', '.date-picker .next', function (event) {
         var viewDate = _this.viewDate;
         _this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, viewDate.getDate());
-        _this.render();
+        $datePicker.html(_this.renderDate());
       });
-      $element.on('click', '.switch', function (event) {
-        _this.currentView = 'month';
-        _this.render();
+      // switch to month view
+      $element.on('click', '.date-picker .switch', function (event) {
+        $monthPicker.show();
+        $datePicker.hide();
+        $yearPicker.hide();
       });
+
+      // switch to year view
+      $element.on('click', '.month-picker .switch', function (event) {
+        $yearPicker.show();
+        $datePicker.hide();
+        $monthPicker.hide();
+      });
+      // view last year
+      $element.on('click', '.month-picker .prev', function (event) {
+        var viewDate = _this.viewDate;
+        _this.viewDate = new Date(viewDate.getFullYear() - 1, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(_this.renderMonth());
+        $datePicker.html(_this.renderDate());
+      });
+      // view next year
+      $element.on('click', '.month-picker .next', function (event) {
+        var viewDate = _this.viewDate;
+        _this.viewDate = new Date(viewDate.getFullYear() + 1, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(_this.renderMonth());
+        $datePicker.html(_this.renderDate());
+      });
+      // select month
+      $element.on('click', '.month-picker .month', function (event) {
+        var $target = $(event.target);
+        var month = parseInt($target.data('month'));
+        var viewDate = _this.viewDate;
+        _this.viewDate = new Date(viewDate.getFullYear(), month, viewDate.getDate());
+        $datePicker.html(_this.renderDate()).show();
+        $monthPicker.html(_this.renderMonth()).hide();
+        $yearPicker.html(_this.renderYear()).hide();
+      });
+
+      // view last decade
+      $element.on('click', '.year-picker .prev', function (event) {
+        var viewDate = _this.viewDate;
+        _this.viewDate = new Date(viewDate.getFullYear() - 10, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(_this.renderMonth());
+        $datePicker.html(_this.renderDate());
+        $yearPicker.html(_this.renderYear());
+      });
+      // view next decade
+      $element.on('click', '.year-picker .next', function (event) {
+        var viewDate = _this.viewDate;
+        _this.viewDate = new Date(viewDate.getFullYear() + 10, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(_this.renderMonth());
+        $datePicker.html(_this.renderDate());
+        $yearPicker.html(_this.renderYear());
+      });
+      // select year
+      $element.on('click', '.year-picker .year', function (event) {
+        var $target = $(event.target);
+        var year = parseInt($target.data('year'));
+        var viewDate = _this.viewDate;
+        _this.viewDate = new Date(year, viewDate.getMonth(), viewDate.getDate());
+        $monthPicker.html(_this.renderMonth()).show();
+        $datePicker.html(_this.renderDate()).hide();
+        $yearPicker.html(_this.renderYear()).hide();
+      });
+
+      var $datePicker = $('<div class="date-picker"></div>'),
+          $monthPicker = $('<div class="month-picker"></div>'),
+          $yearPicker = $('<div class="year-picker"></div>');
+      $datePicker.html(this.renderDate());
+      $monthPicker.html(this.renderMonth()).hide();
+      $yearPicker.html(this.renderYear()).hide();
+
+      $element.append($datePicker, $monthPicker, $yearPicker);
     }
 
     _createClass(Picker, [{
-      key: 'render',
-      value: function render() {
-        switch (this.currentView) {
-          case 'year':
-            break;
-          case 'month':
-            this.renderMonth();break;
-          case 'date':
-          default:
-            this.renderDate();
-        }
-        return this;
-      }
-    }, {
       key: 'renderDate',
       value: function renderDate() {
         var viewDate = this.viewDate;
@@ -591,8 +648,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         html += '</tbody></table>';
-        this.$element.html(html);
-        return this;
+        return $(html);
       }
     }, {
       key: 'renderMonth',
@@ -611,15 +667,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var months = locales['zh_CN'].months;
         for (var i = 0; i < months.length; ++i) {
           var month = months[i];
-          if (selectedMonth === i) {
-            html += '<span class="active">' + month + '</span>';
+          if (viewMonth === i && selectedYear === viewYear) {
+            html += '<span class="active month" data-month="' + i + '">' + month + '</span>';
           } else {
-            html += '<span class="">' + month + '</span>';
+            html += '<span class="month" data-month="' + i + '">' + month + '</span>';
           }
         }
-        html += '</tbody></table>';
-        this.$element.html(html);
-        return this;
+        html += '</tr></td></tbody></table>';
+        return $(html);
+      }
+    }, {
+      key: 'renderYear',
+      value: function renderYear() {
+        var viewDate = this.viewDate;
+        var viewYear = viewDate.getFullYear(),
+            viewMonth = viewDate.getMonth(),
+            date = viewDate.getDate();
+        var selectedDateObj = this.selectedDate;
+        var selectedYear = selectedDateObj.getFullYear(),
+            selectedMonth = selectedDateObj.getMonth(),
+            selectedDate = selectedDateObj.getDate();
+
+        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th colspan="5" class="switch">' + viewYear + '年</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
+        html += '</thead><tbody><tr><td colspan="7">';
+        var begin = viewYear - viewYear % 10;
+        var end = begin + 10;
+        for (var i = begin - 1; i <= end; ++i) {
+          if (viewYear === i) {
+            html += '<span class="active year" data-year="' + i + '">' + i + '</span>';
+          } else {
+            html += '<span class="year" data-year="' + i + '">' + i + '</span>';
+          }
+        }
+        html += '</tr></td></tbody></table>';
+        return html;
       }
     }]);
 
@@ -655,13 +736,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var selectedDate = dateString ? new Date(dateString) : new Date();
 
       if (_this2.is('input')) {
-        var $wrapper = $('<div class="date-picker float"></div>');
+        var $wrapper = $('<div class="datepicker float"></div>');
         _this2.parent().css({
           "position": "relative"
         }).append($wrapper);
         _this2.val(selectedDate.getFullYear() + '-' + (selectedDate.getMonth() + 1) + '-' + selectedDate.getDate());
         var picker = new Picker($wrapper, selectedDate);
-        picker.render();
         _this2.on('click', function () {
           $wrapper.addClass('show');
           var forceReflow = $wrapper[0].offsetWidth;
@@ -686,7 +766,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       } else {
         var _picker = new Picker(_this2, selectedDate);
-        _picker.render();
       }
 
       return _this2;
