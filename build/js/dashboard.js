@@ -453,6 +453,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       this.$element = $element;
       this.selectedDate = selectedDate;
+      this.currentView = 'date'; // date|month|year
       this.viewDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()); // clone a date
       $element.on('click', '.date', function (event) {
         var $target = $(event.target);
@@ -488,11 +489,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _this.viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, viewDate.getDate());
         _this.render();
       });
+      $element.on('click', '.switch', function (event) {
+        _this.currentView = 'month';
+        _this.render();
+      });
     }
 
     _createClass(Picker, [{
       key: 'render',
       value: function render() {
+        switch (this.currentView) {
+          case 'year':
+            break;
+          case 'month':
+            this.renderMonth();break;
+          case 'date':
+          default:
+            this.renderDate();
+        }
+        return this;
+      }
+    }, {
+      key: 'renderDate',
+      value: function renderDate() {
         var viewDate = this.viewDate;
         var viewYear = viewDate.getFullYear(),
             viewMonth = viewDate.getMonth(),
@@ -502,7 +521,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             selectedMonth = selectedDateObj.getMonth(),
             selectedDate = selectedDateObj.getDate();
 
-        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th colspan="5">' + viewYear + '-' + (viewMonth + 1) + '-' + date + '</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
+        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th colspan="5" class="switch">' + viewYear + '年 ' + (viewMonth + 1) + '月</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
         html += '<tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>';
         html += '</thead><tbody>';
 
@@ -575,10 +594,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.html(html);
         return this;
       }
+    }, {
+      key: 'renderMonth',
+      value: function renderMonth() {
+        var viewDate = this.viewDate;
+        var viewYear = viewDate.getFullYear(),
+            viewMonth = viewDate.getMonth(),
+            date = viewDate.getDate();
+        var selectedDateObj = this.selectedDate;
+        var selectedYear = selectedDateObj.getFullYear(),
+            selectedMonth = selectedDateObj.getMonth(),
+            selectedDate = selectedDateObj.getDate();
+
+        var html = '<table><thead><tr class="header"><th class="prev"><i class="fa fa-angle-left"></i></th><th class="switch">' + viewYear + '年</th><th class="next"><i class="fa fa-angle-right"></i></th></tr>';
+        html += '</thead><tbody>';
+        var months = locales['zh_CN'].months;
+        for (var i = 0; i < months.length; ++i) {
+          if (i % 3 === 0) {
+            html += '<tr>';
+          }
+          var month = months[i];
+          if (selectedMonth === i) {
+            html += '<td class="active">' + month + '</td>';
+          } else {
+            html += '<td class="">' + month + '</td>';
+          }
+          if (i % 3 === 2) {
+            html += '</tr>';
+          }
+        }
+        html += '</tbody></table>';
+        this.$element.html(html);
+        return this;
+      }
     }]);
 
     return Picker;
   })();
+
+  var locales = {
+    en_US: {
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      weekStart: 0
+    },
+    zh_CN: {
+      days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+      daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+      daysMin: ['日', '一', '二', '三', '四', '五', '六'],
+      months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+      weekStart: 1,
+      year: ['年']
+    }
+  };
 
   function datepicker(options) {
     var _this2 = this;

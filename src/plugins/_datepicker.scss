@@ -1,18 +1,24 @@
-$datePickerWidth: 100%;
+$floatPickerMaxWidth: 300px;
 $datePickerDefaultColor: #2e3e4e;
 
 .date-picker {
   display: block;
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 3px;
   background-color: #FFF;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1), 0 0 5px 0 rgba(0, 0, 0, .3);
+
 
   &.float {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    width: $datePickerWidth;
+    width: 100%;
+    max-width: $floatPickerMaxWidth;
     margin-top: 1em;
+    border: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1), 0 0 5px 0 rgba(0, 0, 0, .3);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform-origin: 50% -10px 0;
@@ -34,7 +40,7 @@ $datePickerDefaultColor: #2e3e4e;
       display: block;
       content: '';
       border: 10px solid transparent;
-      border-bottom-color: $datePickerDefaultColor;
+      border-bottom-color: rgba(0, 0, 0, .2);
       top: -20px;
       left: 20px;
     }
@@ -43,18 +49,22 @@ $datePickerDefaultColor: #2e3e4e;
       position: absolute;
       display: block;
       content: '';
-      border: 10px solid transparent;
-      border-bottom-color: $datePickerDefaultColor;
-      top: -20px;
-      right: 20px;
+      border: 9px solid transparent;
+      border-bottom-color: #FFF;
+      top: -18px;
+      left: 21px;
     }
   }
 
   .header {
-    background-color: $datePickerDefaultColor;
-    color: #FFF;
-    .prev, .next {
+    background-color: #FFF;
+    color: #333;
+    .prev, .next, .switch {
       cursor: pointer;
+      border-radius: 5px;
+      &:hover {
+        background-color: rgba(0, 0, 0, .1);
+      }
     }
   }
 
@@ -70,19 +80,15 @@ $datePickerDefaultColor: #2e3e4e;
       padding: 5px;
     }
 
-    $borderColor: rgba(red($datePickerDefaultColor), green($datePickerDefaultColor), blue($datePickerDefaultColor), .3);
-
     thead > tr + tr th {
-      border-top: 1px solid $borderColor;
+      border: 0;
     }
 
     tbody > tr > td {
-      border-top: 1px solid $borderColor;
+      border: 0;
       padding: 5px;
       cursor: pointer;
-      &:not(:first-child) {
-        border-left: 1px solid $borderColor;
-      }
+      border-radius: 5px;
       &.active {
         background-color: $datePickerDefaultColor;
         color: #FFF;
@@ -95,28 +101,8 @@ $datePickerDefaultColor: #2e3e4e;
 
   @each $name, $color in $flatColors {
     &.date-picker-#{$name} {
-      &.float:before {
-        border-bottom-color: $color;
-      }
-      .header {
+      table tbody > tr > td.active {
         background-color: $color;
-      }
-
-      table {
-        $borderColor: rgba(red($color), green($color), blue($color), .3);
-        thead > tr + tr th {
-          border-top: 1px solid $borderColor;
-        }
-
-        tbody > tr > td {
-          border-top: 1px solid $borderColor;
-          &:not(:first-child) {
-            border-left: 1px solid $borderColor;
-          }
-          &.active {
-            background-color: $color;
-          }
-        }
       }
     }
   }

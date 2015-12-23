@@ -2073,15 +2073,20 @@ input.input-info {
 
 .date-picker {
   display: block;
-  background-color: #FFF;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.3); }
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  background-color: #FFF; }
   .date-picker.float {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
+    max-width: 300px;
     margin-top: 1em;
+    border: 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.3);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transform-origin: 50% -10px 0;
@@ -2098,22 +2103,25 @@ input.input-info {
       display: block;
       content: '';
       border: 10px solid transparent;
-      border-bottom-color: #2e3e4e;
+      border-bottom-color: rgba(0, 0, 0, 0.2);
       top: -20px;
       left: 20px; }
     .date-picker.float:after {
       position: absolute;
       display: block;
       content: '';
-      border: 10px solid transparent;
-      border-bottom-color: #2e3e4e;
-      top: -20px;
-      right: 20px; }
+      border: 9px solid transparent;
+      border-bottom-color: #FFF;
+      top: -18px;
+      left: 21px; }
   .date-picker .header {
-    background-color: #2e3e4e;
-    color: #FFF; }
-    .date-picker .header .prev, .date-picker .header .next {
-      cursor: pointer; }
+    background-color: #FFF;
+    color: #333; }
+    .date-picker .header .prev, .date-picker .header .next, .date-picker .header .switch {
+      cursor: pointer;
+      border-radius: 5px; }
+      .date-picker .header .prev:hover, .date-picker .header .next:hover, .date-picker .header .switch:hover {
+        background-color: rgba(0, 0, 0, 0.1); }
   .date-picker table {
     width: 100%;
     max-width: 100%;
@@ -2123,114 +2131,33 @@ input.input-info {
     .date-picker table thead > tr > th {
       padding: 5px; }
     .date-picker table thead > tr + tr th {
-      border-top: 1px solid rgba(46, 62, 78, 0.3); }
+      border: 0; }
     .date-picker table tbody > tr > td {
-      border-top: 1px solid rgba(46, 62, 78, 0.3);
+      border: 0;
       padding: 5px;
-      cursor: pointer; }
-      .date-picker table tbody > tr > td:not(:first-child) {
-        border-left: 1px solid rgba(46, 62, 78, 0.3); }
+      cursor: pointer;
+      border-radius: 5px; }
       .date-picker table tbody > tr > td.active {
         background-color: #2e3e4e;
         color: #FFF; }
       .date-picker table tbody > tr > td.old, .date-picker table tbody > tr > td.new {
         color: #888; }
-  .date-picker.date-picker-dark.float:before {
-    border-bottom-color: #2e3e4e; }
-  .date-picker.date-picker-dark .header {
+  .date-picker.date-picker-dark table tbody > tr > td.active {
     background-color: #2e3e4e; }
-  .date-picker.date-picker-dark table thead > tr + tr th {
-    border-top: 1px solid rgba(46, 62, 78, 0.3); }
-  .date-picker.date-picker-dark table tbody > tr > td {
-    border-top: 1px solid rgba(46, 62, 78, 0.3); }
-    .date-picker.date-picker-dark table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(46, 62, 78, 0.3); }
-    .date-picker.date-picker-dark table tbody > tr > td.active {
-      background-color: #2e3e4e; }
-  .date-picker.date-picker-primary.float:before {
-    border-bottom-color: #0cc2aa; }
-  .date-picker.date-picker-primary .header {
+  .date-picker.date-picker-primary table tbody > tr > td.active {
     background-color: #0cc2aa; }
-  .date-picker.date-picker-primary table thead > tr + tr th {
-    border-top: 1px solid rgba(12, 194, 170, 0.3); }
-  .date-picker.date-picker-primary table tbody > tr > td {
-    border-top: 1px solid rgba(12, 194, 170, 0.3); }
-    .date-picker.date-picker-primary table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(12, 194, 170, 0.3); }
-    .date-picker.date-picker-primary table tbody > tr > td.active {
-      background-color: #0cc2aa; }
-  .date-picker.date-picker-secondary.float:before {
-    border-bottom-color: #3bb4f2; }
-  .date-picker.date-picker-secondary .header {
+  .date-picker.date-picker-secondary table tbody > tr > td.active {
     background-color: #3bb4f2; }
-  .date-picker.date-picker-secondary table thead > tr + tr th {
-    border-top: 1px solid rgba(59, 180, 242, 0.3); }
-  .date-picker.date-picker-secondary table tbody > tr > td {
-    border-top: 1px solid rgba(59, 180, 242, 0.3); }
-    .date-picker.date-picker-secondary table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(59, 180, 242, 0.3); }
-    .date-picker.date-picker-secondary table tbody > tr > td.active {
-      background-color: #3bb4f2; }
-  .date-picker.date-picker-success.float:before {
-    border-bottom-color: #6cc788; }
-  .date-picker.date-picker-success .header {
+  .date-picker.date-picker-success table tbody > tr > td.active {
     background-color: #6cc788; }
-  .date-picker.date-picker-success table thead > tr + tr th {
-    border-top: 1px solid rgba(108, 199, 136, 0.3); }
-  .date-picker.date-picker-success table tbody > tr > td {
-    border-top: 1px solid rgba(108, 199, 136, 0.3); }
-    .date-picker.date-picker-success table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(108, 199, 136, 0.3); }
-    .date-picker.date-picker-success table tbody > tr > td.active {
-      background-color: #6cc788; }
-  .date-picker.date-picker-danger.float:before {
-    border-bottom-color: #f44455; }
-  .date-picker.date-picker-danger .header {
+  .date-picker.date-picker-danger table tbody > tr > td.active {
     background-color: #f44455; }
-  .date-picker.date-picker-danger table thead > tr + tr th {
-    border-top: 1px solid rgba(244, 68, 85, 0.3); }
-  .date-picker.date-picker-danger table tbody > tr > td {
-    border-top: 1px solid rgba(244, 68, 85, 0.3); }
-    .date-picker.date-picker-danger table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(244, 68, 85, 0.3); }
-    .date-picker.date-picker-danger table tbody > tr > td.active {
-      background-color: #f44455; }
-  .date-picker.date-picker-warning.float:before {
-    border-bottom-color: #fcc100; }
-  .date-picker.date-picker-warning .header {
+  .date-picker.date-picker-warning table tbody > tr > td.active {
     background-color: #fcc100; }
-  .date-picker.date-picker-warning table thead > tr + tr th {
-    border-top: 1px solid rgba(252, 193, 0, 0.3); }
-  .date-picker.date-picker-warning table tbody > tr > td {
-    border-top: 1px solid rgba(252, 193, 0, 0.3); }
-    .date-picker.date-picker-warning table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(252, 193, 0, 0.3); }
-    .date-picker.date-picker-warning table tbody > tr > td.active {
-      background-color: #fcc100; }
-  .date-picker.date-picker-tips.float:before {
-    border-bottom-color: #f77a99; }
-  .date-picker.date-picker-tips .header {
+  .date-picker.date-picker-tips table tbody > tr > td.active {
     background-color: #f77a99; }
-  .date-picker.date-picker-tips table thead > tr + tr th {
-    border-top: 1px solid rgba(247, 122, 153, 0.3); }
-  .date-picker.date-picker-tips table tbody > tr > td {
-    border-top: 1px solid rgba(247, 122, 153, 0.3); }
-    .date-picker.date-picker-tips table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(247, 122, 153, 0.3); }
-    .date-picker.date-picker-tips table tbody > tr > td.active {
-      background-color: #f77a99; }
-  .date-picker.date-picker-info.float:before {
-    border-bottom-color: #6887ff; }
-  .date-picker.date-picker-info .header {
+  .date-picker.date-picker-info table tbody > tr > td.active {
     background-color: #6887ff; }
-  .date-picker.date-picker-info table thead > tr + tr th {
-    border-top: 1px solid rgba(104, 135, 255, 0.3); }
-  .date-picker.date-picker-info table tbody > tr > td {
-    border-top: 1px solid rgba(104, 135, 255, 0.3); }
-    .date-picker.date-picker-info table tbody > tr > td:not(:first-child) {
-      border-left: 1px solid rgba(104, 135, 255, 0.3); }
-    .date-picker.date-picker-info table tbody > tr > td.active {
-      background-color: #6887ff; }
 
 .radius {
   border-radius: 5px; }
