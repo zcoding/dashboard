@@ -98,19 +98,19 @@
 
 	'use strict';
 
-	var _vue = __webpack_require__(7);
+	var _vue = __webpack_require__(8);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vueRouter = __webpack_require__(9);
+	var _vueRouter = __webpack_require__(10);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _routes = __webpack_require__(10);
+	var _routes = __webpack_require__(11);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _sidebar = __webpack_require__(26);
+	var _sidebar = __webpack_require__(34);
 
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 
@@ -126,7 +126,13 @@
 
 	var App = _vue2.default.extend({
 
-	  components: { sidebar: _sidebar2.default }
+	  components: { sidebar: _sidebar2.default },
+
+	  methods: {
+	    globalClickHandler: function globalClickHandler(event) {
+	      this.$broadcast('dismiss', event);
+	    }
+	  }
 
 	});
 
@@ -136,7 +142,7 @@
 
 /***/ },
 
-/***/ 7:
+/***/ 8:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*!
@@ -9570,11 +9576,11 @@
 	}
 
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ },
 
-/***/ 8:
+/***/ 9:
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9672,7 +9678,7 @@
 
 /***/ },
 
-/***/ 9:
+/***/ 10:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12212,7 +12218,7 @@
 
 /***/ },
 
-/***/ 10:
+/***/ 11:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12227,7 +12233,7 @@
 	      template: '<home></home>',
 	      components: {
 	        "home": function home(resolve) {
-	          __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(11)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(12)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12238,7 +12244,7 @@
 	      template: '<page-form></page-form>',
 	      components: {
 	        "pageForm": function pageForm(resolve) {
-	          __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(14)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(15)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12249,7 +12255,7 @@
 	      template: '<page-datetimepicker></page-datetimepicker>',
 	      components: {
 	        "pageDatetimepicker": function pageDatetimepicker(resolve) {
-	          __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(20)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(21)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12259,10 +12265,10 @@
 
 /***/ },
 
-/***/ 26:
+/***/ 34:
 /***/ function(module, exports, __webpack_require__) {
 
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(27)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(35)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -12277,7 +12283,7 @@
 
 /***/ },
 
-/***/ 27:
+/***/ 35:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"db-aside\"><div class=\"navside\"><div class=\"nav-brand\"><h1>Dashboard</h1></div><div class=\"db-hide-scroll flex\"><nav class=\"scroll\"><ul><li><a v-link=\"{ path: '/' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">首页(Home)</span></a></li><li><a v-link=\"{ path: '/color' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">颜色(Color)</span></a></li><li><a v-link=\"{ path: '/button' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">按钮(Button)</span></a></li><li><a v-link=\"{ path: '/table' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">表格(Table)</span></a></li><li><a v-link=\"{ path: '/panel' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">面板(Panel)</span></a></li><li><a v-link=\"{ path: '/form' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">表单(Form)</span></a></li><li><a v-link=\"{ path: '/grid' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">网格(Grid System)</span></a></li><li><a v-link=\"{ path: '/list' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">列表(List)</span></a></li><li><a v-link=\"{ path: '/typography' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">排版(Typography)</span></a></li><li><a v-link=\"{ path: '/label' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">标签(Label)</span></a></li><li><a v-link=\"{ path: '/tab' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">选项卡(Tab)</span></a></li><li><a v-link=\"{ path: '/modal' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">模态框(Modal)</span></a></li><li><a v-link=\"{ path: '/chart' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">图表(Chart)</span></a></li><li><a v-link=\"{ path: '/dropdown' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">下拉(Dropdown)</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">滚动条(Scrollbar)</span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">日期时间选择器(Datetimepicker)</span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a v-link=\"{path: '/'}\">Trending</a><a v-link=\"{path: '/'}\">Stars</a></li></ul></nav></div></div></div>";

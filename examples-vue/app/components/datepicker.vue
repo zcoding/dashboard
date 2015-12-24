@@ -1,6 +1,6 @@
 <template>
 
-<div class="datepicker">
+<div class="datepicker" v-bind:class="{'float': float}">
 
   <div class="date-picker" v-if="show === 'date'">
     <table>
@@ -74,6 +74,11 @@ export default {
         return new Date().getTime();
       },
       required: false
+    },
+    float: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 

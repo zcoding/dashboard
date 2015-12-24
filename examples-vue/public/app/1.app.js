@@ -1,12 +1,12 @@
 webpackJsonp([1],{
 
-/***/ 11:
+/***/ 12:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(12)
+	module.exports = __webpack_require__(13)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(13)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(14)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -21,7 +21,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 12:
+/***/ 13:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -43,7 +43,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 13:
+/***/ 14:
 /***/ function(module, exports) {
 
 	module.exports = "<h1>Hello, Dashboard!</h1>";
