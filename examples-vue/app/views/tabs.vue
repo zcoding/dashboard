@@ -4,16 +4,11 @@
   <div class="u-sm-16">
     <div class="margin-top">
       <tab>
-        <template slot="menu">
-          <li class="active"><a href="javascript:;">Home</a></li>
-        </template>
-        <template slot="content">
-          <div class="tab-pane active">
-            <p>content 1</p>
-            <p>content 1</p>
-            <p>content 1</p>
-          </div>
-        </template>
+        <tab-item menu="Home">
+          <p>content 1</p>
+          <p>content 1</p>
+          <p>content 1</p>
+        </tab-item>
       </tab>
     </div>
   </div>
@@ -24,10 +19,11 @@
 <script>
 
 import tab from 'components/tab.vue';
+import tabItem from 'components/tabitem.vue';
 
 export default {
 
-  components: { tab },
+  components: { tab, tabItem },
 
   data() {
     return {

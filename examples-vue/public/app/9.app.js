@@ -34,20 +34,12 @@ webpackJsonp([9],{
 
 	var _tab2 = _interopRequireDefault(_tab);
 
+	var _tabitem = __webpack_require__(67);
+
+	var _tabitem2 = _interopRequireDefault(_tabitem);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = {
-
-	  components: { tab: _tab2.default },
-
-	  data: function data() {
-	    return {
-	      tabs: []
-	    };
-	  }
-	};
-
-	// </script>
 	// <template>
 
 	// <div class="grid">
@@ -58,25 +50,15 @@ webpackJsonp([9],{
 
 	//       <tab>
 
-	//         <template slot="menu">
+	//         <tab-item menu="Home">
 
-	//           <li class="active"><a href="javascript:;">Home</a></li>
+	//           <p>content 1</p>
 
-	//         </template>
+	//           <p>content 1</p>
 
-	//         <template slot="content">
+	//           <p>content 1</p>
 
-	//           <div class="tab-pane active">
-
-	//             <p>content 1</p>
-
-	//             <p>content 1</p>
-
-	//             <p>content 1</p>
-
-	//           </div>
-
-	//         </template>
+	//         </tab-item>
 
 	//       </tab>
 
@@ -90,12 +72,25 @@ webpackJsonp([9],{
 
 	// <script>
 
+	exports.default = {
+
+	  components: { tab: _tab2.default, tabItem: _tabitem2.default },
+
+	  data: function data() {
+	    return {
+	      tabs: []
+	    };
+	  }
+	};
+
+	// </script>
+
 /***/ },
 
 /***/ 61:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab>\r\n        <template slot=\"menu\">\r\n          <li class=\"active\"><a href=\"javascript:;\">Home</a></li>\r\n        </template>\r\n        <template slot=\"content\">\r\n          <div class=\"tab-pane active\">\r\n            <p>content 1</p>\r\n            <p>content 1</p>\r\n            <p>content 1</p>\r\n          </div>\r\n        </template>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab>\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n          <p>content 1</p>\r\n          <p>content 1</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n</div>";
 
 /***/ },
 
@@ -134,7 +129,7 @@ webpackJsonp([9],{
 
 	//   <ul class="nav">
 
-	//     <slot name="menu"></slot>
+	//     <li v-for="item in items"><a href="javascript:;">{{ item.menu }}</a></li>
 
 	//     <div class="indicator"></div>
 
@@ -142,7 +137,7 @@ webpackJsonp([9],{
 
 	//   <div class="tab-content">
 
-	//     <slot name="content"></slot>
+	//     <slot></slot>
 
 	//   </div>
 
@@ -154,8 +149,13 @@ webpackJsonp([9],{
 
 	exports.default = {
 
-	  props: {}
+	  props: {},
 
+	  data: function data() {
+	    return {
+	      items: []
+	    };
+	  }
 	};
 
 	// </script>
@@ -165,7 +165,75 @@ webpackJsonp([9],{
 /***/ 65:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"tab\">\r\n  <ul class=\"nav\">\r\n    <slot name=\"menu\"></slot>\r\n    <div class=\"indicator\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot name=\"content\"></slot>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"tab\">\r\n  <ul class=\"nav\">\r\n    <li v-for=\"item in items\"><a href=\"javascript:;\">{{ item.menu }}</a></li>\r\n    <div class=\"indicator\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
+
+/***/ },
+
+/***/ 67:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(68)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(69)
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\tabitem.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 68:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+
+	// <div class="tab-pane active">
+
+	//   <slot></slot>
+
+	// </div>
+
+	// </template>
+
+	// <script>
+
+	exports.default = {
+
+	  props: {
+	    menu: {
+	      type: String,
+	      required: true
+	    }
+	  },
+
+	  created: function created() {
+	    this.$parent.items.push({
+	      menu: this.menu
+	    });
+	  }
+	};
+
+	// </script>
+
+/***/ },
+
+/***/ 69:
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"tab-pane active\">\r\n  <slot></slot>\r\n</div>";
 
 /***/ }
 

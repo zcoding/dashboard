@@ -2,11 +2,11 @@
 
 <div class="tab">
   <ul class="nav">
-    <slot name="menu"></slot>
+    <li v-for="item in items"><a href="javascript:;">{{ item.menu }}</a></li>
     <div class="indicator"></div>
   </ul>
   <div class="tab-content">
-    <slot name="content"></slot>
+    <slot></slot>
   </div>
 </div>
 
@@ -16,7 +16,13 @@
 
 export default {
 
-  props: {}
+  props: {},
+
+  data() {
+    return {
+      items: []
+    };
+  }
 
 };
 
