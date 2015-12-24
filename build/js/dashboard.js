@@ -296,6 +296,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var $items = $nav.children('li'),
             $indicator = $nav.children('.indicator');
         var ItemLength = $items.length;
+
+        var $panes = $this.find('.tab-content .tab-pane');
+        $panes.removeClass('active').eq(activeIndex).addClass('active');
+
         $items.css({
           width: 1 / ItemLength * 100 + '%'
         });
@@ -309,6 +313,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $target = $(event.currentTarget);
           activeIndex = $target.index();
           $items.removeClass('active').eq(activeIndex).addClass('active');
+          $panes.removeClass('active').eq(activeIndex).addClass('active');
           $indicator.css({
             left: activeIndex * itemWidth
           });
