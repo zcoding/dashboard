@@ -346,30 +346,12 @@ webpackJsonp([4],{
 
 	var _modal2 = _interopRequireDefault(_modal);
 
+	var _alert = __webpack_require__(47);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = {
-
-	  components: { modal: _modal2.default },
-
-	  data: function data() {
-	    return {
-	      showModal: false
-	    };
-	  },
-
-	  methods: {
-	    openModal: function openModal() {
-	      this.showModal = true;
-	    },
-	    closeModal: function closeModal() {
-	      this.showModal = false;
-	    }
-	  }
-
-	};
-
-	// </script>
 	// <template>
 
 	// <div class="grid">
@@ -379,6 +361,8 @@ webpackJsonp([4],{
 	//     <div class="box margin-top padding">
 
 	//       <button class="btn btn-primary float radius" type="button" v-on:click="openModal">open modal</button>
+
+	//       <button class="btn btn-primary float radius" type="button" v-on:click="openAlert">open alert</button>
 
 	//     </div>
 
@@ -418,11 +402,44 @@ webpackJsonp([4],{
 
 	//   </modal>
 
+	//   <modal-alert v-bind:show.sync="showAlert" title="Alert modal">
+
+	//     <p>This is message alert...</p>
+
+	//   </modal-alert>
+
 	// </div>
 
 	// </template>
 
 	// <script>
+
+	exports.default = {
+
+	  components: { modal: _modal2.default, modalAlert: _alert2.default },
+
+	  data: function data() {
+	    return {
+	      showModal: false,
+	      showAlert: false
+	    };
+	  },
+
+	  methods: {
+	    openModal: function openModal() {
+	      this.showModal = true;
+	    },
+	    closeModal: function closeModal() {
+	      this.showModal = false;
+	    },
+	    openAlert: function openAlert() {
+	      this.showAlert = true;
+	    }
+	  }
+
+	};
+
+	// </script>
 
 /***/ },
 
@@ -615,7 +632,104 @@ webpackJsonp([4],{
 /***/ 43:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n</div>";
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openAlert\">open alert</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n\r\n  <modal-alert v-bind:show.sync=\"showAlert\" title=\"Alert modal\">\r\n    <p>This is message alert...</p>\r\n  </modal-alert>\r\n</div>";
+
+/***/ },
+
+/***/ 47:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(48)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(49)
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\alert.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 48:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _modal = __webpack_require__(38);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+
+	  components: { modal: _modal2.default },
+
+	  props: {
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    title: {
+	      type: String,
+	      default: 'Message:'
+	    }
+	  },
+
+	  methods: {
+	    closeModal: function closeModal() {
+	      this.show = false;
+	    }
+	  }
+
+	};
+
+	// </script>
+	// <template>
+
+	// <modal v-bind:show.sync="show">
+
+	//   <div class="modal-header" slot="header">
+
+	//     <div class="title">
+
+	//       {{ title }}
+
+	//       <span class="fa fa-close close" v-on:click="closeModal"></span>
+
+	//     </div>
+
+	//   </div>
+
+	//   <div class="modal-body" slot="body">
+
+	//     <slot></slot>
+
+	//   </div>
+
+	// </modal>
+
+	// </template>
+
+	// <script>
+
+/***/ },
+
+/***/ 49:
+/***/ function(module, exports) {
+
+	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">\r\n      {{ title }}\r\n      <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n</modal>";
 
 /***/ }
 

@@ -4,6 +4,7 @@
   <div class="u-sm-16">
     <div class="box margin-top padding">
       <button class="btn btn-primary float radius" type="button" v-on:click="openModal">open modal</button>
+      <button class="btn btn-primary float radius" type="button" v-on:click="openAlert">open alert</button>
     </div>
   </div>
 
@@ -24,6 +25,10 @@
       </div>
     </div>
   </modal>
+
+  <modal-alert v-bind:show.sync="showAlert" title="Alert modal">
+    <p>This is message alert...</p>
+  </modal-alert>
 </div>
 
 </template>
@@ -31,14 +36,16 @@
 <script>
 
 import modal from 'components/modal.vue';
+import modalAlert from 'components/alert.vue';
 
 export default {
 
-  components: { modal },
+  components: { modal, modalAlert },
 
   data() {
     return {
-      showModal: false
+      showModal: false,
+      showAlert: false
     };
   },
 
@@ -48,6 +55,10 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+
+    openAlert() {
+      this.showAlert = true;
     }
   }
 
