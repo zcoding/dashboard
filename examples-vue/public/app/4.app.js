@@ -1,4 +1,4 @@
-webpackJsonp([2],[
+webpackJsonp([4],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
@@ -11,15 +11,13 @@ webpackJsonp([2],[
 /* 9 */,
 /* 10 */,
 /* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(15)
+	module.exports = __webpack_require__(13)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(19)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(17)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -33,7 +31,7 @@ webpackJsonp([2],[
 	})()}
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42,7 +40,7 @@ webpackJsonp([2],[
 	  value: true
 	});
 
-	var _taginput = __webpack_require__(16);
+	var _taginput = __webpack_require__(14);
 
 	var _taginput2 = _interopRequireDefault(_taginput);
 
@@ -364,13 +362,13 @@ webpackJsonp([2],[
 	// components
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(17)
+	module.exports = __webpack_require__(15)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(18)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(16)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -384,7 +382,7 @@ webpackJsonp([2],[
 	})()}
 
 /***/ },
-/* 17 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -510,13 +508,13 @@ webpackJsonp([2],[
 	// </script>
 
 /***/ },
-/* 18 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = "<div v-on:click=\"handleClick\" class=\"tag-input\"><span v-for=\"tag in tags\" track-by=\"$index\" v-if=\"$index &lt; holderIndex\" v-bind:class=\"['label-' + labelStyle]\" class=\"label\">{{ tag }} <i class=\"fa fa-close close\" v-on:click=\"deleteTag($index)\"></i></span><span v-bind:style=\"holderStyle\" class=\"holder\"><input type=\"text\" v-model=\"newTag\" v-el:input=\"v-el:input\" v-on:keydown.enter.prevent=\"addTag\" v-on:keydown.left=\"moveLeft\" v-on:keydown.right=\"moveRight\" v-on:keydown.8=\"backDelete\"/></span><span v-for=\"tag in tags\" track-by=\"$index\" v-if=\"$index &gt;= holderIndex\" v-bind:class=\"['label-' + labelStyle]\" class=\"label\">{{ tag }} <i class=\"fa fa-close close\" v-on:click=\"deleteTag($index)\"></i></span><div v-el:calculator=\"v-el:calculator\" class=\"calculate-holder\">{{ calculateTag }}</div></div>";
 
 /***/ },
-/* 19 */
+/* 17 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"grid padding\"><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\"/></div><div class=\"form-control\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\"/></div><div class=\"form-control\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\"/></div><div class=\"form-control\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\"/></div><div class=\"form-control\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\"/></div><div class=\"form-control\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\"></textarea></div><div class=\"form-control\"><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option1</label><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option2</label><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option3</label></div><div class=\"form-control\"><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option1</label><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option2</label><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option3</label></div><div class=\"form-control\"><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>A</label><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>B</label><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>C</label></div><div class=\"form-control\"><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A1</label><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A2</label><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A3</label></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control\"><label for=\"name2\">Name</label><input type=\"text\" placeholder=\"input your name\" id=\"name2\" class=\"field-md\"/></div><div class=\"form-control\"><label for=\"password2\">Password</label><input type=\"password\" placeholder=\"input password\" id=\"password2\" class=\"field-md\"/></div><div class=\"form-control\"><label for=\"content2\">Textarea</label><textarea id=\"content2\" rows=\"5\" class=\"field-md\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control u-sm-8\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\"/></div><div class=\"form-control u-sm-8\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\"/></div><div class=\"form-control u-sm-8\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\"/></div><div class=\"form-control u-sm-8\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\"/></div><div class=\"form-control u-sm-8\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\"/></div><div class=\"form-control u-sm-8\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control u-sm-16\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control u-sm-8\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\" class=\"field-md\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control u-sm-16\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\" class=\"field-md\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><h3>.tag-input</h3><tag-input v-bind:tags.sync=\"tags\"></tag-input></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><h3>.tag-input</h3><tag-input v-bind:tags.sync=\"tags2\" label-style=\"primary\"></tag-input></div></div></div>";

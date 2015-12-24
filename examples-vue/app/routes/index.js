@@ -20,6 +20,17 @@ export default {
         }
       }
     }
+  },
+
+  "/datetimepicker": {
+    component: {
+      template: '<page-datetimepicker></page-datetimepicker>',
+      components: {
+        "pageDatetimepicker": function(resolve) {
+          require(['views/datetimepicker.vue'], resolve);
+        }
+      }
+    }
   }
 
 };
