@@ -31,6 +31,17 @@ export default {
         }
       }
     }
+  },
+
+  "/modal": {
+    component: {
+      template: '<page-modals></page-modals>',
+      components: {
+        "pageModals": function(resolve) {
+          require(['views/modals.vue'], resolve);
+        }
+      }
+    }
   }
 
 };

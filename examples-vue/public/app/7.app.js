@@ -1,63 +1,6 @@
-webpackJsonp([4],{
+webpackJsonp([7],{
 
-/***/ 31:
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-
-/***/ 32:
+/***/ 30:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -312,13 +255,13 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 36:
+/***/ 37:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(37)
+	module.exports = __webpack_require__(38)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(43)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(39)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -333,7 +276,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 37:
+/***/ 38:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -342,7 +285,7 @@ webpackJsonp([4],{
 	  value: true
 	});
 
-	var _modal = __webpack_require__(38);
+	var _modal = __webpack_require__(41);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -361,9 +304,6 @@ webpackJsonp([4],{
 	  methods: {
 	    openModal: function openModal() {
 	      this.showModal = true;
-	    },
-	    closeModal: function closeModal() {
-	      this.showModal = false;
 	    }
 	  }
 
@@ -384,39 +324,7 @@ webpackJsonp([4],{
 
 	//   </div>
 
-	//   <modal v-bind:show.sync="showModal" close-via-dimmer>
-
-	//     <div class="modal-header" slot="header">
-
-	//       <div class="title">
-
-	//         基础模态框
-
-	//         <span class="fa fa-close close" v-on:click="closeModal"></span>
-
-	//       </div>
-
-	//     </div>
-
-	//     <div class="modal-body" slot="body">
-
-	//       <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>
-
-	//     </div>
-
-	//     <div class="modal-footer cf" slot="footer">
-
-	//       <div class="fr">
-
-	//         <button class="btn radius">取消</button>
-
-	//         <button class="btn btn-dark radius">确定</button>
-
-	//       </div>
-
-	//     </div>
-
-	//   </modal>
+	//   <modal v-bind:show.sync="showModal"></modal>
 
 	// </div>
 
@@ -426,14 +334,21 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 38:
+/***/ 39:
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\"></modal>\r\n</div>";
+
+/***/ },
+
+/***/ 41:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(39)
-	module.exports = __webpack_require__(41)
+	__webpack_require__(44)
+	module.exports = __webpack_require__(42)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(42)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(43)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -448,49 +363,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 39:
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(40);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(32)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-
-/***/ 40:
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(31)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".modal.fade-transition {\n  display: block;\n  opacity: 1;\n  -webkit-transition: opacity 300ms ease 0s;\n  transition: opacity 300ms ease 0s; }\n  .modal.fade-transition .modal-dialog {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n    -webkit-transition: -webkit-transform 300ms ease 0s;\n    transition: -webkit-transform 300ms ease 0s;\n    transition: transform 300ms ease 0s;\n    transition: transform 300ms ease 0s, -webkit-transform 300ms ease 0s; }\n\n.modal.fade-enter, .modal.fade-leave {\n  opacity: 0; }\n  .modal.fade-enter .modal-dialog, .modal.fade-leave .modal-dialog {\n    -webkit-transform: translate3d(0, -50px, 0);\n            transform: translate3d(0, -50px, 0); }\n\n.modal-dimmer.fade-transition {\n  background-color: rgba(0, 0, 0, 0.6);\n  -webkit-transition: background-color 300ms ease 0s;\n  transition: background-color 300ms ease 0s; }\n\n.modal-dimmer.fade-enter, .modal-dimmer.fade-leave {\n  background-color: transparent; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-
-/***/ 41:
+/***/ 42:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -500,75 +373,59 @@ webpackJsonp([4],{
 	});
 	// <template>
 
-	// <div class="modal" v-show="show" transition="fade" v-on:click="tryToClose">
+	// <div class="modal" v-show="show" transition="fade">
 
-	//   <div class="modal-dialog" v-on:click.stop>
+	//   <div class="modal-dialog">
 
-	//     <slot name="header"></slot>
+	//     <div class="modal-header">
 
-	//     <slot name="body"></slot>
+	//       <div class="title">
 
-	//     <slot name="footer"></slot>
+	//         Modal header
+
+	//         <span class="fa fa-close close"></span>
+
+	//       </div>
+
+	//     </div>
+
+	//     <div class="modal-body"></div>
+
+	//     <div class="modal-footer cf">
+
+	//       <div class="fr">
+
+	//         <button class="btn radius"></button>
+
+	//         <button class="btn btn-dark radius"></button>
+
+	//       </div>
+
+	//     </div>
 
 	//   </div>
 
 	// </div>
 
-	// <div class="modal-dimmer" v-show="show" transition="fade"></div>
-
 	// </template>
 
 	// <style lang="sass">
 
-	// $transition-duration: 300ms;
-
 	// .modal {
 
-	//   &.fade-transition {
+	//   display: block;
 
-	//     display: block;
-
-	//     opacity: 1;
-
-	//     transition: opacity $transition-duration ease 0s;
-
-	//     .modal-dialog {
-
-	//       transform: translate3d(0, 0, 0);
-
-	//       transition: transform $transition-duration ease 0s;
-
-	//     }
-
-	//   }
-
-	//   &.fade-enter, &.fade-leave {
+	//   &.fade-transition: {
 
 	//     opacity: 0;
 
-	//     .modal-dialog {
-
-	//       transform: translate3d(0, -50px, 0);
-
-	//     }
-
-	//   }
-
-	// }
-
-	// .modal-dimmer {
-
-	//   &.fade-transition {
-
-	//     background-color: rgba(0, 0, 0, .6);
-
-	//     transition: background-color $transition-duration ease 0s;
+	//     transition: opacity .3s ease 0s;
 
 	//   }
 
 	//   &.fade-enter, &.fade-leave {
 
-	//     background-color: rgba(0, 0, 0, 0);
+	//     opacity: 1;
 
 	//   }
 
@@ -584,18 +441,6 @@ webpackJsonp([4],{
 	    show: {
 	      type: Boolean,
 	      default: false
-	    },
-	    closeViaDimmer: {
-	      type: Boolean,
-	      default: false
-	    }
-	  },
-
-	  methods: {
-	    tryToClose: function tryToClose(event) {
-	      if (this.closeViaDimmer) {
-	        this.show = false;
-	      }
 	    }
 	  }
 
@@ -605,17 +450,37 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 42:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"modal\" v-show=\"show\" transition=\"fade\" v-on:click=\"tryToClose\">\r\n  <div class=\"modal-dialog\" v-on:click.stop>\r\n    <slot name=\"header\"></slot>\r\n    <slot name=\"body\"></slot>\r\n    <slot name=\"footer\"></slot>\r\n  </div>\r\n</div>\r\n<div class=\"modal-dimmer\" v-show=\"show\" transition=\"fade\"></div>";
-
-/***/ },
-
 /***/ 43:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n</div>";
+	module.exports = "<div class=\"modal\" v-show=\"show\" transition=\"fade\">\r\n  <div class=\"modal-dialog\">\r\n    <div class=\"modal-header\">\r\n      <div class=\"title\">\r\n        Modal header\r\n        <span class=\"fa fa-close close\"></span>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"modal-body\"></div>\r\n    <div class=\"modal-footer cf\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\"></button>\r\n        <button class=\"btn btn-dark radius\"></button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
+
+/***/ },
+
+/***/ 44:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(30)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ }
 

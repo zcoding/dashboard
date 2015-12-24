@@ -1,17 +1,31 @@
-webpackJsonp([5],{
-
-/***/ 21:
+webpackJsonp([5],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(23)
+	module.exports = __webpack_require__(16)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(26)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(20)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\datetimepicker.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\forms.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -20,8 +34,7 @@ webpackJsonp([5],{
 	})()}
 
 /***/ },
-
-/***/ 23:
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30,53 +43,340 @@ webpackJsonp([5],{
 	  value: true
 	});
 
-	var _datepicker = __webpack_require__(24);
+	var _taginput = __webpack_require__(17);
 
-	var _datepicker2 = _interopRequireDefault(_datepicker);
+	var _taginput2 = _interopRequireDefault(_taginput);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
+	  data: function data() {
+	    return {
+	      tags: ['hello', 'dashboard'],
+	      tags2: ['hello', 'dashboard']
+	    };
+	  },
 
-	  components: { datePicker: _datepicker2.default }
+	  components: {
+	    tagInput: _taginput2.default
+	  }
 
 	};
 
 	// </script>
-	// <template>
+	// <template lang="jade">
 
-	// <div class="grid margin-top">
+	// .grid.padding
 
-	//   <div class="u-sm-8">
+	//   .u-sm-8
 
-	//     <div class="box padding">
+	//     .box.padding
 
-	//       <date-picker></date-picker>
+	//       form(action="/").form
 
-	//     </div>
+	//         fieldset
 
-	//   </div>
+	//           .form-control
 
-	// </div>
+	//             label(for="name") Name
+
+	//             input#name(type="text" placeholder="input your name")
+
+	//           .form-control
+
+	//             label(for="password") Password
+
+	//             input#password(type="password" placeholder="input password")
+
+	//           .form-control
+
+	//             label(for="number") Number
+
+	//             input#number(type="number" placeholder="input number")
+
+	//           .form-control
+
+	//             label(for="email") Email
+
+	//             input#email(type="email" placeholder="input email")
+
+	//           .form-control
+
+	//             label(for="url") URL
+
+	//             input#url(type="url" placeholder="input url")
+
+	//           .form-control
+
+	//             label(for="select") Select
+
+	//             select#select(name="select")
+
+	//               option(value="1") Option1
+
+	//               option(value="2") Option2
+
+	//               option(value="3") Option3
+
+	//           .form-control
+
+	//             label(for="textarea") Textarea
+
+	//             textarea#textarea(rows="5")
+
+	//           .form-control
+
+	//             label.field-check
+
+	//               input(type="checkbox" name="check1")
+
+	//               | <i></i>Option1
+
+	//             label.field-check
+
+	//               input(type="checkbox" name="check1")
+
+	//               | <i></i>Option2
+
+	//             label.field-check
+
+	//               input(type="checkbox" name="check1")
+
+	//               | <i></i>Option3
+
+	//           .form-control
+
+	//             label.field-radio
+
+	//               input(type="radio" name="radio1")
+
+	//               | <i></i>Option1
+
+	//             label.field-radio
+
+	//               input(type="radio" name="radio1")
+
+	//               | <i></i>Option2
+
+	//             label.field-radio
+
+	//               input(type="radio" name="radio1")
+
+	//               | <i></i>Option3
+
+	//           .form-control
+
+	//             label.field-switch
+
+	//               input(type="checkbox" name="check2")
+
+	//               | <i></i>A
+
+	//             label.field-switch
+
+	//               input(type="checkbox" name="check2")
+
+	//               | <i></i>B
+
+	//             label.field-switch
+
+	//               input(type="checkbox" name="check2")
+
+	//               | <i></i>C
+
+	//           .form-control
+
+	//             label.field-switch
+
+	//               input(type="radio" name="radio2")
+
+	//               | <i></i>A1
+
+	//             label.field-switch
+
+	//               input(type="radio" name="radio2")
+
+	//               | <i></i>A2
+
+	//             label.field-switch
+
+	//               input(type="radio" name="radio2")
+
+	//               | <i></i>A3
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       form(action="/").form
+
+	//         fieldset
+
+	//           .form-control
+
+	//             label(for="name2") Name
+
+	//             input(type="text" placeholder="input your name")#name2.field-md
+
+	//           .form-control
+
+	//             label(for="password2") Password
+
+	//             input(type="password" placeholder="input password")#password2.field-md
+
+	//           .form-control
+
+	//             label(for="content2") Textarea
+
+	//             textarea#content2(rows="5").field-md
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       form(action="/").form
+
+	//         fieldset
+
+	//           .form-control.u-sm-8
+
+	//             label(for="name") Name
+
+	//             input#name(type="text" placeholder="input your name")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="password") Password
+
+	//             input#password(type="password" placeholder="input password")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="number") Number
+
+	//             input#number(type="number" placeholder="input number")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="email") Email
+
+	//             input#email(type="email" placeholder="input email")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="url") URL
+
+	//             input#url(type="url" placeholder="input url")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="select") Select
+
+	//             select#select(name="select")
+
+	//               option(value="1") Option1
+
+	//               option(value="2") Option2
+
+	//               option(value="3") Option3
+
+	//           .form-control.u-sm-16
+
+	//             label(for="textarea") Textarea
+
+	//             textarea#textarea(rows="5")
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       form(action="/").form
+
+	//         fieldset
+
+	//           .form-control.u-sm-8
+
+	//             label(for="name") Name
+
+	//             input#name(type="text" placeholder="input your name").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="password") Password
+
+	//             input#password(type="password" placeholder="input password").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="number") Number
+
+	//             input#number(type="number" placeholder="input number").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="email") Email
+
+	//             input#email(type="email" placeholder="input email").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="url") URL
+
+	//             input#url(type="url" placeholder="input url").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="select") Select
+
+	//             select#select(name="select").field-md
+
+	//               option(value="1") Option1
+
+	//               option(value="2") Option2
+
+	//               option(value="3") Option3
+
+	//           .form-control.u-sm-16
+
+	//             label(for="textarea") Textarea
+
+	//             textarea#textarea(rows="5").field-md
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       h3 .tag-input
+
+	//       tag-input(v-bind:tags.sync="tags")
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       h3 .tag-input
+
+	//       tag-input(v-bind:tags.sync="tags2" label-style="primary")
 
 	// </template>
 
 	// <script>
 
-/***/ },
+	// components
 
-/***/ 24:
+/***/ },
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(27)
+	module.exports = __webpack_require__(18)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(28)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(19)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\datepicker.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\taginput.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -85,15 +385,7 @@ webpackJsonp([5],{
 	})()}
 
 /***/ },
-
-/***/ 26:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"grid margin-top\">\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <date-picker></date-picker>\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ },
-
-/***/ 27:
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -101,117 +393,19 @@ webpackJsonp([5],{
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// <template>
+	// <template lang="jade">
 
-	// <div class="datepicker">
+	// .tag-input(v-on:click="handleClick")
 
-	//   <div class="date-picker" v-if="show === 'date'">
+	//   span.label(v-for="tag in tags" track-by="$index" v-if="$index < holderIndex" v-bind:class="['label-' + labelStyle]") {{ tag }} <i class="fa fa-close close" v-on:click="deleteTag($index)"></i>
 
-	//     <table>
+	//   span.holder(v-bind:style="holderStyle")
 
-	//       <thead>
+	//     input(type="text" v-model="newTag" v-el:input v-on:keydown.enter.prevent="addTag" v-on:keydown.left="moveLeft" v-on:keydown.right="moveRight" v-on:keydown.8="backDelete")
 
-	//         <tr class="header">
+	//   span.label(v-for="tag in tags" track-by="$index" v-if="$index >= holderIndex" v-bind:class="['label-' + labelStyle]") {{ tag }} <i class="fa fa-close close" v-on:click="deleteTag($index)"></i>
 
-	//           <th class="prev"><i class="fa fa-angle-left"></i></th>
-
-	//           <th colspan="5" class="switch" v-on:click="switchView2Month">{{ viewYear }}年 {{ viewMonth }}月</th>
-
-	//           <th class="next"><i class="fa fa-angle-right"></i></th>
-
-	//         </tr>
-
-	//         <tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>
-
-	//       </thead>
-
-	//       <tbody>
-
-	//         <tr v-for="row in dates" track-by="$index">
-
-	//           <td v-for="date in row" track-by="$index" v-bind:class="['date', date.old ? 'old' : date.new ? 'new' : '', date.active ? 'active': '']">{{ date.show }}</td>
-
-	//         </tr>
-
-	//       </tbody>
-
-	//     </table>
-
-	//   </div>
-
-	//   <div class="month-picker" v-if="show === 'month'">
-
-	//     <table>
-
-	//       <thead>
-
-	//         <tr class="header">
-
-	//           <th class="prev"><i class="fa fa-angle-left"></i></th>
-
-	//           <th colspan="5" class="switch" v-on:click="switchView2Year">{{ viewYear }}年</th>
-
-	//           <th class="next"><i class="fa fa-angle-right"></i></th>
-
-	//         </tr>
-
-	//       </thead>
-
-	//       <tbody>
-
-	//         <tr>
-
-	//           <td colspan="7">
-
-	//             <span v-for="month in months" track-by="$index" v-bind:class="['month', month.old ? 'old' : month.new ? 'new' : '', month.active ? 'active': '']">{{ month.show }}</span>
-
-	//           </td>
-
-	//         </tr>
-
-	//       </tbody>
-
-	//     </table>
-
-	//   </div>
-
-	//   <div class="year-picker" v-if="show === 'year'">
-
-	//     <table>
-
-	//       <thead>
-
-	//         <tr class="header">
-
-	//           <th class="prev"><i class="fa fa-angle-left"></i></th>
-
-	//           <th colspan="5" class="switch">{{ viewYear }}年</th>
-
-	//           <th class="next"><i class="fa fa-angle-right"></i></th>
-
-	//         </tr>
-
-	//       </thead>
-
-	//       <tbody>
-
-	//         <tr>
-
-	//           <td colspan="7">
-
-	//             <span v-for="year in years" track-by="$index" v-bind:class="['year', year.old ? 'old' : year.new ? 'new' : '', year.active ? 'active': '']">{{ year.show }}</span>
-
-	//           </td>
-
-	//         </tr>
-
-	//       </tbody>
-
-	//     </table>
-
-	//   </div>
-
-	// </div>
+	//   .calculate-holder(v-el:calculator) {{ calculateTag }}
 
 	// </template>
 
@@ -220,158 +414,95 @@ webpackJsonp([5],{
 	exports.default = {
 
 	  props: {
-	    selectedDate: {
-	      type: Date,
-	      twoWay: true,
-	      default: function _default() {
-	        return new Date();
-	      },
-
-	      required: false
+	    tags: {
+	      type: Array,
+	      required: true,
+	      twoWay: true
+	    },
+	    labelStyle: {
+	      type: String,
+	      required: false,
+	      default: 'dark'
 	    }
 	  },
 
 	  data: function data() {
-	    var d = this.selectedDate;
-	    var viewDate = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+	    var holderIndex = this.tags.length;
 	    return {
-	      viewDate: viewDate,
-	      show: 'date'
+	      newTag: '',
+	      holderStyle: {
+	        width: '2px'
+	      },
+	      holderIndex: holderIndex
 	    };
 	  },
 
 	  computed: {
-	    dates: function dates() {
-	      var viewDateObj = this.viewDate,
-	          selectedDateObj = this.selectedDate;
-	      var viewYear = viewDateObj.getFullYear(),
-	          viewMonth = viewDateObj.getMonth(),
-	          viewDate = viewDateObj.getDate(),
-	          selectedYear = selectedDateObj.getFullYear(),
-	          selectedMonth = selectedDateObj.getMonth(),
-	          selectedDate = selectedDateObj.getDate();
-
-	      var dates = [],
-	          week = [];
-
-	      var thisMonthFirstDateObj = new Date(viewYear, viewMonth, 1);
-	      var thisMonthFirstDay = thisMonthFirstDateObj.getDay();
-
-	      if (thisMonthFirstDay > 0) {
-	        var prevMonthLastDateObj = new Date(viewYear, viewMonth, 0);
-	        var prevMonthLastDateYear = prevMonthLastDateObj.getFullYear();
-	        var prevMonthLastDateMonth = prevMonthLastDateObj.getMonth();
-	        var prevMonthLastDateDate = prevMonthLastDateObj.getDate();
-	        for (var i = 0; i < thisMonthFirstDay; ++i) {
-	          var showDate = prevMonthLastDateDate--;
-	          var date = {
-	            active: false, new: false, old: true,
-	            show: showDate
-	          };
-	          if (selectedYear === prevMonthLastDateYear && selectedMonth === prevMonthLastDateMonth && selectedDate === showDate) {
-	            date.active = true;
-	          }
-	          week.unshift(date);
-	        }
-	      }
-
-	      var thisMonthLastDateObj = new Date(viewYear, viewMonth + 1, 0);
-	      var thisMonthLastDateDate = thisMonthLastDateObj.getDate();
-	      var thisMonthLastDateDay = thisMonthLastDateObj.getDay();
-
-	      for (var i = 1; i <= thisMonthLastDateDate; ++i) {
-	        var date = {
-	          active: false, new: false, old: false,
-	          show: i
-	        };
-	        if (selectedYear === viewYear && selectedMonth === viewMonth && selectedDate === i) {
-	          date.active = true;
-	        }
-	        week.push(date);
-	        if (week.length === 7) {
-	          dates.push(week);
-	          week = [];
-	        }
-	      }
-
-	      if (thisMonthLastDateDay !== 6) {
-	        var nextMonthFirstDateObj = new Date(viewYear, viewMonth + 1, 1);
-	        var nextMonthFirstDateYear = nextMonthFirstDateObj.getFullYear();
-	        var nextMonthFirstDateMonth = nextMonthFirstDateObj.getMonth();
-	        for (var i = 1; i <= 6 - thisMonthLastDateDay; ++i) {
-	          var date = {
-	            active: false, new: true, old: false,
-	            show: i
-	          };
-	          if (selectedYear === nextMonthFirstDateYear && selectedMonth === nextMonthFirstDateMonth && selectedDate === i) {
-	            date.active = true;
-	          }
-	          week.push(date);
-	          if (week.length === 7) {
-	            dates.push(week);
-	            week = [];
-	          }
-	        }
-	      }
-
-	      return dates;
-	    },
-	    months: function months() {
-	      var viewDateObj = this.viewDate,
-	          selectedDateObj = this.selectedDate;
-	      var viewYear = viewDateObj.getFullYear(),
-	          viewMonth = viewDateObj.getMonth(),
-	          viewDate = viewDateObj.getDate(),
-	          selectedYear = selectedDateObj.getFullYear(),
-	          selectedMonth = selectedDateObj.getMonth(),
-	          selectedDate = selectedDateObj.getDate();
-
-	      var months = [],
-	          locales = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-	      for (var i = 0; i < locales.length; ++i) {
-	        months.push({
-	          active: viewMonth === i && selectedYear === viewYear,
-	          value: i + 1,
-	          show: locales[i]
-	        });
-	      }
-	      return months;
-	    },
-	    years: function years() {
-	      var viewDateObj = this.viewDate,
-	          selectedDateObj = this.selectedDate;
-	      var viewYear = viewDateObj.getFullYear(),
-	          viewMonth = viewDateObj.getMonth(),
-	          viewDate = viewDateObj.getDate(),
-	          selectedYear = selectedDateObj.getFullYear(),
-	          selectedMonth = selectedDateObj.getMonth(),
-	          selectedDate = selectedDateObj.getDate();
-
-	      var years = [];
-	      var begin = viewYear - viewYear % 10;
-	      var end = begin + 10;
-	      for (var i = begin - 1; i <= end; ++i) {
-	        years.push({
-	          active: viewYear === i,
-	          show: i
-	        });
-	      }
-	      return years;
-	    },
-	    viewYear: function viewYear() {
-	      return this.viewDate.getFullYear();
-	    },
-	    viewMonth: function viewMonth() {
-	      return this.viewDate.getMonth() + 1;
+	    calculateTag: function calculateTag() {
+	      var _tag = this.newTag.replace(/\s/g, 'i');
+	      this.updateWidth();
+	      return _tag;
 	    }
 	  },
 
 	  methods: {
-	    switchView2Month: function switchView2Month() {
-	      this.show = 'month';
+	    handleClick: function handleClick(event) {
+	      if (event.target === event.currentTarget) {
+	        var offsetX = event.offsetX,
+	            offsetY = event.offsetY;
+	        var children = this.$el.querySelectorAll('.label');
+	        var isAtTheEnd = true;
+	        for (var i = 0; i < children.length; ++i) {
+	          var child = children[i];
+	          if (child.offsetLeft > offsetX && child.offsetTop < offsetY && child.offsetTop + child.offsetHeight > offsetY) {
+	            this.holderIndex = i;
+	            isAtTheEnd = false;
+	            break;
+	          }
+	        }
+	        if (isAtTheEnd) {
+	          this.holderIndex = this.tags.length;
+	        }
+	      }
+	      this.$els.input.focus();
 	    },
-	    switchView2Year: function switchView2Year() {
-	      this.show = 'year';
+	    updateWidth: function updateWidth() {
+	      var _this = this;
+
+	      this.$nextTick(function () {
+	        var width = _this.$els.calculator.offsetWidth;
+	        _this.holderStyle.width = width + 2 + 'px';
+	      });
+	    },
+	    addTag: function addTag() {
+	      var newTag = this.newTag.trim();
+	      if (newTag !== '') {
+	        this.tags.splice(this.holderIndex, 0, newTag);
+	        this.newTag = '';
+	        this.holderIndex += 1;
+	      }
+	    },
+	    moveLeft: function moveLeft() {
+	      if (this.newTag.trim() === '' && this.holderIndex > 0) {
+	        this.holderIndex -= 1;
+	      }
+	    },
+	    moveRight: function moveRight() {
+	      if (this.newTag.trim() === '' && this.holderIndex < this.tags.length) {
+	        this.holderIndex += 1;
+	      }
+	    },
+	    deleteTag: function deleteTag(index) {
+	      if (index < this.holderIndex) {
+	        this.holderIndex -= 1;
+	      }
+	      this.tags.splice(index, 1);
+	      this.$els.input.focus();
+	    },
+	    backDelete: function backDelete() {
+	      if (this.newTag.trim() === '' && this.holderIndex > 0) {
+	        this.deleteTag(this.holderIndex - 1);
+	      }
 	    }
 	  }
 
@@ -380,12 +511,16 @@ webpackJsonp([5],{
 	// </script>
 
 /***/ },
-
-/***/ 28:
+/* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"datepicker\">\r\n\r\n  <div class=\"date-picker\" v-if=\"show === 'date'\">\r\n    <table>\r\n      <thead>\r\n        <tr class=\"header\">\r\n          <th class=\"prev\"><i class=\"fa fa-angle-left\"></i></th>\r\n          <th colspan=\"5\" class=\"switch\" v-on:click=\"switchView2Month\">{{ viewYear }}年 {{ viewMonth }}月</th>\r\n          <th class=\"next\"><i class=\"fa fa-angle-right\"></i></th>\r\n        </tr>\r\n        <tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr v-for=\"row in dates\" track-by=\"$index\">\r\n          <td v-for=\"date in row\" track-by=\"$index\" v-bind:class=\"['date', date.old ? 'old' : date.new ? 'new' : '', date.active ? 'active': '']\">{{ date.show }}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n  <div class=\"month-picker\" v-if=\"show === 'month'\">\r\n    <table>\r\n      <thead>\r\n        <tr class=\"header\">\r\n          <th class=\"prev\"><i class=\"fa fa-angle-left\"></i></th>\r\n          <th colspan=\"5\" class=\"switch\" v-on:click=\"switchView2Year\">{{ viewYear }}年</th>\r\n          <th class=\"next\"><i class=\"fa fa-angle-right\"></i></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr>\r\n          <td colspan=\"7\">\r\n            <span v-for=\"month in months\" track-by=\"$index\" v-bind:class=\"['month', month.old ? 'old' : month.new ? 'new' : '', month.active ? 'active': '']\">{{ month.show }}</span>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n  <div class=\"year-picker\" v-if=\"show === 'year'\">\r\n    <table>\r\n      <thead>\r\n        <tr class=\"header\">\r\n          <th class=\"prev\"><i class=\"fa fa-angle-left\"></i></th>\r\n          <th colspan=\"5\" class=\"switch\">{{ viewYear }}年</th>\r\n          <th class=\"next\"><i class=\"fa fa-angle-right\"></i></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr>\r\n          <td colspan=\"7\">\r\n            <span v-for=\"year in years\" track-by=\"$index\" v-bind:class=\"['year', year.old ? 'old' : year.new ? 'new' : '', year.active ? 'active': '']\">{{ year.show }}</span>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n</div>";
+	module.exports = "<div v-on:click=\"handleClick\" class=\"tag-input\"><span v-for=\"tag in tags\" track-by=\"$index\" v-if=\"$index &lt; holderIndex\" v-bind:class=\"['label-' + labelStyle]\" class=\"label\">{{ tag }} <i class=\"fa fa-close close\" v-on:click=\"deleteTag($index)\"></i></span><span v-bind:style=\"holderStyle\" class=\"holder\"><input type=\"text\" v-model=\"newTag\" v-el:input=\"v-el:input\" v-on:keydown.enter.prevent=\"addTag\" v-on:keydown.left=\"moveLeft\" v-on:keydown.right=\"moveRight\" v-on:keydown.8=\"backDelete\"/></span><span v-for=\"tag in tags\" track-by=\"$index\" v-if=\"$index &gt;= holderIndex\" v-bind:class=\"['label-' + labelStyle]\" class=\"label\">{{ tag }} <i class=\"fa fa-close close\" v-on:click=\"deleteTag($index)\"></i></span><div v-el:calculator=\"v-el:calculator\" class=\"calculate-holder\">{{ calculateTag }}</div></div>";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"grid padding\"><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\"/></div><div class=\"form-control\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\"/></div><div class=\"form-control\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\"/></div><div class=\"form-control\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\"/></div><div class=\"form-control\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\"/></div><div class=\"form-control\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\"></textarea></div><div class=\"form-control\"><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option1</label><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option2</label><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option3</label></div><div class=\"form-control\"><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option1</label><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option2</label><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option3</label></div><div class=\"form-control\"><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>A</label><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>B</label><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>C</label></div><div class=\"form-control\"><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A1</label><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A2</label><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A3</label></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control\"><label for=\"name2\">Name</label><input type=\"text\" placeholder=\"input your name\" id=\"name2\" class=\"field-md\"/></div><div class=\"form-control\"><label for=\"password2\">Password</label><input type=\"password\" placeholder=\"input password\" id=\"password2\" class=\"field-md\"/></div><div class=\"form-control\"><label for=\"content2\">Textarea</label><textarea id=\"content2\" rows=\"5\" class=\"field-md\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control u-sm-8\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\"/></div><div class=\"form-control u-sm-8\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\"/></div><div class=\"form-control u-sm-8\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\"/></div><div class=\"form-control u-sm-8\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\"/></div><div class=\"form-control u-sm-8\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\"/></div><div class=\"form-control u-sm-8\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control u-sm-16\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control u-sm-8\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\" class=\"field-md\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control u-sm-16\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\" class=\"field-md\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><h3>.tag-input</h3><tag-input v-bind:tags.sync=\"tags\"></tag-input></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><h3>.tag-input</h3><tag-input v-bind:tags.sync=\"tags2\" label-style=\"primary\"></tag-input></div></div></div>";
 
 /***/ }
-
-});
+]);

@@ -9,7 +9,7 @@
   </div>
   <div class="u-sm-8">
     <div class="box padding">
-      <date-input v-bind:date.sync="yourDate" format="yyyy-MM-dd"></date-input>
+      <date-input v-bind:date.sync="yourDate" format="yyyy-MM-dd">pick a date via date-input</date-input>
     </div>
   </div>
 </div>
