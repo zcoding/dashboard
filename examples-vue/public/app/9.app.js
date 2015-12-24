@@ -48,15 +48,55 @@ webpackJsonp([9],{
 
 	//     <div class="margin-top">
 
-	//       <tab>
+	//       <tab v-bind:active="2">
 
 	//         <tab-item menu="Home">
 
 	//           <p>content 1</p>
 
-	//           <p>content 1</p>
+	//         </tab-item>
 
-	//           <p>content 1</p>
+	//         <tab-item menu="Button">
+
+	//           <p>content 2</p>
+
+	//           <p>content 2</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Form">
+
+	//           <p>content 3</p>
+
+	//           <p>content 3</p>
+
+	//           <p>content 3</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Tab">
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Panel">
+
+	//           <p>content 5</p>
+
+	//           <p>content 5</p>
+
+	//           <p>content 5</p>
+
+	//           <p>content 5</p>
+
+	//           <p>content 5</p>
 
 	//         </tab-item>
 
@@ -90,7 +130,7 @@ webpackJsonp([9],{
 /***/ 61:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab>\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n          <p>content 1</p>\r\n          <p>content 1</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab v-bind:active=\"2\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Panel\">\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n</div>";
 
 /***/ },
 
@@ -118,7 +158,7 @@ webpackJsonp([9],{
 /***/ 64:
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -129,9 +169,17 @@ webpackJsonp([9],{
 
 	//   <ul class="nav">
 
-	//     <li v-for="item in items"><a href="javascript:;">{{ item.menu }}</a></li>
+	//     <li v-for="item in items"
 
-	//     <div class="indicator"></div>
+	//       v-bind:class="{'active': active === $index}"
+
+	//       v-bind:style="{width: itemWidth}">
+
+	//       <a href="javascript:;" v-on:click.prevent="selectItem($index, item)">{{ item.menu }}</a>
+
+	//     </li>
+
+	//     <div class="indicator" v-bind:style="{width: itemWidth, left: offsetLeft}"></div>
 
 	//   </ul>
 
@@ -149,13 +197,37 @@ webpackJsonp([9],{
 
 	exports.default = {
 
-	  props: {},
+	  props: {
+	    active: {
+	      type: Number,
+	      default: 0
+	    }
+	  },
 
 	  data: function data() {
 	    return {
 	      items: []
 	    };
+	  },
+
+	  computed: {
+	    itemWidth: function itemWidth() {
+	      return this.items.length > 0 ? 100 / this.items.length + '%' : '';
+	    },
+	    offsetLeft: function offsetLeft() {
+	      if (this.items.length === 0) {
+	        return '';
+	      }
+	      return 100 / this.items.length * this.active + '%';
+	    }
+	  },
+
+	  methods: {
+	    selectItem: function selectItem(index, item) {
+	      this.active = index;
+	    }
 	  }
+
 	};
 
 	// </script>
@@ -165,7 +237,7 @@ webpackJsonp([9],{
 /***/ 65:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"tab\">\r\n  <ul class=\"nav\">\r\n    <li v-for=\"item in items\"><a href=\"javascript:;\">{{ item.menu }}</a></li>\r\n    <div class=\"indicator\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"tab\">\r\n  <ul class=\"nav\">\r\n    <li v-for=\"item in items\"\r\n      v-bind:class=\"{'active': active === $index}\"\r\n      v-bind:style=\"{width: itemWidth}\">\r\n      <a href=\"javascript:;\" v-on:click.prevent=\"selectItem($index, item)\">{{ item.menu }}</a>\r\n    </li>\r\n    <div class=\"indicator\" v-bind:style=\"{width: itemWidth, left: offsetLeft}\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
 
 /***/ },
 
@@ -200,7 +272,7 @@ webpackJsonp([9],{
 	});
 	// <template>
 
-	// <div class="tab-pane active">
+	// <div class="tab-pane" v-bind:class="{'active': index === $parent.active}">
 
 	//   <slot></slot>
 
@@ -223,6 +295,12 @@ webpackJsonp([9],{
 	    this.$parent.items.push({
 	      menu: this.menu
 	    });
+	    this.index = this.$parent.items.length - 1;
+	  },
+	  data: function data() {
+	    return {
+	      index: 0
+	    };
 	  }
 	};
 
@@ -233,7 +311,7 @@ webpackJsonp([9],{
 /***/ 69:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"tab-pane active\">\r\n  <slot></slot>\r\n</div>";
+	module.exports = "<div class=\"tab-pane\" v-bind:class=\"{'active': index === $parent.active}\">\r\n  <slot></slot>\r\n</div>";
 
 /***/ }
 

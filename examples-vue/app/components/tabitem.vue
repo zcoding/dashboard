@@ -1,6 +1,6 @@
 <template>
 
-<div class="tab-pane active">
+<div class="tab-pane" v-bind:class="{'active': index === $parent.active}">
   <slot></slot>
 </div>
 
@@ -21,7 +21,15 @@ export default {
     this.$parent.items.push({
       menu: this.menu
     });
+    this.index = this.$parent.items.length - 1;
+  },
+
+  data() {
+    return {
+      index: 0
+    };
   }
+
 };
 
 </script>
