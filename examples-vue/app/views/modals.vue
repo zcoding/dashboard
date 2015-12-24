@@ -6,6 +6,7 @@
       <button class="btn btn-dark float radius" type="button" v-on:click="openModal">open modal</button>
       <button class="btn btn-primary float radius" type="button" v-on:click="openAlert">open alert</button>
       <button class="btn btn-danger float radius" type="button" v-on:click="openConfirm">open confirm</button>
+      <button class="btn btn-info float radius" type="button" v-on:click="openPrompt">open prompt</button>
     </div>
   </div>
 
@@ -34,6 +35,8 @@
   <modal-confirm v-bind:show.sync="showConfirm" question="Are you sure to delete this item?" v-on:modal-confrim-ok="confirmOK">
     <p>Warning: Once you delete, you can never find it back.</p>
   </modal-confirm>
+
+  <modal-prompt v-bind:show.sync="showPrompt" title="Input what you want:" v-on:modal-prompt-ok="promptOK"></modal-prompt>
 </div>
 
 </template>
@@ -43,16 +46,18 @@
 import modal from 'components/modal.vue';
 import modalAlert from 'components/alert.vue';
 import modalConfirm from 'components/confirm.vue';
+import modalPrompt from 'components/prompt.vue';
 
 export default {
 
-  components: { modal, modalAlert, modalConfirm },
+  components: { modal, modalAlert, modalConfirm, modalPrompt },
 
   data() {
     return {
       showModal: false,
       showAlert: false,
-      showConfirm: false
+      showConfirm: false,
+      showPrompt: false
     };
   },
 
@@ -74,6 +79,14 @@ export default {
     confirmOK() {
       console.log('year');
       this.showConfirm = false;
+    },
+
+    openPrompt() {
+      this.showPrompt = true;
+    },
+    promptOK(output) {
+      console.log(output);
+      this.showPrompt = false;
     }
   }
 
