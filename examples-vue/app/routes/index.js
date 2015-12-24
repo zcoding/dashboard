@@ -42,6 +42,17 @@ export default {
         }
       }
     }
+  },
+
+  "/tab": {
+    component: {
+      template: '<page-tabs></page-tabs>',
+      components: {
+        "pageTabs": function(resolve) {
+          require(['views/tabs.vue'], resolve);
+        }
+      }
+    }
   }
 
 };
