@@ -3,29 +3,68 @@ extends ./layout.jade
 block content
   .gird
     .u-sm-16
-      .margin-top
-        ul.tab
-          li(style="width:25%;")
-            a(href="/") Home
-          li(style="width:25%;").active
-            a(href="/button") Button
-          li(style="width:25%;")
-            a(href="/form") Form
-          li(style="width:25%;")
-            a(href="/table") Table
-          .indicator(style="width:422.5px;left:422.5px;")
+      .tab.margin-top#mytab1
+        ul.nav
+          li
+            a(href="javascript:;") Home
+          li.active
+            a(href="javascript:;") Button
+          li
+            a(href="javascript:;") Form
+          li
+            a(href="javascript:;") Table
+          .indicator
         .tab-content
-          .tab-pane conten conten conten
+          .tab-pane
+            p conten conten conten1
+          .tab-pane
+            p conten conten conten2
+            p conten conten conten2
+          .tab-pane
+            p conten conten conten3
+            p conten conten conten3
+            p conten conten conten3
+            p conten conten conten3
+          .tab-pane.active
+            p conten conten conten4
+            p conten conten conten4
+            p conten conten conten4
+            p conten conten conten4
+            p conten conten conten4
 
-      ul.tab.tab-secondary
-          li(style="width:25%;")
-            a(href="/") Home
-          li(style="width:25%;").active
-            a(href="/button") Button
-          li(style="width:25%;")
-            a(href="/form") Form
-          li(style="width:25%;")
-            a(href="/table") Table
-          .indicator(style="width:422.5px;left:422.5px;")
+    .u-sm-8
+      .tab.tab-secondary#mytab2
+        ul.nav
+          li
+            a(href="javascript:;") Home
+          li.active
+            a(href="javascript:;") Button
+          li
+            a(href="javascript:;") Form
+          li
+            a(href="javascript:;") Table
+          .indicator
         .tab-content
-          .tab-pane conten conten conten
+          .tab-pane
+            p conten conten conten1
+          .tab-pane.active
+            p conten conten conten2
+            p conten conten conten2
+          .tab-pane
+            p conten conten conten3
+            p conten conten conten3
+            p conten conten conten3
+            p conten conten conten3
+          .tab-pane
+            p conten conten conten4
+            p conten conten conten4
+            p conten conten conten4
+            p conten conten conten4
+            p conten conten conten4
+
+append script
+  script.
+    $(function() {
+      $('#mytab1').tab({ active: 3 });
+      $('#mytab2').tab({ active: 1 });
+    });

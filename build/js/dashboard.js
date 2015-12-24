@@ -280,14 +280,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
   });
 })(jQuery);
-"use strict";
+'use strict';
 
 (function ($) {
 
   $.fn.extend({
     tab: function tab(options) {
-      return this.each(function (index, ele) {
-        var $this = $(ele);
+      var _this = this;
+
+      return this.each(function () {
+        var activeIndex = options.active;
+        var $this = _this;
+        var Width = $this.width();
+        var $nav = $this.children('.nav');
+        var $items = $nav.children('li'),
+            $indicator = $nav.children('.indicator');
+        var ItemLength = $items.length;
+
+        var $panes = $this.find('.tab-content .tab-pane');
+        $panes.removeClass('active').eq(activeIndex).addClass('active');
+
+        $items.css({
+          width: 1 / ItemLength * 100 + '%'
+        });
+        var itemWidth = $items.width();
+        $indicator.css({
+          width: itemWidth + 'px',
+          left: activeIndex * itemWidth
+        });
+
+        $this.on('click', '.nav > li', function (event) {
+          var $target = $(event.currentTarget);
+          activeIndex = $target.index();
+          $items.removeClass('active').eq(activeIndex).addClass('active');
+          $panes.removeClass('active').eq(activeIndex).addClass('active');
+          $indicator.css({
+            left: activeIndex * itemWidth
+          });
+        });
       });
     }
   });
