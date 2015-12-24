@@ -350,8 +350,46 @@ webpackJsonp([4],{
 
 	var _alert2 = _interopRequireDefault(_alert);
 
+	var _confirm = __webpack_require__(51);
+
+	var _confirm2 = _interopRequireDefault(_confirm);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	exports.default = {
+
+	  components: { modal: _modal2.default, modalAlert: _alert2.default, modalConfirm: _confirm2.default },
+
+	  data: function data() {
+	    return {
+	      showModal: false,
+	      showAlert: false,
+	      showConfirm: false
+	    };
+	  },
+
+	  methods: {
+	    openModal: function openModal() {
+	      this.showModal = true;
+	    },
+	    closeModal: function closeModal() {
+	      this.showModal = false;
+	    },
+	    openAlert: function openAlert() {
+	      this.showAlert = true;
+	    },
+	    openConfirm: function openConfirm() {
+	      this.showConfirm = true;
+	    },
+	    confirmOK: function confirmOK() {
+	      console.log('year');
+	      this.showConfirm = false;
+	    }
+	  }
+
+	};
+
+	// </script>
 	// <template>
 
 	// <div class="grid">
@@ -360,9 +398,11 @@ webpackJsonp([4],{
 
 	//     <div class="box margin-top padding">
 
-	//       <button class="btn btn-primary float radius" type="button" v-on:click="openModal">open modal</button>
+	//       <button class="btn btn-dark float radius" type="button" v-on:click="openModal">open modal</button>
 
 	//       <button class="btn btn-primary float radius" type="button" v-on:click="openAlert">open alert</button>
+
+	//       <button class="btn btn-danger float radius" type="button" v-on:click="openConfirm">open confirm</button>
 
 	//     </div>
 
@@ -408,38 +448,17 @@ webpackJsonp([4],{
 
 	//   </modal-alert>
 
+	//   <modal-confirm v-bind:show.sync="showConfirm" question="Are you sure to delete this item?" v-on:modal-confrim-ok="confirmOK">
+
+	//     <p>Warning: Once you delete, you can never find it back.</p>
+
+	//   </modal-confirm>
+
 	// </div>
 
 	// </template>
 
 	// <script>
-
-	exports.default = {
-
-	  components: { modal: _modal2.default, modalAlert: _alert2.default },
-
-	  data: function data() {
-	    return {
-	      showModal: false,
-	      showAlert: false
-	    };
-	  },
-
-	  methods: {
-	    openModal: function openModal() {
-	      this.showModal = true;
-	    },
-	    closeModal: function closeModal() {
-	      this.showModal = false;
-	    },
-	    openAlert: function openAlert() {
-	      this.showAlert = true;
-	    }
-	  }
-
-	};
-
-	// </script>
 
 /***/ },
 
@@ -632,7 +651,7 @@ webpackJsonp([4],{
 /***/ 43:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openAlert\">open alert</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n\r\n  <modal-alert v-bind:show.sync=\"showAlert\" title=\"Alert modal\">\r\n    <p>This is message alert...</p>\r\n  </modal-alert>\r\n</div>";
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-dark float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openAlert\">open alert</button>\r\n      <button class=\"btn btn-danger float radius\" type=\"button\" v-on:click=\"openConfirm\">open confirm</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n\r\n  <modal-alert v-bind:show.sync=\"showAlert\" title=\"Alert modal\">\r\n    <p>This is message alert...</p>\r\n  </modal-alert>\r\n\r\n  <modal-confirm v-bind:show.sync=\"showConfirm\" question=\"Are you sure to delete this item?\" v-on:modal-confrim-ok=\"confirmOK\">\r\n    <p>Warning: Once you delete, you can never find it back.</p>\r\n  </modal-confirm>\r\n</div>";
 
 /***/ },
 
@@ -730,6 +749,112 @@ webpackJsonp([4],{
 /***/ function(module, exports) {
 
 	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">\r\n      {{ title }}\r\n      <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n</modal>";
+
+/***/ },
+
+/***/ 51:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(52)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(53)
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\confirm.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 52:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _modal = __webpack_require__(38);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+
+	  components: { modal: _modal2.default },
+
+	  props: {
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    question: {
+	      type: String,
+	      default: 'Message:'
+	    }
+	  },
+
+	  methods: {
+	    closeModal: function closeModal() {
+	      this.show = false;
+	    },
+	    confirmOK: function confirmOK() {
+	      this.$dispatch('modal-confrim-ok');
+	    }
+	  }
+
+	};
+
+	// </script>
+	// <template>
+
+	// <modal v-bind:show.sync="show">
+
+	//   <div class="modal-header" slot="header">
+
+	//     <div class="title">{{ question }}</div>
+
+	//   </div>
+
+	//   <div class="modal-body" slot="body">
+
+	//     <slot></slot>
+
+	//   </div>
+
+	//   <div class="modal-footer cf" slot="footer">
+
+	//     <div class="fr">
+
+	//       <button class="btn radius" v-on:click="closeModal">取消</button>
+
+	//       <button class="btn btn-dark radius" v-on:click="confirmOK">确定</button>
+
+	//     </div>
+
+	//   </div>
+
+	// </modal>
+
+	// </template>
+
+	// <script>
+
+/***/ },
+
+/***/ 53:
+/***/ function(module, exports) {
+
+	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">{{ question }}</div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n  <div class=\"modal-footer cf\" slot=\"footer\">\r\n    <div class=\"fr\">\r\n      <button class=\"btn radius\" v-on:click=\"closeModal\">取消</button>\r\n      <button class=\"btn btn-dark radius\" v-on:click=\"confirmOK\">确定</button>\r\n    </div>\r\n  </div>\r\n</modal>";
 
 /***/ }
 

@@ -3,8 +3,9 @@
 <div class="grid">
   <div class="u-sm-16">
     <div class="box margin-top padding">
-      <button class="btn btn-primary float radius" type="button" v-on:click="openModal">open modal</button>
+      <button class="btn btn-dark float radius" type="button" v-on:click="openModal">open modal</button>
       <button class="btn btn-primary float radius" type="button" v-on:click="openAlert">open alert</button>
+      <button class="btn btn-danger float radius" type="button" v-on:click="openConfirm">open confirm</button>
     </div>
   </div>
 
@@ -29,6 +30,10 @@
   <modal-alert v-bind:show.sync="showAlert" title="Alert modal">
     <p>This is message alert...</p>
   </modal-alert>
+
+  <modal-confirm v-bind:show.sync="showConfirm" question="Are you sure to delete this item?" v-on:modal-confrim-ok="confirmOK">
+    <p>Warning: Once you delete, you can never find it back.</p>
+  </modal-confirm>
 </div>
 
 </template>
@@ -37,15 +42,17 @@
 
 import modal from 'components/modal.vue';
 import modalAlert from 'components/alert.vue';
+import modalConfirm from 'components/confirm.vue';
 
 export default {
 
-  components: { modal, modalAlert },
+  components: { modal, modalAlert, modalConfirm },
 
   data() {
     return {
       showModal: false,
-      showAlert: false
+      showAlert: false,
+      showConfirm: false
     };
   },
 
@@ -59,6 +66,14 @@ export default {
 
     openAlert() {
       this.showAlert = true;
+    },
+
+    openConfirm() {
+      this.showConfirm = true;
+    },
+    confirmOK() {
+      console.log('year');
+      this.showConfirm = false;
     }
   }
 
