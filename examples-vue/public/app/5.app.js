@@ -466,6 +466,94 @@ webpackJsonp([5],{
 
 	//   </div>
 
+	//   <div class="u-sm-8">
+
+	//       <tab color="danger">
+
+	//         <tab-item menu="Home">
+
+	//           <p>content 1</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Button">
+
+	//           <p>content 2</p>
+
+	//           <p>content 2</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Form">
+
+	//           <p>content 3</p>
+
+	//           <p>content 3</p>
+
+	//           <p>content 3</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Tab">
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//         </tab-item>
+
+	//       </tab>
+
+	//   </div>
+
+	//   <div class="u-sm-8">
+
+	//       <tab color="secondary">
+
+	//         <tab-item menu="Home">
+
+	//           <p>content 1</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Button">
+
+	//           <p>content 2</p>
+
+	//           <p>content 2</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Form">
+
+	//           <p>content 3</p>
+
+	//           <p>content 3</p>
+
+	//           <p>content 3</p>
+
+	//         </tab-item>
+
+	//         <tab-item menu="Tab">
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//           <p>content 4</p>
+
+	//         </tab-item>
+
+	//       </tab>
+
+	//   </div>
+
 	// </div>
 
 	// </template>
@@ -698,7 +786,7 @@ webpackJsonp([5],{
 /***/ 67:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab v-bind:active=\"1\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Panel\">\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab color=\"info\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab v-bind:active=\"1\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Panel\">\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab color=\"info\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"danger\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"secondary\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n\r\n</div>";
 
 /***/ },
 
