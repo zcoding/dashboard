@@ -1,66 +1,75 @@
 @import "mixins";
 
 .tab {
-  position: relative;
-  list-style-type: none;
-  background-color: #FFF;
-  margin: 0;
   padding: 0;
-
-  &:before, &:after {
-    display: table;
-    content: ' ';
-  }
-  &:after {
-    clear: both;
-  }
-
-  li {
+  margin-bottom: 1em;
+  border: 0;
+  .nav {
+    position: relative;
     list-style-type: none;
+    background-color: #FFF;
     margin: 0;
     padding: 0;
-    float: left;
-    &:not(:first-child) {
-      border-left: 1px solid #efefef;
+
+    &:before, &:after {
+      display: table;
+      content: ' ';
     }
-    a {
-      display: block;
-      padding: 0 2em;
-      height: 3em;
-      line-height: 3em;
-      text-align: center;
-      font-weight: 500;
-      color: #333;
-      -webkit-transition: color 300ms ease 0s;
-      transition: color 300ms ease 0s;
-      &:hover {
-        color: #0cc2aa;
-      }
+    &:after {
+      clear: both;
     }
 
-    &.active {
+    li {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      float: left;
+      &:not(:first-child) {
+        border-left: 1px solid #efefef;
+      }
       a {
-        color: #0cc2aa;
+        display: block;
+        padding: 0 2em;
+        height: 3em;
+        line-height: 3em;
+        text-align: center;
+        font-weight: 500;
+        color: #333;
+        -webkit-transition: color 300ms ease 0s;
+        transition: color 300ms ease 0s;
+        &:hover {
+          color: #0cc2aa;
+        }
+      }
+
+      &.active {
+        a {
+          color: #0cc2aa;
+        }
+      }
+    }
+
+    .indicator {
+      position: absolute;
+      background-color: #0cc2aa;
+      bottom: 0;
+      height: 2px;
+      position: absolute;
+      will-change: left, right;
+    }
+
+    & + .tab-content {
+      background-color: #FFF;
+      border-top: 1px solid #efefef;
+      overflow: hidden;
+      .tab-pane {
+        display: none;
+        padding: 1em;
+        &.active {
+          display: block;
+        }
       }
     }
   }
-
-  .indicator {
-    position: absolute;
-    background-color: #0cc2aa;
-    bottom: 0;
-    height: 2px;
-    position: absolute;
-    will-change: left, right;
-  }
-
-  & + .tab-content {
-    background-color: #FFF;
-    margin-bottom: 1em;
-    border-top: 1px solid #efefef;
-    padding: 1em;
-  }
+  @include make-colorful-tabs();
 }
-
-
-@include make-colorful-tabs();

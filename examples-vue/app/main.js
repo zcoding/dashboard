@@ -13,7 +13,13 @@ var router = new VueRouter();
 
 let App = Vue.extend({
 
-  components: { sidebar }
+  components: { sidebar },
+
+  methods: {
+    globalClickHandler(event) {
+      this.$broadcast('dismiss', event);
+    }
+  }
 
 });
 

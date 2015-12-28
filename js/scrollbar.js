@@ -1,26 +1,58 @@
 (($) => {
 
+  const Defaults = {
+    style: 'dark'
+  };
+
   function scrollbar(options) {
+
+    options = $.extend({}, Defaults, options);
+
     return this.each((index, ele) => {
 
-      const HEIGHT = this.innerHeight();
-      let $scrollbar = this.children('.scrollbar'), $scrollContent = this.children('.scroll-content');
+      let $parent = this.parent(), $scrollbar = $(`<div class="scrollbar ${options.style}">`);
+      if (!/relative|absolute|fixed/.test($parent.css('position'))) {
+        $parent.css({ "position": "relative" });
+      }
+      $parent.append($scrollbar);
 
-      const CONTENT_HEIGHT = $scrollContent.outerHeight(true);
-
-      const ratio = HEIGHT / CONTENT_HEIGHT * 100;
-
-      $scrollbar.css({
-        height: ratio + '%'
+      const ContentHeight = this[0].scrollHeight;
+      this.css({
+        overflow: 'hidden'
       });
 
+      const Height = this.outerHeight();
+      const ScrollbarHeight = Height / ContentHeight * Height;
+      const MaxMoveHeight = ContentHeight - Height;
+
+      const Width = this.innerWidth();
+      const Position = this.position();
+      const MarginTop = parseInt(this.css('marginTop'));
+      const PaddingRight = $parent.css('paddingRight');
+      $scrollbar.css({
+        top: Position.top + MarginTop + 'px',
+        right: PaddingRight,
+        height: ScrollbarHeight
+      });
+      $scrollbar[0].offsetWidth;
+      $scrollbar.addClass('active');
+
       this.on('mousewheel', (e) => {
-        var delta = e.originalEvent.wheelDeltaY;
-        var move = -delta;
+        var delta = e.originalEvent.wheelDeltaY < 0 ? -50 : 50;
+        let currentScrollTop = this.scrollTop();
+        let move = currentScrollTop - delta;
+        move = move < 0 ? 0 : (move > MaxMoveHeight ? MaxMoveHeight : move);
         this.scrollTop(move);
+
+        let scrollbarMove = move / ContentHeight * Height;
         $scrollbar.css({
-          top: move + 'px'
+          top: Position.top + MarginTop + scrollbarMove + 'px'
         });
+
+        if (move > 0 && move < MaxMoveHeight) {
+          e.preventDefault();
+        }
+
       });
 
     });

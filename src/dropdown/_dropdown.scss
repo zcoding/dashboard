@@ -2,15 +2,28 @@
   position: relative;
 
   .dropdown-menu {
+    display: none;
+    list-style-type: none;
     position: absolute;
     top: 100%;
     left: 0;
-    list-style-type: none;
-    margin: 2px 0;
+    min-width: 10em;
+    margin: 0;
     padding: 0;
     background-color: #FFF;
-    border: 1px solid #ececec;
+    border: 1px solid #BFBFBF;
     border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .13);
+    &.active {
+      display: block;
+      transform: translate3d(0, -10px, 0);
+      opacity: 0;
+      transition: transform 300ms ease 0s, opacity 300ms ease 0s;
+      &.in {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+    }
 
     li {
       list-style-type: none;
@@ -20,13 +33,19 @@
         overflow: hidden;
         background-color: #e5e5e5;
       }
-      &.title {
+      &.title, &.static {
         padding: 5px 1em;
         cursor: default;
-        color: #888;
         a {
           display: inline;
         }
+      }
+      &.static {
+        color: #333;
+      }
+      &.title {
+        color: #555;
+        font-weight: 700;
       }
 
       a {
