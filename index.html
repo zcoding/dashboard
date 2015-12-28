@@ -238,6 +238,21 @@
               <label class="field-switch"><input type="radio" name="radio2"><i></i> B</label>
               <label class="field-switch"><input type="radio" name="radio2"><i></i> C</label>
             </div>
+            <div class="form-control">
+              <label>Tags input</label>
+              <div class="tag-input">
+                <span class="label label-danger">danger <i class="fa fa-close close"></i></span>
+                <span class="label label-warning">warning <i class="fa fa-close close"></i></span>
+                <span class="label label-primary">primary <i class="fa fa-close close"></i></span>
+                <span class="label label-secondary">secondary <i class="fa fa-close close"></i></span>
+                <span class="label label-success">success <i class="fa fa-close close"></i></span>
+                <span class="label label-tips">tips <i class="fa fa-close close"></i></span>
+                <span class="label label-info">info <i class="fa fa-close close"></i></span>
+                <span class="label label-dark">dark <i class="fa fa-close close"></i></span>
+                <span class="holder"><input type="text"></span>
+                <div class="calculate-holder"></div>
+              </div>
+            </div>
           </fieldset>
         </form>
         <h2 id="datepicker"><a href="#datepicker">Datepicker</a></h2>
@@ -255,15 +270,65 @@
         </div>
         <h2 id="tabs"><a href="#tabs">Tabs</a></h2>
         <div class="u-sm-16">
-          <ul class="tab tab-secondary">
-            <li style="width:25%;"><a href="#buttons">Button</a></li>
-            <li style="width:25%;" class="active"><a href="#tabs">Tabs</a></li>
-            <li style="width:25%;"><a href="#panels">Panels</a></li>
-            <li style="width:25%;"><a href="#form">Form</a></li>
-            <div class="indicator" style="width:241px;left:241px;"></div>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane"> conten conten conten</div>
+          <div class="tab tab-secondary" id="mytab1">
+            <ul class="nav">
+              <li><a href="javascript:;">Button</a></li>
+              <li><a href="javascript:;">Tabs</a></li>
+              <li><a href="javascript:;">Panels</a></li>
+              <li class="active"><a href="javascript:;">Form</a></li>
+              <div class="indicator"></div>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane">
+                <p>conten1 conten1 conten1</p>
+                <p>conten1 conten1 conten1</p>
+                <p>conten1 conten1 conten1</p>
+                <p>conten1 conten1 conten1</p>
+                <p>conten1 conten1 conten1</p>
+                <p>conten1 conten1 conten1</p>
+              </div>
+              <div class="tab-pane">
+                <p>conten2 conten2 conten2</p>
+                <p>conten2 conten2 conten2</p>
+                <p>conten2 conten2 conten2</p>
+                <p>conten2 conten2 conten2</p>
+                <p>conten2 conten2 conten2</p>
+                <p>conten2 conten2 conten2</p>
+              </div>
+              <div class="tab-pane">
+                <p>conten3 conten3 conten3</p>
+                <p>conten3 conten3 conten3</p>
+                <p>conten3 conten3 conten3</p>
+                <p>conten3 conten3 conten3</p>
+                <p>conten3 conten3 conten3</p>
+                <p>conten3 conten3 conten3</p>
+              </div>
+              <div class="tab-pane active">
+                <p>conten4 conten4 conten4</p>
+                <p>conten4 conten4 conten4</p>
+                <p>conten4 conten4 conten4</p>
+                <p>conten4 conten4 conten4</p>
+                <p>conten4 conten4 conten4</p>
+                <p>conten4 conten4 conten4</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 id="modals"><a href="#modals">Modals</a></h2>
+        <p><button id="modal-trigger" class="btn btn-primary float radius" type="button">modal open</button></p>
+        <div class="modal fade modal-primary" id="modal">
+          <div class="modal-dialog">
+            <div class="modal-header">
+              <div class="title">Modal header</div>
+              <span class="fa fa-close close" data-modal-close></span>
+            </div>
+            <div class="modal-body">modal body</div>
+            <div class="modal-footer cf">
+              <div class="fr">
+                <button class="btn radius" type="button" data-modal-close>Cancel</button>
+                <button class="btn btn-dark radius" type="button">Confirm</button>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -272,13 +337,21 @@
   <script src="assets/lib/jquery/2.1.4/jquery-2.1.4.min.js"></script>
   <script src="build/js/dashboard.min.js"></script>
   <script>
-  $('#date-picker').datepicker({
-    date: '2015-12-20'
-  }).on('datechange.datepicker', (event, date) => {
-    $('#current-date').html(`${date.year}-${date.month}-${date.date}`);
-  });
-  $('#date-input').datepicker({
-    date: '2015-12-22'
+  $(function() {
+    $('#date-picker').datepicker({
+      date: '2015-12-20'
+    }).on('datechange.datepicker', (event, date) => {
+      $('#current-date').html(`${date.year}-${date.month}-${date.date}`);
+    });
+    $('#date-input').datepicker({
+      date: '2015-12-22'
+    });
+    $('#mytab1').tab({ active: 3 });
+    $('#modal-trigger').click(function(evt) {
+      $('#modal')
+        .modal('show');
+    });
+    $('.tag-input').tagsinput();
   });
   </script>
 </body>
