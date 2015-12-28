@@ -4,7 +4,8 @@ block content
   .grid
     .u-sm-16
       .box.padding.margin-top
-        .btn.btn-primary.dropdown what is dropdown
+        .dropdown#dropdown
+          .btn.btn-primary(data-dropdown-trigger) what is dropdown
           ul.dropdown-menu
             li.title i am title
             li.separator
@@ -14,3 +15,8 @@ block content
               a(href="#") menu1
             li
               a(href="#") menu1
+            li.static static text
+
+append script
+  script.
+    $('#dropdown').dropdown();

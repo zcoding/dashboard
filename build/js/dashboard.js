@@ -139,14 +139,41 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
     return this;
   };
 })(jQuery);
-"use strict";
+'use strict';
 
 (function ($) {
 
   $.fn.extend({
     dropdown: function dropdown(options) {
+      var _this = this;
+
       return this.each(function (index, ele) {
-        var $this = $(ele);
+        var $trigger = _this.children('[data-dropdown-trigger]'),
+            $menu = _this.children('.dropdown-menu');
+        var data = _this.data('dropdown');
+        if (data == null) {
+          data = {
+            show: false
+          };
+          _this.data('dropdown', data);
+        }
+        $trigger.on('click', function () {
+          var data = _this.data('dropdown');
+          if (data.show) {
+            data.show = false;
+            $menu.one('webkitTransitionEnd', function () {
+              if (!data.show) {
+                // Must check current status
+                $menu.removeClass('active');
+              }
+            }).removeClass('in');
+          } else {
+            data.show = true;
+            $menu.addClass('active');
+            $menu[0].offsetWidth; // Must force reflow
+            $menu.addClass('in');
+          }
+        });
       });
     }
   });
@@ -326,30 +353,60 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (function ($) {
 
+  var Defaults = {
+    style: 'dark'
+  };
+
   function scrollbar(options) {
     var _this = this;
 
+    options = $.extend({}, Defaults, options);
+
     return this.each(function (index, ele) {
 
-      var HEIGHT = _this.innerHeight();
-      var $scrollbar = _this.children('.scrollbar'),
-          $scrollContent = _this.children('.scroll-content');
+      var $parent = _this.parent(),
+          $scrollbar = $('<div class="scrollbar ' + options.style + '">');
+      if (!/relative|absolute|fixed/.test($parent.css('position'))) {
+        $parent.css({ "position": "relative" });
+      }
+      $parent.append($scrollbar);
 
-      var CONTENT_HEIGHT = $scrollContent.outerHeight(true);
-
-      var ratio = HEIGHT / CONTENT_HEIGHT * 100;
-
-      $scrollbar.css({
-        height: ratio + '%'
+      var ContentHeight = _this[0].scrollHeight;
+      _this.css({
+        overflow: 'hidden'
       });
 
+      var Height = _this.outerHeight();
+      var ScrollbarHeight = Height / ContentHeight * Height;
+      var MaxMoveHeight = ContentHeight - Height;
+
+      var Width = _this.innerWidth();
+      var Position = _this.position();
+      var MarginTop = parseInt(_this.css('marginTop'));
+      var PaddingRight = $parent.css('paddingRight');
+      $scrollbar.css({
+        top: Position.top + MarginTop + 'px',
+        right: PaddingRight,
+        height: ScrollbarHeight
+      });
+      $scrollbar[0].offsetWidth;
+      $scrollbar.addClass('active');
+
       _this.on('mousewheel', function (e) {
-        var delta = e.originalEvent.wheelDeltaY;
-        var move = -delta;
+        var delta = e.originalEvent.wheelDeltaY < 0 ? -50 : 50;
+        var currentScrollTop = _this.scrollTop();
+        var move = currentScrollTop - delta;
+        move = move < 0 ? 0 : move > MaxMoveHeight ? MaxMoveHeight : move;
         _this.scrollTop(move);
+
+        var scrollbarMove = move / ContentHeight * Height;
         $scrollbar.css({
-          top: move + 'px'
+          top: Position.top + MarginTop + scrollbarMove + 'px'
         });
+
+        if (move > 0 && move < MaxMoveHeight) {
+          e.preventDefault();
+        }
       });
     });
   }

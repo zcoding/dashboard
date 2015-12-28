@@ -16,7 +16,6 @@
 $transition-duration: 300ms;
 
 .modal {
-
   &.fade-transition {
     display: block;
     opacity: 1;
@@ -26,7 +25,6 @@ $transition-duration: 300ms;
       transition: transform $transition-duration ease 0s;
     }
   }
-
   &.fade-enter, &.fade-leave {
     opacity: 0;
     .modal-dialog {

@@ -1,10 +1,18 @@
 <template>
 
-<div class="tab-pane" v-bind:class="{'active': index === $parent.active}">
+<div class="tab-pane" v-show="index === $parent.active" transition="move">
   <slot></slot>
 </div>
 
 </template>
+
+<style lang="sass">
+.tab .nav+.tab-content .tab-pane {
+  &.move-transition {
+    display: block;
+  }
+}
+</style>
 
 <script>
 
@@ -28,6 +36,12 @@ export default {
     return {
       index: 0
     };
+  },
+
+  transitions: {
+    move: {
+      css: false
+    }
   }
 
 };

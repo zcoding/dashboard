@@ -1869,6 +1869,8 @@ input.input-info {
     .list.list-static li a {
       display: inline;
       padding: 0; }
+      .list.list-static li a:hover {
+        background-color: transparent; }
 
 .tab {
   padding: 0;
@@ -1915,7 +1917,8 @@ input.input-info {
       will-change: left, right; }
     .tab .nav + .tab-content {
       background-color: #FFF;
-      border-top: 1px solid #efefef; }
+      border-top: 1px solid #efefef;
+      overflow: hidden; }
       .tab .nav + .tab-content .tab-pane {
         display: none;
         padding: 1em; }
@@ -1973,15 +1976,26 @@ input.input-info {
 .dropdown {
   position: relative; }
   .dropdown .dropdown-menu {
+    display: none;
+    list-style-type: none;
     position: absolute;
     top: 100%;
     left: 0;
-    list-style-type: none;
-    margin: 2px 0;
+    min-width: 10em;
+    margin: 0;
     padding: 0;
     background-color: #FFF;
-    border: 1px solid #ececec;
-    border-radius: 5px; }
+    border: 1px solid #BFBFBF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.13); }
+    .dropdown .dropdown-menu.active {
+      display: block;
+      transform: translate3d(0, -10px, 0);
+      opacity: 0;
+      transition: transform 300ms ease 0s, opacity 300ms ease 0s; }
+      .dropdown .dropdown-menu.active.in {
+        transform: translate3d(0, 0, 0);
+        opacity: 1; }
     .dropdown .dropdown-menu li {
       list-style-type: none; }
       .dropdown .dropdown-menu li.separator {
@@ -1989,12 +2003,16 @@ input.input-info {
         margin: 0;
         overflow: hidden;
         background-color: #e5e5e5; }
-      .dropdown .dropdown-menu li.title {
+      .dropdown .dropdown-menu li.title, .dropdown .dropdown-menu li.static {
         padding: 5px 1em;
-        cursor: default;
-        color: #888; }
-        .dropdown .dropdown-menu li.title a {
+        cursor: default; }
+        .dropdown .dropdown-menu li.title a, .dropdown .dropdown-menu li.static a {
           display: inline; }
+      .dropdown .dropdown-menu li.static {
+        color: #333; }
+      .dropdown .dropdown-menu li.title {
+        color: #555;
+        font-weight: 700; }
       .dropdown .dropdown-menu li a {
         display: block;
         padding: 5px 1em; }
@@ -2003,10 +2021,16 @@ input.input-info {
   position: absolute;
   right: 0;
   top: 0;
-  width: 10px;
+  width: 8px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #ABABAB;
   border-radius: 5px; }
+  .scrollbar.active {
+    transition: top 300ms cubic-bezier(0.36, 0.11, 0.64, 0.87) 0s; }
+  .scrollbar.dark {
+    background-color: rgba(0, 0, 0, 0.18); }
+  .scrollbar.light {
+    background-color: rgba(255, 255, 255, 0.18); }
 
 .tag-input {
   position: relative;
