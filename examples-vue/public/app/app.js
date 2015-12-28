@@ -98,19 +98,19 @@
 
 	'use strict';
 
-	var _vue = __webpack_require__(13);
+	var _vue = __webpack_require__(16);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vueRouter = __webpack_require__(15);
+	var _vueRouter = __webpack_require__(18);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _routes = __webpack_require__(16);
+	var _routes = __webpack_require__(19);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _sidebar = __webpack_require__(56);
+	var _sidebar = __webpack_require__(68);
 
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 
@@ -142,7 +142,7 @@
 
 /***/ },
 
-/***/ 13:
+/***/ 16:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*!
@@ -9576,11 +9576,11 @@
 	}
 
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ },
 
-/***/ 14:
+/***/ 17:
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9678,7 +9678,7 @@
 
 /***/ },
 
-/***/ 15:
+/***/ 18:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12218,7 +12218,7 @@
 
 /***/ },
 
-/***/ 16:
+/***/ 19:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12233,7 +12233,7 @@
 	      template: '<home></home>',
 	      components: {
 	        "home": function home(resolve) {
-	          __webpack_require__.e/* require */(5, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(17)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(20)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12244,7 +12244,7 @@
 	      template: '<page-form></page-form>',
 	      components: {
 	        "pageForm": function pageForm(resolve) {
-	          __webpack_require__.e/* require */(6, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(20)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(23)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12255,7 +12255,7 @@
 	      template: '<page-datetimepicker></page-datetimepicker>',
 	      components: {
 	        "pageDatetimepicker": function pageDatetimepicker(resolve) {
-	          __webpack_require__.e/* require */(7, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(26)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(29)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12266,7 +12266,7 @@
 	      template: '<page-modals></page-modals>',
 	      components: {
 	        "pageModals": function pageModals(resolve) {
-	          __webpack_require__.e/* require */(8, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(39)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(4, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(42)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12277,7 +12277,7 @@
 	      template: '<page-tabs></page-tabs>',
 	      components: {
 	        "pageTabs": function pageTabs(resolve) {
-	          __webpack_require__.e/* require */(9, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(59)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(5, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(59)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12287,10 +12287,10 @@
 
 /***/ },
 
-/***/ 56:
+/***/ 68:
 /***/ function(module, exports, __webpack_require__) {
 
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(57)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(69)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -12305,7 +12305,7 @@
 
 /***/ },
 
-/***/ 57:
+/***/ 69:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"db-aside\"><div class=\"navside\"><div class=\"nav-brand\"><h1>Dashboard</h1></div><div class=\"db-hide-scroll flex\"><nav class=\"scroll\"><ul><li><a v-link=\"{ path: '/' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">首页(Home)</span></a></li><li><a v-link=\"{ path: '/color' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">颜色(Color)</span></a></li><li><a v-link=\"{ path: '/button' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">按钮(Button)</span></a></li><li><a v-link=\"{ path: '/table' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">表格(Table)</span></a></li><li><a v-link=\"{ path: '/panel' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">面板(Panel)</span></a></li><li><a v-link=\"{ path: '/form' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">表单(Form)</span></a></li><li><a v-link=\"{ path: '/grid' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">网格(Grid System)</span></a></li><li><a v-link=\"{ path: '/list' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">列表(List)</span></a></li><li><a v-link=\"{ path: '/typography' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">排版(Typography)</span></a></li><li><a v-link=\"{ path: '/label' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">标签(Label)</span></a></li><li><a v-link=\"{ path: '/tab' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">选项卡(Tab)</span></a></li><li><a v-link=\"{ path: '/modal' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">模态框(Modal)</span></a></li><li><a v-link=\"{ path: '/chart' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">图表(Chart)</span></a></li><li><a v-link=\"{ path: '/dropdown' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">下拉(Dropdown)</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">滚动条(Scrollbar)</span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">日期时间选择器(Datetimepicker)</span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a v-link=\"{path: '/'}\">Trending</a><a v-link=\"{path: '/'}\">Stars</a></li></ul></nav></div></div></div>";

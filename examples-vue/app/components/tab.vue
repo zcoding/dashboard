@@ -1,13 +1,13 @@
 <template>
 
-<div class="tab">
+<div class="tab" v-bind:class="[colorStyle]">
   <ul class="nav">
     <li v-for="item in items"
       v-bind:class="{'active': active === $index}"
       v-bind:style="{width: itemWidth}">
       <a href="javascript:;" v-on:click.prevent="selectItem($index, item)">{{ item.menu }}</a>
     </li>
-    <div class="indicator" v-bind:style="{width: itemWidth, left: offsetLeft}"></div>
+    <div class="indicator" v-bind:style="{width: itemWidth, left: positionLeft}"></div>
   </ul>
   <div class="tab-content">
     <slot></slot>
@@ -24,6 +24,10 @@ export default {
     active: {
       type: Number,
       default: 0
+    },
+    color: {
+      type: String,
+      default: 'primary'
     }
   },
 
@@ -37,11 +41,14 @@ export default {
     itemWidth() {
       return this.items.length > 0 ? 100 / this.items.length + '%' : '';
     },
-    offsetLeft() {
+    positionLeft() {
       if (this.items.length === 0) {
         return '';
       }
       return 100 / this.items.length * this.active + '%';
+    },
+    colorStyle() {
+      return `tab-${this.color}`;
     }
   },
 

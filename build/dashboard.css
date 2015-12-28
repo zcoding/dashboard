@@ -1915,7 +1915,8 @@ input.input-info {
       will-change: left, right; }
     .tab .nav + .tab-content {
       background-color: #FFF;
-      border-top: 1px solid #efefef; }
+      border-top: 1px solid #efefef;
+      overflow: hidden; }
       .tab .nav + .tab-content .tab-pane {
         display: none;
         padding: 1em; }

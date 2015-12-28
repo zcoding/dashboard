@@ -61,6 +61,7 @@
     & + .tab-content {
       background-color: #FFF;
       border-top: 1px solid #efefef;
+      overflow: hidden;
       .tab-pane {
         display: none;
         padding: 1em;
