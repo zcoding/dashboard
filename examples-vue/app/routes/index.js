@@ -53,6 +53,17 @@ export default {
         }
       }
     }
+  },
+
+  "/scrollbar": {
+    component: {
+      template: '<page-scrollbars></page-scrollbars>',
+      components: {
+        "pageScrollbars": function(resolve) {
+          require(['views/scrollbars.vue'], resolve);
+        }
+      }
+    }
   }
 
 };
