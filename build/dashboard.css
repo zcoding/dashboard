@@ -2023,10 +2023,14 @@ input.input-info {
   top: 0;
   width: 8px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.18);
+  background-color: #ABABAB;
   border-radius: 5px; }
   .scrollbar.active {
     transition: top 300ms cubic-bezier(0.36, 0.11, 0.64, 0.87) 0s; }
+  .scrollbar.dark {
+    background-color: rgba(0, 0, 0, 0.18); }
+  .scrollbar.light {
+    background-color: rgba(255, 255, 255, 0.18); }
 
 .tag-input {
   position: relative;

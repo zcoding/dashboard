@@ -20,7 +20,7 @@ html
         hljs.initHighlightingOnLoad();
         $(function() {
           $('[data-collapse]').collapse();
-        });
-        $('#open-modal').click(function(evt) {
-          $('.db-modal,.db-modal-dimmer').show();
+          $('.db-hide-scroll.flex').scrollbar({
+            style: 'light'
+          });
         });

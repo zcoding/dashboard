@@ -2,9 +2,9 @@ extends ./layout.jade
 
 block content
   .grid
-    .u-sm-16
+    .u-sm-8
       .box.padding.margin-top.scroll-y(style="height:300px;")
-        p 1
+        p default scrollbar
         p 2
         p 3
         p 4
@@ -24,9 +24,9 @@ block content
         p 18
         p 19
 
-    .u-sm-16
+    .u-sm-8
       .box.padding.margin-top.scroll-y#scrollbar(style="height:300px;")
-        p 1
+        p with .scrollbar
         p 2
         p 3
         p 4
@@ -45,36 +45,9 @@ block content
         p 17
         p 18
         p 19
-
-    .u-sm-8
-      .box.padding.margin-top.scroll-y#scrollbar2(style="height:200px;")
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-    .u-sm-8
-      .box.padding.margin-top.scroll-y#scrollbar3(style="height:200px;")
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
 
 append script
   script.
     $(function() {
       $('#scrollbar').scrollbar();
-      $('#scrollbar2').scrollbar();
-      $('#scrollbar3').scrollbar();
     });

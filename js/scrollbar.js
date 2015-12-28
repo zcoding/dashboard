@@ -1,9 +1,16 @@
 (($) => {
 
+  const Defaults = {
+    style: 'dark'
+  };
+
   function scrollbar(options) {
+
+    options = $.extend({}, Defaults, options);
+
     return this.each((index, ele) => {
 
-      let $parent = this.parent(), $scrollbar = $('<div class="scrollbar">');
+      let $parent = this.parent(), $scrollbar = $(`<div class="scrollbar ${options.style}">`);
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
         $parent.css({ "position": "relative" });
       }

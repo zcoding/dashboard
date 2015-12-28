@@ -353,13 +353,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (function ($) {
 
+  var Defaults = {
+    style: 'dark'
+  };
+
   function scrollbar(options) {
     var _this = this;
+
+    options = $.extend({}, Defaults, options);
 
     return this.each(function (index, ele) {
 
       var $parent = _this.parent(),
-          $scrollbar = $('<div class="scrollbar">');
+          $scrollbar = $('<div class="scrollbar ' + options.style + '">');
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
         $parent.css({ "position": "relative" });
       }
