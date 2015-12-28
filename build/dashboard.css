@@ -2021,10 +2021,12 @@ input.input-info {
   position: absolute;
   right: 0;
   top: 0;
-  width: 10px;
+  width: 8px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.18);
   border-radius: 5px; }
+  .scrollbar.active {
+    transition: top 300ms cubic-bezier(0.36, 0.11, 0.64, 0.87) 0s; }
 
 .tag-input {
   position: relative;

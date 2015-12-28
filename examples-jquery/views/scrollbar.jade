@@ -4,34 +4,77 @@ block content
   .grid
     .u-sm-16
       .box.padding.margin-top.scroll-y(style="height:300px;")
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
-        p content
+        p 1
+        p 2
+        p 3
+        p 4
+        p 5
+        p 6
+        p 7
+        p 8
+        p 9
+        p 10
+        p 11
+        p 12
+        p 13
+        p 14
+        p 15
+        p 16
+        p 17
+        p 18
+        p 19
 
     .u-sm-16
-      .box.padding.margin-top#scrollbar(style="height:300px;overflow:hidden;position:relative;")
-        .scroll-content
-          p content
-          p content
-          p content
-          p content
-          p content
-          p content
-          p content
-          p content
-          p content
-          p content
-        .scrollbar
+      .box.padding.margin-top.scroll-y#scrollbar(style="height:300px;")
+        p 1
+        p 2
+        p 3
+        p 4
+        p 5
+        p 6
+        p 7
+        p 8
+        p 9
+        p 10
+        p 11
+        p 12
+        p 13
+        p 14
+        p 15
+        p 16
+        p 17
+        p 18
+        p 19
+
+    .u-sm-8
+      .box.padding.margin-top.scroll-y#scrollbar2(style="height:200px;")
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+    .u-sm-8
+      .box.padding.margin-top.scroll-y#scrollbar3(style="height:200px;")
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
+        p content
 
 append script
   script.
     $(function() {
       $('#scrollbar').scrollbar();
+      $('#scrollbar2').scrollbar();
+      $('#scrollbar3').scrollbar();
     });
