@@ -364,6 +364,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return this.each(function (index, ele) {
 
+      var $this = _this;
+
       var $parent = _this.parent(),
           $scrollbar = $('<div class="scrollbar ' + options.style + '">');
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
@@ -377,23 +379,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       });
 
       var Height = _this.outerHeight();
+
       var ScrollbarHeight = Height / ContentHeight * Height;
       var MaxMoveHeight = ContentHeight - Height;
+      var MaxPositionTop = Height / ContentHeight * MaxMoveHeight;
 
       var Width = _this.innerWidth();
       var Position = _this.position();
       var MarginTop = parseInt(_this.css('marginTop'));
       var PaddingRight = $parent.css('paddingRight');
+      var shimTop = Position.top + MarginTop;
       $scrollbar.css({
-        top: Position.top + MarginTop + 'px',
+        top: shimTop + 'px',
         right: PaddingRight,
         height: ScrollbarHeight
       });
       $scrollbar[0].offsetWidth;
       $scrollbar.addClass('active');
 
-      _this.on('mousewheel', function (e) {
-        var delta = e.originalEvent.wheelDeltaY < 0 ? -50 : 50;
+      if (Height === ContentHeight) {
+        $scrollbar.hide();
+      }
+
+      _this.on('mousewheel', function (event) {
+        var delta = event.originalEvent.wheelDeltaY < 0 ? -50 : 50;
         var currentScrollTop = _this.scrollTop();
         var move = currentScrollTop - delta;
         move = move < 0 ? 0 : move > MaxMoveHeight ? MaxMoveHeight : move;
@@ -401,12 +410,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var scrollbarMove = move / ContentHeight * Height;
         $scrollbar.css({
-          top: Position.top + MarginTop + scrollbarMove + 'px'
+          top: shimTop + scrollbarMove + 'px'
         });
 
         if (move > 0 && move < MaxMoveHeight) {
-          e.preventDefault();
+          event.preventDefault();
         }
+      });
+
+      // drag
+      var drag = false,
+          startY = 0,
+          currentY = 0,
+          startTop = shimTop,
+          req = null,
+          startContentTop = 0;
+      $scrollbar.on('mousedown', function (event) {
+        startY = event.pageY;
+        startTop = $scrollbar.position().top;
+        startContentTop = $this.scrollTop();
+        $scrollbar.addClass('drag');
+        drag = true;
+        req = requestAnimationFrame(step);
+      });
+      function step() {
+        if (drag) {
+          var move = currentY - startY;
+          var positionTop = startTop + move;
+          positionTop = positionTop < shimTop ? shimTop : positionTop > shimTop + MaxPositionTop ? shimTop + MaxPositionTop : positionTop;
+          $scrollbar.css({
+            top: positionTop + 'px'
+          });
+          var contentMove = ContentHeight / Height * move;
+          $this.scrollTop(startContentTop + contentMove);
+          req = requestAnimationFrame(step);
+        } else {
+          cancelAnimationFrame(req);
+          req = null;
+        }
+      }
+      $(document).on('mousemove', function (event) {
+        currentY = event.pageY;
+      });
+      $(document).on('mouseup', function (event) {
+        $scrollbar.removeClass('drag');
+        drag = false;
       });
     });
   }
