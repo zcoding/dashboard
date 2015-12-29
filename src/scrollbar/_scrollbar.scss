@@ -5,10 +5,13 @@
   width: 8px;
   height: 100%;
   background-color: #ABABAB;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: default;
+  &.fade {
+    opacity: 0;
+  }
   &.active {
-    transition: top 300ms cubic-bezier(0.36, 0.11, 0.64, 0.87) 0s;
+    transition: top 300ms cubic-bezier(0.36, 0.11, 0.64, 0.87) 0s, opacity 300ms linear 0s;
   }
   &.dark {
     background-color: rgba(0, 0, 0, .18);
@@ -17,6 +20,18 @@
     background-color: rgba(255, 255, 255, .18);
   }
   &.drag {
+    opacity: 1;
     transition: none;
   }
+
+  &.hover, &:hover {
+    opacity: 1;
+  }
+}
+
+.drag {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

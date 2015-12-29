@@ -1,102 +1,137 @@
 (($) => {
 
   const Defaults = {
-    style: 'dark'
+    style: 'dark',
+    width: 8,
+    speed: 50,
+    fade: true
   };
 
-  function scrollbar(options) {
-
-    options = $.extend({}, Defaults, options);
-
-    return this.each((index, ele) => {
-
-      let $this = this;
-
-      let $parent = this.parent(), $scrollbar = $(`<div class="scrollbar ${options.style}">`);
+  class Scrollbar {
+    constructor($element, options) {
+      options = this.options = $.extend(true, {}, Defaults, options);
+      this.$element = $element;
+      let $parent = this.$parent = $element.parent();
+      let $scrollbar = this.$scrollbar = $(`<div class="scrollbar ${options.style}">`);
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
         $parent.css({ "position": "relative" });
       }
       $parent.append($scrollbar);
 
-      const ContentHeight = this[0].scrollHeight;
-      this.css({
+      this.ContentHeight = $element[0].scrollHeight;
+      $element.css({
         overflow: 'hidden'
       });
 
-      const Height = this.outerHeight();
+      this.Height = $element.outerHeight();
 
-      const ScrollbarHeight = Height / ContentHeight * Height;
-      const MaxMoveHeight = ContentHeight - Height;
-      const MaxPositionTop = Height / ContentHeight * MaxMoveHeight;
+      this.ScrollbarHeight = this.Height / this.ContentHeight * this.Height;
+      this.MaxMoveHeight = this.ContentHeight - this.Height;
+      this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
 
-      const Width = this.innerWidth();
-      const Position = this.position();
-      const MarginTop = parseInt(this.css('marginTop'));
-      const PaddingRight = $parent.css('paddingRight');
-      const shimTop = Position.top + MarginTop;
+      const Width = $element.innerWidth();
+      var scrollbarPosition = $element.position(), scrollbarMarginTop = parseInt($element.css('marginTop'));
+      var paddingRight = $parent.css('paddingRight');
+      this.shimTop = scrollbarPosition.top + scrollbarMarginTop;
       $scrollbar.css({
-        top: shimTop + 'px',
-        right: PaddingRight,
-        height: ScrollbarHeight
+        width: options.width + 'px',
+        borderRadius: options.width / 2 + 'px',
+        top: this.shimTop + 'px',
+        right: paddingRight,
+        height: this.ScrollbarHeight
       });
+      if (options.fade) {
+        $scrollbar.addClass('fade');
+      }
       $scrollbar[0].offsetWidth;
       $scrollbar.addClass('active');
 
-      if (Height === ContentHeight) {
+      if (this.Height === this.ContentHeight) {
         $scrollbar.hide();
       }
 
-      this.on('mousewheel', (event) => {
-        var delta = event.originalEvent.wheelDeltaY < 0 ? -50 : 50;
-        let currentScrollTop = this.scrollTop();
-        let move = currentScrollTop - delta;
-        move = move < 0 ? 0 : (move > MaxMoveHeight ? MaxMoveHeight : move);
-        this.scrollTop(move);
-
-        let scrollbarMove = move / ContentHeight * Height;
-        $scrollbar.css({
-          top: shimTop + scrollbarMove + 'px'
-        });
-
-        if (move > 0 && move < MaxMoveHeight) {
-          event.preventDefault();
-        }
-
+      $element.on('mousewheel', $.proxy(this.mousewheel, this));
+      $element.on('mouseover', () => {
+        $scrollbar.addClass('hover');
+      });
+      $element.on('mouseout', () => {
+        $scrollbar.removeClass('hover');
       });
 
-      // drag
-      let drag = false, startY = 0, currentY = 0, startTop = shimTop, req = null, startContentTop = 0;
+      this.drag = false;
+      this.startY = 0;
+      this.currentY = 0;
+      this.startTop = this.shimTop;
+      this.req = null;
+      this.startContentTop = 0;
+
       $scrollbar.on('mousedown', (event) => {
-        startY = event.pageY;
-        startTop = $scrollbar.position().top;
-        startContentTop = $this.scrollTop();
-        $scrollbar.addClass('drag');
-        drag = true;
-        req = requestAnimationFrame(step);
+        this.startY = event.pageY;
+        this.startTop = this.$scrollbar.position().top;
+        this.startContentTop = this.$element.scrollTop();
+        this.$scrollbar.addClass('drag');
+        this.$element.addClass('drag');
+        this.drag = true;
+        this.req = requestAnimationFrame($.proxy(this.step, this));
       });
-      function step() {
-        if (drag) {
-          let move = currentY - startY;
-          let positionTop = startTop + move;
-          positionTop = positionTop < shimTop ? shimTop : (positionTop > shimTop + MaxPositionTop ? shimTop + MaxPositionTop : positionTop);
-          $scrollbar.css({
-            top: positionTop + 'px'
-          });
-          let contentMove = ContentHeight / Height * move;
-          $this.scrollTop(startContentTop + contentMove);
-          req = requestAnimationFrame(step);
-        } else {
-          cancelAnimationFrame(req);
-          req = null;
-        }
-      }
+
       $(document).on('mousemove', (event) => {
-        currentY = event.pageY;
+        this.currentY = event.pageY;
       });
       $(document).on('mouseup', (event) => {
-        $scrollbar.removeClass('drag');
-        drag = false;
+        this.$scrollbar.removeClass('drag');
+        this.$element.removeClass('drag');
+        this.drag = false;
       });
+    }
+
+    mousewheel(event) {
+      let $element = this.$element, $scrollbar = this.$scrollbar;
+      let speed = this.options.speed;
+      var delta = event.originalEvent.wheelDeltaY < 0 ? -speed : speed;
+      let currentScrollTop = $element.scrollTop();
+      let move = currentScrollTop - delta;
+      move = move < 0 ? 0 : (move > this.MaxMoveHeight ? this.MaxMoveHeight : move);
+      $element.scrollTop(move);
+
+      let scrollbarMove = move / this.ContentHeight * this.Height;
+      $scrollbar.css({
+        top: this.shimTop + scrollbarMove + 'px'
+      });
+
+      if (move > 0 && move < this.MaxMoveHeight) {
+        event.preventDefault();
+      }
+    }
+
+    step() {
+      if (this.drag) {
+        let move = this.currentY - this.startY;
+        let positionTop = this.startTop + move;
+        positionTop = positionTop < this.shimTop ? this.shimTop : (positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop);
+        this.$scrollbar.css({
+          top: positionTop + 'px'
+        });
+        let contentMove = this.ContentHeight / this.Height * move;
+        this.$element.scrollTop(this.startContentTop + contentMove);
+        this.req = requestAnimationFrame($.proxy(this.step, this));
+      } else {
+        cancelAnimationFrame(this.req);
+        this.req = null;
+      }
+    }
+
+  }
+
+  function scrollbar(options) {
+
+    return this.each((index, ele) => {
+
+      let scrollbar = this.data('scrollbar');
+      if (typeof scrollbar === 'undefined') {
+        scrollbar = new Scrollbar(this, options);
+        this.data('scrollbar', scrollbar);
+      }
 
     });
   }

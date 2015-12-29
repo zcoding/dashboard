@@ -351,111 +351,156 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 })(jQuery);
 'use strict';
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (function ($) {
 
   var Defaults = {
-    style: 'dark'
+    style: 'dark',
+    width: 8,
+    speed: 50,
+    fade: true
   };
 
-  function scrollbar(options) {
-    var _this = this;
+  var Scrollbar = (function () {
+    function Scrollbar($element, options) {
+      var _this = this;
 
-    options = $.extend({}, Defaults, options);
+      _classCallCheck(this, Scrollbar);
 
-    return this.each(function (index, ele) {
-
-      var $this = _this;
-
-      var $parent = _this.parent(),
-          $scrollbar = $('<div class="scrollbar ' + options.style + '">');
+      options = this.options = $.extend(true, {}, Defaults, options);
+      this.$element = $element;
+      var $parent = this.$parent = $element.parent();
+      var $scrollbar = this.$scrollbar = $('<div class="scrollbar ' + options.style + '">');
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
         $parent.css({ "position": "relative" });
       }
       $parent.append($scrollbar);
 
-      var ContentHeight = _this[0].scrollHeight;
-      _this.css({
+      this.ContentHeight = $element[0].scrollHeight;
+      $element.css({
         overflow: 'hidden'
       });
 
-      var Height = _this.outerHeight();
+      this.Height = $element.outerHeight();
 
-      var ScrollbarHeight = Height / ContentHeight * Height;
-      var MaxMoveHeight = ContentHeight - Height;
-      var MaxPositionTop = Height / ContentHeight * MaxMoveHeight;
+      this.ScrollbarHeight = this.Height / this.ContentHeight * this.Height;
+      this.MaxMoveHeight = this.ContentHeight - this.Height;
+      this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
 
-      var Width = _this.innerWidth();
-      var Position = _this.position();
-      var MarginTop = parseInt(_this.css('marginTop'));
-      var PaddingRight = $parent.css('paddingRight');
-      var shimTop = Position.top + MarginTop;
+      var Width = $element.innerWidth();
+      var scrollbarPosition = $element.position(),
+          scrollbarMarginTop = parseInt($element.css('marginTop'));
+      var paddingRight = $parent.css('paddingRight');
+      this.shimTop = scrollbarPosition.top + scrollbarMarginTop;
       $scrollbar.css({
-        top: shimTop + 'px',
-        right: PaddingRight,
-        height: ScrollbarHeight
+        width: options.width + 'px',
+        borderRadius: options.width / 2 + 'px',
+        top: this.shimTop + 'px',
+        right: paddingRight,
+        height: this.ScrollbarHeight
       });
+      if (options.fade) {
+        $scrollbar.addClass('fade');
+      }
       $scrollbar[0].offsetWidth;
       $scrollbar.addClass('active');
 
-      if (Height === ContentHeight) {
+      if (this.Height === this.ContentHeight) {
         $scrollbar.hide();
       }
 
-      _this.on('mousewheel', function (event) {
-        var delta = event.originalEvent.wheelDeltaY < 0 ? -50 : 50;
-        var currentScrollTop = _this.scrollTop();
-        var move = currentScrollTop - delta;
-        move = move < 0 ? 0 : move > MaxMoveHeight ? MaxMoveHeight : move;
-        _this.scrollTop(move);
-
-        var scrollbarMove = move / ContentHeight * Height;
-        $scrollbar.css({
-          top: shimTop + scrollbarMove + 'px'
-        });
-
-        if (move > 0 && move < MaxMoveHeight) {
-          event.preventDefault();
-        }
+      $element.on('mousewheel', $.proxy(this.mousewheel, this));
+      $element.on('mouseover', function () {
+        $scrollbar.addClass('hover');
+      });
+      $element.on('mouseout', function () {
+        $scrollbar.removeClass('hover');
       });
 
-      // drag
-      var drag = false,
-          startY = 0,
-          currentY = 0,
-          startTop = shimTop,
-          req = null,
-          startContentTop = 0;
+      this.drag = false;
+      this.startY = 0;
+      this.currentY = 0;
+      this.startTop = this.shimTop;
+      this.req = null;
+      this.startContentTop = 0;
+
       $scrollbar.on('mousedown', function (event) {
-        startY = event.pageY;
-        startTop = $scrollbar.position().top;
-        startContentTop = $this.scrollTop();
-        $scrollbar.addClass('drag');
-        drag = true;
-        req = requestAnimationFrame(step);
+        _this.startY = event.pageY;
+        _this.startTop = _this.$scrollbar.position().top;
+        _this.startContentTop = _this.$element.scrollTop();
+        _this.$scrollbar.addClass('drag');
+        _this.$element.addClass('drag');
+        _this.drag = true;
+        _this.req = requestAnimationFrame($.proxy(_this.step, _this));
       });
-      function step() {
-        if (drag) {
-          var move = currentY - startY;
-          var positionTop = startTop + move;
-          positionTop = positionTop < shimTop ? shimTop : positionTop > shimTop + MaxPositionTop ? shimTop + MaxPositionTop : positionTop;
-          $scrollbar.css({
-            top: positionTop + 'px'
-          });
-          var contentMove = ContentHeight / Height * move;
-          $this.scrollTop(startContentTop + contentMove);
-          req = requestAnimationFrame(step);
-        } else {
-          cancelAnimationFrame(req);
-          req = null;
-        }
-      }
+
       $(document).on('mousemove', function (event) {
-        currentY = event.pageY;
+        _this.currentY = event.pageY;
       });
       $(document).on('mouseup', function (event) {
-        $scrollbar.removeClass('drag');
-        drag = false;
+        _this.$scrollbar.removeClass('drag');
+        _this.$element.removeClass('drag');
+        _this.drag = false;
       });
+    }
+
+    _createClass(Scrollbar, [{
+      key: 'mousewheel',
+      value: function mousewheel(event) {
+        var $element = this.$element,
+            $scrollbar = this.$scrollbar;
+        var speed = this.options.speed;
+        var delta = event.originalEvent.wheelDeltaY < 0 ? -speed : speed;
+        var currentScrollTop = $element.scrollTop();
+        var move = currentScrollTop - delta;
+        move = move < 0 ? 0 : move > this.MaxMoveHeight ? this.MaxMoveHeight : move;
+        $element.scrollTop(move);
+
+        var scrollbarMove = move / this.ContentHeight * this.Height;
+        $scrollbar.css({
+          top: this.shimTop + scrollbarMove + 'px'
+        });
+
+        if (move > 0 && move < this.MaxMoveHeight) {
+          event.preventDefault();
+        }
+      }
+    }, {
+      key: 'step',
+      value: function step() {
+        if (this.drag) {
+          var move = this.currentY - this.startY;
+          var positionTop = this.startTop + move;
+          positionTop = positionTop < this.shimTop ? this.shimTop : positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop;
+          this.$scrollbar.css({
+            top: positionTop + 'px'
+          });
+          var contentMove = this.ContentHeight / this.Height * move;
+          this.$element.scrollTop(this.startContentTop + contentMove);
+          this.req = requestAnimationFrame($.proxy(this.step, this));
+        } else {
+          cancelAnimationFrame(this.req);
+          this.req = null;
+        }
+      }
+    }]);
+
+    return Scrollbar;
+  })();
+
+  function scrollbar(options) {
+    var _this2 = this;
+
+    return this.each(function (index, ele) {
+
+      var scrollbar = _this2.data('scrollbar');
+      if (typeof scrollbar === 'undefined') {
+        scrollbar = new Scrollbar(_this2, options);
+        _this2.data('scrollbar', scrollbar);
+      }
     });
   }
 
