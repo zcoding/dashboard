@@ -552,6 +552,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $input.focus();
         }
       }
+
       function handleKeydown(evt) {
         switch (evt.which) {
           case 13:
@@ -562,6 +563,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               $holder.before($newTag);
               $input.val('').focus();
               updateWidth();
+              // $this.trigger('tagschange.dashboard', );
             }
             evt.preventDefault();
             break;

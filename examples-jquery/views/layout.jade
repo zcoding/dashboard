@@ -3,13 +3,13 @@ html
 
   include ./includes/head.jade
 
-  body
+  body(style="height:100%;")
 
     include ./includes/aside.jade
 
     include ./includes/topbar.jade
 
-    div.db-content
+    .db-content.scroll-y(style="height:100%;")
       block content
 
     block script
@@ -22,5 +22,10 @@ html
           $('[data-collapse]').collapse();
           $('.db-hide-scroll.flex').scrollbar({
             style: 'light'
+          });
+          $('.db-content').scrollbar({
+            width: 10,
+            fade: false,
+            speed: 100
           });
         });
