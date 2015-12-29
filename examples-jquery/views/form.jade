@@ -1,7 +1,7 @@
 extends ./layout.jade
 
 block content
-  .grid.padding
+  .grid.margin-top
 
     .u-sm-8
       .box.padding
@@ -10,6 +10,9 @@ block content
             .form-control
               label(for="name") Name
               input#name(type="text" placeholder="input your name")
+            .form-control
+              label(for="name-disabled") disabled input
+              input#name-disabled(type="text" placeholder="input your name" disabled)
             .form-control
               label(for="password") Password
               input#password(type="password" placeholder="input password")
@@ -29,9 +32,18 @@ block content
                 option(value="2") Option2
                 option(value="3") Option3
             .form-control
+              label(for="select-disabled") disabled select
+              select#select-disabled(name="select" disabled)
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control
               label(for="textarea") Textarea
               textarea#textarea(rows="5")
             .form-control
+              label(for="textarea-disabled") disabled textarea
+              textarea#textarea-disabled(rows="5" disabled)
+            .form-control
               label.field-check
                 input(type="checkbox" name="check1")
                 | <i></i>Option1
@@ -39,8 +51,8 @@ block content
                 input(type="checkbox" name="check1")
                 | <i></i>Option2
               label.field-check
-                input(type="checkbox" name="check1")
-                | <i></i>Option3
+                input(type="checkbox" name="check1" disabled checked)
+                | <i></i>Option3(disabled)
             .form-control
               label.field-radio
                 input(type="radio" name="radio1")
@@ -49,8 +61,8 @@ block content
                 input(type="radio" name="radio1")
                 | <i></i>Option2
               label.field-radio
-                input(type="radio" name="radio1")
-                | <i></i>Option3
+                input(type="radio" name="radio1" disabled)
+                | <i></i>Option3(disabled)
             .form-control
               label.field-switch
                 input(type="checkbox" name="check2")
@@ -59,8 +71,8 @@ block content
                 input(type="checkbox" name="check2")
                 | <i></i>B
               label.field-switch
-                input(type="checkbox" name="check2")
-                | <i></i>C
+                input(type="checkbox" name="check2" disabled checked)
+                | <i></i>C(disabled)
             .form-control
               label.field-switch
                 input(type="radio" name="radio2")
@@ -69,8 +81,11 @@ block content
                 input(type="radio" name="radio2")
                 | <i></i>A2
               label.field-switch
-                input(type="radio" name="radio2")
-                | <i></i>A3
+                input(type="radio" name="radio2" disabled)
+                | <i></i>A3(disabled)
+            .margin-top.cf
+              button.btn.btn-primary.fr(type="submit") Submit
+              input.btn.margin-right.fr(type="reset" value="Reset All")
 
     .u-sm-8
       .box.padding
@@ -80,69 +95,184 @@ block content
               label(for="name2") Name
               input(type="text" placeholder="input your name")#name2.field-md
             .form-control
+              label(for="name2-disabled") disabled input
+              input(type="text" placeholder="input your name" disabled value="You are not allowed to edit")#name2-disabled.field-md
+            .form-control
               label(for="password2") Password
               input(type="password" placeholder="input password")#password2.field-md
             .form-control
+              label(for="number2") Number
+              input#number2(type="number" placeholder="input number").field-md
+            .form-control
+              label(for="email2") Email
+              input#email2(type="email" placeholder="input email").field-md
+            .form-control
+              label(for="url2") URL
+              input#url2(type="url" placeholder="input url").field-md
+            .form-control
+              label(for="select2") Select
+              select#select2(name="select").field-md
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control
+              label(for="select2-disabled") disabled select
+              select#select2-disabled(name="select" disabled).field-md
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control
               label(for="content2") Textarea
               textarea#content2(rows="5").field-md
+            .form-control
+              label(for="content2-disabled") disabled textarea
+              textarea#content2-disabled(rows="5" disabled).field-md You are not allowed to edit
+            .margin-top.cf
+              button.btn.btn-primary.fr(type="submit") Submit
+
+  .grid.margin-top
 
     .u-sm-8
       .box.padding
         form(action="/").form
           fieldset
             .form-control.u-sm-8
-              label(for="name") Name
-              input#name(type="text" placeholder="input your name")
+              label(for="name3") Name
+              input#name3(type="text" placeholder="input your name")
             .form-control.u-sm-8
-              label(for="password") Password
-              input#password(type="password" placeholder="input password")
+              label(for="password3") Password
+              input#password3(type="password" placeholder="input password")
             .form-control.u-sm-8
-              label(for="number") Number
-              input#number(type="number" placeholder="input number")
+              label(for="number3") Number
+              input#number3(type="number" placeholder="input number")
             .form-control.u-sm-8
-              label(for="email") Email
-              input#email(type="email" placeholder="input email")
+              label(for="email3") Email
+              input#email3(type="email" placeholder="input email")
             .form-control.u-sm-8
-              label(for="url") URL
-              input#url(type="url" placeholder="input url")
+              label(for="url3") URL
+              input#url3(type="url" placeholder="input url")
             .form-control.u-sm-8
-              label(for="select") Select
-              select#select(name="select")
+              label(for="select3") Select
+              select#select3(name="select")
                 option(value="1") Option1
                 option(value="2") Option2
                 option(value="3") Option3
             .form-control.u-sm-16
-              label(for="textarea") Textarea
-              textarea#textarea(rows="5")
+              label(for="textarea3") Textarea
+              textarea#textarea3(rows="5")
+            .u-sm-16.margin-top.cf
+              button.btn.btn-primary.fr(type="submit") Submit
+
+    .u-sm-8
+      .box.padding
+        form(action="/").form
+          fieldset
+            .form-control.u-sm-4
+              label(for="name4").inline Name :
+            .form-control.u-sm-12
+              input#name4(type="text" placeholder="input your name")
+            .form-control.u-sm-4
+              label(for="password4").inline Password :
+            .form-control.u-sm-12
+              input#password4(type="password" placeholder="input password")
+            .form-control.u-sm-4
+              label(for="number4").inline Number :
+            .form-control.u-sm-12
+              input#number4(type="number" placeholder="input number")
+            .form-control.u-sm-4
+              label(for="email4").inline Email :
+            .form-control.u-sm-12
+              input#email4(type="email" placeholder="input email")
+            .form-control.u-sm-4
+              label(for="url4").inline URL :
+            .form-control.u-sm-12
+              input#url4(type="url" placeholder="input url")
+            .form-control.u-sm-4
+              label(for="select4").inline Select :
+            .form-control.u-sm-12
+              select#select4(name="select")
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control.u-sm-4
+              label(for="textarea4").inline Textarea :
+            .form-control.u-sm-12
+              textarea#textarea4(rows="5")
+            .u-sm-16.margin-top.cf
+              button.btn.btn-primary.fr(type="submit") Submit
+
+  .grid.margin-top
 
     .u-sm-8
       .box.padding
         form(action="/").form
           fieldset
             .form-control.u-sm-8
-              label(for="name") Name
-              input#name(type="text" placeholder="input your name").field-md
+              label(for="name5") Name
+              input#name5(type="text" placeholder="input your name").field-md
             .form-control.u-sm-8
-              label(for="password") Password
-              input#password(type="password" placeholder="input password").field-md
+              label(for="password5") Password
+              input#password5(type="password" placeholder="input password").field-md
             .form-control.u-sm-8
-              label(for="number") Number
-              input#number(type="number" placeholder="input number").field-md
+              label(for="number5") Number
+              input#number5(type="number" placeholder="input number").field-md
             .form-control.u-sm-8
-              label(for="email") Email
-              input#email(type="email" placeholder="input email").field-md
+              label(for="email5") Email
+              input#email5(type="email" placeholder="input email").field-md
             .form-control.u-sm-8
-              label(for="url") URL
-              input#url(type="url" placeholder="input url").field-md
+              label(for="url5") URL
+              input#url5(type="url" placeholder="input url").field-md
             .form-control.u-sm-8
-              label(for="select") Select
-              select#select(name="select").field-md
+              label(for="select5") Select
+              select#select5(name="select").field-md
                 option(value="1") Option1
                 option(value="2") Option2
                 option(value="3") Option3
             .form-control.u-sm-16
-              label(for="textarea") Textarea
-              textarea#textarea(rows="5").field-md
+              label(for="textarea5") Textarea
+              textarea#textarea5(rows="5").field-md
+            .u-sm-16.margin-top.cf
+              button.btn.btn-primary.fr(type="submit") Submit
+
+    .u-sm-8
+      .box.padding
+        form(action="/").form
+          fieldset
+            .form-control.u-sm-4
+              label(for="name6").inline Name :
+            .form-control.u-sm-12
+              input#name6(type="text" placeholder="input your name").field-md
+            .form-control.u-sm-4
+              label(for="password6").inline Password :
+            .form-control.u-sm-11
+              input#password6(type="password" placeholder="input password").field-md
+            .form-control.u-sm-4
+              label(for="number6").inline Number :
+            .form-control.u-sm-12
+              input#number6(type="number" placeholder="input number").field-md
+            .form-control.u-sm-4
+              label(for="email6").inline Email :
+            .form-control.u-sm-12
+              input#email6(type="email" placeholder="input email").field-md
+            .form-control.u-sm-4
+              label(for="url6").inline URL :
+            .form-control.u-sm-12
+              input#url6(type="url" placeholder="input url").field-md
+            .form-control.u-sm-4
+              label(for="select6").inline Select :
+            .form-control.u-sm-12
+              select#select6(name="select").field-md
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control.u-sm-4
+              label(for="textarea6").inline Textarea :
+            .form-control.u-sm-12
+              textarea#textarea6(rows="5").field-md
+            .u-sm-16.margin-top.cf
+              button.btn.btn-primary.fr(type="submit") Submit
+
+  .grid.margin-top
 
     .u-sm-8
       .box.padding

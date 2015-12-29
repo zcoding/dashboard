@@ -2,16 +2,11 @@ extends ./layout.jade
 
 block content
   .grid
-    .u-sm-4
+    .u-sm-16
       .box.padding.margin-top
-        form.form(action="/")
-          fieldset
-            .form-control
-              label datepicker
-              input(type="text" placeholder="Format: YYYY-MM-DD")#select-date
-
-    .u-sm-4
-      .box.padding.margin-top
+        .form-control
+          label datepicker
+          input(type="text" placeholder="Format: YYYY-MM-DD")#select-date
         h3#selected-date
         .datepicker#date-picker
 

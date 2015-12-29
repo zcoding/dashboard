@@ -1,38 +1,69 @@
 -
   var menus = [
-      {name: '首页(Home)', path: '/'}
-    , {name: '颜色(Color)', path: '/color'}
-    , {name: '按钮(Button)', path: '/button'}
-    , {name: '表格(Table)', path: '/table'}
-    , {name: '面板(Panel)', path: '/panel'}
-    , {name: '表单(Form)', path: '/form'}
-    , {name: '网格(Grid System)', path: '/grid'}
-    , {name: '列表(List)', path: '/list'}
-    , {name: '排版(Typography)', path: '/typography'}
-    , {name: '标签(Label)', path: '/label'}
-    , {name: '选项卡(Tab)', path: '/tab'}
-    , {name: '模态框(Modal)', path: '/modal'}
-    , {name: '图表(Chart)', path: '/chart'}
-    , {name: '下拉(Dropdown)', path: '/dropdown'}
-    , {name: '滚动条(Scrollbar)', path: '/scrollbar'}
-    , {name: '日期时间选择器(Datetimepicker)', path: '/datetimepicker'}
+      {name: '首页', path: '/', icon: 'home'}
+    , {name: '颜色', path: '/color', icon: 'link', short: '颜色'}
+    , {name: '按钮', path: '/button', icon: 'link', short: '按钮'}
+    , {name: '表格', path: '/table', icon: 'link', short: '表格'}
+    , {name: '面板', path: '/panel', icon: 'link', short: '面板'}
+    , {name: '表单', path: 'javascript:;', icon: 'link', short: '表单', sub:
+        [
+            {name: '基础表单', path: '/form', icon: 'link'}
+          , {name: '日期时间选择器', path: '/datetimepicker', icon: 'link'}
+        ]
+      }
+    , {name: '网格', path: '/grid', icon: 'link', short: '网格'}
+    , {name: '列表', path: '/list', icon: 'link', short: '列表'}
+    , {name: '排版', path: '/typography', icon: 'link', short: '排版'}
+    , {name: '标签', path: '/label', icon: 'link', short: '标签'}
+    , {name: '选项卡', path: '/tab', icon: 'link'}
+    , {name: '模态框', path: '/modal', icon: 'link'}
+    , {name: '图表', path: '/chart', icon: 'link', short: '图表'}
+    , {name: '下拉', path: '/dropdown', icon: 'link', short: '下拉'}
+    , {name: '滚动条', path: '/scrollbar', icon: 'link'}
   ];
 
-div.db-aside
-  div.navside
-    div.nav-brand
-      h1(style="color: #FFF;") Dashboard
-    div.db-hide-scroll.flex
-      nav.scroll
+.layout-aside
+  .side-nav
+    .nav-header
+      h1.title Dashboard
+      h1.title.narrow <i class="fa fa-chevron-circle-right"></i>
+    .hide-scrollbar.flex
+      nav
         ul
           each menu in menus
             li
-              a(href=menu.path)
-                span.db-icon
-                span.nav-text= menu.name
-    div.nav-footer
+              a(href=menu.path).menu
+                span.icon.fa(class="fa-#{menu.icon}")
+                span.text= menu.name
+              a(href=menu.path).menu.narrow
+                if menu.short
+                  span.text= menu.short
+                else
+                  span.icon.fa(class="fa-#{menu.icon}")
+              if menu.sub
+                ul
+                  each submenu in menu.sub
+                    li
+                      a(href=submenu.path).menu
+                        span.icon.fa(class="fa-#{submenu.icon}")
+                        span.text= submenu.name
+                      a(href=submenu.path).menu.narrow
+                        if submenu.short
+                          span.text= submenu.short
+                        else
+                          span.icon.fa(class="fa-#{submenu.icon}")
+
+    .nav-footer
       nav
         ul
           li
-            a(href="/") Trending
-            a(href="/") Stars
+            a(href="/").menu
+              span.icon.fa.fa-github
+              span.text Fork
+            a(href="/").menu.narrow
+              span.text Fork
+            a(href="/").menu
+              span.icon.fa.fa-github
+              span.text Star
+            a(href="/").menu.narrow
+              span.text Star

@@ -59,3 +59,16 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.flex {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.hide-scrollbar {
+  overflow: auto;
+  width: auto;
+  margin-right: -17px;
+  -webkit-overflow-scrolling: touch;
+}

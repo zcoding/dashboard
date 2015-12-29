@@ -1,4 +1,4 @@
-.#{$namespace}-header {
+.layout-header {
   position: fixed!important;
   top: 0;
   left: 0;
@@ -12,6 +12,28 @@
     margin: 0;
     padding: 0 1rem;
     flex-shrink: 0;
-    min-height: 3.5rem;
+    height: 50px;
+  }
+
+  &.narrow {
+    margin-left: $narrowAsidewWidth;
+  }
+
+  form {
+    height: 50px;
+    padding-top: 10px;
+    fieldset {
+      margin: 0;
+
+      input {
+        padding: 5px 10px;
+        border-radius: 0;
+      }
+
+      button {
+        height: 31px;
+        margin-bottom: 0;
+      }
+    }
   }
 }

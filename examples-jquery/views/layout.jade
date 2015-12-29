@@ -3,13 +3,13 @@ html
 
   include ./includes/head.jade
 
-  body
+  body(style="height:100%;")
 
     include ./includes/aside.jade
 
     include ./includes/topbar.jade
 
-    div.db-content
+    .layout-content.scroll-y(style="height:100%;")
       block content
 
     block script
@@ -20,7 +20,15 @@ html
         hljs.initHighlightingOnLoad();
         $(function() {
           $('[data-collapse]').collapse();
-          $('.db-hide-scroll.flex').scrollbar({
+          $('.hide-scrollbar.flex').scrollbar({
             style: 'light'
+          });
+          $('.layout-content').scrollbar({
+            width: 10,
+            fade: false,
+            speed: 100
+          });
+          $('.layout-aside').on('click', '.nav-header', function() {
+            $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
           });
         });
