@@ -11,6 +11,9 @@ block content
               label(for="name") Name
               input#name(type="text" placeholder="input your name")
             .form-control
+              label(for="name-disabled") disabled input
+              input#name-disabled(type="text" placeholder="input your name" disabled)
+            .form-control
               label(for="password") Password
               input#password(type="password" placeholder="input password")
             .form-control
@@ -29,9 +32,18 @@ block content
                 option(value="2") Option2
                 option(value="3") Option3
             .form-control
+              label(for="select-disabled") disabled select
+              select#select-disabled(name="select" disabled)
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control
               label(for="textarea") Textarea
               textarea#textarea(rows="5")
             .form-control
+              label(for="textarea-disabled") disabled textarea
+              textarea#textarea-disabled(rows="5" disabled)
+            .form-control
               label.field-check
                 input(type="checkbox" name="check1")
                 | <i></i>Option1
@@ -39,8 +51,8 @@ block content
                 input(type="checkbox" name="check1")
                 | <i></i>Option2
               label.field-check
-                input(type="checkbox" name="check1")
-                | <i></i>Option3
+                input(type="checkbox" name="check1" disabled checked)
+                | <i></i>Option3(disabled)
             .form-control
               label.field-radio
                 input(type="radio" name="radio1")
@@ -49,8 +61,8 @@ block content
                 input(type="radio" name="radio1")
                 | <i></i>Option2
               label.field-radio
-                input(type="radio" name="radio1")
-                | <i></i>Option3
+                input(type="radio" name="radio1" disabled)
+                | <i></i>Option3(disabled)
             .form-control
               label.field-switch
                 input(type="checkbox" name="check2")
@@ -59,8 +71,8 @@ block content
                 input(type="checkbox" name="check2")
                 | <i></i>B
               label.field-switch
-                input(type="checkbox" name="check2")
-                | <i></i>C
+                input(type="checkbox" name="check2" disabled checked)
+                | <i></i>C(disabled)
             .form-control
               label.field-switch
                 input(type="radio" name="radio2")
@@ -69,8 +81,8 @@ block content
                 input(type="radio" name="radio2")
                 | <i></i>A2
               label.field-switch
-                input(type="radio" name="radio2")
-                | <i></i>A3
+                input(type="radio" name="radio2" disabled)
+                | <i></i>A3(disabled)
 
     .u-sm-8
       .box.padding
@@ -80,11 +92,38 @@ block content
               label(for="name2") Name
               input(type="text" placeholder="input your name")#name2.field-md
             .form-control
+              label(for="name2-disabled") disabled input
+              input(type="text" placeholder="input your name" disabled value="You are not allowed to edit")#name2-disabled.field-md
+            .form-control
               label(for="password2") Password
               input(type="password" placeholder="input password")#password2.field-md
             .form-control
+              label(for="number2") Number
+              input#number2(type="number" placeholder="input number").field-md
+            .form-control
+              label(for="email2") Email
+              input#email2(type="email" placeholder="input email").field-md
+            .form-control
+              label(for="url2") URL
+              input#url2(type="url" placeholder="input url").field-md
+            .form-control
+              label(for="select2") Select
+              select#select2(name="select").field-md
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control
+              label(for="select2-disabled") disabled select
+              select#select2-disabled(name="select" disabled).field-md
+                option(value="1") Option1
+                option(value="2") Option2
+                option(value="3") Option3
+            .form-control
               label(for="content2") Textarea
               textarea#content2(rows="5").field-md
+            .form-control
+              label(for="content2-disabled") disabled textarea
+              textarea#content2-disabled(rows="5" disabled).field-md You are not allowed to edit
 
     .u-sm-8
       .box.padding

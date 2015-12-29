@@ -25,9 +25,14 @@ input[type=text], input[type=email], input[type=number], input[type=url], input[
   padding: 8px 10px;
   background-color: $white;
   font-family: $font-default;
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+  }
 }
 
-input.field-md, select.field-md {
+input[type=text].field-md, input[type=email].field-md, input[type=number].field-md, input[type=url].field-md, input[type=password].field-md, select.field-md {
   height: 32px;
   padding: 2px;
   border-top: 0;
@@ -39,6 +44,10 @@ input.field-md, select.field-md {
     padding-bottom: 1px;
     border-bottom-color: #0cc2aa;
     border-bottom-width: 2px;
+  }
+  &[disabled] {
+    background-color: $white;
+    color: #888;
   }
 }
 
@@ -57,6 +66,13 @@ textarea {
       border-bottom-color: #0cc2aa;
       border-bottom-width: 2px;
     }
+    &[disabled] {
+      background-color: $white;
+      color: #888;
+    }
+  }
+  &[disabled] {
+    resize: none;
   }
 }
 
@@ -124,6 +140,10 @@ textarea {
     &:checked+i:before {
       background-color: #0cc2aa;
     }
+
+    &[disabled] + i {
+      background-color: #CDCDCD;
+    }
   }
 }
 
@@ -177,6 +197,9 @@ textarea {
 
     &:checked+i:before {
       background-color: #0cc2aa;
+    }
+    &[disabled] + i {
+      background-color: #CDCDCD;
     }
   }
 }
@@ -244,6 +267,10 @@ textarea {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, .5);
       }
+    }
+
+    &[disabled] + i:before {
+      background-color: #CECECE;
     }
   }
 }

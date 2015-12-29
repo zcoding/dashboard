@@ -1585,8 +1585,12 @@ input[type=text], input[type=email], input[type=number], input[type=url], input[
   padding: 8px 10px;
   background-color: #FFFFFF;
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif; }
+  input[type=text][disabled], input[type=email][disabled], input[type=number][disabled], input[type=url][disabled], input[type=password][disabled], select[disabled], textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1; }
 
-input.field-md, select.field-md {
+input[type=text].field-md, input[type=email].field-md, input[type=number].field-md, input[type=url].field-md, input[type=password].field-md, select.field-md {
   height: 32px;
   padding: 2px;
   border-top: 0;
@@ -1594,10 +1598,13 @@ input.field-md, select.field-md {
   border-right: 0;
   border-bottom: 1px solid #CECECE;
   border-radius: 0; }
-  input.field-md:focus, select.field-md:focus {
+  input[type=text].field-md:focus, input[type=email].field-md:focus, input[type=number].field-md:focus, input[type=url].field-md:focus, input[type=password].field-md:focus, select.field-md:focus {
     padding-bottom: 1px;
     border-bottom-color: #0cc2aa;
     border-bottom-width: 2px; }
+  input[type=text].field-md[disabled], input[type=email].field-md[disabled], input[type=number].field-md[disabled], input[type=url].field-md[disabled], input[type=password].field-md[disabled], select.field-md[disabled] {
+    background-color: #FFFFFF;
+    color: #888; }
 
 textarea {
   resize: vertical; }
@@ -1612,6 +1619,11 @@ textarea {
       padding-bottom: 1px;
       border-bottom-color: #0cc2aa;
       border-bottom-width: 2px; }
+    textarea.field-md[disabled] {
+      background-color: #FFFFFF;
+      color: #888; }
+  textarea[disabled] {
+    resize: none; }
 
 input.input-dark {
   border-color: #2e3e4e; }
@@ -1688,6 +1700,8 @@ input.input-info {
     z-index: -1; }
     .field-check input[type=checkbox]:checked + i:before {
       background-color: #0cc2aa; }
+    .field-check input[type=checkbox][disabled] + i {
+      background-color: #CDCDCD; }
 
 .field-radio {
   display: inline-block;
@@ -1732,6 +1746,8 @@ input.input-info {
     z-index: -1; }
     .field-radio input[type=radio]:checked + i:before {
       background-color: #0cc2aa; }
+    .field-radio input[type=radio][disabled] + i {
+      background-color: #CDCDCD; }
 
 .field-switch {
   display: inline-block;
@@ -1788,6 +1804,8 @@ input.input-info {
       .field-switch input[type=checkbox]:checked + i:before, .field-switch input[type=radio]:checked + i:before {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5); }
+    .field-switch input[type=checkbox][disabled] + i:before, .field-switch input[type=radio][disabled] + i:before {
+      background-color: #CECECE; }
 
 .badge {
   display: inline-block;
