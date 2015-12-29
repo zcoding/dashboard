@@ -98,19 +98,19 @@
 
 	'use strict';
 
-	var _vue = __webpack_require__(16);
+	var _vue = __webpack_require__(18);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vueRouter = __webpack_require__(18);
+	var _vueRouter = __webpack_require__(20);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _routes = __webpack_require__(19);
+	var _routes = __webpack_require__(21);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _sidebar = __webpack_require__(70);
+	var _sidebar = __webpack_require__(79);
 
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 
@@ -142,7 +142,7 @@
 
 /***/ },
 
-/***/ 16:
+/***/ 18:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*!
@@ -9576,11 +9576,11 @@
 	}
 
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ },
 
-/***/ 17:
+/***/ 19:
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9678,7 +9678,7 @@
 
 /***/ },
 
-/***/ 18:
+/***/ 20:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12218,7 +12218,7 @@
 
 /***/ },
 
-/***/ 19:
+/***/ 21:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12233,7 +12233,7 @@
 	      template: '<home></home>',
 	      components: {
 	        "home": function home(resolve) {
-	          __webpack_require__.e/* require */(6, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(20)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(22)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12244,7 +12244,7 @@
 	      template: '<page-form></page-form>',
 	      components: {
 	        "pageForm": function pageForm(resolve) {
-	          __webpack_require__.e/* require */(7, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(23)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(25)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12255,7 +12255,7 @@
 	      template: '<page-datetimepicker></page-datetimepicker>',
 	      components: {
 	        "pageDatetimepicker": function pageDatetimepicker(resolve) {
-	          __webpack_require__.e/* require */(8, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(29)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(31)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12266,7 +12266,7 @@
 	      template: '<page-modals></page-modals>',
 	      components: {
 	        "pageModals": function pageModals(resolve) {
-	          __webpack_require__.e/* require */(9, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(42)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(4, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(44)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12277,7 +12277,7 @@
 	      template: '<page-tabs></page-tabs>',
 	      components: {
 	        "pageTabs": function pageTabs(resolve) {
-	          __webpack_require__.e/* require */(10, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(59)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(5, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(61)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12288,7 +12288,7 @@
 	      template: '<page-scrollbars></page-scrollbars>',
 	      components: {
 	        "pageScrollbars": function pageScrollbars(resolve) {
-	          __webpack_require__.e/* require */(11, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(73)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(6, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(72)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12298,10 +12298,13 @@
 
 /***/ },
 
-/***/ 70:
+/***/ 79:
 /***/ function(module, exports, __webpack_require__) {
 
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(71)
+	module.exports = __webpack_require__(81)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(80)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -12316,10 +12319,182 @@
 
 /***/ },
 
-/***/ 71:
+/***/ 80:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"db-aside\"><div class=\"navside\"><div class=\"nav-brand\"><h1 style=\"color: #FFF;\">Dashboard</h1></div><div class=\"db-hide-scroll flex\"><nav class=\"scroll\"><ul><li><a v-link=\"{ path: '/' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">首页(Home)</span></a></li><li><a v-link=\"{ path: '/color' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">颜色(Color)</span></a></li><li><a v-link=\"{ path: '/button' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">按钮(Button)</span></a></li><li><a v-link=\"{ path: '/table' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">表格(Table)</span></a></li><li><a v-link=\"{ path: '/panel' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">面板(Panel)</span></a></li><li><a v-link=\"{ path: '/form' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">表单(Form)</span></a></li><li><a v-link=\"{ path: '/grid' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">网格(Grid System)</span></a></li><li><a v-link=\"{ path: '/list' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">列表(List)</span></a></li><li><a v-link=\"{ path: '/typography' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">排版(Typography)</span></a></li><li><a v-link=\"{ path: '/label' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">标签(Label)</span></a></li><li><a v-link=\"{ path: '/tab' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">选项卡(Tab)</span></a></li><li><a v-link=\"{ path: '/modal' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">模态框(Modal)</span></a></li><li><a v-link=\"{ path: '/chart' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">图表(Chart)</span></a></li><li><a v-link=\"{ path: '/dropdown' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">下拉(Dropdown)</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">滚动条(Scrollbar)</span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\"><span class=\"db-icon\"></span><span class=\"nav-text\">日期时间选择器(Datetimepicker)</span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a v-link=\"{path: '/'}\">Trending</a><a v-link=\"{path: '/'}\">Stars</a></li></ul></nav></div></div></div>";
+	module.exports = "<div class=\"layout-aside\"><div class=\"side-nav\"><div v-on:click=\"toggleSidebar\" class=\"nav-header\"><h1 class=\"title\">Dashboard</h1><h1 class=\"title narrow\"><i class=\"fa fa-chevron-circle-right\"></i></h1></div><div class=\"hide-scrollbar flex\"><nav><ul><li><a v-link=\"{ path: '/' }\" class=\"menu\"><span class=\"icon fa fa-home\"></span><span class=\"text\">首页</span></a><a v-link=\"{ path: '/' }\" class=\"menu narrow\"><span class=\"icon fa fa-home\"></span></a></li><li><a v-link=\"{ path: '/color' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">颜色</span></a><a v-link=\"{ path: '/color' }\" class=\"menu narrow\"><span class=\"text\">颜色</span></a></li><li><a v-link=\"{ path: '/button' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">按钮</span></a><a v-link=\"{ path: '/button' }\" class=\"menu narrow\"><span class=\"text\">按钮</span></a></li><li><a v-link=\"{ path: '/table' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表格</span></a><a v-link=\"{ path: '/table' }\" class=\"menu narrow\"><span class=\"text\">表格</span></a></li><li><a v-link=\"{ path: '/panel' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">面板</span></a><a v-link=\"{ path: '/panel' }\" class=\"menu narrow\"><span class=\"text\">面板</span></a></li><li><a href=\"javascript:;\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表单</span></a><a v-link=\"{ path: 'undefined' }\" class=\"menu narrow\"><span class=\"text\">表单</span></a><ul><li><a v-link=\"{ path: '/form' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">基础表单</span></a><a v-link=\"{ path: '/form' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">日期时间选择器</span></a><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></li><li><a v-link=\"{ path: '/grid' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">网格</span></a><a v-link=\"{ path: '/grid' }\" class=\"menu narrow\"><span class=\"text\">网格</span></a></li><li><a v-link=\"{ path: '/list' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">列表</span></a><a v-link=\"{ path: '/list' }\" class=\"menu narrow\"><span class=\"text\">列表</span></a></li><li><a v-link=\"{ path: '/typography' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">排版</span></a><a v-link=\"{ path: '/typography' }\" class=\"menu narrow\"><span class=\"text\">排版</span></a></li><li><a v-link=\"{ path: '/label' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">标签</span></a><a v-link=\"{ path: '/label' }\" class=\"menu narrow\"><span class=\"text\">标签</span></a></li><li><a v-link=\"{ path: '/tab' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">选项卡</span></a><a v-link=\"{ path: '/tab' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/modal' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">模态框</span></a><a v-link=\"{ path: '/modal' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/chart' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">图表</span></a><a v-link=\"{ path: '/chart' }\" class=\"menu narrow\"><span class=\"text\">图表</span></a></li><li><a v-link=\"{ path: '/dropdown' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">下拉</span></a><a v-link=\"{ path: '/dropdown' }\" class=\"menu narrow\"><span class=\"text\">下拉</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">滚动条</span></a><a v-link=\"{ path: '/scrollbar' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a href=\"/\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Fork</span></a><a href=\"/\" class=\"menu narrow\"><span class=\"text\">Fork</span></a><a href=\"/\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Star</span></a><a href=\"/\" class=\"menu narrow\"><span class=\"text\">Star</span></a></li></ul></nav></div></div></div>";
+
+/***/ },
+
+/***/ 81:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template lang="jade">
+
+	// -
+
+	//   var menus = [
+
+	//       {name: '首页', path: '/', icon: 'home'}
+
+	//     , {name: '颜色', path: '/color', icon: 'link', short: '颜色'}
+
+	//     , {name: '按钮', path: '/button', icon: 'link', short: '按钮'}
+
+	//     , {name: '表格', path: '/table', icon: 'link', short: '表格'}
+
+	//     , {name: '面板', path: '/panel', icon: 'link', short: '面板'}
+
+	//     , {name: '表单', icon: 'link', short: '表单', sub:
+
+	//         [
+
+	//             {name: '基础表单', path: '/form', icon: 'link'}
+
+	//           , {name: '日期时间选择器', path: '/datetimepicker', icon: 'link'}
+
+	//         ]
+
+	//       }
+
+	//     , {name: '网格', path: '/grid', icon: 'link', short: '网格'}
+
+	//     , {name: '列表', path: '/list', icon: 'link', short: '列表'}
+
+	//     , {name: '排版', path: '/typography', icon: 'link', short: '排版'}
+
+	//     , {name: '标签', path: '/label', icon: 'link', short: '标签'}
+
+	//     , {name: '选项卡', path: '/tab', icon: 'link'}
+
+	//     , {name: '模态框', path: '/modal', icon: 'link'}
+
+	//     , {name: '图表', path: '/chart', icon: 'link', short: '图表'}
+
+	//     , {name: '下拉', path: '/dropdown', icon: 'link', short: '下拉'}
+
+	//     , {name: '滚动条', path: '/scrollbar', icon: 'link'}
+
+	//   ];
+
+	// .layout-aside
+
+	//   .side-nav
+
+	//     .nav-header(v-on:click="toggleSidebar")
+
+	//       h1.title Dashboard
+
+	//       h1.title.narrow <i class="fa fa-chevron-circle-right"></i>
+
+	//     .hide-scrollbar.flex
+
+	//       nav
+
+	//         ul
+
+	//           each menu in menus
+
+	//             li
+
+	//               if menu.path
+
+	//                 a(v-link="{ path: '" + menu.path + "' }").menu
+
+	//                   span.icon.fa(class="fa-#{menu.icon}")
+
+	//                   span.text= menu.name
+
+	//               else
+
+	//                 a(href="javascript:;").menu
+
+	//                   span.icon.fa(class="fa-#{menu.icon}")
+
+	//                   span.text= menu.name
+
+	//               a(v-link="{ path: '" + menu.path + "' }").menu.narrow
+
+	//                 if menu.short
+
+	//                   span.text= menu.short
+
+	//                 else
+
+	//                   span.icon.fa(class="fa-#{menu.icon}")
+
+	//               if menu.sub
+
+	//                 ul
+
+	//                   each submenu in menu.sub
+
+	//                     li
+
+	//                       a(v-link="{ path: '" + submenu.path + "' }").menu
+
+	//                         span.icon.fa(class="fa-#{submenu.icon}")
+
+	//                         span.text= submenu.name
+
+	//                       a(v-link="{ path: '" + submenu.path + "' }").menu.narrow
+
+	//                         if submenu.short
+
+	//                           span.text= submenu.short
+
+	//                         else
+
+	//                           span.icon.fa(class="fa-#{submenu.icon}")
+
+	//     .nav-footer
+
+	//       nav
+
+	//         ul
+
+	//           li
+
+	//             a(href="/").menu
+
+	//               span.icon.fa.fa-github
+
+	//               span.text Fork
+
+	//             a(href="/").menu.narrow
+
+	//               span.text Fork
+
+	//             a(href="/").menu
+
+	//               span.icon.fa.fa-github
+
+	//               span.text Star
+
+	//             a(href="/").menu.narrow
+
+	//               span.text Star
+
+	// </template>
+
+	// <script>
+
+	exports.default = {
+
+	  methods: {
+	    toggleSidebar: function toggleSidebar() {
+	      this.$el.classList.toggle('narrow');
+	    }
+	  }
+
+	};
+
+	// </script>
 
 /***/ }
 

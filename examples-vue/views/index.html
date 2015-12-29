@@ -10,10 +10,23 @@
 </head>
 <body id="app-main" v-on:click="globalClickHandler">
   <sidebar></sidebar>
-  <div class="db-header">
-    <div class="navbar"></div>
+  <div class="layout-header">
+    <div class="navbar">
+      <form action="/search" class="grid form">
+        <fieldset>
+          <div class="u-sm-4"></div>
+          <div class="u-sm-4"></div>
+          <div class="u-sm-4">
+            <input type="text" placeholder="search everything">
+          </div>
+          <div class="u-sm-4">
+            <button class="btn btn-primary" type="submit">Search <i class="fa fa-search"></i></button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
-  <div class="db-content">
+  <div class="layout-content">
     <router-view></router-view>
   </div>
   <script src="/lib/echarts/echarts-all.js"></script>
