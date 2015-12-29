@@ -1234,32 +1234,16 @@ textarea {
   .btn-group-info .btn.float:active {
     background-color: #6887ff; }
 
-.db-aside {
+.layout-aside {
   position: fixed !important;
   top: 0;
   left: 0;
   width: 12.5rem;
   height: 100%;
   z-index: 1001;
-  overflow: hidden; }
-  .db-aside ul, .db-aside li {
-    list-style-type: none;
-    display: block;
-    margin: 0;
-    padding: 0; }
-  .db-aside a {
-    color: rgba(255, 255, 255, 0.870588); }
-  .db-aside li a {
-    display: block;
-    padding: 0 1rem;
-    line-height: 2.25rem; }
-    .db-aside li a:hover, .db-aside li a:active {
-      background-color: rgba(0, 0, 0, 0.065); }
-  .db-aside li > ul {
-    background-color: rgba(0, 0, 0, 0.15); }
-  .db-aside li > ul > li > ul {
-    background-color: rgba(0, 0, 0, 0.2); }
-  .db-aside .navside {
+  overflow: hidden;
+  transition: width 100ms cubic-bezier(0.4, 0, 0.2, 1) 0s; }
+  .layout-aside .side-nav {
     display: flex;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
@@ -1270,25 +1254,58 @@ textarea {
     left: 0;
     right: 0;
     background: #2E3E4E; }
-  .db-aside nav.scroll {
-    width: 12.5rem; }
+    .layout-aside .side-nav ul, .layout-aside .side-nav li {
+      list-style-type: none;
+      display: block;
+      margin: 0;
+      padding: 0; }
+    .layout-aside .side-nav a {
+      color: rgba(255, 255, 255, 0.870588); }
+    .layout-aside .side-nav .menu {
+      display: block;
+      padding: 0 1rem;
+      line-height: 2.25rem; }
+      .layout-aside .side-nav .menu:hover, .layout-aside .side-nav .menu:active {
+        background-color: rgba(0, 0, 0, 0.065); }
+      .layout-aside .side-nav .menu.narrow {
+        display: none; }
+    .layout-aside .side-nav li > ul {
+      background-color: rgba(0, 0, 0, 0.15); }
+    .layout-aside .side-nav li > ul > li > ul {
+      background-color: rgba(0, 0, 0, 0.2); }
+    .layout-aside .side-nav nav {
+      width: 12.5rem; }
+    .layout-aside .side-nav .nav-header .title {
+      margin: 0;
+      padding: 1rem;
+      cursor: default;
+      color: #FFF; }
+      .layout-aside .side-nav .nav-header .title.narrow {
+        display: none; }
+    .layout-aside .side-nav .icon {
+      margin-right: 5px; }
+  .layout-aside.narrow {
+    width: 50px; }
+    .layout-aside.narrow .side-nav nav {
+      width: 50px; }
+    .layout-aside.narrow .side-nav .menu {
+      display: none; }
+      .layout-aside.narrow .side-nav .menu.narrow {
+        display: block;
+        padding: 0;
+        text-align: center; }
+    .layout-aside.narrow .nav-header .title {
+      display: none; }
+    .layout-aside.narrow .nav-header .title.narrow {
+      display: block; }
 
-.db-hide-scroll {
-  overflow: auto;
-  width: auto;
-  margin-right: -17px;
-  -webkit-overflow-scrolling: touch; }
-
-.flex {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1; }
-
-.db-content {
+.layout-content {
   margin-left: 12.5rem;
   padding-top: 3.5rem; }
+  .layout-content.narrow {
+    margin-left: 50px; }
 
-.db-header {
+.layout-header {
   position: fixed !important;
   top: 0;
   left: 0;
@@ -1296,12 +1313,25 @@ textarea {
   margin-left: 12.5rem;
   background: #FFFFFF;
   z-index: 1001; }
-  .db-header .navbar {
+  .layout-header .navbar {
     border: none;
     margin: 0;
     padding: 0 1rem;
     flex-shrink: 0;
-    min-height: 3.5rem; }
+    height: 50px; }
+  .layout-header.narrow {
+    margin-left: 50px; }
+  .layout-header form {
+    height: 50px;
+    padding-top: 10px; }
+    .layout-header form fieldset {
+      margin: 0; }
+      .layout-header form fieldset input {
+        padding: 5px 10px;
+        border-radius: 0; }
+      .layout-header form fieldset button {
+        height: 31px;
+        margin-bottom: 0; }
 
 table {
   border-spacing: 0;
@@ -2339,6 +2369,17 @@ input.input-info {
 .scroll-y {
   overflow-x: hidden;
   overflow-y: auto; }
+
+.flex {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+.hide-scrollbar {
+  overflow: auto;
+  width: auto;
+  margin-right: -17px;
+  -webkit-overflow-scrolling: touch; }
 
 html {
   height: 100%;

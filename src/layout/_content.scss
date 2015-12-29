@@ -1,4 +1,8 @@
-.#{$namespace}-content {
+.layout-content {
   margin-left: $asideWidth;
   padding-top: 3.5rem;
+
+  &.narrow {
+    margin-left: $narrowAsidewWidth;
+  }
 }

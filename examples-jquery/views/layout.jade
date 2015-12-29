@@ -9,7 +9,7 @@ html
 
     include ./includes/topbar.jade
 
-    .db-content.scroll-y(style="height:100%;")
+    .layout-content.scroll-y(style="height:100%;")
       block content
 
     block script
@@ -20,12 +20,15 @@ html
         hljs.initHighlightingOnLoad();
         $(function() {
           $('[data-collapse]').collapse();
-          $('.db-hide-scroll.flex').scrollbar({
+          $('.hide-scrollbar.flex').scrollbar({
             style: 'light'
           });
-          $('.db-content').scrollbar({
+          $('.layout-content').scrollbar({
             width: 10,
             fade: false,
             speed: 100
+          });
+          $('.layout-aside').on('click', '.nav-header', function() {
+            $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
           });
         });
