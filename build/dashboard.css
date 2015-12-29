@@ -1656,7 +1656,13 @@ input.input-info {
     display: inline-block;
     max-width: 100%;
     margin-bottom: 5px;
-    font-weight: 700; }
+    font-weight: 700;
+    font-size: 14px; }
+    .form-control label.inline {
+      width: 100%;
+      margin-bottom: 0;
+      padding: 6px 0 0 0;
+      text-align: right; }
 
 .field-check {
   display: inline-block;
