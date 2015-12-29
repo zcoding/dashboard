@@ -30,15 +30,15 @@ webpackJsonp([6],{
 	  value: true
 	});
 
-	var _box = __webpack_require__(74);
+	var _scrollbox = __webpack_require__(83);
 
-	var _box2 = _interopRequireDefault(_box);
+	var _scrollbox2 = _interopRequireDefault(_scrollbox);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = {
 
-	  components: { box: _box2.default }
+	  components: { scrollbox: _scrollbox2.default }
 
 	};
 
@@ -47,53 +47,49 @@ webpackJsonp([6],{
 
 	// <div class="grid">
 
-	//   <div class="u-sm-8">
+	//   <scrollbox class="u-sm-8" v-bind:boxclass="['box','padding','margin-top']" v-bind:height="300">
 
-	//     <box v-bind:height="300">
+	//     <p>0</p>
 
-	//       <p>0</p>
+	//     <p>1</p>
 
-	//       <p>1</p>
+	//     <p>2</p>
 
-	//       <p>2</p>
+	//     <p>3</p>
 
-	//       <p>3</p>
+	//     <p>4</p>
 
-	//       <p>4</p>
+	//     <p>5</p>
 
-	//       <p>5</p>
+	//     <p>6</p>
 
-	//       <p>6</p>
+	//     <p>7</p>
 
-	//       <p>7</p>
+	//     <p>8</p>
 
-	//       <p>8</p>
+	//     <p>9</p>
 
-	//       <p>9</p>
+	//     <p>10</p>
 
-	//       <p>10</p>
+	//     <p>11</p>
 
-	//       <p>11</p>
+	//     <p>12</p>
 
-	//       <p>12</p>
+	//     <p>13</p>
 
-	//       <p>13</p>
+	//     <p>14</p>
 
-	//       <p>14</p>
+	//     <p>15</p>
 
-	//       <p>15</p>
+	//     <p>16</p>
 
-	//       <p>16</p>
+	//     <p>17</p>
 
-	//       <p>17</p>
+	//     <p>18</p>
 
-	//       <p>18</p>
+	//     <p>19</p>
 
-	//       <p>19</p>
-
-	//     </box>
-
-	//   </div>
+	//   </scrollbox>
 
 	// </div>
 
@@ -103,18 +99,52 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 74:
+/***/ 76:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  getStyles: function getStyles(element) {
+	    var view = element.ownerDocument.defaultView;
+	    if (!view.opener) {
+	      view = window;
+	    }
+	    return view.getComputedStyle(element);
+	  },
+	  setStyles: function setStyles(element, styles) {
+	    for (var s in styles) {
+	      if (styles.hasOwnProperty(s)) {
+	        element.style[s] = styles[s];
+	      }
+	    }
+	  }
+	};
+
+/***/ },
+
+/***/ 78:
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"grid\">\r\n  <scrollbox class=\"u-sm-8\" v-bind:boxclass=\"['box','padding','margin-top']\" v-bind:height=\"300\">\r\n    <p>0</p>\r\n    <p>1</p>\r\n    <p>2</p>\r\n    <p>3</p>\r\n    <p>4</p>\r\n    <p>5</p>\r\n    <p>6</p>\r\n    <p>7</p>\r\n    <p>8</p>\r\n    <p>9</p>\r\n    <p>10</p>\r\n    <p>11</p>\r\n    <p>12</p>\r\n    <p>13</p>\r\n    <p>14</p>\r\n    <p>15</p>\r\n    <p>16</p>\r\n    <p>17</p>\r\n    <p>18</p>\r\n    <p>19</p>\r\n  </scrollbox>\r\n</div>";
+
+/***/ },
+
+/***/ 83:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(75)
+	module.exports = __webpack_require__(84)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(77)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(85)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\box.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\scrollbox.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -124,7 +154,7 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 75:
+/***/ 84:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -158,6 +188,7 @@ webpackJsonp([6],{
 	      $scrollbar.offsetWidth;
 	      $scrollbar.classList.add('active');
 	    });
+	    console.log(this.$els.shit);
 	  },
 
 	  props: {
@@ -165,6 +196,10 @@ webpackJsonp([6],{
 	      type: Number,
 	      default: 1,
 	      required: true
+	    },
+	    boxclass: {
+	      type: Array,
+	      default: []
 	    }
 	  },
 
@@ -215,13 +250,17 @@ webpackJsonp([6],{
 	// </script>
 	// <template>
 
-	// <div class="box padding scroll-y margin-top" v-on:mousewheel="scroll" v-bind:style="style" v-el:box>
+	// <div>
 
-	//   <slot></slot>
+	//   <div class="scroll-y" v-bind:class="boxclass" v-on:mousewheel="scroll" v-bind:style="style" v-el:box>
+
+	//     <slot></slot>
+
+	//   </div>
+
+	//   <div class="scrollbar dark" v-bind:style="scrollbarStyle" v-el:scrollbar></div>
 
 	// </div>
-
-	// <div class="scrollbar dark" v-bind:style="scrollbarStyle" v-el:scrollbar></div>
 
 	// </template>
 
@@ -229,44 +268,10 @@ webpackJsonp([6],{
 
 /***/ },
 
-/***/ 76:
+/***/ 85:
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = {
-	  getStyles: function getStyles(element) {
-	    var view = element.ownerDocument.defaultView;
-	    if (!view.opener) {
-	      view = window;
-	    }
-	    return view.getComputedStyle(element);
-	  },
-	  setStyles: function setStyles(element, styles) {
-	    for (var s in styles) {
-	      if (styles.hasOwnProperty(s)) {
-	        element.style[s] = styles[s];
-	      }
-	    }
-	  }
-	};
-
-/***/ },
-
-/***/ 77:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"box padding scroll-y margin-top\" v-on:mousewheel=\"scroll\" v-bind:style=\"style\" v-el:box>\r\n  <slot></slot>\r\n</div>\r\n<div class=\"scrollbar dark\" v-bind:style=\"scrollbarStyle\" v-el:scrollbar></div>";
-
-/***/ },
-
-/***/ 78:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-8\">\r\n    <box v-bind:height=\"300\">\r\n      <p>0</p>\r\n      <p>1</p>\r\n      <p>2</p>\r\n      <p>3</p>\r\n      <p>4</p>\r\n      <p>5</p>\r\n      <p>6</p>\r\n      <p>7</p>\r\n      <p>8</p>\r\n      <p>9</p>\r\n      <p>10</p>\r\n      <p>11</p>\r\n      <p>12</p>\r\n      <p>13</p>\r\n      <p>14</p>\r\n      <p>15</p>\r\n      <p>16</p>\r\n      <p>17</p>\r\n      <p>18</p>\r\n      <p>19</p>\r\n    </box>\r\n  </div>\r\n</div>";
+	module.exports = "<div>\r\n  <div class=\"scroll-y\" v-bind:class=\"boxclass\" v-on:mousewheel=\"scroll\" v-bind:style=\"style\" v-el:box>\r\n    <slot></slot>\r\n  </div>\r\n  <div class=\"scrollbar dark\" v-bind:style=\"scrollbarStyle\" v-el:scrollbar></div>\r\n</div>";
 
 /***/ }
 
