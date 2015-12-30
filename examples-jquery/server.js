@@ -44,7 +44,27 @@ App.use(_.get('/table', function *(next) {
 
 }));
 
-let pages = ['button', 'form', 'panel', 'grid', 'color', 'list', 'typography', 'label', 'tab', 'modal', 'chart', 'dropdown', 'scrollbar', 'datetimepicker', 'gridtable'];
+App.use(_.get('/gridtable', function *(next) {
+
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/gridtable.jade`), {pretty: true});
+
+  var data = Mock.mock({
+    'list|20': [{
+      'id|+1': 1,
+      'name': '@name',
+      'email': '@email',
+      'age': '@integer(22,33)',
+      'address': '@area',
+      'lastLoginTime': '@datetime'
+    }]
+  })
+
+  this.type = 'text/html';
+  this.body = render(data);
+
+}));
+
+let pages = ['button', 'form', 'panel', 'grid', 'color', 'list', 'typography', 'label', 'tab', 'modal', 'chart', 'dropdown', 'scrollbar', 'datetimepicker'];
 
 pages.forEach((page) => {
 

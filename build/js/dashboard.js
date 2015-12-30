@@ -468,6 +468,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (move > 0 && move < this.MaxMoveHeight) {
           event.preventDefault();
+          event.stopPropagation();
         }
       }
     }, {
@@ -957,24 +958,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   }
 
   $.fn.extend({ datepicker: datepicker });
-})(jQuery);
-'use strict';
-
-(function ($) {
-
-  function stickTable() {
-    var _this = this;
-
-    return this.each(function (index, ele) {
-      var $td = _this.find('table tr').first().children(),
-          $cell = _this.find('.table-stick-cell');
-      $td.each(function (index, ele) {
-        $cell.eq(index).width($td.eq(index).width());
-      });
-    });
-  }
-
-  $.fn.extend({ stickTable: stickTable });
 })(jQuery);
 'use strict';
 

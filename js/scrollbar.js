@@ -103,6 +103,7 @@
 
       if (move > 0 && move < this.MaxMoveHeight) {
         event.preventDefault();
+        event.stopPropagation();
       }
     }
 

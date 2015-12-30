@@ -2,33 +2,6 @@ extends ./layout.jade
 
 block content
   .grid.padding
-    .u-sm-8
-      .box.padding
-        h2 stick header
-        .table-stick
-          .table-stick-header
-            .table-stick-table.table-bordered
-              .table-stick-row
-                .table-stick-cell #
-                .table-stick-cell Name
-                .table-stick-cell Email
-                .table-stick-cell Age
-                .table-stick-cell Address
-                .table-stick-cell Last-login-time
-                .table-stick-cell Operation
-          .table-stick-body(style="height:300px;")
-            table.table.table-bordered
-              tbody
-                each item in list
-                  tr
-                    td= item.id
-                    td= item.name
-                    td= item.email
-                    td= item.age
-                    td= item.address
-                    td= item.lastLoginTime
-                    td
-                      button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
     .u-sm-8
       .box.padding
@@ -246,9 +219,3 @@ block content
             li
               a(href="#/page=4")
                 i.fa.fa-chevron-right
-
-append script
-  script.
-    $(function() {
-      $('.table-stick').stickTable();
-    });

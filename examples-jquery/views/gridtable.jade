@@ -98,6 +98,58 @@ block content
               .grid-table-control
               .grid-table-cell e
 
+    .u-sm-16
+      .box.padding
+        h2 grid-table可以实现表头和表尾固定
+        .grid-table#grid-table3
+          .grid-table-header
+            .grid-table-row
+              .grid-table-cell #
+              .grid-table-control
+              .grid-table-cell Name
+              .grid-table-control
+              .grid-table-cell Email
+              .grid-table-control
+              .grid-table-cell Age
+              .grid-table-control
+              .grid-table-cell Address
+              .grid-table-control
+              .grid-table-cell Last-login-time
+              .grid-table-control
+              .grid-table-cell Operation
+          .grid-table-body(style="height:500px;").scroll-y
+            each item in list
+              .grid-table-row
+                .grid-table-cell= item.id
+                .grid-table-control
+                .grid-table-cell= item.name
+                .grid-table-control
+                .grid-table-cell= item.email
+                .grid-table-control
+                .grid-table-cell= item.age
+                .grid-table-control
+                .grid-table-cell= item.address
+                .grid-table-control
+                .grid-table-cell= item.lastLoginTime
+                .grid-table-control
+                .grid-table-cell
+                  button(type="button").btn.btn-danger.btn-sm <i class="fa fa-trash"></i> Delete
+          .grid-table-footer
+            .grid-table-row
+              .grid-table-cell a
+              .grid-table-control
+              .grid-table-cell b
+              .grid-table-control
+              .grid-table-cell c
+              .grid-table-control
+              .grid-table-cell d
+              .grid-table-control
+              .grid-table-cell e
+              .grid-table-control
+              .grid-table-cell f
+              .grid-table-control
+              .grid-table-cell g
+
 append script
   script.
     $(function() {
@@ -107,5 +159,9 @@ append script
       $('#grid-table2').gridtable({
         dragable: false,
         gridWidth: [10, 20, 30, 10, 30]
+      });
+      $('#grid-table3 .grid-table-body').scrollbar();
+      $('#grid-table3').gridtable({
+        gridWidth: [10, 20, 20, 10, 10, 20, 10]
       });
     });
