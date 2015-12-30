@@ -498,7 +498,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _this2 = this;
 
     return this.each(function (index, ele) {
-
+      // 如果是mac os就不要初始化
+      if (/Mac OS X/ig.test(navigator.userAgent)) {
+        return false;
+      }
       var scrollbar = _this2.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
         scrollbar = new Scrollbar(_this2, options);

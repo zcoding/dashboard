@@ -129,7 +129,10 @@
   function scrollbar(options) {
 
     return this.each((index, ele) => {
-
+      // 如果是mac os就不要初始化
+      if(/Mac OS X/ig.test(navigator.userAgent)) {
+        return false;
+      }
       let scrollbar = this.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
         scrollbar = new Scrollbar(this, options);
