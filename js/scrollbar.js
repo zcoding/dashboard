@@ -88,7 +88,7 @@
     mousewheel(event) {
       let $element = this.$element, $scrollbar = this.$scrollbar;
       let speed = this.options.speed;
-      var delta = event.originalEvent.wheelDeltaY < 0 ? -speed : speed;
+      var delta = event.deltaY < 0 ? -speed : speed;
       let currentScrollTop = $element.scrollTop();
       let move = currentScrollTop - delta;
       move = move < 0 ? 0 : (move > this.MaxMoveHeight ? this.MaxMoveHeight : move);
