@@ -978,14 +978,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 })(jQuery);
 'use strict';
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (function ($) {
 
-  function gridtable() {
-    var _this = this;
+  var defaults = {
+    dragable: true // 是否允许通过拖动单元格边框改变单元格大小
+    , gridWidth: false // 初始单元格大小，用数组表示，如果没有就等分
+  };
 
-    return this.each(function (index, ele) {
-      var $headerFirstRow = _this.find('.grid-table-header .grid-table-row').first();
-      var TableWidth = _this.innerWidth();
+  var DragTable = (function () {
+    function DragTable($element, options) {
+      var _this = this;
+
+      _classCallCheck(this, DragTable);
+
+      this.$element = $element;
+      options = this.options = $.extend(true, {}, defaults, options);
+
+      var $headerFirstRow = $element.find('.grid-table-header .grid-table-row').first();
+      var TableWidth = $element.innerWidth();
 
       var $headerCells = $headerFirstRow.children('.grid-table-cell'),
           $headerControls = $headerFirstRow.children('.grid-table-control');
@@ -994,71 +1008,109 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         width: initWidth + 'px'
       });
 
-      var $bodyRows = _this.find('.grid-table-body .grid-table-row');
+      var $bodyRows = $element.find('.grid-table-body .grid-table-row');
 
       var $bodyCells = $bodyRows.find('.grid-table-cell');
       $bodyCells.css({
         width: initWidth + 'px'
       });
 
-      var $footerCells = _this.find('.grid-table-footer .grid-table-row .grid-table-cell');
+      var $footerCells = $element.find('.grid-table-footer .grid-table-row .grid-table-cell');
       $footerCells.css({
         width: initWidth + 'px'
       });
 
-      var $target = null,
-          $befores = null,
-          $afters = null,
-          currentBeforeWidth = initWidth,
-          currentAfterWidth = initWidth;
+      this.$leftElements = null;
+      this.$rightElements = null;
+      this.currentLeftWidth = initWidth;
+      this.currentRightWidth = initWidth;
+      this.startPosition = 0;
+      this.draging = false;
+      this.req = null;
+      this.distance = 0;
 
-      var currentPosition = 0,
-          dragStart = false;;
-
-      _this.on('mousedown', '.grid-table-control', function (event) {
-        $target = $(event.currentTarget);
+      $element.on('mousedown', '.grid-table-control', function (event) {
+        var $target = $(event.currentTarget);
         var controlIndex = ($target.index() + 1) / 2;
-        $befores = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
-        $afters = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
+        _this.$leftElements = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
+        _this.$rightElements = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
         $bodyRows.each(function (i) {
           var $cells = $bodyRows.eq(i).find('.grid-table-cell');
-          $befores = $befores.add($cells.eq(controlIndex - 1));
-          $afters = $afters.add($cells.eq(controlIndex));
+          _this.$leftElements = _this.$leftElements.add($cells.eq(controlIndex - 1));
+          _this.$rightElements = _this.$rightElements.add($cells.eq(controlIndex));
         });
-        currentBeforeWidth = parseFloat($befores[0].style.width);
-        currentAfterWidth = parseFloat($afters[0].style.width);
-        currentPosition = event.pageX;
-        dragStart = true;
-        _this.addClass('drag');
+        _this.currentLeftWidth = parseFloat(_this.$leftElements[0].style.width);
+        _this.currentRightWidth = parseFloat(_this.$rightElements[0].style.width);
+        _this.startPosition = event.pageX;
+        _this.start();
       });
 
-      _this.on('mousemove', function (event) {
-        if (dragStart) {
-          var move = event.pageX - currentPosition;
-
-          var beforeMove = currentBeforeWidth + move,
-              afterMove = currentAfterWidth - move;
-          if (beforeMove < 32) {
-            beforeMove = 32;
-            afterMove = currentBeforeWidth + currentAfterWidth - 32;
-          }
-          if (afterMove < 32) {
-            afterMove = 32;
-            beforeMove = currentBeforeWidth + currentAfterWidth - 32;
-          }
-          $befores.css({
-            width: beforeMove + 'px'
-          });
-          $afters.css({
-            width: afterMove + 'px'
-          });
+      $element.on('mousemove', function (event) {
+        if (_this.draging) {
+          _this.distance = event.pageX - _this.startPosition;
         }
       });
 
-      _this.on('mouseup', function (event) {
-        dragStart = false;
-        _this.removeClass('drag');
+      $(document).on('mouseup', function (event) {
+        _this.draging = false;
       });
+    }
+
+    _createClass(DragTable, [{
+      key: 'start',
+      value: function start() {
+        this.draging = true;
+        this.$element.addClass('drag');
+        this.req = requestAnimationFrame($.proxy(this.step, this));
+      }
+    }, {
+      key: 'stop',
+      value: function stop() {
+        this.draging = false;
+        cancelAnimationFrame(this.req);
+        this.$element.removeClass('drag');
+        this.distance = 0;
+        this.startPosition = 0;
+      }
+    }, {
+      key: 'step',
+      value: function step() {
+        if (this.draging) {
+          this.move(this.distance);
+          this.req = requestAnimationFrame($.proxy(this.step, this));
+        } else {
+          this.stop();
+        }
+      }
+    }, {
+      key: 'move',
+      value: function move(distance) {
+        var leftMove = this.currentLeftWidth + distance,
+            rightMove = this.currentRightWidth - distance;
+        if (leftMove < 32) {
+          leftMove = 32;
+          rightMove = this.currentLeftWidth + this.currentRightWidth - 32;
+        }
+        if (rightMove < 32) {
+          rightMove = 32;
+          leftMove = this.currentLeftWidth + this.currentRightWidth - 32;
+        }
+        this.$leftElements.css({
+          width: leftMove + 'px'
+        });
+        this.$rightElements.css({
+          width: rightMove + 'px'
+        });
+      }
+    }]);
+
+    return DragTable;
+  })();
+
+  function gridtable() {
+
+    return this.each(function (index, ele) {
+      var dragTable = new DragTable($(ele));
     });
   }
 

@@ -1422,7 +1422,11 @@ th, td {
     width: 2px;
     height: 46px;
     background-color: #ececef;
-    cursor: col-resize; }
+    cursor: col-resize;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
   .grid-table .grid-table-header .grid-table-row .grid-table-cell {
     font-weight: 700;
     border-bottom: 1px solid #eceeef; }

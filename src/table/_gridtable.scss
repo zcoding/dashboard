@@ -27,6 +27,10 @@
       height: 46px;
       background-color: #ececef;
       cursor: col-resize;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
   }
