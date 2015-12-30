@@ -10,15 +10,16 @@
       this.$element = $element;
       options = this.options = $.extend(true, {}, defaults, options);
 
-      let $headerFirstRow = $element.find('.grid-table-header .grid-table-row').first();
+      let $headerRows = this.$headerRows = $element.find('.grid-table-header .grid-table-row');
       const TableWidth = $element.innerWidth();
 
-      let $headerCells = $headerFirstRow.children('.grid-table-cell'), $headerControls = $headerFirstRow.children('.grid-table-control');
+      let $headerCells = $headerRows.children('.grid-table-cell'), $headerControls = $headerRows.children('.grid-table-control');
       const TotalWidth = TableWidth - $headerControls.length * 2;
       var initWidth = TotalWidth / $headerCells.length;
-      let $bodyRows = $element.find('.grid-table-body .grid-table-row');
+      let $bodyRows = this.$bodyRows = $element.find('.grid-table-body .grid-table-row');
       let $bodyCells = $bodyRows.find('.grid-table-cell');
-      let $footerCells = $element.find('.grid-table-footer .grid-table-row .grid-table-cell');
+      let $footerRows = this.$footerRows = $element.find('.grid-table-footer .grid-table-row')
+      let $footerCells = $footerRows.children('.grid-table-cell');
 
       if (options.gridWidth && Array.isArray(options.gridWidth)) {
         options.gridWidth.forEach((percentage, i) => {
@@ -47,6 +48,9 @@
           width: initWidth + 'px'
         });
       }
+
+      // 设置control的长度
+      this.updateBorderHeight();
 
       this.$leftElements = null;
       this.$rightElements = null;
@@ -111,6 +115,50 @@
       }
     }
 
+    updateBorderHeight() {
+      this.$bodyRows.each((i, ele) => {
+        let $row = $(ele);
+        let height = 0;
+        $row.children('.grid-table-cell').each((i, ele) => {
+          let h = $(ele).outerHeight();
+          if (h > height) {
+            height = h;
+          }
+        });
+        $row.children('.grid-table-control').css({
+          height: `${height}px`
+        });
+      });
+
+      this.$headerRows.each((i, ele) => {
+        let $row = $(ele);
+        let height = 0;
+        $row.children('.grid-table-cell').each((i, ele) => {
+          let h = $(ele).outerHeight();
+          if (h > height) {
+            height = h;
+          }
+        });
+        $row.children('.grid-table-control').css({
+          height: `${height}px`
+        });
+      });
+
+      this.$footerRows.each((i, ele) => {
+        let $row = $(ele);
+        let height = 0;
+        $row.children('.grid-table-cell').each((i, ele) => {
+          let h = $(ele).outerHeight();
+          if (h > height) {
+            height = h;
+          }
+        });
+        $row.children('.grid-table-control').css({
+          height: `${height}px`
+        });
+      });
+    }
+
     move(distance) {
       let leftMove = this.currentLeftWidth + distance, rightMove = this.currentRightWidth - distance;
       if (leftMove < 32) {
@@ -127,6 +175,8 @@
       this.$rightElements.css({
         width: rightMove + 'px'
       });
+      // 除了改变宽度，还要改变control的高度
+      this.updateBorderHeight();
     }
   }
 

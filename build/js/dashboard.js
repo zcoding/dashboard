@@ -981,16 +981,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.$element = $element;
       options = this.options = $.extend(true, {}, defaults, options);
 
-      var $headerFirstRow = $element.find('.grid-table-header .grid-table-row').first();
+      var $headerRows = this.$headerRows = $element.find('.grid-table-header .grid-table-row');
       var TableWidth = $element.innerWidth();
 
-      var $headerCells = $headerFirstRow.children('.grid-table-cell'),
-          $headerControls = $headerFirstRow.children('.grid-table-control');
+      var $headerCells = $headerRows.children('.grid-table-cell'),
+          $headerControls = $headerRows.children('.grid-table-control');
       var TotalWidth = TableWidth - $headerControls.length * 2;
       var initWidth = TotalWidth / $headerCells.length;
-      var $bodyRows = $element.find('.grid-table-body .grid-table-row');
+      var $bodyRows = this.$bodyRows = $element.find('.grid-table-body .grid-table-row');
       var $bodyCells = $bodyRows.find('.grid-table-cell');
-      var $footerCells = $element.find('.grid-table-footer .grid-table-row .grid-table-cell');
+      var $footerRows = this.$footerRows = $element.find('.grid-table-footer .grid-table-row');
+      var $footerCells = $footerRows.children('.grid-table-cell');
 
       if (options.gridWidth && Array.isArray(options.gridWidth)) {
         options.gridWidth.forEach(function (percentage, i) {
@@ -1019,6 +1020,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           width: initWidth + 'px'
         });
       }
+
+      // 设置control的长度
+      this.updateBorderHeight();
 
       this.$leftElements = null;
       this.$rightElements = null;
@@ -1087,6 +1091,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
     }, {
+      key: 'updateBorderHeight',
+      value: function updateBorderHeight() {
+        this.$bodyRows.each(function (i, ele) {
+          var $row = $(ele);
+          var height = 0;
+          $row.children('.grid-table-cell').each(function (i, ele) {
+            var h = $(ele).outerHeight();
+            if (h > height) {
+              height = h;
+            }
+          });
+          $row.children('.grid-table-control').css({
+            height: height + 'px'
+          });
+        });
+
+        this.$headerRows.each(function (i, ele) {
+          var $row = $(ele);
+          var height = 0;
+          $row.children('.grid-table-cell').each(function (i, ele) {
+            var h = $(ele).outerHeight();
+            if (h > height) {
+              height = h;
+            }
+          });
+          $row.children('.grid-table-control').css({
+            height: height + 'px'
+          });
+        });
+
+        this.$footerRows.each(function (i, ele) {
+          var $row = $(ele);
+          var height = 0;
+          $row.children('.grid-table-cell').each(function (i, ele) {
+            var h = $(ele).outerHeight();
+            if (h > height) {
+              height = h;
+            }
+          });
+          $row.children('.grid-table-control').css({
+            height: height + 'px'
+          });
+        });
+      }
+    }, {
       key: 'move',
       value: function move(distance) {
         var leftMove = this.currentLeftWidth + distance,
@@ -1105,6 +1154,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$rightElements.css({
           width: rightMove + 'px'
         });
+        // 除了改变宽度，还要改变control的高度
+        this.updateBorderHeight();
       }
     }]);
 

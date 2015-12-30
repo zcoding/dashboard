@@ -1420,7 +1420,7 @@ th, td {
     display: block;
     float: left;
     width: 2px;
-    height: 46px;
+    height: 0;
     background-color: #eceeef;
     cursor: col-resize;
     -webkit-user-select: none;
