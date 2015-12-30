@@ -445,6 +445,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _this.$element.removeClass('drag');
         _this.drag = false;
       });
+
+      // 当窗口大小发生变化时，需要重新计算长度
     }
 
     _createClass(Scrollbar, [{

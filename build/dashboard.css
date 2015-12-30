@@ -1386,7 +1386,7 @@ th, td {
   .panel.db-radius {
     border-radius: 5px;
     overflow: hidden; }
-  .panel > table {
+  .panel > table, .panel > .table-responsive > table {
     margin-bottom: 0; }
   .panel > .list li:last-child {
     border-bottom: 0; }
@@ -2360,11 +2360,13 @@ input.input-info {
 .bg-info {
   background-color: #e9edfd; }
 
-.responsive {
+.table-responsive {
   width: 100%;
   min-height: 0.1%;
   overflow-x: auto;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch; }
 
 .scroll-y {
   overflow-x: hidden;

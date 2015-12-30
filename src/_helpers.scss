@@ -47,12 +47,14 @@
   }
 }
 
-// responsive
-.responsive {
+// responsive table wrapper
+.table-responsive {
   width: 100%;
   min-height: 0.1%;
   overflow-x: auto;
   overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-y {

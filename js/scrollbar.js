@@ -83,6 +83,8 @@
         this.$element.removeClass('drag');
         this.drag = false;
       });
+
+      // 当窗口大小发生变化时，需要重新计算长度
     }
 
     mousewheel(event) {
