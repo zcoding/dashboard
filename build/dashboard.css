@@ -1350,7 +1350,8 @@ th, td {
     vertical-align: bottom;
     line-height: 1.5;
     border-top: 1px solid #eceeef;
-    border-bottom: 2px solid rgba(120, 130, 140, 0.045); }
+    border-bottom: 2px solid rgba(120, 130, 140, 0.045);
+    font-weight: 700; }
   .table > tbody > tr > td {
     padding: .75rem 16px;
     line-height: 1.5;
@@ -1368,6 +1369,37 @@ th, td {
       border-left: 1px solid #eceeef; }
     .table.table-bordered > tbody > tr > td {
       border-left: 1px solid #eceeef; }
+
+.table-stick {
+  position: relative; }
+  .table-stick .table-stick-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFF;
+    overflow-y: scroll; }
+    .table-stick .table-stick-header .table-stick-table {
+      display: table;
+      width: 100%; }
+    .table-stick .table-stick-header .table-stick-row {
+      display: table-row; }
+    .table-stick .table-stick-header .table-stick-cell {
+      display: table-cell;
+      padding: 10px 16px;
+      vertical-align: bottom;
+      line-height: 1.5;
+      border-top: 1px solid #eceeef;
+      border-bottom: 2px solid rgba(120, 130, 140, 0.045);
+      font-weight: 700; }
+    .table-stick .table-stick-header .table-stick-table.table-bordered {
+      border-right: 1px solid #eceeef; }
+      .table-stick .table-stick-header .table-stick-table.table-bordered .table-stick-cell {
+        border-left: 1px solid #eceeef; }
+  .table-stick .table-stick-body {
+    padding-top: 44px;
+    overflow-y: scroll; }
+    .table-stick .table-stick-body table {
+      margin-bottom: 0; }
 
 .panel {
   background: #FFFFFF;
@@ -2367,6 +2399,8 @@ input.input-info {
   overflow-y: hidden;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch; }
+  .table-responsive .table > thead > tr > th {
+    white-space: nowrap; }
 
 .scroll-y {
   overflow-x: hidden;

@@ -55,6 +55,9 @@
   overflow-y: hidden;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   -webkit-overflow-scrolling: touch;
+  .table>thead>tr>th {
+    white-space: nowrap;
+  }
 }
 
 .scroll-y {
