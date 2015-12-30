@@ -58,4 +58,10 @@
     cursor: col-resize;
   }
 
+  &.no-drag {
+    .grid-table-control {
+      cursor: default;
+    }
+  }
+
 }

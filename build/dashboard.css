@@ -1436,6 +1436,8 @@ th, td {
     border-top: 1px solid #eceeef; }
   .grid-table.drag {
     cursor: col-resize; }
+  .grid-table.no-drag .grid-table-control {
+    cursor: default; }
 
 .panel {
   background: #FFFFFF;

@@ -986,7 +986,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   var defaults = {
     dragable: true // 是否允许通过拖动单元格边框改变单元格大小
-    , gridWidth: false // 初始单元格大小，用数组表示，如果没有就等分
+    , gridWidth: false // 初始单元格占宽度百分比，用数组表示，如果没有就等分
   };
 
   var DragTable = (function () {
@@ -1003,57 +1003,78 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       var $headerCells = $headerFirstRow.children('.grid-table-cell'),
           $headerControls = $headerFirstRow.children('.grid-table-control');
-      var initWidth = (TableWidth - $headerControls.length * 2) / $headerCells.length;
-      $headerCells.css({
-        width: initWidth + 'px'
-      });
-
+      var TotalWidth = TableWidth - $headerControls.length * 2;
+      var initWidth = TotalWidth / $headerCells.length;
       var $bodyRows = $element.find('.grid-table-body .grid-table-row');
-
       var $bodyCells = $bodyRows.find('.grid-table-cell');
-      $bodyCells.css({
-        width: initWidth + 'px'
-      });
-
       var $footerCells = $element.find('.grid-table-footer .grid-table-row .grid-table-cell');
-      $footerCells.css({
-        width: initWidth + 'px'
-      });
+
+      if (options.gridWidth && Array.isArray(options.gridWidth)) {
+        options.gridWidth.forEach(function (percentage, i) {
+          $headerCells.eq(i).css({
+            width: TotalWidth * percentage / 100 + 'px'
+          });
+          $bodyRows.each(function (j, ele) {
+            $bodyRows.eq(j).children('.grid-table-cell').eq(i).css({
+              width: TotalWidth * percentage / 100 + 'px'
+            });
+          });
+          $footerCells.eq(i).css({
+            width: TotalWidth * percentage / 100 + 'px'
+          });
+        });
+      } else {
+        $headerCells.css({
+          width: initWidth + 'px'
+        });
+
+        $bodyCells.css({
+          width: initWidth + 'px'
+        });
+
+        $footerCells.css({
+          width: initWidth + 'px'
+        });
+      }
 
       this.$leftElements = null;
       this.$rightElements = null;
-      this.currentLeftWidth = initWidth;
-      this.currentRightWidth = initWidth;
+      this.currentLeftWidth = 0;
+      this.currentRightWidth = 0;
       this.startPosition = 0;
       this.draging = false;
       this.req = null;
       this.distance = 0;
 
-      $element.on('mousedown', '.grid-table-control', function (event) {
-        var $target = $(event.currentTarget);
-        var controlIndex = ($target.index() + 1) / 2;
-        _this.$leftElements = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
-        _this.$rightElements = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
-        $bodyRows.each(function (i) {
-          var $cells = $bodyRows.eq(i).find('.grid-table-cell');
-          _this.$leftElements = _this.$leftElements.add($cells.eq(controlIndex - 1));
-          _this.$rightElements = _this.$rightElements.add($cells.eq(controlIndex));
+      if (options.dragable) {
+        $element.on('mousedown', '.grid-table-control', function (event) {
+          var $target = $(event.currentTarget);
+          var controlIndex = ($target.index() + 1) / 2;
+          _this.$leftElements = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
+          _this.$rightElements = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
+          $bodyRows.each(function (i) {
+            var $cells = $bodyRows.eq(i).find('.grid-table-cell');
+            _this.$leftElements = _this.$leftElements.add($cells.eq(controlIndex - 1));
+            _this.$rightElements = _this.$rightElements.add($cells.eq(controlIndex));
+          });
+          _this.currentLeftWidth = parseFloat(_this.$leftElements[0].style.width);
+          _this.currentRightWidth = parseFloat(_this.$rightElements[0].style.width);
+          _this.startPosition = event.pageX;
+          _this.start();
         });
-        _this.currentLeftWidth = parseFloat(_this.$leftElements[0].style.width);
-        _this.currentRightWidth = parseFloat(_this.$rightElements[0].style.width);
-        _this.startPosition = event.pageX;
-        _this.start();
-      });
 
-      $element.on('mousemove', function (event) {
-        if (_this.draging) {
-          _this.distance = event.pageX - _this.startPosition;
-        }
-      });
+        $element.on('mousemove', function (event) {
+          if (_this.draging) {
+            _this.distance = event.pageX - _this.startPosition;
+          }
+        });
 
-      $(document).on('mouseup', function (event) {
-        _this.draging = false;
-      });
+        $(document).on('mouseup', function (event) {
+          _this.draging = false;
+        });
+      } else {
+        $element.addClass('no-drag');
+      }
     }
 
     _createClass(DragTable, [{
@@ -1107,10 +1128,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return DragTable;
   })();
 
-  function gridtable() {
+  function gridtable(options) {
 
     return this.each(function (index, ele) {
-      var dragTable = new DragTable($(ele));
+      var dragTable = new DragTable($(ele), options);
     });
   }
 

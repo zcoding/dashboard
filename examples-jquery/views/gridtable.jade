@@ -5,7 +5,55 @@ block content
     .u-sm-8
       .box.padding
         h2 通过拖动单元格间的边框可以改变单元格的宽度
-        .grid-table
+        .grid-table#grid-table1
+          .grid-table-header
+            .grid-table-row
+              .grid-table-cell #
+              .grid-table-control
+              .grid-table-cell Name
+              .grid-table-control
+              .grid-table-cell Email
+              .grid-table-control
+              .grid-table-cell Age
+              .grid-table-control
+              .grid-table-cell Address
+          .grid-table-body
+            .grid-table-row
+              .grid-table-cell 1
+              .grid-table-control
+              .grid-table-cell wuzijie
+              .grid-table-control
+              .grid-table-cell wuzijie_1991@163.com
+              .grid-table-control
+              .grid-table-cell 25
+              .grid-table-control
+              .grid-table-cell Guangzhou,China
+            .grid-table-row
+              .grid-table-cell 1
+              .grid-table-control
+              .grid-table-cell wuzijie
+              .grid-table-control
+              .grid-table-cell wuzijie_1991@163.com
+              .grid-table-control
+              .grid-table-cell 25
+              .grid-table-control
+              .grid-table-cell Guangzhou,China
+          .grid-table-footer
+            .grid-table-row
+              .grid-table-cell a
+              .grid-table-control
+              .grid-table-cell b
+              .grid-table-control
+              .grid-table-cell c
+              .grid-table-control
+              .grid-table-cell d
+              .grid-table-control
+              .grid-table-cell e
+
+    .u-sm-8
+      .box.padding
+        h2 也可以设置为不可改变大小
+        .grid-table#grid-table2
           .grid-table-header
             .grid-table-row
               .grid-table-cell #
@@ -53,5 +101,11 @@ block content
 append script
   script.
     $(function() {
-      $('.grid-table').gridtable();
+      $('#grid-table1').gridtable({
+        gridWidth: [10, 20, 30, 10, 30]
+      });
+      $('#grid-table2').gridtable({
+        dragable: false,
+        gridWidth: [10, 20, 30, 10, 30]
+      });
     });
