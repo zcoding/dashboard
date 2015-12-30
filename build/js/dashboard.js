@@ -143,40 +143,43 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 
 (function ($) {
 
-  $.fn.extend({
-    dropdown: function dropdown(options) {
-      var _this = this;
+  var defaults = {};
 
-      return this.each(function (index, ele) {
-        var $trigger = _this.children('[data-dropdown-trigger]'),
-            $menu = _this.children('.dropdown-menu');
-        var data = _this.data('dropdown');
-        if (data == null) {
-          data = {
-            show: false
-          };
-          _this.data('dropdown', data);
+  function dropdown(options) {
+
+    return this.each(function (index, ele) {
+      options = $.extend(true, {}, defaults, options);
+      var $this = $(ele);
+      var $trigger = $this.children('[data-dropdown-trigger]'),
+          $menu = $this.children('.dropdown-menu');
+      var data = $this.data('dropdown');
+      if (data == null) {
+        data = {
+          show: false
+        };
+        $this.data('dropdown', data);
+      }
+      $trigger.on('click', function () {
+        var data = $this.data('dropdown');
+        if (data.show) {
+          data.show = false;
+          $menu.one('webkitTransitionEnd', function () {
+            if (!data.show) {
+              // Must check current status
+              $menu.removeClass('active');
+            }
+          }).removeClass('in');
+        } else {
+          data.show = true;
+          $menu.addClass('active');
+          $menu[0].offsetWidth; // Must force reflow
+          $menu.addClass('in');
         }
-        $trigger.on('click', function () {
-          var data = _this.data('dropdown');
-          if (data.show) {
-            data.show = false;
-            $menu.one('webkitTransitionEnd', function () {
-              if (!data.show) {
-                // Must check current status
-                $menu.removeClass('active');
-              }
-            }).removeClass('in');
-          } else {
-            data.show = true;
-            $menu.addClass('active');
-            $menu[0].offsetWidth; // Must force reflow
-            $menu.addClass('in');
-          }
-        });
       });
-    }
-  });
+    });
+  }
+
+  $.fn.extend({ dropdown: dropdown });
 })(jQuery);
 'use strict';
 
@@ -445,6 +448,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _this.$element.removeClass('drag');
         _this.drag = false;
       });
+
+      // 当窗口大小发生变化时，需要重新计算长度
     }
 
     _createClass(Scrollbar, [{
@@ -453,7 +458,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var $element = this.$element,
             $scrollbar = this.$scrollbar;
         var speed = this.options.speed;
-        var delta = event.originalEvent.wheelDeltaY < 0 ? -speed : speed;
+        var delta = event.deltaY < 0 ? -speed : speed;
         var currentScrollTop = $element.scrollTop();
         var move = currentScrollTop - delta;
         move = move < 0 ? 0 : move > this.MaxMoveHeight ? this.MaxMoveHeight : move;
@@ -466,6 +471,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (move > 0 && move < this.MaxMoveHeight) {
           event.preventDefault();
+          event.stopPropagation();
         }
       }
     }, {
@@ -495,7 +501,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _this2 = this;
 
     return this.each(function (index, ele) {
-
+      // 如果是mac os就不要初始化
+      if (/Mac OS X/ig.test(navigator.userAgent)) {
+        return false;
+      }
       var scrollbar = _this2.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
         scrollbar = new Scrollbar(_this2, options);
@@ -955,4 +964,216 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   }
 
   $.fn.extend({ datepicker: datepicker });
+})(jQuery);
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(function ($) {
+
+  var defaults = {
+    dragable: true // 是否允许通过拖动单元格边框改变单元格大小
+    , gridWidth: false // 初始单元格占宽度百分比，用数组表示，如果没有就等分
+  };
+
+  var DragTable = (function () {
+    function DragTable($element, options) {
+      var _this = this;
+
+      _classCallCheck(this, DragTable);
+
+      this.$element = $element;
+      options = this.options = $.extend(true, {}, defaults, options);
+
+      var $headerRows = this.$headerRows = $element.find('.grid-table-header .grid-table-row');
+      var TableWidth = $element.innerWidth();
+
+      var $headerCells = $headerRows.children('.grid-table-cell'),
+          $headerControls = $headerRows.children('.grid-table-control');
+      var TotalWidth = TableWidth - $headerControls.length * 2;
+      var initWidth = TotalWidth / $headerCells.length;
+      var $bodyRows = this.$bodyRows = $element.find('.grid-table-body .grid-table-row');
+      var $bodyCells = $bodyRows.find('.grid-table-cell');
+      var $footerRows = this.$footerRows = $element.find('.grid-table-footer .grid-table-row');
+      var $footerCells = $footerRows.children('.grid-table-cell');
+
+      if (options.gridWidth && Array.isArray(options.gridWidth)) {
+        options.gridWidth.forEach(function (percentage, i) {
+          $headerCells.eq(i).css({
+            width: TotalWidth * percentage / 100 + 'px'
+          });
+          $bodyRows.each(function (j, ele) {
+            $bodyRows.eq(j).children('.grid-table-cell').eq(i).css({
+              width: TotalWidth * percentage / 100 + 'px'
+            });
+          });
+          $footerCells.eq(i).css({
+            width: TotalWidth * percentage / 100 + 'px'
+          });
+        });
+      } else {
+        $headerCells.css({
+          width: initWidth + 'px'
+        });
+
+        $bodyCells.css({
+          width: initWidth + 'px'
+        });
+
+        $footerCells.css({
+          width: initWidth + 'px'
+        });
+      }
+
+      // 设置control的长度
+      this.updateBorderHeight();
+
+      this.$leftElements = null;
+      this.$rightElements = null;
+      this.currentLeftWidth = 0;
+      this.currentRightWidth = 0;
+      this.startPosition = 0;
+      this.draging = false;
+      this.req = null;
+      this.distance = 0;
+
+      if (options.dragable) {
+        $element.on('mousedown', '.grid-table-control', function (event) {
+          var $target = $(event.currentTarget);
+          var controlIndex = ($target.index() + 1) / 2;
+          _this.$leftElements = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
+          _this.$rightElements = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
+          $bodyRows.each(function (i) {
+            var $cells = $bodyRows.eq(i).find('.grid-table-cell');
+            _this.$leftElements = _this.$leftElements.add($cells.eq(controlIndex - 1));
+            _this.$rightElements = _this.$rightElements.add($cells.eq(controlIndex));
+          });
+          _this.currentLeftWidth = parseFloat(_this.$leftElements[0].style.width);
+          _this.currentRightWidth = parseFloat(_this.$rightElements[0].style.width);
+          _this.startPosition = event.pageX;
+          _this.start();
+        });
+
+        $element.on('mousemove', function (event) {
+          if (_this.draging) {
+            _this.distance = event.pageX - _this.startPosition;
+          }
+        });
+
+        $(document).on('mouseup', function (event) {
+          _this.draging = false;
+        });
+      } else {
+        $element.addClass('no-drag');
+      }
+    }
+
+    _createClass(DragTable, [{
+      key: 'start',
+      value: function start() {
+        this.draging = true;
+        this.$element.addClass('drag');
+        this.req = requestAnimationFrame($.proxy(this.step, this));
+      }
+    }, {
+      key: 'stop',
+      value: function stop() {
+        this.draging = false;
+        cancelAnimationFrame(this.req);
+        this.$element.removeClass('drag');
+        this.distance = 0;
+        this.startPosition = 0;
+      }
+    }, {
+      key: 'step',
+      value: function step() {
+        if (this.draging) {
+          this.move(this.distance);
+          this.req = requestAnimationFrame($.proxy(this.step, this));
+        } else {
+          this.stop();
+        }
+      }
+    }, {
+      key: 'updateBorderHeight',
+      value: function updateBorderHeight() {
+        this.$bodyRows.each(function (i, ele) {
+          var $row = $(ele);
+          var height = 0;
+          $row.children('.grid-table-cell').each(function (i, ele) {
+            var h = $(ele).outerHeight();
+            if (h > height) {
+              height = h;
+            }
+          });
+          $row.children('.grid-table-control').css({
+            height: height + 'px'
+          });
+        });
+
+        this.$headerRows.each(function (i, ele) {
+          var $row = $(ele);
+          var height = 0;
+          $row.children('.grid-table-cell').each(function (i, ele) {
+            var h = $(ele).outerHeight();
+            if (h > height) {
+              height = h;
+            }
+          });
+          $row.children('.grid-table-control').css({
+            height: height + 'px'
+          });
+        });
+
+        this.$footerRows.each(function (i, ele) {
+          var $row = $(ele);
+          var height = 0;
+          $row.children('.grid-table-cell').each(function (i, ele) {
+            var h = $(ele).outerHeight();
+            if (h > height) {
+              height = h;
+            }
+          });
+          $row.children('.grid-table-control').css({
+            height: height + 'px'
+          });
+        });
+      }
+    }, {
+      key: 'move',
+      value: function move(distance) {
+        var leftMove = this.currentLeftWidth + distance,
+            rightMove = this.currentRightWidth - distance;
+        if (leftMove < 32) {
+          leftMove = 32;
+          rightMove = this.currentLeftWidth + this.currentRightWidth - 32;
+        }
+        if (rightMove < 32) {
+          rightMove = 32;
+          leftMove = this.currentLeftWidth + this.currentRightWidth - 32;
+        }
+        this.$leftElements.css({
+          width: leftMove + 'px'
+        });
+        this.$rightElements.css({
+          width: rightMove + 'px'
+        });
+        // 除了改变宽度，还要改变control的高度
+        this.updateBorderHeight();
+      }
+    }]);
+
+    return DragTable;
+  })();
+
+  function gridtable(options) {
+
+    return this.each(function (index, ele) {
+      var dragTable = new DragTable($(ele), options);
+    });
+  }
+
+  $.fn.extend({ gridtable: gridtable });
 })(jQuery);

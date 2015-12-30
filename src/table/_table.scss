@@ -19,6 +19,7 @@ th, td {
     line-height: 1.5;
     border-top: 1px solid #eceeef;
     border-bottom: 2px solid rgba(120,130,140,.045);
+    font-weight: 700;
   }
 
   & > tbody > tr > td {
@@ -48,4 +49,50 @@ th, td {
     }
   }
 
+}
+
+.table-stick {
+  position: relative;
+
+  .table-stick-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFF;
+    overflow-y: scroll;
+
+    .table-stick-table {
+      display: table;
+      width: 100%;
+    }
+
+    .table-stick-row {
+      display: table-row;
+    }
+
+    .table-stick-cell {
+      display: table-cell;
+      padding: 10px 16px;
+      vertical-align: bottom;
+      line-height: 1.5;
+      border-top: 1px solid #eceeef;
+      border-bottom: 2px solid rgba(120,130,140,.045);
+      font-weight: 700;
+    }
+
+    .table-stick-table.table-bordered {
+      border-right: 1px solid #eceeef;
+      .table-stick-cell {
+        border-left: 1px solid #eceeef;
+      }
+    }
+  }
+
+  .table-stick-body {
+    padding-top: 44px;
+    overflow-y: scroll;
+    table {
+      margin-bottom: 0;
+    }
+  }
 }

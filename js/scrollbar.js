@@ -83,12 +83,14 @@
         this.$element.removeClass('drag');
         this.drag = false;
       });
+
+      // 当窗口大小发生变化时，需要重新计算长度
     }
 
     mousewheel(event) {
       let $element = this.$element, $scrollbar = this.$scrollbar;
       let speed = this.options.speed;
-      var delta = event.originalEvent.wheelDeltaY < 0 ? -speed : speed;
+      var delta = event.deltaY < 0 ? -speed : speed;
       let currentScrollTop = $element.scrollTop();
       let move = currentScrollTop - delta;
       move = move < 0 ? 0 : (move > this.MaxMoveHeight ? this.MaxMoveHeight : move);
@@ -101,6 +103,7 @@
 
       if (move > 0 && move < this.MaxMoveHeight) {
         event.preventDefault();
+        event.stopPropagation();
       }
     }
 
@@ -126,7 +129,10 @@
   function scrollbar(options) {
 
     return this.each((index, ele) => {
-
+      // 如果是mac os就不要初始化
+      if(/Mac OS X/ig.test(navigator.userAgent)) {
+        return false;
+      }
       let scrollbar = this.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
         scrollbar = new Scrollbar(this, options);
