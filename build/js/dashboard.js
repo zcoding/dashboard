@@ -143,40 +143,43 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 
 (function ($) {
 
-  $.fn.extend({
-    dropdown: function dropdown(options) {
-      var _this = this;
+  var defaults = {};
 
-      return this.each(function (index, ele) {
-        var $trigger = _this.children('[data-dropdown-trigger]'),
-            $menu = _this.children('.dropdown-menu');
-        var data = _this.data('dropdown');
-        if (data == null) {
-          data = {
-            show: false
-          };
-          _this.data('dropdown', data);
+  function dropdown(options) {
+
+    return this.each(function (index, ele) {
+      options = $.extend(true, {}, defaults, options);
+      var $this = $(ele);
+      var $trigger = $this.children('[data-dropdown-trigger]'),
+          $menu = $this.children('.dropdown-menu');
+      var data = $this.data('dropdown');
+      if (data == null) {
+        data = {
+          show: false
+        };
+        $this.data('dropdown', data);
+      }
+      $trigger.on('click', function () {
+        var data = $this.data('dropdown');
+        if (data.show) {
+          data.show = false;
+          $menu.one('webkitTransitionEnd', function () {
+            if (!data.show) {
+              // Must check current status
+              $menu.removeClass('active');
+            }
+          }).removeClass('in');
+        } else {
+          data.show = true;
+          $menu.addClass('active');
+          $menu[0].offsetWidth; // Must force reflow
+          $menu.addClass('in');
         }
-        $trigger.on('click', function () {
-          var data = _this.data('dropdown');
-          if (data.show) {
-            data.show = false;
-            $menu.one('webkitTransitionEnd', function () {
-              if (!data.show) {
-                // Must check current status
-                $menu.removeClass('active');
-              }
-            }).removeClass('in');
-          } else {
-            data.show = true;
-            $menu.addClass('active');
-            $menu[0].offsetWidth; // Must force reflow
-            $menu.addClass('in');
-          }
-        });
       });
-    }
-  });
+    });
+  }
+
+  $.fn.extend({ dropdown: dropdown });
 })(jQuery);
 'use strict';
 
