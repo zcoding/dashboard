@@ -1401,6 +1401,38 @@ th, td {
     .table-stick .table-stick-body table {
       margin-bottom: 0; }
 
+.grid-table {
+  display: block;
+  width: 100%;
+  border: 1px solid #eceeef; }
+  .grid-table .grid-table-row:before, .grid-table .grid-table-row:after {
+    display: table;
+    content: ' '; }
+  .grid-table .grid-table-row:after {
+    clear: both; }
+  .grid-table .grid-table-row .grid-table-cell {
+    display: block;
+    float: left;
+    padding: .75rem 16px;
+    line-height: 1.5;
+    overflow: hidden; }
+  .grid-table .grid-table-row .grid-table-control {
+    display: block;
+    float: left;
+    width: 2px;
+    height: 46px;
+    background-color: #ececef;
+    cursor: col-resize; }
+  .grid-table .grid-table-header .grid-table-row .grid-table-cell {
+    font-weight: 700;
+    border-bottom: 1px solid #eceeef; }
+  .grid-table .grid-table-body .grid-table-row .grid-table-cell {
+    border-top: 1px solid #eceeef; }
+  .grid-table .grid-table-footer .grid-table-row .grid-table-cell {
+    border-top: 1px solid #eceeef; }
+  .grid-table.drag {
+    cursor: col-resize; }
+
 .panel {
   background: #FFFFFF;
   margin-bottom: 1.5rem;

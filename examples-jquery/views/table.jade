@@ -9,25 +9,25 @@ block content
           .table-stick-header
             .table-stick-table.table-bordered
               .table-stick-row
-                .table-stick-cell(style="width:5%;") #
-                .table-stick-cell(style="width:15%;") Name
-                .table-stick-cell(style="width:15%;") Email
-                .table-stick-cell(style="width:5%;") Age
-                .table-stick-cell(style="width:20%;") Address
-                .table-stick-cell(style="width:20%;") Last-login-time
-                .table-stick-cell(style="width:20%;") Operation
+                .table-stick-cell #
+                .table-stick-cell Name
+                .table-stick-cell Email
+                .table-stick-cell Age
+                .table-stick-cell Address
+                .table-stick-cell Last-login-time
+                .table-stick-cell Operation
           .table-stick-body(style="height:300px;")
             table.table.table-bordered
               tbody
                 each item in list
                   tr
-                    td(style="width:5%;")= item.id
-                    td(style="width:15%;")= item.name
-                    td(style="width:15%;")= item.email
-                    td(style="width:5%;")= item.age
-                    td(style="width:20%;")= item.address
-                    td(style="width:20%;")= item.lastLoginTime
-                    td(style="width:20%;")
+                    td= item.id
+                    td= item.name
+                    td= item.email
+                    td= item.age
+                    td= item.address
+                    td= item.lastLoginTime
+                    td
                       button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
     .u-sm-8
@@ -246,3 +246,9 @@ block content
             li
               a(href="#/page=4")
                 i.fa.fa-chevron-right
+
+append script
+  script.
+    $(function() {
+      $('.table-stick').stickTable();
+    });

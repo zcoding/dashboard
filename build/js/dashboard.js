@@ -958,3 +958,109 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   $.fn.extend({ datepicker: datepicker });
 })(jQuery);
+'use strict';
+
+(function ($) {
+
+  function stickTable() {
+    var _this = this;
+
+    return this.each(function (index, ele) {
+      var $td = _this.find('table tr').first().children(),
+          $cell = _this.find('.table-stick-cell');
+      $td.each(function (index, ele) {
+        $cell.eq(index).width($td.eq(index).width());
+      });
+    });
+  }
+
+  $.fn.extend({ stickTable: stickTable });
+})(jQuery);
+'use strict';
+
+(function ($) {
+
+  function gridtable() {
+    var _this = this;
+
+    return this.each(function (index, ele) {
+      var $headerFirstRow = _this.find('.grid-table-header .grid-table-row').first();
+      var TableWidth = _this.innerWidth();
+
+      var $headerCells = $headerFirstRow.children('.grid-table-cell'),
+          $headerControls = $headerFirstRow.children('.grid-table-control');
+      var initWidth = (TableWidth - $headerControls.length * 2) / $headerCells.length;
+      $headerCells.css({
+        width: initWidth + 'px'
+      });
+
+      var $bodyRows = _this.find('.grid-table-body .grid-table-row');
+
+      var $bodyCells = $bodyRows.find('.grid-table-cell');
+      $bodyCells.css({
+        width: initWidth + 'px'
+      });
+
+      var $footerCells = _this.find('.grid-table-footer .grid-table-row .grid-table-cell');
+      $footerCells.css({
+        width: initWidth + 'px'
+      });
+
+      var $target = null,
+          $befores = null,
+          $afters = null,
+          currentBeforeWidth = initWidth,
+          currentAfterWidth = initWidth;
+
+      var currentPosition = 0,
+          dragStart = false;;
+
+      _this.on('mousedown', '.grid-table-control', function (event) {
+        $target = $(event.currentTarget);
+        var controlIndex = ($target.index() + 1) / 2;
+        $befores = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
+        $afters = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
+        $bodyRows.each(function (i) {
+          var $cells = $bodyRows.eq(i).find('.grid-table-cell');
+          $befores = $befores.add($cells.eq(controlIndex - 1));
+          $afters = $afters.add($cells.eq(controlIndex));
+        });
+        currentBeforeWidth = parseFloat($befores[0].style.width);
+        currentAfterWidth = parseFloat($afters[0].style.width);
+        currentPosition = event.pageX;
+        dragStart = true;
+        _this.addClass('drag');
+      });
+
+      _this.on('mousemove', function (event) {
+        if (dragStart) {
+          var move = event.pageX - currentPosition;
+
+          var beforeMove = currentBeforeWidth + move,
+              afterMove = currentAfterWidth - move;
+          if (beforeMove < 32) {
+            beforeMove = 32;
+            afterMove = currentBeforeWidth + currentAfterWidth - 32;
+          }
+          if (afterMove < 32) {
+            afterMove = 32;
+            beforeMove = currentBeforeWidth + currentAfterWidth - 32;
+          }
+          $befores.css({
+            width: beforeMove + 'px'
+          });
+          $afters.css({
+            width: afterMove + 'px'
+          });
+        }
+      });
+
+      _this.on('mouseup', function (event) {
+        dragStart = false;
+        _this.removeClass('drag');
+      });
+    });
+  }
+
+  $.fn.extend({ gridtable: gridtable });
+})(jQuery);
