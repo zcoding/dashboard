@@ -158,8 +158,8 @@ block content
                 th Email
                 th Age
                 th Address
-                th Last-login-time
                 th very long text
+                th Last-login-time
                 th Operation
             tbody
               each item in list
@@ -176,7 +176,7 @@ block content
 
     .u-sm-16
       .panel.panel-primary
-        .panel-header Table in panel (random data created by mock.js)
+        .panel-header Responsive table in panel (random data created by mock.js)
         .table-responsive
           table.table
             thead
@@ -186,8 +186,8 @@ block content
                 th Email
                 th Age
                 th Address
-                th Last-login-time
                 th very long text
+                th Last-login-time
                 th Operation
             tbody
               each item in list
@@ -213,9 +213,17 @@ block content
             li.active
               a(href="#/page=3") 3
             li
-              a(href="#/page=4") 4
+              a(href="#/page=4") ...
             li
-              a(href="#/page=5") 5
+              a(href="#/page=5") 100
+            li
+              a(href="#/page=5") 101
+            li
+              a(href="#/page=5") 102
             li
               a(href="#/page=4")
                 i.fa.fa-chevron-right
+            li.page-input
+              input(type="text" placeholder="")
+            li
+              a(href="#/page=").page-btn Go

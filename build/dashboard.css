@@ -1503,20 +1503,34 @@ th, td {
     .pagination li a {
       display: block;
       font-size: 14px;
-      width: 32px;
-      margin-left: -1px;
-      padding: 5px 0;
+      min-width: 32px;
+      padding: 5px;
       line-height: 20px;
       text-align: center;
       background-color: #FFFFFF;
       color: #333;
       border: 1px solid rgba(120, 130, 140, 0.13); }
-    .pagination li:first-child a {
-      margin-left: 0; }
+      .pagination li a.page-btn {
+        background-color: #0cc2aa;
+        color: #FFFFFF;
+        border-color: #0cc2aa; }
+    .pagination li:not(:first-child) a {
+      margin-left: -1px; }
     .pagination li.active a {
       background-color: #0cc2aa;
       color: #FFFFFF;
       border-color: #0cc2aa; }
+    .pagination li.page-input {
+      margin: 0 6px 0 5px; }
+      .pagination li.page-input input {
+        border: 1px solid rgba(120, 130, 140, 0.13);
+        border-radius: 0;
+        font-size: 14px;
+        width: 50px;
+        height: 32px;
+        padding: 5px 0;
+        line-height: 32px;
+        text-align: center; }
 
 @keyframes fadeIn {
   0% {
@@ -2372,49 +2386,49 @@ input.input-info {
   color: #2e3e4e; }
 
 .bg-dark {
-  background-color: #707e8b; }
+  background-color: #707e8b !important; }
 
 .text-primary {
   color: #0cc2aa; }
 
 .bg-primary {
-  background-color: #66e7d6; }
+  background-color: #66e7d6 !important; }
 
 .text-secondary {
   color: #3bb4f2; }
 
 .bg-secondary {
-  background-color: #b9e0f4; }
+  background-color: #b9e0f4 !important; }
 
 .text-success {
   color: #6cc788; }
 
 .bg-success {
-  background-color: #cee5d5; }
+  background-color: #cee5d5 !important; }
 
 .text-danger {
   color: #f44455; }
 
 .bg-danger {
-  background-color: #f6c2c7; }
+  background-color: #f6c2c7 !important; }
 
 .text-warning {
   color: #fcc100; }
 
 .bg-warning {
-  background-color: #f5db86; }
+  background-color: #f5db86 !important; }
 
 .text-tips {
   color: #f77a99; }
 
 .bg-tips {
-  background-color: #fdf3f6; }
+  background-color: #fdf3f6 !important; }
 
 .text-info {
   color: #6887ff; }
 
 .bg-info {
-  background-color: #e9edfd; }
+  background-color: #e9edfd !important; }
 
 .scroll-y {
   overflow-x: hidden;
