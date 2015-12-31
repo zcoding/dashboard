@@ -68,6 +68,9 @@ append script
       $('#grid-table').gridtable({
         gridWidth: [10, 20, 20, 8, 10, 20, 12]
       }).on('gridchange.dashboard', function() {
-        $scrollbar.data('scrollbar').repaint();
+        let scrollbar = $scrollbar.data('scrollbar');
+        if (scrollbar != null) {
+          scrollbar.repaint();
+        }
       });
     });

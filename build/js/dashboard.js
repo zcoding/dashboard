@@ -1231,3 +1231,57 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   $.fn.extend({ gridtable: gridtable });
 })(jQuery);
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(function ($) {
+
+  var defaults = {};
+
+  var Stick = (function () {
+    function Stick($element, options) {
+      var _this = this;
+
+      _classCallCheck(this, Stick);
+
+      this.$element = $element;
+      options = this.options = $.extend(true, {}, defaults, options);
+      this.repaint();
+      $(window).on('resize', function () {
+        _this.repaint();
+      });
+      $(window).on('scroll', function () {});
+    }
+
+    _createClass(Stick, [{
+      key: 'repaint',
+      value: function repaint() {
+        var offset = this.$element.offset();
+        this.$element.css({
+          position: 'fixed',
+          top: '50px',
+          left: offset.left + 'px'
+        });
+      }
+    }]);
+
+    return Stick;
+  })();
+
+  function stick(options) {
+
+    return this.each(function (index, ele) {
+      var $this = $(ele);
+      var stickObj = $this.data('stick');
+      if (stickObj == null) {
+        stickObj = new Stick($this, options);
+        $this.data('stick', stickObj);
+      }
+    });
+  }
+
+  $.fn.extend({ stick: stick });
+})(jQuery);

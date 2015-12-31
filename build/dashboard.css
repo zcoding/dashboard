@@ -2437,7 +2437,7 @@ input.input-info {
 
 .scroll-y {
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: auto !important; }
 
 .flex {
   -webkit-flex: 1;
