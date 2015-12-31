@@ -17,82 +17,61 @@ th, td {
     padding: 10px 16px;
     vertical-align: bottom;
     line-height: 1.5;
-    border-top: 1px solid #eceeef;
-    border-bottom: 2px solid rgba(120,130,140,.045);
     font-weight: 700;
+    border-bottom: 2px solid #eceeef;
   }
 
   & > tbody > tr > td {
     padding: .75rem 16px;
     line-height: 1.5;
     vertical-align: top;
-    border-top: 1px solid rgba(120, 130, 140, .045);
+    border-top: 1px solid #eceeef;
   }
 
   &.table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
+    background-color: #eceeef;
   }
 
-  &.table-hover > tbody > tr:hover {
-    background-color: rgba(0, 0, 0, .08);
-    color: $black;
+  &.table-hover {
+    & > tbody > tr:hover td {
+      background-color: #eceeef;
+      color: $black;
+    }
+    &.table-bordered > tbody > tr:hover td:not(:first-child) {
+      border-left-color: #CCC;
+    }
   }
 
   &.table-bordered {
-    border-bottom: 1px solid #eceeef;
-    border-right: 1px solid #eceeef;
-    & > thead > tr > th {
+    border: 1px solid #eceeef;
+    & > thead > tr > th:not(:first-child) {
       border-left: 1px solid #eceeef;
     }
-    & > tbody > tr > td {
+    & > tbody > tr > td:not(:first-child) {
       border-left: 1px solid #eceeef;
     }
   }
 
 }
 
-.table-stick {
-  position: relative;
-
-  .table-stick-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #FFF;
-    overflow-y: scroll;
-
-    .table-stick-table {
-      display: table;
-      width: 100%;
-    }
-
-    .table-stick-row {
-      display: table-row;
-    }
-
-    .table-stick-cell {
-      display: table-cell;
-      padding: 10px 16px;
-      vertical-align: bottom;
-      line-height: 1.5;
-      border-top: 1px solid #eceeef;
-      border-bottom: 2px solid rgba(120,130,140,.045);
-      font-weight: 700;
-    }
-
-    .table-stick-table.table-bordered {
-      border-right: 1px solid #eceeef;
-      .table-stick-cell {
-        border-left: 1px solid #eceeef;
-      }
-    }
+// responsive table wrapper
+.table-responsive {
+  width: 100%;
+  min-height: 0.1%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid #eceeef;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch;
+  .table>thead>tr>th {
+    white-space: nowrap;
   }
-
-  .table-stick-body {
-    padding-top: 44px;
-    overflow-y: scroll;
-    table {
-      margin-bottom: 0;
-    }
+  .table-bordered {
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  .panel > & {
+    border: 0;
   }
 }
