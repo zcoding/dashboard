@@ -1,0 +1,173 @@
+extends ./layout.jade
+
+block content
+  .grid.padding
+    .u-sm-8
+      .box.padding
+        h2 通过拖动单元格间的边框可以改变单元格的宽度
+        .grid-table#grid-table1
+          .grid-table-header
+            .grid-table-row
+              .grid-table-cell #
+              .grid-table-control
+              .grid-table-cell Name
+              .grid-table-control
+              .grid-table-cell Email
+              .grid-table-control
+              .grid-table-cell Age
+              .grid-table-control
+              .grid-table-cell Address
+          .grid-table-body
+            .grid-table-row
+              .grid-table-cell 1
+              .grid-table-control
+              .grid-table-cell wuzijie
+              .grid-table-control
+              .grid-table-cell wuzijie_1991@163.com
+              .grid-table-control
+              .grid-table-cell 25
+              .grid-table-control
+              .grid-table-cell Guangzhou,China
+            .grid-table-row
+              .grid-table-cell 1
+              .grid-table-control
+              .grid-table-cell wuzijie
+              .grid-table-control
+              .grid-table-cell wuzijie_1991@163.com
+              .grid-table-control
+              .grid-table-cell 25
+              .grid-table-control
+              .grid-table-cell Guangzhou,China
+          .grid-table-footer
+            .grid-table-row
+              .grid-table-cell a
+              .grid-table-control
+              .grid-table-cell b
+              .grid-table-control
+              .grid-table-cell c
+              .grid-table-control
+              .grid-table-cell d
+              .grid-table-control
+              .grid-table-cell e
+
+    .u-sm-8
+      .box.padding
+        h2 也可以设置为不可改变大小
+        .grid-table#grid-table2
+          .grid-table-header
+            .grid-table-row
+              .grid-table-cell #
+              .grid-table-control
+              .grid-table-cell Name
+              .grid-table-control
+              .grid-table-cell Email
+              .grid-table-control
+              .grid-table-cell Age
+              .grid-table-control
+              .grid-table-cell Address
+          .grid-table-body
+            .grid-table-row
+              .grid-table-cell 1
+              .grid-table-control
+              .grid-table-cell wuzijie
+              .grid-table-control
+              .grid-table-cell wuzijie_1991@163.com
+              .grid-table-control
+              .grid-table-cell 25
+              .grid-table-control
+              .grid-table-cell Guangzhou,China
+            .grid-table-row
+              .grid-table-cell 1
+              .grid-table-control
+              .grid-table-cell wuzijie
+              .grid-table-control
+              .grid-table-cell wuzijie_1991@163.com
+              .grid-table-control
+              .grid-table-cell 25
+              .grid-table-control
+              .grid-table-cell Guangzhou,China
+          .grid-table-footer
+            .grid-table-row
+              .grid-table-cell a
+              .grid-table-control
+              .grid-table-cell b
+              .grid-table-control
+              .grid-table-cell c
+              .grid-table-control
+              .grid-table-cell d
+              .grid-table-control
+              .grid-table-cell e
+
+    .u-sm-16
+      .box.padding
+        h2 grid-table可以实现表头和表尾固定
+        .grid-table#grid-table3
+          .grid-table-header
+            .grid-table-row
+              .grid-table-cell #
+              .grid-table-control
+              .grid-table-cell Name
+              .grid-table-control
+              .grid-table-cell Email
+              .grid-table-control
+              .grid-table-cell Age
+              .grid-table-control
+              .grid-table-cell Address
+              .grid-table-control
+              .grid-table-cell Last-login-time
+              .grid-table-control
+              .grid-table-cell Operation
+          .grid-table-body(style="height:500px;overflow:hidden;")
+            each item in list
+              .grid-table-row
+                .grid-table-cell= item.id
+                .grid-table-control
+                .grid-table-cell= item.name
+                .grid-table-control
+                .grid-table-cell= item.email
+                .grid-table-control
+                .grid-table-cell= item.age
+                .grid-table-control
+                .grid-table-cell= item.address
+                .grid-table-control
+                .grid-table-cell= item.lastLoginTime
+                .grid-table-control
+                .grid-table-cell
+                  button(type="button").btn.btn-danger.btn-sm <i class="fa fa-trash"></i> Delete
+          .grid-table-footer
+            .grid-table-row
+              .grid-table-cell a
+              .grid-table-control
+              .grid-table-cell b
+              .grid-table-control
+              .grid-table-cell c
+              .grid-table-control
+              .grid-table-cell d
+              .grid-table-control
+              .grid-table-cell e
+              .grid-table-control
+              .grid-table-cell f
+              .grid-table-control
+              .grid-table-cell g
+
+append script
+  script.
+    $(function() {
+      'use strict';
+      $('#grid-table1').gridtable({
+        gridWidth: [10, 20, 30, 10, 30]
+      });
+      $('#grid-table2').gridtable({
+        dragable: false,
+        gridWidth: [10, 20, 30, 10, 30]
+      });
+      let $scrollbar = $('#grid-table3 .grid-table-body').scrollbar();
+      $('#grid-table3').gridtable({
+        gridWidth: [10, 20, 20, 8, 10, 20, 12]
+      }).on('gridchange.dashboard', function() {
+        let scrollbar = $scrollbar.data('scrollbar');
+        if(scrollbar != null) {
+          scrollbar.repaint();
+        }
+      });
+    });

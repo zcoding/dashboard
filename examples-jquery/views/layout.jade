@@ -3,24 +3,33 @@ html
 
   include ./includes/head.jade
 
-  body
+  body(style="height:100%;")
 
     include ./includes/aside.jade
 
     include ./includes/topbar.jade
 
-    div.db-content
+    .layout-content
       block content
 
     block script
       script(src="/lib/jquery/2.1.4/jquery-2.1.4.min.js")
+      script(src="/lib/plugins/jquery.mousewheel.min.js")
       script(src="/js/dashboard.min.js")
       script(src="/lib/highlight/highlight.pack.js")
       script.
         hljs.initHighlightingOnLoad();
         $(function() {
           $('[data-collapse]').collapse();
-          $('.db-hide-scroll.flex').scrollbar({
+          $('.layout-aside .flex').scrollbar({
             style: 'light'
+          });
+          $('.layout-content').scrollbar({
+            width: 10,
+            fade: false,
+            speed: 100
+          });
+          $('.layout-aside').on('click', '.nav-header', function() {
+            $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
           });
         });

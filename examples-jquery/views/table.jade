@@ -2,7 +2,8 @@ extends ./layout.jade
 
 block content
   .grid.padding
-    .u-sm-8
+
+    .u-sm-16
       .box.padding
         h2 default table
         table.table
@@ -27,7 +28,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 bordered table
         table.table.table-bordered
@@ -52,7 +53,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 striped table
         table.table.table-striped
@@ -77,7 +78,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 hover bordered table
         table.table.table-hover.table-bordered
@@ -102,7 +103,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .panel.panel-primary
         .panel-header Table in panel (random data created by mock.js)
         table.table
@@ -144,3 +145,85 @@ block content
             li
               a(href="#/page=4")
                 i.fa.fa-chevron-right
+
+    .u-sm-16
+      .box.padding
+        h2 responsive table
+        .table-responsive
+          table.table.table-hover.table-bordered
+            thead
+              tr
+                th #
+                th Name
+                th Email
+                th Age
+                th Address
+                th very long text
+                th Last-login-time
+                th Operation
+            tbody
+              each item in list
+                tr
+                  td= item.id
+                  td= item.name
+                  td= item.email
+                  td= item.age
+                  td= item.address
+                  td verylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtext
+                  td= item.lastLoginTime
+                  td
+                    button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
+
+    .u-sm-16
+      .panel.panel-primary
+        .panel-header Responsive table in panel (random data created by mock.js)
+        .table-responsive
+          table.table
+            thead
+              tr
+                th #
+                th Name
+                th Email
+                th Age
+                th Address
+                th very long text
+                th Last-login-time
+                th Operation
+            tbody
+              each item in list
+                tr
+                  td= item.id
+                  td= item.name
+                  td= item.email
+                  td= item.age
+                  td= item.address
+                  td verylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtextverylongtext
+                  td= item.lastLoginTime
+                  td
+                    button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
+        .panel-footer.cf
+          ul.pagination.fr
+            li
+              a(href="#/page=3")
+                i.fa.fa-chevron-left
+            li
+              a(href="#/page=1") 1
+            li
+              a(href="#/page=2") 2
+            li.active
+              a(href="#/page=3") 3
+            li
+              a(href="#/page=4") ...
+            li
+              a(href="#/page=5") 100
+            li
+              a(href="#/page=5") 101
+            li
+              a(href="#/page=5") 102
+            li
+              a(href="#/page=4")
+                i.fa.fa-chevron-right
+            li.page-input
+              input(type="text" placeholder="")
+            li
+              a(href="#/page=").page-btn Go

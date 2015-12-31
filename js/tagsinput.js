@@ -39,6 +39,7 @@
           $input.focus();
         }
       }
+
       function handleKeydown(evt) {
         switch(evt.which) {
           case 13: // enter
@@ -48,6 +49,7 @@
               $holder.before($newTag);
               $input.val('').focus();
               updateWidth();
+              // $this.trigger('tagschange.dashboard', );
             }
             evt.preventDefault();
             break;

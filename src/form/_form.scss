@@ -17,17 +17,23 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select, textarea {
   display: block;
   width: 100%;
+  height: 36px;
   border: 1px solid #CECECE;
   border-radius: 4px;
   outline: 0;
   font-size: 14px;
-  line-height: 1.2;
-  padding: 8px 10px;
+  line-height: (20 / 14);
+  padding: 7px 10px;
   background-color: $white;
   font-family: $font-default;
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+  }
 }
 
-input.field-md, select.field-md {
+input[type=text].field-md, input[type=email].field-md, input[type=number].field-md, input[type=url].field-md, input[type=password].field-md, select.field-md {
   height: 32px;
   padding: 2px;
   border-top: 0;
@@ -40,9 +46,14 @@ input.field-md, select.field-md {
     border-bottom-color: #0cc2aa;
     border-bottom-width: 2px;
   }
+  &[disabled] {
+    background-color: $white;
+    color: #888;
+  }
 }
 
 textarea {
+  height: auto;
   resize: vertical;
 
   &.field-md {
@@ -57,6 +68,13 @@ textarea {
       border-bottom-color: #0cc2aa;
       border-bottom-width: 2px;
     }
+    &[disabled] {
+      background-color: $white;
+      color: #888;
+    }
+  }
+  &[disabled] {
+    resize: none;
   }
 }
 
@@ -71,6 +89,14 @@ textarea {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 700;
+    font-size: 14px;
+
+    &.inline {
+      width: 100%;
+      margin-bottom: 0;
+      padding: 6px 0 0 0;
+      text-align: right;
+    }
   }
 
 }
@@ -123,6 +149,10 @@ textarea {
 
     &:checked+i:before {
       background-color: #0cc2aa;
+    }
+
+    &[disabled] + i {
+      background-color: #CDCDCD;
     }
   }
 }
@@ -177,6 +207,9 @@ textarea {
 
     &:checked+i:before {
       background-color: #0cc2aa;
+    }
+    &[disabled] + i {
+      background-color: #CDCDCD;
     }
   }
 }
@@ -244,6 +277,10 @@ textarea {
         left: 17px;
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, .5);
       }
+    }
+
+    &[disabled] + i:before {
+      background-color: #CECECE;
     }
   }
 }

@@ -28,7 +28,7 @@ $default-panel-color: #CCCCCC;
     overflow: hidden;
   }
 
-  & > table {
+  & > table, & > .table-responsive > table {
     margin-bottom: 0;
   }
 

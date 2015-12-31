@@ -26,7 +26,7 @@ gulp.task('dev', ['sass', 'js'], function () {
   gulp.watch(Path.resolve(__dirname, './js/**/*.js'), ['js']);
 });
 
-var jss = ['core', 'button', 'collapse', 'dropdown', 'modal', 'tab', 'scrollbar', 'tagsinput', 'datetimepicker'];
+var jss = ['core', 'button', 'collapse', 'dropdown', 'modal', 'tab', 'scrollbar', 'tagsinput', 'datetimepicker', 'gridtable', 'stick'];
 
 var jssource = jss.map((name) => {
   return Path.resolve(__dirname, `./js/${name}.js`);
