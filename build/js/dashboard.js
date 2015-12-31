@@ -375,6 +375,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       options = this.options = $.extend(true, {}, Defaults, options);
       this.$element = $element;
+      $element.css({
+        overflow: 'hidden'
+      });
       var $parent = this.$parent = $element.parent();
       var $scrollbar = this.$scrollbar = $('<div class="scrollbar ' + options.style + '">');
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
@@ -383,9 +386,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       $parent.append($scrollbar);
 
       this.ContentHeight = $element[0].scrollHeight;
-      $element.css({
-        overflow: 'hidden'
-      });
 
       this.Height = $element.outerHeight();
 
@@ -393,7 +393,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.MaxMoveHeight = this.ContentHeight - this.Height;
       this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
 
-      var Width = $element.innerWidth();
       var scrollbarPosition = $element.position(),
           scrollbarMarginTop = parseInt($element.css('marginTop'));
       var paddingRight = $parent.css('paddingRight');
@@ -416,40 +415,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       $element.on('mousewheel', $.proxy(this.mousewheel, this));
-      $element.on('mouseover', function () {
+      $element.on('mouseenter', function () {
         $scrollbar.addClass('hover');
       });
-      $element.on('mouseout', function () {
+      $element.on('mouseleave', function () {
         $scrollbar.removeClass('hover');
       });
 
-      this.drag = false;
+      this.draging = false;
       this.startY = 0;
-      this.currentY = 0;
+      this.distance = 0;
       this.startTop = this.shimTop;
       this.req = null;
       this.startContentTop = 0;
 
       $scrollbar.on('mousedown', function (event) {
         _this.startY = event.pageY;
-        _this.startTop = _this.$scrollbar.position().top;
-        _this.startContentTop = _this.$element.scrollTop();
-        _this.$scrollbar.addClass('drag');
-        _this.$element.addClass('drag');
-        _this.drag = true;
-        _this.req = requestAnimationFrame($.proxy(_this.step, _this));
+        _this.start();
       });
 
       $(document).on('mousemove', function (event) {
-        _this.currentY = event.pageY;
+        if (_this.draging) {
+          _this.distance = event.pageY - _this.startY;
+        }
       });
+
       $(document).on('mouseup', function (event) {
-        _this.$scrollbar.removeClass('drag');
-        _this.$element.removeClass('drag');
-        _this.drag = false;
+        _this.stop();
       });
 
       // 当窗口大小发生变化时，需要重新计算长度
+      $(window).on('resize', function () {
+        _this.repaint();
+      });
+      // 当内容发生变化时，也可能会影响高度，由于无法检测到内容高度的变化，所以在具体使用时，需要在可能引起内容变化的代码中手动对滚动条重绘
     }
 
     _createClass(Scrollbar, [{
@@ -475,21 +474,69 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
     }, {
+      key: 'start',
+      value: function start() {
+        var $scrollbar = this.$scrollbar,
+            $element = this.$element;
+        this.startTop = $scrollbar.position().top;
+        this.startContentTop = $element.scrollTop();
+        $scrollbar.addClass('drag');
+        $element.addClass('drag');
+        $(document.body).addClass('drag');
+        this.draging = true;
+        this.req = requestAnimationFrame($.proxy(this.step, this));
+      }
+    }, {
+      key: 'stop',
+      value: function stop() {
+        this.draging = false;
+        cancelAnimationFrame(this.req);
+        this.req = null;
+        this.$scrollbar.removeClass('drag');
+        this.$element.removeClass('drag');
+        $(document.body).removeClass('drag');
+        this.distance = 0;
+        this.startY = 0;
+      }
+    }, {
       key: 'step',
       value: function step() {
-        if (this.drag) {
-          var move = this.currentY - this.startY;
-          var positionTop = this.startTop + move;
-          positionTop = positionTop < this.shimTop ? this.shimTop : positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop;
-          this.$scrollbar.css({
-            top: positionTop + 'px'
-          });
-          var contentMove = this.ContentHeight / this.Height * move;
-          this.$element.scrollTop(this.startContentTop + contentMove);
+        if (this.draging) {
+          this.move(this.distance);
           this.req = requestAnimationFrame($.proxy(this.step, this));
+        }
+      }
+    }, {
+      key: 'move',
+      value: function move(distance) {
+        var positionTop = this.startTop + distance;
+        positionTop = positionTop < this.shimTop ? this.shimTop : positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop;
+        this.$scrollbar.css({
+          top: positionTop + 'px'
+        });
+        var contentMove = this.ContentHeight / this.Height * distance;
+        this.$element.scrollTop(this.startContentTop + contentMove);
+      }
+    }, {
+      key: 'repaint',
+      value: function repaint() {
+        this.ContentHeight = this.$element[0].scrollHeight;
+        this.Height = this.$element.outerHeight();
+        this.ScrollbarHeight = this.Height / this.ContentHeight * this.Height;
+        this.MaxMoveHeight = this.ContentHeight - this.Height;
+        this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
+
+        var scrollbarPosition = this.$element.position(),
+            scrollbarMarginTop = parseInt(this.$element.css('marginTop'));
+        this.shimTop = scrollbarPosition.top + scrollbarMarginTop;
+
+        this.$scrollbar.css({
+          height: this.ScrollbarHeight
+        });
+        if (this.Height === this.ContentHeight) {
+          this.$scrollbar.hide();
         } else {
-          cancelAnimationFrame(this.req);
-          this.req = null;
+          this.$scrollbar.show();
         }
       }
     }]);
@@ -498,17 +545,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   })();
 
   function scrollbar(options) {
-    var _this2 = this;
 
     return this.each(function (index, ele) {
+      var $this = $(ele);
       // 如果是mac os就不要初始化
       if (/Mac OS X/ig.test(navigator.userAgent)) {
+        $this.addClass('scroll-y');
         return false;
       }
-      var scrollbar = _this2.data('scrollbar');
+      var scrollbar = $this.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
-        scrollbar = new Scrollbar(_this2, options);
-        _this2.data('scrollbar', scrollbar);
+        scrollbar = new Scrollbar($this, options);
+        $this.data('scrollbar', scrollbar);
       }
     });
   }
@@ -1063,7 +1111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
 
         $(document).on('mouseup', function (event) {
-          _this.draging = false;
+          _this.stop();
         });
       } else {
         $element.addClass('no-drag');
@@ -1082,6 +1130,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function stop() {
         this.draging = false;
         cancelAnimationFrame(this.req);
+        this.req = null;
         this.$element.removeClass('drag');
         this.distance = 0;
         this.startPosition = 0;
@@ -1092,8 +1141,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.draging) {
           this.move(this.distance);
           this.req = requestAnimationFrame($.proxy(this.step, this));
-        } else {
-          this.stop();
         }
       }
     }, {
@@ -1103,12 +1150,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $row = $(ele);
           var height = 0;
           $row.children('.grid-table-cell').each(function (i, ele) {
-            var h = $(ele).outerHeight();
+            var $el = $(ele);
+            var h = $el.css({ height: 'auto' }).outerHeight();
             if (h > height) {
               height = h;
             }
           });
-          $row.children('.grid-table-control').css({
+          $row.children().css({
             height: height + 'px'
           });
         });
@@ -1117,12 +1165,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $row = $(ele);
           var height = 0;
           $row.children('.grid-table-cell').each(function (i, ele) {
-            var h = $(ele).outerHeight();
+            var $el = $(ele);
+            var h = $el.css({ height: 'auto' }).outerHeight();
             if (h > height) {
               height = h;
             }
           });
-          $row.children('.grid-table-control').css({
+          $row.children().css({
             height: height + 'px'
           });
         });
@@ -1131,12 +1180,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $row = $(ele);
           var height = 0;
           $row.children('.grid-table-cell').each(function (i, ele) {
-            var h = $(ele).outerHeight();
+            var $el = $(ele);
+            var h = $el.css({ height: 'auto' }).outerHeight();
             if (h > height) {
               height = h;
             }
           });
-          $row.children('.grid-table-control').css({
+          $row.children().css({
             height: height + 'px'
           });
         });
@@ -1162,7 +1212,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
         // 除了改变宽度，还要改变control的高度
         this.updateBorderHeight();
+        this.$element.trigger('gridchange.dashboard');
       }
+    }, {
+      key: 'repaint',
+      value: function repaint() {}
     }]);
 
     return DragTable;
@@ -1176,4 +1230,58 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   }
 
   $.fn.extend({ gridtable: gridtable });
+})(jQuery);
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(function ($) {
+
+  var defaults = {};
+
+  var Stick = (function () {
+    function Stick($element, options) {
+      var _this = this;
+
+      _classCallCheck(this, Stick);
+
+      this.$element = $element;
+      options = this.options = $.extend(true, {}, defaults, options);
+      this.repaint();
+      $(window).on('resize', function () {
+        _this.repaint();
+      });
+      $(window).on('scroll', function () {});
+    }
+
+    _createClass(Stick, [{
+      key: 'repaint',
+      value: function repaint() {
+        var offset = this.$element.offset();
+        this.$element.css({
+          position: 'fixed',
+          top: '50px',
+          left: offset.left + 'px'
+        });
+      }
+    }]);
+
+    return Stick;
+  })();
+
+  function stick(options) {
+
+    return this.each(function (index, ele) {
+      var $this = $(ele);
+      var stickObj = $this.data('stick');
+      if (stickObj == null) {
+        stickObj = new Stick($this, options);
+        $this.data('stick', stickObj);
+      }
+    });
+  }
+
+  $.fn.extend({ stick: stick });
 })(jQuery);

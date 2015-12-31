@@ -3,7 +3,7 @@ extends ./layout.jade
 block content
   .grid.padding
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 default table
         table.table
@@ -28,7 +28,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 bordered table
         table.table.table-bordered
@@ -53,7 +53,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 striped table
         table.table.table-striped
@@ -78,7 +78,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 hover bordered table
         table.table.table-hover.table-bordered
@@ -103,7 +103,7 @@ block content
                 td
                   button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .panel.panel-primary
         .panel-header Table in panel (random data created by mock.js)
         table.table
@@ -146,7 +146,7 @@ block content
               a(href="#/page=4")
                 i.fa.fa-chevron-right
 
-    .u-sm-8
+    .u-sm-16
       .box.padding
         h2 responsive table
         .table-responsive
@@ -158,8 +158,8 @@ block content
                 th Email
                 th Age
                 th Address
-                th Last-login-time
                 th very long text
+                th Last-login-time
                 th Operation
             tbody
               each item in list
@@ -174,9 +174,9 @@ block content
                   td
                     button(type="button").btn.btn-danger <i class="fa fa-trash"></i> Delete
 
-    .u-sm-8
+    .u-sm-16
       .panel.panel-primary
-        .panel-header Table in panel (random data created by mock.js)
+        .panel-header Responsive table in panel (random data created by mock.js)
         .table-responsive
           table.table
             thead
@@ -186,8 +186,8 @@ block content
                 th Email
                 th Age
                 th Address
-                th Last-login-time
                 th very long text
+                th Last-login-time
                 th Operation
             tbody
               each item in list
@@ -213,9 +213,17 @@ block content
             li.active
               a(href="#/page=3") 3
             li
-              a(href="#/page=4") 4
+              a(href="#/page=4") ...
             li
-              a(href="#/page=5") 5
+              a(href="#/page=5") 100
+            li
+              a(href="#/page=5") 101
+            li
+              a(href="#/page=5") 102
             li
               a(href="#/page=4")
                 i.fa.fa-chevron-right
+            li.page-input
+              input(type="text" placeholder="")
+            li
+              a(href="#/page=").page-btn Go

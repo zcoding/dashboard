@@ -9,7 +9,7 @@ html
 
     include ./includes/topbar.jade
 
-    .layout-content.scroll-y(style="height:100%;")
+    .layout-content
       block content
 
     block script
@@ -21,7 +21,7 @@ html
         hljs.initHighlightingOnLoad();
         $(function() {
           $('[data-collapse]').collapse();
-          $('.hide-scrollbar.flex').scrollbar({
+          $('.layout-aside .flex').scrollbar({
             style: 'light'
           });
           $('.layout-content').scrollbar({

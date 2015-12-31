@@ -13,3 +13,13 @@
     @content;
   }
 }
+
+@mixin clearFloat() {
+  &:before, &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

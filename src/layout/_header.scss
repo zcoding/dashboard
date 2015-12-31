@@ -21,17 +21,19 @@
 
   form {
     height: 50px;
-    padding-top: 10px;
+    padding-top: 9px;
     fieldset {
       margin: 0;
 
       input {
+        height: 32px;
         padding: 5px 10px;
+        line-height: ((31 - 12) / 14);
         border-radius: 0;
       }
 
       button {
-        height: 31px;
+        height: 32px;
         margin-bottom: 0;
       }
     }
