@@ -416,40 +416,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       $element.on('mousewheel', $.proxy(this.mousewheel, this));
-      $element.on('mouseover', function () {
+      $element.on('mouseenter', function () {
         $scrollbar.addClass('hover');
       });
-      $element.on('mouseout', function () {
+      $element.on('mouseleave', function () {
         $scrollbar.removeClass('hover');
       });
 
-      this.drag = false;
+      this.draging = false;
       this.startY = 0;
-      this.currentY = 0;
+      this.distance = 0;
       this.startTop = this.shimTop;
       this.req = null;
       this.startContentTop = 0;
 
       $scrollbar.on('mousedown', function (event) {
         _this.startY = event.pageY;
-        _this.startTop = _this.$scrollbar.position().top;
-        _this.startContentTop = _this.$element.scrollTop();
-        _this.$scrollbar.addClass('drag');
-        _this.$element.addClass('drag');
-        _this.drag = true;
-        _this.req = requestAnimationFrame($.proxy(_this.step, _this));
+        _this.start();
       });
 
       $(document).on('mousemove', function (event) {
-        _this.currentY = event.pageY;
+        if (_this.draging) {
+          _this.distance = event.pageY - _this.startY;
+        }
       });
+
       $(document).on('mouseup', function (event) {
-        _this.$scrollbar.removeClass('drag');
-        _this.$element.removeClass('drag');
-        _this.drag = false;
+        _this.stop();
       });
 
       // 当窗口大小发生变化时，需要重新计算长度
+      $(window).on('resize', function () {
+        _this.ContentHeight = _this.$element[0].scrollHeight;
+        _this.Height = _this.$element.outerHeight();
+        _this.ScrollbarHeight = _this.Height / _this.ContentHeight * _this.Height;
+        _this.MaxMoveHeight = _this.ContentHeight - _this.Height;
+        _this.MaxPositionTop = _this.Height / _this.ContentHeight * _this.MaxMoveHeight;
+        $scrollbar.css({
+          height: _this.ScrollbarHeight
+        });
+        if (_this.Height === _this.ContentHeight) {
+          $scrollbar.hide();
+        } else {
+          $scrollbar.show();
+        }
+      });
+      // 当内容发生变化时，也可能会影响高度，由于无法检测到内容高度的变化，所以在具体使用时，需要在可能引起内容变化的代码中手动对滚动条重绘
     }
 
     _createClass(Scrollbar, [{
@@ -475,22 +487,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
     }, {
+      key: 'start',
+      value: function start() {
+        var $scrollbar = this.$scrollbar,
+            $element = this.$element;
+        this.startTop = $scrollbar.position().top;
+        this.startContentTop = $element.scrollTop();
+        $scrollbar.addClass('drag');
+        $element.addClass('drag');
+        $(document.body).addClass('drag');
+        this.draging = true;
+        this.req = requestAnimationFrame($.proxy(this.step, this));
+      }
+    }, {
+      key: 'stop',
+      value: function stop() {
+        this.draging = false;
+        cancelAnimationFrame(this.req);
+        this.req = null;
+        this.$scrollbar.removeClass('drag');
+        this.$element.removeClass('drag');
+        $(document.body).removeClass('drag');
+        this.distance = 0;
+        this.startY = 0;
+      }
+    }, {
       key: 'step',
       value: function step() {
-        if (this.drag) {
-          var move = this.currentY - this.startY;
-          var positionTop = this.startTop + move;
-          positionTop = positionTop < this.shimTop ? this.shimTop : positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop;
-          this.$scrollbar.css({
-            top: positionTop + 'px'
-          });
-          var contentMove = this.ContentHeight / this.Height * move;
-          this.$element.scrollTop(this.startContentTop + contentMove);
+        if (this.draging) {
+          this.move(this.distance);
           this.req = requestAnimationFrame($.proxy(this.step, this));
-        } else {
-          cancelAnimationFrame(this.req);
-          this.req = null;
         }
+      }
+    }, {
+      key: 'move',
+      value: function move(distance) {
+        var positionTop = this.startTop + distance;
+        positionTop = positionTop < this.shimTop ? this.shimTop : positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop;
+        this.$scrollbar.css({
+          top: positionTop + 'px'
+        });
+        var contentMove = this.ContentHeight / this.Height * distance;
+        this.$element.scrollTop(this.startContentTop + contentMove);
       }
     }]);
 
@@ -498,17 +536,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   })();
 
   function scrollbar(options) {
-    var _this2 = this;
 
     return this.each(function (index, ele) {
       // 如果是mac os就不要初始化
       if (/Mac OS X/ig.test(navigator.userAgent)) {
         return false;
       }
-      var scrollbar = _this2.data('scrollbar');
+      var $this = $(ele);
+      var scrollbar = $this.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
-        scrollbar = new Scrollbar(_this2, options);
-        _this2.data('scrollbar', scrollbar);
+        scrollbar = new Scrollbar($this, options);
+        $this.data('scrollbar', scrollbar);
       }
     });
   }
@@ -1063,7 +1101,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
 
         $(document).on('mouseup', function (event) {
-          _this.draging = false;
+          _this.stop();
         });
       } else {
         $element.addClass('no-drag');
@@ -1082,6 +1120,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function stop() {
         this.draging = false;
         cancelAnimationFrame(this.req);
+        this.req = null;
         this.$element.removeClass('drag');
         this.distance = 0;
         this.startPosition = 0;
@@ -1092,8 +1131,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.draging) {
           this.move(this.distance);
           this.req = requestAnimationFrame($.proxy(this.step, this));
-        } else {
-          this.stop();
         }
       }
     }, {

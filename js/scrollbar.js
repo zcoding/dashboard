@@ -34,9 +34,9 @@
       var paddingRight = $parent.css('paddingRight');
       this.shimTop = scrollbarPosition.top + scrollbarMarginTop;
       $scrollbar.css({
-        width: options.width + 'px',
-        borderRadius: options.width / 2 + 'px',
-        top: this.shimTop + 'px',
+        width: `${options.width}px`,
+        borderRadius: `${options.width / 2}px`,
+        top: `${this.shimTop}px`,
         right: paddingRight,
         height: this.ScrollbarHeight
       });
@@ -51,40 +51,52 @@
       }
 
       $element.on('mousewheel', $.proxy(this.mousewheel, this));
-      $element.on('mouseover', () => {
+      $element.on('mouseenter', () => {
         $scrollbar.addClass('hover');
       });
-      $element.on('mouseout', () => {
+      $element.on('mouseleave', () => {
         $scrollbar.removeClass('hover');
       });
 
-      this.drag = false;
+      this.draging = false;
       this.startY = 0;
-      this.currentY = 0;
+      this.distance = 0;
       this.startTop = this.shimTop;
       this.req = null;
       this.startContentTop = 0;
 
       $scrollbar.on('mousedown', (event) => {
         this.startY = event.pageY;
-        this.startTop = this.$scrollbar.position().top;
-        this.startContentTop = this.$element.scrollTop();
-        this.$scrollbar.addClass('drag');
-        this.$element.addClass('drag');
-        this.drag = true;
-        this.req = requestAnimationFrame($.proxy(this.step, this));
+        this.start();
       });
 
       $(document).on('mousemove', (event) => {
-        this.currentY = event.pageY;
+        if (this.draging) {
+          this.distance = event.pageY - this.startY;
+        }
       });
+
       $(document).on('mouseup', (event) => {
-        this.$scrollbar.removeClass('drag');
-        this.$element.removeClass('drag');
-        this.drag = false;
+        this.stop();
       });
 
       // 当窗口大小发生变化时，需要重新计算长度
+      $(window).on('resize', () => {
+        this.ContentHeight = this.$element[0].scrollHeight;
+        this.Height = this.$element.outerHeight();
+        this.ScrollbarHeight = this.Height / this.ContentHeight * this.Height;
+        this.MaxMoveHeight = this.ContentHeight - this.Height;
+        this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
+        $scrollbar.css({
+          height: this.ScrollbarHeight
+        });
+        if (this.Height === this.ContentHeight) {
+          $scrollbar.hide();
+        } else {
+          $scrollbar.show();
+        }
+      });
+      // 当内容发生变化时，也可能会影响高度，由于无法检测到内容高度的变化，所以在具体使用时，需要在可能引起内容变化的代码中手动对滚动条重绘
     }
 
     mousewheel(event) {
@@ -98,7 +110,7 @@
 
       let scrollbarMove = move / this.ContentHeight * this.Height;
       $scrollbar.css({
-        top: this.shimTop + scrollbarMove + 'px'
+        top: `${this.shimTop + scrollbarMove}px`
       });
 
       if (move > 0 && move < this.MaxMoveHeight) {
@@ -107,21 +119,43 @@
       }
     }
 
+    start() {
+      let $scrollbar = this.$scrollbar, $element = this.$element;
+      this.startTop = $scrollbar.position().top;
+      this.startContentTop = $element.scrollTop();
+      $scrollbar.addClass('drag');
+      $element.addClass('drag');
+      $(document.body).addClass('drag');
+      this.draging = true;
+      this.req = requestAnimationFrame($.proxy(this.step, this));
+    }
+
+    stop() {
+      this.draging = false;
+      cancelAnimationFrame(this.req);
+      this.req = null;
+      this.$scrollbar.removeClass('drag');
+      this.$element.removeClass('drag');
+      $(document.body).removeClass('drag');
+      this.distance = 0;
+      this.startY = 0;
+    }
+
     step() {
-      if (this.drag) {
-        let move = this.currentY - this.startY;
-        let positionTop = this.startTop + move;
-        positionTop = positionTop < this.shimTop ? this.shimTop : (positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop);
-        this.$scrollbar.css({
-          top: positionTop + 'px'
-        });
-        let contentMove = this.ContentHeight / this.Height * move;
-        this.$element.scrollTop(this.startContentTop + contentMove);
+      if (this.draging) {
+        this.move(this.distance);
         this.req = requestAnimationFrame($.proxy(this.step, this));
-      } else {
-        cancelAnimationFrame(this.req);
-        this.req = null;
       }
+    }
+
+    move(distance) {
+      let positionTop = this.startTop + distance;
+      positionTop = positionTop < this.shimTop ? this.shimTop : (positionTop > this.shimTop + this.MaxPositionTop ? this.shimTop + this.MaxPositionTop : positionTop);
+      this.$scrollbar.css({
+        top: `${positionTop}px`
+      });
+      let contentMove = this.ContentHeight / this.Height * distance;
+      this.$element.scrollTop(this.startContentTop + contentMove);
     }
 
   }
@@ -133,10 +167,11 @@
       if(/Mac OS X/ig.test(navigator.userAgent)) {
         return false;
       }
-      let scrollbar = this.data('scrollbar');
+      let $this = $(ele);
+      let scrollbar = $this.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
-        scrollbar = new Scrollbar(this, options);
-        this.data('scrollbar', scrollbar);
+        scrollbar = new Scrollbar($this, options);
+        $this.data('scrollbar', scrollbar);
       }
 
     });

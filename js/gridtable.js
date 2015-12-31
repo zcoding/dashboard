@@ -85,7 +85,7 @@
         });
 
         $(document).on('mouseup', (event) => {
-          this.draging = false;
+          this.stop();
         });
       } else {
         $element.addClass('no-drag');
@@ -101,6 +101,7 @@
     stop() {
       this.draging = false;
       cancelAnimationFrame(this.req);
+      this.req = null;
       this.$element.removeClass('drag');
       this.distance = 0;
       this.startPosition = 0;
@@ -110,8 +111,6 @@
       if (this.draging) {
         this.move(this.distance);
         this.req = requestAnimationFrame($.proxy(this.step, this));
-      } else {
-        this.stop();
       }
     }
 
