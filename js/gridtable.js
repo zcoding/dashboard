@@ -181,6 +181,9 @@
       this.updateBorderHeight();
       this.$element.trigger('gridchange.dashboard');
     }
+
+    repaint() {
+    }
   }
 
   function gridtable(options) {

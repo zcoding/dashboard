@@ -1214,6 +1214,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.updateBorderHeight();
         this.$element.trigger('gridchange.dashboard');
       }
+    }, {
+      key: 'repaint',
+      value: function repaint() {}
     }]);
 
     return DragTable;

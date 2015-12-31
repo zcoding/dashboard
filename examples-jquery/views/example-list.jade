@@ -1,0 +1,73 @@
+extends ./layout.jade
+
+block content
+  .grid
+    .u-sm-16
+      .box.padding
+        .grid-table#grid-table
+          .grid-table-header
+            .grid-table-row
+              .grid-table-cell #
+              .grid-table-control
+              .grid-table-cell Name
+              .grid-table-control
+              .grid-table-cell Email
+              .grid-table-control
+              .grid-table-cell Age
+              .grid-table-control
+              .grid-table-cell Address
+              .grid-table-control
+              .grid-table-cell Last-login-time
+              .grid-table-control
+              .grid-table-cell Operation
+          .grid-table-body(style="height:300px;overflow:hidden;")
+            each item in list
+              .grid-table-row
+                .grid-table-cell= item.id
+                .grid-table-control
+                .grid-table-cell= item.name
+                .grid-table-control
+                .grid-table-cell= item.email
+                .grid-table-control
+                .grid-table-cell= item.age
+                .grid-table-control
+                .grid-table-cell= item.address
+                .grid-table-control
+                .grid-table-cell= item.lastLoginTime
+                .grid-table-control
+                .grid-table-cell
+                  button(type="button").btn.btn-danger.btn-sm <i class="fa fa-trash"></i> Delete
+          .grid-table-footer
+            .grid-table-row
+              .grid-table-cell a
+              .grid-table-control
+              .grid-table-cell b
+              .grid-table-control
+              .grid-table-cell c
+              .grid-table-control
+              .grid-table-cell d
+              .grid-table-control
+              .grid-table-cell e
+              .grid-table-control
+              .grid-table-cell f
+              .grid-table-control
+              .grid-table-cell g
+
+append script
+  script.
+    $(function() {
+      'use strict';
+      let windowHeight = window.innerHeight;
+      let tableBodyHeight = windowHeight-56-24*2-46*2-24 - 10;
+      if (tableBodyHeight < 300) {
+        tableBodyHeight = 300;
+        }
+      let $scrollbar = $('#grid-table .grid-table-body').css({
+        height: `${tableBodyHeight}px`
+      }).scrollbar();
+      $('#grid-table').gridtable({
+        gridWidth: [10, 20, 20, 8, 10, 20, 12]
+      }).on('gridchange.dashboard', function() {
+        $scrollbar.data('scrollbar').repaint();
+      });
+    });
