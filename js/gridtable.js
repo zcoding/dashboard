@@ -119,12 +119,13 @@
         let $row = $(ele);
         let height = 0;
         $row.children('.grid-table-cell').each((i, ele) => {
-          let h = $(ele).outerHeight();
+          let $el = $(ele);
+          let h = $el.css({ height: 'auto' }).outerHeight();
           if (h > height) {
             height = h;
           }
         });
-        $row.children('.grid-table-control').css({
+        $row.children().css({
           height: `${height}px`
         });
       });
@@ -133,12 +134,13 @@
         let $row = $(ele);
         let height = 0;
         $row.children('.grid-table-cell').each((i, ele) => {
-          let h = $(ele).outerHeight();
+          let $el = $(ele);
+          let h = $el.css({ height: 'auto' }).outerHeight();
           if (h > height) {
             height = h;
           }
         });
-        $row.children('.grid-table-control').css({
+        $row.children().css({
           height: `${height}px`
         });
       });
@@ -147,12 +149,13 @@
         let $row = $(ele);
         let height = 0;
         $row.children('.grid-table-cell').each((i, ele) => {
-          let h = $(ele).outerHeight();
+          let $el = $(ele);
+          let h = $el.css({ height: 'auto' }).outerHeight();
           if (h > height) {
             height = h;
           }
         });
-        $row.children('.grid-table-control').css({
+        $row.children().css({
           height: `${height}px`
         });
       });
@@ -176,6 +179,7 @@
       });
       // 除了改变宽度，还要改变control的高度
       this.updateBorderHeight();
+      this.$element.trigger('gridchange.dashboard');
     }
   }
 

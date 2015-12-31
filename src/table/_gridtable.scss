@@ -6,7 +6,7 @@
   .grid-table-row {
     &:before, &:after {
       display: table;
-      content: ' ';
+      content: '';
     }
     &:after {
       clear: both;
@@ -24,7 +24,7 @@
       display: block;
       float: left;
       width: 2px;
-      height: 0;
+      height: 1px;
       background-color: #eceeef;
       cursor: col-resize;
       -webkit-user-select: none;

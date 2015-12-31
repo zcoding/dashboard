@@ -117,7 +117,7 @@ block content
               .grid-table-cell Last-login-time
               .grid-table-control
               .grid-table-cell Operation
-          .grid-table-body(style="height:500px;").scroll-y
+          .grid-table-body(style="height:500px;overflow:hidden;")
             each item in list
               .grid-table-row
                 .grid-table-cell= item.id
@@ -153,6 +153,7 @@ block content
 append script
   script.
     $(function() {
+      'use strict';
       $('#grid-table1').gridtable({
         gridWidth: [10, 20, 30, 10, 30]
       });
@@ -160,8 +161,10 @@ append script
         dragable: false,
         gridWidth: [10, 20, 30, 10, 30]
       });
-      $('#grid-table3 .grid-table-body').scrollbar();
+      let $scrollbar = $('#grid-table3 .grid-table-body').scrollbar();
       $('#grid-table3').gridtable({
         gridWidth: [10, 20, 20, 8, 10, 20, 12]
+      }).on('gridchange.dashboard', function() {
+        $scrollbar.data('scrollbar').repaint();
       });
     });

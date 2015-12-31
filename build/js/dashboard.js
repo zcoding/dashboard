@@ -375,6 +375,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       options = this.options = $.extend(true, {}, Defaults, options);
       this.$element = $element;
+      $element.css({
+        overflow: 'hidden'
+      });
       var $parent = this.$parent = $element.parent();
       var $scrollbar = this.$scrollbar = $('<div class="scrollbar ' + options.style + '">');
       if (!/relative|absolute|fixed/.test($parent.css('position'))) {
@@ -383,9 +386,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       $parent.append($scrollbar);
 
       this.ContentHeight = $element[0].scrollHeight;
-      $element.css({
-        overflow: 'hidden'
-      });
 
       this.Height = $element.outerHeight();
 
@@ -393,7 +393,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.MaxMoveHeight = this.ContentHeight - this.Height;
       this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
 
-      var Width = $element.innerWidth();
       var scrollbarPosition = $element.position(),
           scrollbarMarginTop = parseInt($element.css('marginTop'));
       var paddingRight = $parent.css('paddingRight');
@@ -447,19 +446,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       // 当窗口大小发生变化时，需要重新计算长度
       $(window).on('resize', function () {
-        _this.ContentHeight = _this.$element[0].scrollHeight;
-        _this.Height = _this.$element.outerHeight();
-        _this.ScrollbarHeight = _this.Height / _this.ContentHeight * _this.Height;
-        _this.MaxMoveHeight = _this.ContentHeight - _this.Height;
-        _this.MaxPositionTop = _this.Height / _this.ContentHeight * _this.MaxMoveHeight;
-        $scrollbar.css({
-          height: _this.ScrollbarHeight
-        });
-        if (_this.Height === _this.ContentHeight) {
-          $scrollbar.hide();
-        } else {
-          $scrollbar.show();
-        }
+        _this.repaint();
       });
       // 当内容发生变化时，也可能会影响高度，由于无法检测到内容高度的变化，所以在具体使用时，需要在可能引起内容变化的代码中手动对滚动条重绘
     }
@@ -530,6 +517,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var contentMove = this.ContentHeight / this.Height * distance;
         this.$element.scrollTop(this.startContentTop + contentMove);
       }
+    }, {
+      key: 'repaint',
+      value: function repaint() {
+        this.ContentHeight = this.$element[0].scrollHeight;
+        this.Height = this.$element.outerHeight();
+        this.ScrollbarHeight = this.Height / this.ContentHeight * this.Height;
+        this.MaxMoveHeight = this.ContentHeight - this.Height;
+        this.MaxPositionTop = this.Height / this.ContentHeight * this.MaxMoveHeight;
+
+        var scrollbarPosition = this.$element.position(),
+            scrollbarMarginTop = parseInt(this.$element.css('marginTop'));
+        this.shimTop = scrollbarPosition.top + scrollbarMarginTop;
+
+        this.$scrollbar.css({
+          height: this.ScrollbarHeight
+        });
+        if (this.Height === this.ContentHeight) {
+          this.$scrollbar.hide();
+        } else {
+          this.$scrollbar.show();
+        }
+      }
     }]);
 
     return Scrollbar;
@@ -538,11 +547,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   function scrollbar(options) {
 
     return this.each(function (index, ele) {
+      var $this = $(ele);
       // 如果是mac os就不要初始化
       if (/Mac OS X/ig.test(navigator.userAgent)) {
+        $this.addClass('scroll-y');
         return false;
       }
-      var $this = $(ele);
       var scrollbar = $this.data('scrollbar');
       if (typeof scrollbar === 'undefined') {
         scrollbar = new Scrollbar($this, options);
@@ -1140,12 +1150,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $row = $(ele);
           var height = 0;
           $row.children('.grid-table-cell').each(function (i, ele) {
-            var h = $(ele).outerHeight();
+            var $el = $(ele);
+            var h = $el.css({ height: 'auto' }).outerHeight();
             if (h > height) {
               height = h;
             }
           });
-          $row.children('.grid-table-control').css({
+          $row.children().css({
             height: height + 'px'
           });
         });
@@ -1154,12 +1165,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $row = $(ele);
           var height = 0;
           $row.children('.grid-table-cell').each(function (i, ele) {
-            var h = $(ele).outerHeight();
+            var $el = $(ele);
+            var h = $el.css({ height: 'auto' }).outerHeight();
             if (h > height) {
               height = h;
             }
           });
-          $row.children('.grid-table-control').css({
+          $row.children().css({
             height: height + 'px'
           });
         });
@@ -1168,12 +1180,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var $row = $(ele);
           var height = 0;
           $row.children('.grid-table-cell').each(function (i, ele) {
-            var h = $(ele).outerHeight();
+            var $el = $(ele);
+            var h = $el.css({ height: 'auto' }).outerHeight();
             if (h > height) {
               height = h;
             }
           });
-          $row.children('.grid-table-control').css({
+          $row.children().css({
             height: height + 'px'
           });
         });
@@ -1199,6 +1212,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
         // 除了改变宽度，还要改变control的高度
         this.updateBorderHeight();
+        this.$element.trigger('gridchange.dashboard');
       }
     }]);
 
