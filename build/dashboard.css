@@ -52,6 +52,19 @@ textarea {
 button, select {
   text-transform: none; }
 
+small {
+  font-size: 85%; }
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-weight: 400;
+  font-size: 65%; }
+
+mark {
+  background: #FFEC86; }
+
+b, strong {
+  font-weight: 700; }
+
 /**
  *
  */
