@@ -8,27 +8,46 @@
   <link rel="stylesheet" href="/lib/fa/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/lib/highlight/rainbow.css">
 </head>
-<body id="app-main" v-on:click="globalClickHandler">
+<body id="app-main" v-on:click="globalClickHandler" style="height:100%;">
   <sidebar></sidebar>
   <div class="layout-header">
     <div class="navbar">
-      <form action="/search" class="grid form">
-        <fieldset>
-          <div class="u-sm-4"></div>
-          <div class="u-sm-4"></div>
-          <div class="u-sm-4">
+      <div class="brand">Dashboard</div>
+      <nav>
+        <ul>
+          <li class="dropdown">
+            <a href="javascript:;" data-dropdown-trigger>Link <i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu">
+              <li class="title">Menu title</li>
+              <li class="separator"></li>
+              <li><a href="#">menu 1</a></li>
+              <li><a href="#">menu 2</a></li>
+              <li><a href="#">menu 3</a></li>
+              <li class="separator"></li>
+              <li class="static">static text</li>
+            </ul>
+          </li>
+          <li><a href="/">Link</a></li>
+          <li><a href="/">Link</a></li>
+          <li><a href="/">Link</a></li>
+        </ul>
+      </nav>
+      <div class="fr">
+        <form action="/search" class="form">
+          <fieldset>
             <input type="text" placeholder="search everything">
-          </div>
-          <div class="u-sm-4">
             <button class="btn btn-primary" type="submit">Search <i class="fa fa-search"></i></button>
-          </div>
-        </fieldset>
-      </form>
+          </fieldset>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="layout-content">
+  <div class="layout-content" v-bind:class="{'narrow': isNarrow}">
     <router-view></router-view>
   </div>
+  <script src="/lib/jquery/2.1.4/jquery-2.1.4.min.js"></script>
+  <script src="/lib/plugins/jquery.mousewheel.min.js"></script>
+  <script src="/js/dashboard.min.js"></script>
   <script src="/lib/echarts/echarts-all.js"></script>
   <script src="/app/app.js"></script>
 </body>

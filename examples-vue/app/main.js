@@ -19,6 +19,41 @@ let App = Vue.extend({
     globalClickHandler(event) {
       this.$broadcast('dismiss', event);
     }
+  },
+
+  data() {
+    return {
+      contentScrollbar: null,
+      isNarrow: false
+    };
+  },
+
+  ready() {
+    $('[data-collapse]').collapse();
+    $('.dropdown').dropdown();
+    $('.layout-aside .flex').scrollbar({
+      style: 'light'
+    });
+    this.contentScrollbar = $('.layout-content').scrollbar({
+      width: 10,
+      fade: false,
+      speed: 100
+    }).data('scrollbar');
+    $('.layout-aside').on('click', '.nav-header', function() {
+      $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
+      $(document).trigger('aside-change');
+    });
+  },
+
+  events: {
+    'content-change': function() {
+      if (this.contentScrollbar != null) {
+        this.contentScrollbar.repaint();
+      }
+    },
+    'narrow': function(isNarrow) {
+      this.isNarrow = isNarrow;
+    }
   }
 
 });

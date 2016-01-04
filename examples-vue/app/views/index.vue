@@ -6,6 +6,12 @@
 
 <script>
 
-export default {};
+export default {
+
+  ready() {
+    this.$dispatch('content-change');
+  }
+
+};
 
 </script>

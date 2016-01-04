@@ -1,24 +1,17 @@
 (($) => {
 
-  const defaultOptions = {
+  const defaults = {
     timeout: 300
   };
 
   function collapse(options) {
-    let option = $.extend({}, defaultOptions, (typeof options === 'object' ? options: null));
+    options = $.extend(true, {}, defaults, options);
     return this.each((index, ele) => {
       let $this = $(ele);
-      $this.slideToggle(option.timeout);
+      $this.slideToggle(options.timeout);
     });
   }
 
-  const old = $.fn.collapse;
-
   $.fn.extend({ collapse });
-
-  $.fn.collapse.noConflict = function() {
-    $.fn.collapse = old;
-    return this;
-  };
 
 })(jQuery);

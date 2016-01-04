@@ -80,6 +80,10 @@ export default {
     myDateChange(date) {
       this.myDate = date.getTime();
     }
+  },
+
+  ready() {
+    this.$dispatch('content-change');
   }
 
 };

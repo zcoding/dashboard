@@ -88,6 +88,10 @@ export default {
       console.log(output);
       this.showPrompt = false;
     }
+  },
+
+  ready() {
+    this.$dispatch('content-change');
   }
 
 };

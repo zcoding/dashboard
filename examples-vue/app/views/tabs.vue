@@ -118,6 +118,10 @@ export default {
 
   data() {
     return {};
+  },
+
+  ready() {
+    this.$dispatch('content-change');
   }
 
 };

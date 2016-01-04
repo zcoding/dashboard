@@ -24,12 +24,12 @@
     , {name: '滚动条', path: '/scrollbar', icon: 'link'}
   ];
 
-.layout-aside
+.layout-aside(v-bind:class="{'narrow': isNarrow}")
   .side-nav
     .nav-header(v-on:click="toggleSidebar")
       h1.title Dashboard
       h1.title.narrow <i class="fa fa-chevron-circle-right"></i>
-    .hide-scrollbar.flex
+    .flex
       nav
         ul
           each menu in menus
@@ -64,15 +64,15 @@
       nav
         ul
           li
-            a(href="/").menu
+            a(href="https://github.com/zcoding/dashboard" target="_blank").menu
               span.icon.fa.fa-github
               span.text Fork
-            a(href="/").menu.narrow
+            a(href="https://github.com/zcoding/dashboard" target="_blank").menu.narrow
               span.text Fork
-            a(href="/").menu
+            a(href="https://github.com/zcoding/dashboard" target="_blank").menu
               span.icon.fa.fa-github
               span.text Star
-            a(href="/").menu.narrow
+            a(href="https://github.com/zcoding/dashboard" target="_blank").menu.narrow
               span.text Star
 
 </template>
@@ -81,9 +81,16 @@
 
 export default {
 
+  data() {
+    return {
+      isNarrow: false
+    };
+  },
+
   methods: {
     toggleSidebar() {
-      this.$el.classList.toggle('narrow');
+      this.isNarrow = !this.isNarrow;
+      this.$dispatch('narrow', this.isNarrow);
     }
   }
 

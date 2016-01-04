@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 39:
+/***/ 38:
 /***/ function(module, exports) {
 
 	/*
@@ -57,7 +57,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 40:
+/***/ 39:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -312,13 +312,13 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 44:
+/***/ 43:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(45)
+	module.exports = __webpack_require__(44)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(60)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(59)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -333,7 +333,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 45:
+/***/ 44:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -342,19 +342,19 @@ webpackJsonp([4],{
 	  value: true
 	});
 
-	var _modal = __webpack_require__(46);
+	var _modal = __webpack_require__(45);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _alert = __webpack_require__(51);
+	var _alert = __webpack_require__(50);
 
 	var _alert2 = _interopRequireDefault(_alert);
 
-	var _confirm = __webpack_require__(54);
+	var _confirm = __webpack_require__(53);
 
 	var _confirm2 = _interopRequireDefault(_confirm);
 
-	var _prompt = __webpack_require__(57);
+	var _prompt = __webpack_require__(56);
 
 	var _prompt2 = _interopRequireDefault(_prompt);
 
@@ -471,22 +471,25 @@ webpackJsonp([4],{
 	      console.log(output);
 	      this.showPrompt = false;
 	    }
-	  }
+	  },
 
+	  ready: function ready() {
+	    this.$dispatch('content-change');
+	  }
 	};
 
 	// </script>
 
 /***/ },
 
-/***/ 46:
+/***/ 45:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(47)
-	module.exports = __webpack_require__(49)
+	__webpack_require__(46)
+	module.exports = __webpack_require__(48)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(50)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(49)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -501,16 +504,16 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 47:
+/***/ 46:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(48);
+	var content = __webpack_require__(47);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(40)(content, {});
+	var update = __webpack_require__(39)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -528,10 +531,10 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 48:
+/***/ 47:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(39)();
+	exports = module.exports = __webpack_require__(38)();
 	// imports
 
 
@@ -543,7 +546,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 49:
+/***/ 48:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -658,20 +661,20 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 50:
+/***/ 49:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal\" v-show=\"show\" transition=\"fade\" v-on:click=\"tryToClose\">\r\n  <div class=\"modal-dialog\" v-on:click.stop>\r\n    <slot name=\"header\"></slot>\r\n    <slot name=\"body\"></slot>\r\n    <slot name=\"footer\"></slot>\r\n  </div>\r\n</div>\r\n<div class=\"modal-dimmer\" v-show=\"show\" transition=\"fade\"></div>";
 
 /***/ },
 
-/***/ 51:
+/***/ 50:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(52)
+	module.exports = __webpack_require__(51)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(53)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(52)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -686,7 +689,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 52:
+/***/ 51:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -695,7 +698,7 @@ webpackJsonp([4],{
 	  value: true
 	});
 
-	var _modal = __webpack_require__(46);
+	var _modal = __webpack_require__(45);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -755,20 +758,20 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 53:
+/***/ 52:
 /***/ function(module, exports) {
 
 	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">\r\n      {{ title }}\r\n      <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n</modal>";
 
 /***/ },
 
-/***/ 54:
+/***/ 53:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(55)
+	module.exports = __webpack_require__(54)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(56)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(55)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -783,7 +786,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 55:
+/***/ 54:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -792,7 +795,7 @@ webpackJsonp([4],{
 	  value: true
 	});
 
-	var _modal = __webpack_require__(46);
+	var _modal = __webpack_require__(45);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -861,20 +864,20 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 56:
+/***/ 55:
 /***/ function(module, exports) {
 
 	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">{{ question }}</div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n  <div class=\"modal-footer cf\" slot=\"footer\">\r\n    <div class=\"fr\">\r\n      <button class=\"btn radius\" v-on:click=\"closeModal\">取消</button>\r\n      <button class=\"btn btn-dark radius\" v-on:click=\"confirmOK\">确定</button>\r\n    </div>\r\n  </div>\r\n</modal>";
 
 /***/ },
 
-/***/ 57:
+/***/ 56:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(58)
+	module.exports = __webpack_require__(57)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(59)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(58)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -889,7 +892,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 58:
+/***/ 57:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -898,7 +901,7 @@ webpackJsonp([4],{
 	  value: true
 	});
 
-	var _modal = __webpack_require__(46);
+	var _modal = __webpack_require__(45);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -974,14 +977,14 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 59:
+/***/ 58:
 /***/ function(module, exports) {
 
 	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">{{ title }}</div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <input type=\"text\" v-model=\"output\" v-on:keydown.enter=\"promptOK\">\r\n  </div>\r\n  <div class=\"modal-footer cf\" slot=\"footer\">\r\n    <div class=\"fr\">\r\n      <button class=\"btn radius\" v-on:click=\"closeModal\">取消</button>\r\n      <button class=\"btn btn-dark radius\" v-on:click=\"promptOK\">确定</button>\r\n    </div>\r\n  </div>\r\n</modal>";
 
 /***/ },
 
-/***/ 60:
+/***/ 59:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-dark float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openAlert\">open alert</button>\r\n      <button class=\"btn btn-danger float radius\" type=\"button\" v-on:click=\"openConfirm\">open confirm</button>\r\n      <button class=\"btn btn-info float radius\" type=\"button\" v-on:click=\"openPrompt\">open prompt</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n\r\n  <modal-alert v-bind:show.sync=\"showAlert\" title=\"Alert modal\">\r\n    <p>This is message alert...</p>\r\n  </modal-alert>\r\n\r\n  <modal-confirm v-bind:show.sync=\"showConfirm\" question=\"Are you sure to delete this item?\" v-on:modal-confrim-ok=\"confirmOK\">\r\n    <p>Warning: Once you delete, you can never find it back.</p>\r\n  </modal-confirm>\r\n\r\n  <modal-prompt v-bind:show.sync=\"showPrompt\" title=\"Input what you want:\" v-on:modal-prompt-ok=\"promptOK\"></modal-prompt>\r\n</div>";

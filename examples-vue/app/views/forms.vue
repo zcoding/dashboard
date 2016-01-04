@@ -168,8 +168,10 @@ export default {
     };
   },
 
-  components: {
-    tagInput
+  components: { tagInput },
+
+  ready() {
+    this.$dispatch('content-change');
   }
 
 };
