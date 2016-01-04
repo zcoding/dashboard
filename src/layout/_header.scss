@@ -7,12 +7,60 @@
   background: $white;
   z-index: $baseIndex+1;
 
+  $topbarHeight: 50px;
+
   .navbar {
     border: none;
     margin: 0;
     padding: 0 1rem;
     flex-shrink: 0;
-    height: 50px;
+    height: $topbarHeight;
+
+    @include clearFloat();
+
+    .brand {
+      display: block;
+      float: left;
+      min-width: 80px;
+      height: $topbarHeight;
+      line-height: $topbarHeight;
+      font-size: 16px;
+      font-weight: 700;
+      color: #555;
+      margin-right: 1em;
+      cursor: default;
+    }
+
+    nav {
+      float: left;
+      & > ul, & > li {
+        list-style-type: none;
+        display: block;
+      }
+      & > ul {
+        margin: 0;
+        padding: 0;
+        @include clearFloat();
+        & > li {
+          float: left;
+          & > a {
+            display: block;
+            padding: 0 1em;
+            min-width: 80px;
+            height: $topbarHeight;
+            line-height: $topbarHeight;
+            color: #333;
+            text-align: center;
+            &:hover {
+              background-color: rgba(0, 0, 0, .13);
+            }
+            i {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
   }
 
   &.narrow {
@@ -20,16 +68,19 @@
   }
 
   form {
-    height: 50px;
+    height: $topbarHeight;
     padding-top: 9px;
     fieldset {
       margin: 0;
 
       input {
+        display: inline-block;
+        width: 250px;
         height: 32px;
         padding: 5px 10px;
-        line-height: ((31 - 12) / 14);
+        line-height: ((30 - 12) / 14);
         border-radius: 0;
+        vertical-align: middle;
       }
 
       button {

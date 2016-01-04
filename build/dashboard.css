@@ -1343,6 +1343,49 @@ b, strong {
     padding: 0 1rem;
     flex-shrink: 0;
     height: 50px; }
+    .layout-header .navbar:before, .layout-header .navbar:after {
+      content: ' ';
+      display: table; }
+    .layout-header .navbar:after {
+      clear: both; }
+    .layout-header .navbar .brand {
+      display: block;
+      float: left;
+      min-width: 80px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #555;
+      margin-right: 1em;
+      cursor: default; }
+    .layout-header .navbar nav {
+      float: left; }
+      .layout-header .navbar nav > ul, .layout-header .navbar nav > li {
+        list-style-type: none;
+        display: block; }
+      .layout-header .navbar nav > ul {
+        margin: 0;
+        padding: 0; }
+        .layout-header .navbar nav > ul:before, .layout-header .navbar nav > ul:after {
+          content: ' ';
+          display: table; }
+        .layout-header .navbar nav > ul:after {
+          clear: both; }
+        .layout-header .navbar nav > ul > li {
+          float: left; }
+          .layout-header .navbar nav > ul > li > a {
+            display: block;
+            padding: 0 1em;
+            min-width: 80px;
+            height: 50px;
+            line-height: 50px;
+            color: #333;
+            text-align: center; }
+            .layout-header .navbar nav > ul > li > a:hover {
+              background-color: rgba(0, 0, 0, 0.13); }
+            .layout-header .navbar nav > ul > li > a i {
+              margin-left: 5px; }
   .layout-header.narrow {
     margin-left: 50px; }
   .layout-header form {
@@ -1351,10 +1394,13 @@ b, strong {
     .layout-header form fieldset {
       margin: 0; }
       .layout-header form fieldset input {
+        display: inline-block;
+        width: 250px;
         height: 32px;
         padding: 5px 10px;
-        line-height: 1.35714;
-        border-radius: 0; }
+        line-height: 1.28571;
+        border-radius: 0;
+        vertical-align: middle; }
       .layout-header form fieldset button {
         height: 32px;
         margin-bottom: 0; }

@@ -1,10 +1,29 @@
 .layout-header
   .navbar
-    form.grid.form(action="/search")
-      fieldset
-        .u-sm-4
-        .u-sm-4
-        .u-sm-4
+    .brand Dashboard
+    nav
+      ul
+        li.dropdown
+          a(href="javascript:;" data-dropdown-trigger) Link <i class="fa fa-caret-down"></i>
+          ul.dropdown-menu
+            li.title Menu title
+            li.separator
+            li
+              a(href="#") menu 1
+            li
+              a(href="#") menu 2
+            li
+              a(href="#") menu 3
+            li.separator
+            li.static static text
+        li
+          a(href="/") Link
+        li
+          a(href="/") Link
+        li
+          a(href="/") Link
+    .fr
+      form.form(action="/search")
+        fieldset
           input(type="text" placeholder="search everything")
-        .u-sm-4
           button.btn.btn-primary(type="submit") Search <i class="fa fa-search"></i>

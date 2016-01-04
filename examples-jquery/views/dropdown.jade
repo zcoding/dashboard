@@ -47,7 +47,16 @@ block content
               a(href="#") menu 3
             li.separator
             li.static static text
-
-append script
-  script.
-    $('.dropdown').dropdown();
+        .btn-group.dropdown
+          button.btn.btn-d-secondary(type="button" data-dropdown-trigger) Menu <i class="fa fa-caret-down"></i>
+          ul.dropdown-menu
+            li.title Menu title
+            li.separator
+            li
+              a(href="#") menu 1
+            li
+              a(href="#") menu 2
+            li
+              a(href="#") menu 3
+            li.separator
+            li.static static text
