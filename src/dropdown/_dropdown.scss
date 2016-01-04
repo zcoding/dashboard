@@ -16,11 +16,11 @@
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .13);
     &.active {
       display: block;
-      transform: translate3d(0, -10px, 0);
+      transform: translate3d(0, 0, 0);
       opacity: 0;
       transition: transform 300ms ease 0s, opacity 300ms ease 0s;
       &.in {
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 8px, 0);
         opacity: 1;
       }
     }
@@ -51,7 +51,12 @@
       a {
         display: block;
         padding: 5px 1em;
+        color: #333;
+        &:hover {
+          background-color: rgba(0, 0, 0, .13);
+        }
       }
     }
   }
+
 }

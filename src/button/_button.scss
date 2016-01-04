@@ -75,16 +75,31 @@ $default-button-background: #f2f2f2;
 
 // button group
 .btn-group {
+  position: relative;
   display: inline-block;
   margin: 0 0 .5em 0;
   vertical-align: middle;
   .btn {
     margin: 0;
     float: left;
-    border: 1px solid #eaeaea;
+    border: 1px solid rgba(255, 255, 255, 0);
   }
   .btn + .btn { // lib-sass bug
     margin-left: -1px;
+  }
+  .btn.dropdown-trigger {
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+  &.radius {
+    .btn:first-child {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .btn:last-child, .btn.dropdown-trigger {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 }
 

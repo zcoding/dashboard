@@ -141,41 +141,82 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
 })(jQuery);
 'use strict';
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (function ($) {
 
-  var defaults = {};
+  var defaults = {
+    show: false
+  };
+
+  var Dropdown = (function () {
+    function Dropdown($element, options) {
+      var _this = this;
+
+      _classCallCheck(this, Dropdown);
+
+      this.options = options = $.extend(true, {}, defaults, options);
+      this.$element = $element;
+      var $trigger = this.$trigger = $element.find('[data-dropdown-trigger]'),
+          $menu = this.$menu = $element.children('.dropdown-menu');
+
+      this.show = this.options.show;
+
+      $trigger.on('click', function (event) {
+        if (_this.show) {
+          _this.hideMenu();
+        } else {
+          _this.showMenu();
+        }
+        event.stopPropagation();
+      });
+
+      $menu.on('click', function (event) {
+        event.stopPropagation();
+      });
+
+      $(document).on('click', function (event) {
+        _this.hideMenu();
+      });
+    }
+
+    _createClass(Dropdown, [{
+      key: 'hideMenu',
+      value: function hideMenu() {
+        var _this2 = this;
+
+        this.show = false;
+        this.$menu.one(Dashboard.support.transition.end, function () {
+          if (!_this2.show) {
+            // Must check current status
+            _this2.$menu.removeClass('active');
+          }
+        }).removeClass('in');
+      }
+    }, {
+      key: 'showMenu',
+      value: function showMenu() {
+        this.show = true;
+        this.$menu.addClass('active');
+        this.$menu[0].offsetWidth; // Must force reflow
+        this.$menu.addClass('in');
+      }
+    }]);
+
+    return Dropdown;
+  })();
 
   function dropdown(options) {
 
     return this.each(function (index, ele) {
-      options = $.extend(true, {}, defaults, options);
       var $this = $(ele);
-      var $trigger = $this.children('[data-dropdown-trigger]'),
-          $menu = $this.children('.dropdown-menu');
-      var data = $this.data('dropdown');
-      if (data == null) {
-        data = {
-          show: false
-        };
-        $this.data('dropdown', data);
+      var dropdown = $this.data('dropdown');
+      if (dropdown == null) {
+        dropdown = new Dropdown($this, options);
+        $this.data('dropdown', dropdown);
       }
-      $trigger.on('click', function () {
-        var data = $this.data('dropdown');
-        if (data.show) {
-          data.show = false;
-          $menu.one('webkitTransitionEnd', function () {
-            if (!data.show) {
-              // Must check current status
-              $menu.removeClass('active');
-            }
-          }).removeClass('in');
-        } else {
-          data.show = true;
-          $menu.addClass('active');
-          $menu[0].offsetWidth; // Must force reflow
-          $menu.addClass('in');
-        }
-      });
     });
   }
 

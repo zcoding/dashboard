@@ -4,19 +4,50 @@ block content
   .grid
     .u-sm-16
       .box.padding.margin-top
-        .dropdown#dropdown
-          .btn.btn-primary(data-dropdown-trigger) what is dropdown
+        .btn-group.dropdown
+          button.btn(type="button" data-dropdown-trigger).btn.btn-primary Menu <i class="fa fa-caret-down"></i>
           ul.dropdown-menu
-            li.title i am title
+            li.title Menu title
             li.separator
             li
-              a(href="#") menu1
+              a(href="#") menu 1
             li
-              a(href="#") menu1
+              a(href="#") menu 2
             li
-              a(href="#") menu1
+              a(href="#") menu 3
+            li.separator
+            li.static static text
+        .btn-group.btn-group-primary.dropdown
+          button.btn(type="button") Menu
+          button.btn.dropdown-trigger(type="button" data-dropdown-trigger)
+            i.fa.fa-caret-down
+          ul.dropdown-menu
+            li.title Menu title
+            li.separator
+            li
+              a(href="#") menu 1
+            li
+              a(href="#") menu 2
+            li
+              a(href="#") menu 3
+            li.separator
+            li.static static text
+        .btn-group.btn-group-secondary.dropdown.radius
+          button.btn(type="button") Menu
+          button.btn.dropdown-trigger(type="button" data-dropdown-trigger)
+            i.fa.fa-caret-down
+          ul.dropdown-menu
+            li.title Menu title
+            li.separator
+            li
+              a(href="#") menu 1
+            li
+              a(href="#") menu 2
+            li
+              a(href="#") menu 3
+            li.separator
             li.static static text
 
 append script
   script.
-    $('#dropdown').dropdown();
+    $('.dropdown').dropdown();

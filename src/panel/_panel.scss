@@ -12,6 +12,16 @@ $default-panel-color: #CCCCCC;
   .panel-header {
     padding: 1em;
     background-color: $default-panel-color;
+    @include clearFloat();
+    .tool {
+      float: right;
+      i {
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-right: 1em;
+        }
+      }
+    }
   }
 
   .panel-body {
@@ -23,13 +33,17 @@ $default-panel-color: #CCCCCC;
     border-top: 1px solid rgba(120, 130, 140, 0.13);
   }
 
-  &.#{$namespace}-radius {
+  &.radius {
     border-radius: 5px;
     overflow: hidden;
   }
 
   & > table, & > .table-responsive > table {
     margin-bottom: 0;
+  }
+
+  & > .panel-body + table {
+    border-top: 1px solid rgba(120, 130, 140, 0.13);
   }
 
   & > .list {
