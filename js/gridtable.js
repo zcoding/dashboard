@@ -6,6 +6,7 @@
   };
 
   class DragTable {
+
     constructor($element, options) {
       this.$element = $element;
       options = this.options = $.extend(true, {}, defaults, options);
@@ -182,14 +183,49 @@
       this.$element.trigger('gridchange.dashboard');
     }
 
+    /**
+     * 重绘函数
+     */
     repaint() {
+      let $headerRows = this.$headerRows, $bodyRows = this.$bodyRows, $footerRows = this.$footerRows;
+      // 先拿到当前的宽度比例，以$headerRows为准
+      let gridWidthPercentage = [], sum = 0;
+      $headerRows.children('.grid-table-cell').each((i, ele) => {
+        let _w = parseFloat(ele.style.width);
+        gridWidthPercentage.push(_w);
+        sum += _w;
+      });
+      let $headerCells = $headerRows.children('.grid-table-cell'), $footerCells = $footerRows.children('.grid-table-cell');
+      let tableWidth = this.$element.innerWidth();
+      let $headerControls = $headerRows.children('.grid-table-control');
+      let totalWidth = tableWidth - $headerControls.length * 2;
+      gridWidthPercentage.forEach((v, i) => {
+        let percentage = v / sum;
+        $headerCells.eq(i).css({
+          width: `${totalWidth * percentage}px`
+        });
+        $bodyRows.each((j, ele) => {
+          $bodyRows.eq(j).children('.grid-table-cell').eq(i).css({
+            width: `${totalWidth * percentage}px`
+          });
+        });
+        $footerCells.eq(i).css({
+          width: `${totalWidth * percentage}px`
+        });
+      });
     }
+
   }
 
   function gridtable(options) {
 
     return this.each(function(index, ele) {
-      let dragTable = new DragTable($(ele), options);
+      let $this = $(ele);
+      let dragTable = $this.data('gridtable');
+      if (dragTable == null) {
+        dragTable = new DragTable($this, options);
+        $this.data('gridtable', dragTable);
+      }
     });
 
   }

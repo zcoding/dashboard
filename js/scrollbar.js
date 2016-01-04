@@ -8,6 +8,7 @@
   };
 
   class Scrollbar {
+
     constructor($element, options) {
       options = this.options = $.extend(true, {}, Defaults, options);
       this.$element = $element;

@@ -31,5 +31,6 @@ html
           });
           $('.layout-aside').on('click', '.nav-header', function() {
             $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
+            $(document).trigger('aside-change');
           });
         });

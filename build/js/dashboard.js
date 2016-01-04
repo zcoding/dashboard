@@ -1214,9 +1214,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.updateBorderHeight();
         this.$element.trigger('gridchange.dashboard');
       }
+
+      /**
+       * 重绘函数
+       */
+
     }, {
       key: 'repaint',
-      value: function repaint() {}
+      value: function repaint() {
+        var $headerRows = this.$headerRows,
+            $bodyRows = this.$bodyRows,
+            $footerRows = this.$footerRows;
+        // 先拿到当前的宽度比例，以$headerRows为准
+        var gridWidthPercentage = [],
+            sum = 0;
+        $headerRows.children('.grid-table-cell').each(function (i, ele) {
+          var _w = parseFloat(ele.style.width);
+          gridWidthPercentage.push(_w);
+          sum += _w;
+        });
+        var $headerCells = $headerRows.children('.grid-table-cell'),
+            $footerCells = $footerRows.children('.grid-table-cell');
+        var tableWidth = this.$element.innerWidth();
+        var $headerControls = $headerRows.children('.grid-table-control');
+        var totalWidth = tableWidth - $headerControls.length * 2;
+        gridWidthPercentage.forEach(function (v, i) {
+          var percentage = v / sum;
+          $headerCells.eq(i).css({
+            width: totalWidth * percentage + 'px'
+          });
+          $bodyRows.each(function (j, ele) {
+            $bodyRows.eq(j).children('.grid-table-cell').eq(i).css({
+              width: totalWidth * percentage + 'px'
+            });
+          });
+          $footerCells.eq(i).css({
+            width: totalWidth * percentage + 'px'
+          });
+        });
+      }
     }]);
 
     return DragTable;
@@ -1225,7 +1261,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   function gridtable(options) {
 
     return this.each(function (index, ele) {
-      var dragTable = new DragTable($(ele), options);
+      var $this = $(ele);
+      var dragTable = $this.data('gridtable');
+      if (dragTable == null) {
+        dragTable = new DragTable($this, options);
+        $this.data('gridtable', dragTable);
+      }
     });
   }
 

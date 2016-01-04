@@ -65,9 +65,17 @@ append script
       let $scrollbar = $('#grid-table .grid-table-body').css({
         height: `${tableBodyHeight}px`
       }).scrollbar();
-      $('#grid-table').gridtable({
+      let $gridTable = $('#grid-table').gridtable({
         gridWidth: [10, 20, 20, 8, 10, 20, 12]
       }).on('gridchange.dashboard', function() {
+        let scrollbar = $scrollbar.data('scrollbar');
+        if (scrollbar != null) {
+          scrollbar.repaint();
+        }
+      });
+      $(document).on('aside-change', function() {
+        let gridtable = $gridTable.data('gridtable');
+        gridtable.repaint();
         let scrollbar = $scrollbar.data('scrollbar');
         if (scrollbar != null) {
           scrollbar.repaint();
