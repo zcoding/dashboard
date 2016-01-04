@@ -40,3 +40,45 @@ block content
               li list item 3
               li list item 4
               li list item 5
+    .u-sm-8
+      .box.padding
+        dl
+          dt title
+          dd description
+          dt What's this in English
+          dd It's a bag.
+          dt What's this in English, haha?
+          dd It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.It's a bag.
+          dt What's this in English
+          dd It's a bag.
+          dt What's this in English
+          dd It's a bag.
+          dt What's this in English
+          dd It's a bag.
+    .u-sm-8
+      .box.padding
+        pre
+          code
+            | import Vue from 'vue';
+            | import VueRouter from 'vue-router';
+            | import routes from './routes';
+            | // components
+            | import sidebar from 'components/sidebar.vue';
+            | Vue.config.debug = true;
+            | Vue.use(VueRouter);
+            | var router = new VueRouter();
+            | let App = Vue.extend({
+            |   components: { sidebar },
+            |   methods: {
+            |     globalClickHandler(event) {
+            |       this.$broadcast('dismiss', event);
+            |     }
+            |   }
+            | });
+            | router.map(routes);
+            | router.start(App, '#app-main');
+    .u-sm-16
+      .box.padding
+        blockquote
+          p Where there is a dog, there is a cat.
+          cite ——wuzijie
