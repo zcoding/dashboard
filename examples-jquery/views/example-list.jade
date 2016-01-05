@@ -57,26 +57,26 @@ append script
   script.
     $(function() {
       'use strict';
-      let windowHeight = window.innerHeight;
-      let tableBodyHeight = windowHeight-56-24*2-46*2-24 - 10;
+      var windowHeight = window.innerHeight;
+      var tableBodyHeight = windowHeight-56-24*2-46*2-24 - 10;
       if (tableBodyHeight < 300) {
         tableBodyHeight = 300;
       }
-      let $scrollbar = $('#grid-table .grid-table-body').css({
+      var $scrollbar = $('#grid-table .grid-table-body').css({
         height: `${tableBodyHeight}px`
       }).scrollbar();
-      let $gridTable = $('#grid-table').gridtable({
+      var $gridTable = $('#grid-table').gridtable({
         gridWidth: [10, 20, 20, 8, 10, 20, 12]
       }).on('gridchange.dashboard', function() {
-        let scrollbar = $scrollbar.data('scrollbar');
+        var scrollbar = $scrollbar.data('scrollbar');
         if (scrollbar != null) {
           scrollbar.repaint();
         }
       });
       $(document).on('aside-change', function() {
-        let gridtable = $gridTable.data('gridtable');
+        var gridtable = $gridTable.data('gridtable');
         gridtable.repaint();
-        let scrollbar = $scrollbar.data('scrollbar');
+        var scrollbar = $scrollbar.data('scrollbar');
         if (scrollbar != null) {
           scrollbar.repaint();
         }

@@ -19,7 +19,7 @@
       var initWidth = TotalWidth / $headerCells.length;
       let $bodyRows = this.$bodyRows = $element.find('.grid-table-body .grid-table-row');
       let $bodyCells = $bodyRows.find('.grid-table-cell');
-      let $footerRows = this.$footerRows = $element.find('.grid-table-footer .grid-table-row')
+      let $footerRows = this.$footerRows = $element.find('.grid-table-footer .grid-table-row');
       let $footerCells = $footerRows.children('.grid-table-cell');
 
       if (options.gridWidth && Array.isArray(options.gridWidth)) {
@@ -68,8 +68,8 @@
           let controlIndex = ($target.index()+1) / 2;
           this.$leftElements = $headerCells.eq(controlIndex-1).add($footerCells.eq(controlIndex-1));
           this.$rightElements = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
-          $bodyRows.each((i) => {
-            let $cells = $bodyRows.eq(i).find('.grid-table-cell');
+          this.$bodyRows.each((i) => {
+            let $cells = this.$bodyRows.eq(i).find('.grid-table-cell');
             this.$leftElements = this.$leftElements.add($cells.eq(controlIndex-1));
             this.$rightElements = this.$rightElements.add($cells.eq(controlIndex));
           });
@@ -187,6 +187,9 @@
      * 重绘函数
      */
     repaint() {
+      this.$headerRows = this.$element.find('.grid-table-header .grid-table-row');
+      this.$bodyRows = this.$element.find('.grid-table-body .grid-table-row');
+      this.$footerRows = this.$element.find('.grid-table-footer .grid-table-row');
       let $headerRows = this.$headerRows, $bodyRows = this.$bodyRows, $footerRows = this.$footerRows;
       // 先拿到当前的宽度比例，以$headerRows为准
       let gridWidthPercentage = [], sum = 0;
@@ -213,6 +216,7 @@
           width: `${totalWidth * percentage}px`
         });
       });
+      this.updateBorderHeight();
     }
 
   }

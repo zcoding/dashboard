@@ -112,32 +112,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type));
   });
 })(jQuery);
-'use strict';
-
-function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+"use strict";
 
 (function ($) {
 
-  var defaultOptions = {
+  var defaults = {
     timeout: 300
   };
 
   function collapse(options) {
-    var option = $.extend({}, defaultOptions, (typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object' ? options : null);
+    options = $.extend(true, {}, defaults, options);
     return this.each(function (index, ele) {
       var $this = $(ele);
-      $this.slideToggle(option.timeout);
+      $this.slideToggle(options.timeout);
     });
   }
 
-  var old = $.fn.collapse;
-
   $.fn.extend({ collapse: collapse });
-
-  $.fn.collapse.noConflict = function () {
-    $.fn.collapse = old;
-    return this;
-  };
 })(jQuery);
 'use strict';
 
@@ -1134,8 +1125,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var controlIndex = ($target.index() + 1) / 2;
           _this.$leftElements = $headerCells.eq(controlIndex - 1).add($footerCells.eq(controlIndex - 1));
           _this.$rightElements = $headerCells.eq(controlIndex).add($footerCells.eq(controlIndex));
-          $bodyRows.each(function (i) {
-            var $cells = $bodyRows.eq(i).find('.grid-table-cell');
+          _this.$bodyRows.each(function (i) {
+            var $cells = _this.$bodyRows.eq(i).find('.grid-table-cell');
             _this.$leftElements = _this.$leftElements.add($cells.eq(controlIndex - 1));
             _this.$rightElements = _this.$rightElements.add($cells.eq(controlIndex));
           });
@@ -1263,6 +1254,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'repaint',
       value: function repaint() {
+        this.$headerRows = this.$element.find('.grid-table-header .grid-table-row');
+        this.$bodyRows = this.$element.find('.grid-table-body .grid-table-row');
+        this.$footerRows = this.$element.find('.grid-table-footer .grid-table-row');
         var $headerRows = this.$headerRows,
             $bodyRows = this.$bodyRows,
             $footerRows = this.$footerRows;
@@ -1293,6 +1287,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             width: totalWidth * percentage + 'px'
           });
         });
+        this.updateBorderHeight();
       }
     }]);
 
