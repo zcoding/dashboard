@@ -31,6 +31,7 @@
 export default {
 
   ready() {
+    NProgress.done();
     this.$dispatch('content-change');
     $(this.$els.box).scrollbar();
   }

@@ -98,19 +98,19 @@
 
 	'use strict';
 
-	var _vue = __webpack_require__(17);
+	var _vue = __webpack_require__(19);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vueRouter = __webpack_require__(19);
+	var _vueRouter = __webpack_require__(21);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _routes = __webpack_require__(20);
+	var _routes = __webpack_require__(22);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _sidebar = __webpack_require__(74);
+	var _sidebar = __webpack_require__(82);
 
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 
@@ -141,7 +141,6 @@
 	    };
 	  },
 	  ready: function ready() {
-	    $('[data-collapse]').collapse();
 	    $('.dropdown').dropdown();
 	    $('.layout-aside .flex').scrollbar({
 	      style: 'light'
@@ -151,10 +150,7 @@
 	      fade: false,
 	      speed: 100
 	    }).data('scrollbar');
-	    $('.layout-aside').on('click', '.nav-header', function () {
-	      $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
-	      $(document).trigger('aside-change');
-	    });
+	    $('.layout-aside .menu.parent').collapse();
 	  },
 
 	  events: {
@@ -172,11 +168,16 @@
 
 	router.map(_routes2.default);
 
+	router.beforeEach(function (transition) {
+	  NProgress.start();
+	  transition.next();
+	});
+
 	router.start(App, '#app-main');
 
 /***/ },
 
-/***/ 17:
+/***/ 19:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*!
@@ -9610,11 +9611,11 @@
 	}
 
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
 
-/***/ 18:
+/***/ 20:
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9712,7 +9713,7 @@
 
 /***/ },
 
-/***/ 19:
+/***/ 21:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12252,7 +12253,7 @@
 
 /***/ },
 
-/***/ 20:
+/***/ 22:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12264,10 +12265,10 @@
 
 	  "/": {
 	    component: {
-	      template: '<home></home>',
+	      template: '<page-home></page-home>',
 	      components: {
-	        "home": function home(resolve) {
-	          __webpack_require__.e/* require */(1, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(21)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        "pageHome": function pageHome(resolve) {
+	          __webpack_require__.e/* require */(9, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(23)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12278,7 +12279,7 @@
 	      template: '<page-form></page-form>',
 	      components: {
 	        "pageForm": function pageForm(resolve) {
-	          __webpack_require__.e/* require */(2, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(24)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(10, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(26)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12289,7 +12290,7 @@
 	      template: '<page-datetimepicker></page-datetimepicker>',
 	      components: {
 	        "pageDatetimepicker": function pageDatetimepicker(resolve) {
-	          __webpack_require__.e/* require */(3, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(30)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	          __webpack_require__.e/* require */(11, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(32)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12297,10 +12298,10 @@
 
 	  "/modal": {
 	    component: {
-	      template: '<page-modals></page-modals>',
+	      template: '<page-modal></page-modal>',
 	      components: {
-	        "pageModals": function pageModals(resolve) {
-	          __webpack_require__.e/* require */(4, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(43)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        "pageModal": function pageModal(resolve) {
+	          __webpack_require__.e/* require */(12, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(45)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12308,10 +12309,10 @@
 
 	  "/tab": {
 	    component: {
-	      template: '<page-tabs></page-tabs>',
+	      template: '<page-tab></page-tab>',
 	      components: {
-	        "pageTabs": function pageTabs(resolve) {
-	          __webpack_require__.e/* require */(5, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(60)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        "pageTab": function pageTab(resolve) {
+	          __webpack_require__.e/* require */(13, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(62)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
 	      }
 	    }
@@ -12319,11 +12320,47 @@
 
 	  "/scrollbar": {
 	    component: {
-	      template: '<page-scrollbars></page-scrollbars>',
+	      template: '<page-scrollbar></page-scrollbar>',
 	      components: {
-	        "pageScrollbars": function pageScrollbars(resolve) {
-	          __webpack_require__.e/* require */(6, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(71)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        "pageScrollbar": function pageScrollbar(resolve) {
+	          __webpack_require__.e/* require */(14, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(73)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	        }
+	      }
+	    }
+	  },
+
+	  "/color": {
+	    component: {
+	      template: '<page-color></page-color>',
+	      components: {
+	        "pageColor": function pageColor(resolve) {
+	          __webpack_require__.e/* require */(15, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(76)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        }
+	      }
+	    }
+	  },
+
+	  "/panel": {
+	    component: {
+	      template: '<page-panel></page-panel>',
+	      components: {
+	        "pagePanel": function pagePanel(resolve) {
+	          __webpack_require__.e/* require */(16, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(86)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        }
+	      }
+	    }
+	  },
+
+	  "*": {
+	    component: {
+	      template: '<page-404></page-404>',
+	      components: {
+	        "page-404": function page404(resolve) {
+	          __webpack_require__.e/* require */(17, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(79)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	        }
+	      },
+	      route: {
+	        canReuse: false // 必须指定为不可重用
 	      }
 	    }
 	  }
@@ -12332,13 +12369,13 @@
 
 /***/ },
 
-/***/ 74:
+/***/ 82:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(75)
+	module.exports = __webpack_require__(83)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(76)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(84)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -12353,7 +12390,7 @@
 
 /***/ },
 
-/***/ 75:
+/***/ 83:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12425,7 +12462,7 @@
 
 	//         ul
 
-	//           each menu in menus
+	//           each menu, index in menus
 
 	//             li
 
@@ -12437,27 +12474,37 @@
 
 	//                   span.text= menu.name
 
+	//                 a(v-link="{ path: '" + menu.path + "' }").menu.narrow
+
+	//                   if menu.short
+
+	//                     span.text= menu.short
+
+	//                   else
+
+	//                     span.icon.fa(class="fa-#{menu.icon}")
+
 	//               else
 
-	//                 a(href="javascript:;").menu
+	//                 a(href="javascript:;").menu.parent(data-collapse-target="#sidebar-menu-" + index)
 
 	//                   span.icon.fa(class="fa-#{menu.icon}")
 
 	//                   span.text= menu.name
 
-	//               a(v-link="{ path: '" + menu.path + "' }").menu.narrow
+	//                 a(href="javascript:;").menu.narrow.parent(data-collapse-target="#sidebar-menu-" + index)
 
-	//                 if menu.short
+	//                   if menu.short
 
-	//                   span.text= menu.short
+	//                     span.text= menu.short
 
-	//                 else
+	//                   else
 
-	//                   span.icon.fa(class="fa-#{menu.icon}")
+	//                     span.icon.fa(class="fa-#{menu.icon}")
 
 	//               if menu.sub
 
-	//                 ul
+	//                 ul(id="sidebar-menu-" + index)
 
 	//                   each submenu in menu.sub
 
@@ -12531,10 +12578,10 @@
 
 /***/ },
 
-/***/ 76:
+/***/ 84:
 /***/ function(module, exports) {
 
-	module.exports = "<div v-bind:class=\"{'narrow': isNarrow}\" class=\"layout-aside\"><div class=\"side-nav\"><div v-on:click=\"toggleSidebar\" class=\"nav-header\"><h1 class=\"title\">Dashboard</h1><h1 class=\"title narrow\"><i class=\"fa fa-chevron-circle-right\"></i></h1></div><div class=\"flex\"><nav><ul><li><a v-link=\"{ path: '/' }\" class=\"menu\"><span class=\"icon fa fa-home\"></span><span class=\"text\">首页</span></a><a v-link=\"{ path: '/' }\" class=\"menu narrow\"><span class=\"icon fa fa-home\"></span></a></li><li><a v-link=\"{ path: '/color' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">颜色</span></a><a v-link=\"{ path: '/color' }\" class=\"menu narrow\"><span class=\"text\">颜色</span></a></li><li><a v-link=\"{ path: '/button' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">按钮</span></a><a v-link=\"{ path: '/button' }\" class=\"menu narrow\"><span class=\"text\">按钮</span></a></li><li><a v-link=\"{ path: '/table' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表格</span></a><a v-link=\"{ path: '/table' }\" class=\"menu narrow\"><span class=\"text\">表格</span></a></li><li><a v-link=\"{ path: '/panel' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">面板</span></a><a v-link=\"{ path: '/panel' }\" class=\"menu narrow\"><span class=\"text\">面板</span></a></li><li><a href=\"javascript:;\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表单</span></a><a v-link=\"{ path: 'undefined' }\" class=\"menu narrow\"><span class=\"text\">表单</span></a><ul><li><a v-link=\"{ path: '/form' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">基础表单</span></a><a v-link=\"{ path: '/form' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">日期时间选择器</span></a><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></li><li><a v-link=\"{ path: '/grid' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">网格</span></a><a v-link=\"{ path: '/grid' }\" class=\"menu narrow\"><span class=\"text\">网格</span></a></li><li><a v-link=\"{ path: '/list' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">列表</span></a><a v-link=\"{ path: '/list' }\" class=\"menu narrow\"><span class=\"text\">列表</span></a></li><li><a v-link=\"{ path: '/typography' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">排版</span></a><a v-link=\"{ path: '/typography' }\" class=\"menu narrow\"><span class=\"text\">排版</span></a></li><li><a v-link=\"{ path: '/label' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">标签</span></a><a v-link=\"{ path: '/label' }\" class=\"menu narrow\"><span class=\"text\">标签</span></a></li><li><a v-link=\"{ path: '/tab' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">选项卡</span></a><a v-link=\"{ path: '/tab' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/modal' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">模态框</span></a><a v-link=\"{ path: '/modal' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/chart' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">图表</span></a><a v-link=\"{ path: '/chart' }\" class=\"menu narrow\"><span class=\"text\">图表</span></a></li><li><a v-link=\"{ path: '/dropdown' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">下拉</span></a><a v-link=\"{ path: '/dropdown' }\" class=\"menu narrow\"><span class=\"text\">下拉</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">滚动条</span></a><a v-link=\"{ path: '/scrollbar' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Fork</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu narrow\"><span class=\"text\">Fork</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Star</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu narrow\"><span class=\"text\">Star</span></a></li></ul></nav></div></div></div>";
+	module.exports = "<div v-bind:class=\"{'narrow': isNarrow}\" class=\"layout-aside\"><div class=\"side-nav\"><div v-on:click=\"toggleSidebar\" class=\"nav-header\"><h1 class=\"title\">Dashboard</h1><h1 class=\"title narrow\"><i class=\"fa fa-chevron-circle-right\"></i></h1></div><div class=\"flex\"><nav><ul><li><a v-link=\"{ path: '/' }\" class=\"menu\"><span class=\"icon fa fa-home\"></span><span class=\"text\">首页</span></a><a v-link=\"{ path: '/' }\" class=\"menu narrow\"><span class=\"icon fa fa-home\"></span></a></li><li><a v-link=\"{ path: '/color' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">颜色</span></a><a v-link=\"{ path: '/color' }\" class=\"menu narrow\"><span class=\"text\">颜色</span></a></li><li><a v-link=\"{ path: '/button' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">按钮</span></a><a v-link=\"{ path: '/button' }\" class=\"menu narrow\"><span class=\"text\">按钮</span></a></li><li><a v-link=\"{ path: '/table' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表格</span></a><a v-link=\"{ path: '/table' }\" class=\"menu narrow\"><span class=\"text\">表格</span></a></li><li><a v-link=\"{ path: '/panel' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">面板</span></a><a v-link=\"{ path: '/panel' }\" class=\"menu narrow\"><span class=\"text\">面板</span></a></li><li><a href=\"javascript:;\" data-collapse-target=\"#sidebar-menu-5\" class=\"menu parent\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表单</span></a><a href=\"javascript:;\" data-collapse-target=\"#sidebar-menu-5\" class=\"menu narrow parent\"><span class=\"text\">表单</span></a><ul id=\"sidebar-menu-5\"><li><a v-link=\"{ path: '/form' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">基础表单</span></a><a v-link=\"{ path: '/form' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">日期时间选择器</span></a><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></li><li><a v-link=\"{ path: '/grid' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">网格</span></a><a v-link=\"{ path: '/grid' }\" class=\"menu narrow\"><span class=\"text\">网格</span></a></li><li><a v-link=\"{ path: '/list' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">列表</span></a><a v-link=\"{ path: '/list' }\" class=\"menu narrow\"><span class=\"text\">列表</span></a></li><li><a v-link=\"{ path: '/typography' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">排版</span></a><a v-link=\"{ path: '/typography' }\" class=\"menu narrow\"><span class=\"text\">排版</span></a></li><li><a v-link=\"{ path: '/label' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">标签</span></a><a v-link=\"{ path: '/label' }\" class=\"menu narrow\"><span class=\"text\">标签</span></a></li><li><a v-link=\"{ path: '/tab' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">选项卡</span></a><a v-link=\"{ path: '/tab' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/modal' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">模态框</span></a><a v-link=\"{ path: '/modal' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/chart' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">图表</span></a><a v-link=\"{ path: '/chart' }\" class=\"menu narrow\"><span class=\"text\">图表</span></a></li><li><a v-link=\"{ path: '/dropdown' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">下拉</span></a><a v-link=\"{ path: '/dropdown' }\" class=\"menu narrow\"><span class=\"text\">下拉</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">滚动条</span></a><a v-link=\"{ path: '/scrollbar' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Fork</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu narrow\"><span class=\"text\">Fork</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Star</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu narrow\"><span class=\"text\">Star</span></a></li></ul></nav></div></div></div>";
 
 /***/ }
 

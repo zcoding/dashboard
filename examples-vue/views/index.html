@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="/dashboard.min.css">
   <link rel="stylesheet" href="/lib/fa/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/lib/highlight/rainbow.css">
+  <link rel="stylesheet" href="/lib/plugins/nprogress.css">
 </head>
 <body id="app-main" v-on:click="globalClickHandler" style="height:100%;">
   <sidebar></sidebar>
-  <div class="layout-header">
+  <div class="layout-header" v-bind:class="{'narrow': isNarrow}">
     <div class="navbar">
       <div class="brand">Dashboard</div>
       <nav>
@@ -20,16 +21,16 @@
             <ul class="dropdown-menu">
               <li class="title">Menu title</li>
               <li class="separator"></li>
-              <li><a href="#">menu 1</a></li>
-              <li><a href="#">menu 2</a></li>
-              <li><a href="#">menu 3</a></li>
+              <li><a v-link="{path: '/'}">menu 1</a></li>
+              <li><a v-link="{path: '/'}">menu 2</a></li>
+              <li><a v-link="{path: '/'}">menu 3</a></li>
               <li class="separator"></li>
               <li class="static">static text</li>
             </ul>
           </li>
-          <li><a href="/">Link</a></li>
-          <li><a href="/">Link</a></li>
-          <li><a href="/">Link</a></li>
+          <li><a v-link="{path: '/'}">Link</a></li>
+          <li><a v-link="{path: '/'}">Link</a></li>
+          <li><a v-link="{path: '/'}">Link</a></li>
         </ul>
       </nav>
       <div class="fr">
@@ -46,6 +47,7 @@
     <router-view></router-view>
   </div>
   <script src="/lib/jquery/2.1.4/jquery-2.1.4.min.js"></script>
+  <script src="/lib/plugins/nprogress.js"></script>
   <script src="/lib/plugins/jquery.mousewheel.min.js"></script>
   <script src="/js/dashboard.min.js"></script>
   <script src="/lib/echarts/echarts-all.js"></script>

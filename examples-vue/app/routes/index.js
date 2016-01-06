@@ -2,10 +2,10 @@ export default {
 
   "/": {
     component: {
-      template: '<home></home>',
+      template: '<page-home></page-home>',
       components: {
-        "home": function(resolve) {
-          require(['views/index.vue'], resolve);
+        "pageHome": function(resolve) {
+          require(['views/pageHome.vue'], resolve);
         }
       }
     }
@@ -16,7 +16,7 @@ export default {
       template: '<page-form></page-form>',
       components: {
         "pageForm": function(resolve) {
-          require(['views/forms.vue'], resolve);
+          require(['views/pageForm.vue'], resolve);
         }
       }
     }
@@ -27,7 +27,7 @@ export default {
       template: '<page-datetimepicker></page-datetimepicker>',
       components: {
         "pageDatetimepicker": function(resolve) {
-          require(['views/datetimepicker.vue'], resolve);
+          require(['views/pageDatetimepicker.vue'], resolve);
         }
       }
     }
@@ -35,10 +35,10 @@ export default {
 
   "/modal": {
     component: {
-      template: '<page-modals></page-modals>',
+      template: '<page-modal></page-modal>',
       components: {
-        "pageModals": function(resolve) {
-          require(['views/modals.vue'], resolve);
+        "pageModal": function(resolve) {
+          require(['views/pageModal.vue'], resolve);
         }
       }
     }
@@ -46,10 +46,10 @@ export default {
 
   "/tab": {
     component: {
-      template: '<page-tabs></page-tabs>',
+      template: '<page-tab></page-tab>',
       components: {
-        "pageTabs": function(resolve) {
-          require(['views/tabs.vue'], resolve);
+        "pageTab": function(resolve) {
+          require(['views/pageTab.vue'], resolve);
         }
       }
     }
@@ -57,11 +57,47 @@ export default {
 
   "/scrollbar": {
     component: {
-      template: '<page-scrollbars></page-scrollbars>',
+      template: '<page-scrollbar></page-scrollbar>',
       components: {
-        "pageScrollbars": function(resolve) {
-          require(['views/scrollbars.vue'], resolve);
+        "pageScrollbar": function(resolve) {
+          require(['views/pageScrollbar.vue'], resolve);
         }
+      }
+    }
+  },
+
+  "/color": {
+    component: {
+      template: '<page-color></page-color>',
+      components: {
+        "pageColor": function(resolve) {
+          require(['views/pageColor.vue'], resolve);
+        }
+      }
+    }
+  },
+
+  "/panel": {
+    component: {
+      template: '<page-panel></page-panel>',
+      components: {
+        "pagePanel": function(resolve) {
+          require(['views/pagePanel.vue'], resolve);
+        }
+      }
+    }
+  },
+
+  "*": {
+    component: {
+      template: '<page-404></page-404>',
+      components: {
+        "page-404": function(resolve) {
+          require(['views/page404.vue'], resolve);
+        }
+      },
+      route: {
+        canReuse: false // 必须指定为不可重用
       }
     }
   }

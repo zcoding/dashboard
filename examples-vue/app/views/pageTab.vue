@@ -121,6 +121,7 @@ export default {
   },
 
   ready() {
+    NProgress.done();
     this.$dispatch('content-change');
   }
 

@@ -1,329 +1,17 @@
 webpackJsonp([10],{
 
-/***/ 37:
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-
-/***/ 38:
+/***/ 26:
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		var blob = new Blob([css], { type: "text/css" });
-
-		var oldSrc = linkElement.href;
-
-		linkElement.href = URL.createObjectURL(blob);
-
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-
-/***/ 59:
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(60)
+	module.exports = __webpack_require__(27)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(69)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(31)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\tabs.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageForm.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -333,7 +21,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 60:
+/***/ 27:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -342,249 +30,343 @@ webpackJsonp([10],{
 	  value: true
 	});
 
-	var _tab = __webpack_require__(61);
+	var _taginput = __webpack_require__(28);
 
-	var _tab2 = _interopRequireDefault(_tab);
-
-	var _tabitem = __webpack_require__(64);
-
-	var _tabitem2 = _interopRequireDefault(_tabitem);
+	var _taginput2 = _interopRequireDefault(_taginput);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
+	exports.default = {
+	  data: function data() {
+	    return {
+	      tags1: ['hello', 'dashboard'],
+	      tags2: ['hello', 'dashboard']
+	    };
+	  },
 
-	// <div class="grid">
+	  components: { tagInput: _taginput2.default },
 
-	//   <div class="u-sm-16">
+	  ready: function ready() {
+	    NProgress.done();
+	    this.$dispatch('content-change');
+	  }
+	};
 
-	//     <div class="margin-top">
+	// </script>
+	// <template lang="jade">
 
-	//       <tab v-bind:active="1">
+	// .grid.padding
 
-	//         <tab-item menu="Home">
+	//   .u-sm-8
 
-	//           <p>content 1</p>
+	//     .box.padding
 
-	//         </tab-item>
+	//       form(action="/").form
 
-	//         <tab-item menu="Button">
+	//         fieldset
 
-	//           <p>content 2</p>
+	//           .form-control
 
-	//           <p>content 2</p>
+	//             label(for="name") Name
 
-	//         </tab-item>
+	//             input#name(type="text" placeholder="input your name")
 
-	//         <tab-item menu="Form">
+	//           .form-control
 
-	//           <p>content 3</p>
+	//             label(for="password") Password
 
-	//           <p>content 3</p>
+	//             input#password(type="password" placeholder="input password")
 
-	//           <p>content 3</p>
+	//           .form-control
 
-	//         </tab-item>
+	//             label(for="number") Number
 
-	//         <tab-item menu="Tab">
+	//             input#number(type="number" placeholder="input number")
 
-	//           <p>content 4</p>
+	//           .form-control
 
-	//           <p>content 4</p>
+	//             label(for="email") Email
 
-	//           <p>content 4</p>
+	//             input#email(type="email" placeholder="input email")
 
-	//           <p>content 4</p>
+	//           .form-control
 
-	//         </tab-item>
+	//             label(for="url") URL
 
-	//         <tab-item menu="Panel">
+	//             input#url(type="url" placeholder="input url")
 
-	//           <p>content 5</p>
+	//           .form-control
 
-	//           <p>content 5</p>
+	//             label(for="select") Select
 
-	//           <p>content 5</p>
+	//             select#select(name="select")
 
-	//           <p>content 5</p>
+	//               option(value="1") Option1
 
-	//           <p>content 5</p>
+	//               option(value="2") Option2
 
-	//         </tab-item>
+	//               option(value="3") Option3
 
-	//       </tab>
+	//           .form-control
 
-	//     </div>
+	//             label(for="textarea") Textarea
 
-	//   </div>
+	//             textarea#textarea(rows="5")
 
-	//   <div class="u-sm-16">
+	//           .form-control
 
-	//     <div class="margin-top">
+	//             label.field-check
 
-	//       <tab color="info">
+	//               input(type="checkbox" name="check1")
 
-	//         <tab-item menu="Home">
+	//               | <i></i>Option1
 
-	//           <p>content 1</p>
+	//             label.field-check
 
-	//         </tab-item>
+	//               input(type="checkbox" name="check1")
 
-	//         <tab-item menu="Button">
+	//               | <i></i>Option2
 
-	//           <p>content 2</p>
+	//             label.field-check
 
-	//           <p>content 2</p>
+	//               input(type="checkbox" name="check1")
 
-	//         </tab-item>
+	//               | <i></i>Option3
 
-	//         <tab-item menu="Form">
+	//           .form-control
 
-	//           <p>content 3</p>
+	//             label.field-radio
 
-	//           <p>content 3</p>
+	//               input(type="radio" name="radio1")
 
-	//           <p>content 3</p>
+	//               | <i></i>Option1
 
-	//         </tab-item>
+	//             label.field-radio
 
-	//         <tab-item menu="Tab">
+	//               input(type="radio" name="radio1")
 
-	//           <p>content 4</p>
+	//               | <i></i>Option2
 
-	//           <p>content 4</p>
+	//             label.field-radio
 
-	//           <p>content 4</p>
+	//               input(type="radio" name="radio1")
 
-	//           <p>content 4</p>
+	//               | <i></i>Option3
 
-	//         </tab-item>
+	//           .form-control
 
-	//       </tab>
+	//             label.field-switch
 
-	//     </div>
+	//               input(type="checkbox" name="check2")
 
-	//   </div>
+	//               | <i></i>A
 
-	//   <div class="u-sm-8">
+	//             label.field-switch
 
-	//       <tab color="danger">
+	//               input(type="checkbox" name="check2")
 
-	//         <tab-item menu="Home">
+	//               | <i></i>B
 
-	//           <p>content 1</p>
+	//             label.field-switch
 
-	//         </tab-item>
+	//               input(type="checkbox" name="check2")
 
-	//         <tab-item menu="Button">
+	//               | <i></i>C
 
-	//           <p>content 2</p>
+	//           .form-control
 
-	//           <p>content 2</p>
+	//             label.field-switch
 
-	//         </tab-item>
+	//               input(type="radio" name="radio2")
 
-	//         <tab-item menu="Form">
+	//               | <i></i>A1
 
-	//           <p>content 3</p>
+	//             label.field-switch
 
-	//           <p>content 3</p>
+	//               input(type="radio" name="radio2")
 
-	//           <p>content 3</p>
+	//               | <i></i>A2
 
-	//         </tab-item>
+	//             label.field-switch
 
-	//         <tab-item menu="Tab">
+	//               input(type="radio" name="radio2")
 
-	//           <p>content 4</p>
+	//               | <i></i>A3
 
-	//           <p>content 4</p>
+	//   .u-sm-8
 
-	//           <p>content 4</p>
+	//     .box.padding
 
-	//           <p>content 4</p>
+	//       form(action="/").form
 
-	//         </tab-item>
+	//         fieldset
 
-	//       </tab>
+	//           .form-control
 
-	//   </div>
+	//             label(for="name2") Name
 
-	//   <div class="u-sm-8">
+	//             input(type="text" placeholder="input your name")#name2.field-md
 
-	//       <tab color="secondary">
+	//           .form-control
 
-	//         <tab-item menu="Home">
+	//             label(for="password2") Password
 
-	//           <p>content 1</p>
+	//             input(type="password" placeholder="input password")#password2.field-md
 
-	//         </tab-item>
+	//           .form-control
 
-	//         <tab-item menu="Button">
+	//             label(for="content2") Textarea
 
-	//           <p>content 2</p>
+	//             textarea#content2(rows="5").field-md
 
-	//           <p>content 2</p>
+	//   .u-sm-8
 
-	//         </tab-item>
+	//     .box.padding
 
-	//         <tab-item menu="Form">
+	//       form(action="/").form
 
-	//           <p>content 3</p>
+	//         fieldset
 
-	//           <p>content 3</p>
+	//           .form-control.u-sm-8
 
-	//           <p>content 3</p>
+	//             label(for="name") Name
 
-	//         </tab-item>
+	//             input#name(type="text" placeholder="input your name")
 
-	//         <tab-item menu="Tab">
+	//           .form-control.u-sm-8
 
-	//           <p>content 4</p>
+	//             label(for="password") Password
 
-	//           <p>content 4</p>
+	//             input#password(type="password" placeholder="input password")
 
-	//           <p>content 4</p>
+	//           .form-control.u-sm-8
 
-	//           <p>content 4</p>
+	//             label(for="number") Number
 
-	//         </tab-item>
+	//             input#number(type="number" placeholder="input number")
 
-	//       </tab>
+	//           .form-control.u-sm-8
 
-	//   </div>
+	//             label(for="email") Email
 
-	// </div>
+	//             input#email(type="email" placeholder="input email")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="url") URL
+
+	//             input#url(type="url" placeholder="input url")
+
+	//           .form-control.u-sm-8
+
+	//             label(for="select") Select
+
+	//             select#select(name="select")
+
+	//               option(value="1") Option1
+
+	//               option(value="2") Option2
+
+	//               option(value="3") Option3
+
+	//           .form-control.u-sm-16
+
+	//             label(for="textarea") Textarea
+
+	//             textarea#textarea(rows="5")
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       form(action="/").form
+
+	//         fieldset
+
+	//           .form-control.u-sm-8
+
+	//             label(for="name") Name
+
+	//             input#name(type="text" placeholder="input your name").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="password") Password
+
+	//             input#password(type="password" placeholder="input password").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="number") Number
+
+	//             input#number(type="number" placeholder="input number").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="email") Email
+
+	//             input#email(type="email" placeholder="input email").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="url") URL
+
+	//             input#url(type="url" placeholder="input url").field-md
+
+	//           .form-control.u-sm-8
+
+	//             label(for="select") Select
+
+	//             select#select(name="select").field-md
+
+	//               option(value="1") Option1
+
+	//               option(value="2") Option2
+
+	//               option(value="3") Option3
+
+	//           .form-control.u-sm-16
+
+	//             label(for="textarea") Textarea
+
+	//             textarea#textarea(rows="5").field-md
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       h3 .tag-input
+
+	//       tag-input(v-bind:tags.sync="tags1")
+
+	//   .u-sm-8
+
+	//     .box.padding
+
+	//       h3 .tag-input
+
+	//       tag-input(v-bind:tags.sync="tags2" label-style="primary")
 
 	// </template>
 
 	// <script>
 
-	exports.default = {
-
-	  components: { tab: _tab2.default, tabItem: _tabitem2.default },
-
-	  data: function data() {
-	    return {};
-	  }
-	};
-
-	// </script>
+	// components
 
 /***/ },
 
-/***/ 61:
+/***/ 28:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(62)
+	module.exports = __webpack_require__(29)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(63)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(30)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\tab.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\taginput.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -594,7 +376,7 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 62:
+/***/ 29:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -602,33 +384,19 @@ webpackJsonp([10],{
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// <template>
+	// <template lang="jade">
 
-	// <div class="tab" v-bind:class="[colorStyle]">
+	// .tag-input(v-on:click="handleClick")
 
-	//   <ul class="nav">
+	//   span.label(v-for="tag in tags" track-by="$index" v-if="$index < holderIndex" v-bind:class="['label-' + labelStyle]") {{ tag }} <i class="fa fa-close close" v-on:click="deleteTag($index)"></i>
 
-	//     <li v-for="item in items"
+	//   span.holder(v-bind:style="holderStyle")
 
-	//       v-bind:class="{'active': active === $index}"
+	//     input(type="text" v-model="newTag" v-el:input v-on:keydown.enter.prevent="addTag" v-on:keydown.left="moveLeft" v-on:keydown.right="moveRight" v-on:keydown.8="backDelete")
 
-	//       v-bind:style="{width: itemWidth}">
+	//   span.label(v-for="tag in tags" track-by="$index" v-if="$index >= holderIndex" v-bind:class="['label-' + labelStyle]") {{ tag }} <i class="fa fa-close close" v-on:click="deleteTag($index)"></i>
 
-	//       <a href="javascript:;" v-on:click.prevent="selectItem($index, item)">{{ item.menu }}</a>
-
-	//     </li>
-
-	//     <div class="indicator" v-bind:style="{width: itemWidth, left: positionLeft}"></div>
-
-	//   </ul>
-
-	//   <div class="tab-content">
-
-	//     <slot></slot>
-
-	//   </div>
-
-	// </div>
+	//   .calculate-holder(v-el:calculator) {{ calculateTag }}
 
 	// </template>
 
@@ -637,40 +405,95 @@ webpackJsonp([10],{
 	exports.default = {
 
 	  props: {
-	    active: {
-	      type: Number,
-	      default: 0
+	    tags: {
+	      type: Array,
+	      required: true,
+	      twoWay: true
 	    },
-	    color: {
+	    labelStyle: {
 	      type: String,
-	      default: 'primary'
+	      required: false,
+	      default: 'dark'
 	    }
 	  },
 
 	  data: function data() {
+	    var holderIndex = this.tags.length;
 	    return {
-	      items: []
+	      newTag: '',
+	      holderStyle: {
+	        width: '2px'
+	      },
+	      holderIndex: holderIndex
 	    };
 	  },
 
 	  computed: {
-	    itemWidth: function itemWidth() {
-	      return this.items.length > 0 ? 100 / this.items.length + '%' : '';
-	    },
-	    positionLeft: function positionLeft() {
-	      if (this.items.length === 0) {
-	        return '';
-	      }
-	      return 100 / this.items.length * this.active + '%';
-	    },
-	    colorStyle: function colorStyle() {
-	      return 'tab-' + this.color;
+	    calculateTag: function calculateTag() {
+	      var _tag = this.newTag.replace(/\s/g, 'i');
+	      this.updateWidth();
+	      return _tag;
 	    }
 	  },
 
 	  methods: {
-	    selectItem: function selectItem(index, item) {
-	      this.active = index;
+	    handleClick: function handleClick(event) {
+	      if (event.target === event.currentTarget) {
+	        var offsetX = event.offsetX,
+	            offsetY = event.offsetY;
+	        var children = this.$el.querySelectorAll('.label');
+	        var isAtTheEnd = true;
+	        for (var i = 0; i < children.length; ++i) {
+	          var child = children[i];
+	          if (child.offsetLeft > offsetX && child.offsetTop < offsetY && child.offsetTop + child.offsetHeight > offsetY) {
+	            this.holderIndex = i;
+	            isAtTheEnd = false;
+	            break;
+	          }
+	        }
+	        if (isAtTheEnd) {
+	          this.holderIndex = this.tags.length;
+	        }
+	      }
+	      this.$els.input.focus();
+	    },
+	    updateWidth: function updateWidth() {
+	      var _this = this;
+
+	      this.$nextTick(function () {
+	        var width = _this.$els.calculator.offsetWidth;
+	        _this.holderStyle.width = width + 2 + 'px';
+	      });
+	    },
+	    addTag: function addTag() {
+	      var newTag = this.newTag.trim();
+	      if (newTag !== '') {
+	        this.tags.splice(this.holderIndex, 0, newTag);
+	        this.newTag = '';
+	        this.holderIndex += 1;
+	      }
+	    },
+	    moveLeft: function moveLeft() {
+	      if (this.newTag.trim() === '' && this.holderIndex > 0) {
+	        this.holderIndex -= 1;
+	      }
+	    },
+	    moveRight: function moveRight() {
+	      if (this.newTag.trim() === '' && this.holderIndex < this.tags.length) {
+	        this.holderIndex += 1;
+	      }
+	    },
+	    deleteTag: function deleteTag(index) {
+	      if (index < this.holderIndex) {
+	        this.holderIndex -= 1;
+	      }
+	      this.tags.splice(index, 1);
+	      this.$els.input.focus();
+	    },
+	    backDelete: function backDelete() {
+	      if (this.newTag.trim() === '' && this.holderIndex > 0) {
+	        this.deleteTag(this.holderIndex - 1);
+	      }
 	    }
 	  }
 
@@ -680,155 +503,17 @@ webpackJsonp([10],{
 
 /***/ },
 
-/***/ 63:
+/***/ 30:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"tab\" v-bind:class=\"[colorStyle]\">\r\n  <ul class=\"nav\">\r\n    <li v-for=\"item in items\"\r\n      v-bind:class=\"{'active': active === $index}\"\r\n      v-bind:style=\"{width: itemWidth}\">\r\n      <a href=\"javascript:;\" v-on:click.prevent=\"selectItem($index, item)\">{{ item.menu }}</a>\r\n    </li>\r\n    <div class=\"indicator\" v-bind:style=\"{width: itemWidth, left: positionLeft}\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
+	module.exports = "<div v-on:click=\"handleClick\" class=\"tag-input\"><span v-for=\"tag in tags\" track-by=\"$index\" v-if=\"$index &lt; holderIndex\" v-bind:class=\"['label-' + labelStyle]\" class=\"label\">{{ tag }} <i class=\"fa fa-close close\" v-on:click=\"deleteTag($index)\"></i></span><span v-bind:style=\"holderStyle\" class=\"holder\"><input type=\"text\" v-model=\"newTag\" v-el:input=\"v-el:input\" v-on:keydown.enter.prevent=\"addTag\" v-on:keydown.left=\"moveLeft\" v-on:keydown.right=\"moveRight\" v-on:keydown.8=\"backDelete\"/></span><span v-for=\"tag in tags\" track-by=\"$index\" v-if=\"$index &gt;= holderIndex\" v-bind:class=\"['label-' + labelStyle]\" class=\"label\">{{ tag }} <i class=\"fa fa-close close\" v-on:click=\"deleteTag($index)\"></i></span><div v-el:calculator=\"v-el:calculator\" class=\"calculate-holder\">{{ calculateTag }}</div></div>";
 
 /***/ },
 
-/***/ 64:
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(65)
-	module.exports = __webpack_require__(67)
-
-	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(68)
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\tabitem.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
-	  }
-	})()}
-
-/***/ },
-
-/***/ 65:
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(66);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(38)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea0cadea&file=tabitem.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./tabitem.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea0cadea&file=tabitem.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./tabitem.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-
-/***/ 66:
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(37)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".tab .nav + .tab-content .tab-pane.move-transition {\n  display: block; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-
-/***/ 67:
+/***/ 31:
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-
-	// <div class="tab-pane" v-show="index === $parent.active" transition="move">
-
-	//   <slot></slot>
-
-	// </div>
-
-	// </template>
-
-	// <style lang="sass">
-
-	// .tab .nav+.tab-content .tab-pane {
-
-	//   &.move-transition {
-
-	//     display: block;
-
-	//   }
-
-	// }
-
-	// </style>
-
-	// <script>
-
-	exports.default = {
-
-	  props: {
-	    menu: {
-	      type: String,
-	      required: true
-	    }
-	  },
-
-	  created: function created() {
-	    this.$parent.items.push({
-	      menu: this.menu
-	    });
-	    this.index = this.$parent.items.length - 1;
-	  },
-	  data: function data() {
-	    return {
-	      index: 0
-	    };
-	  },
-
-	  transitions: {
-	    move: {
-	      css: false
-	    }
-	  }
-
-	};
-
-	// </script>
-
-/***/ },
-
-/***/ 68:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"tab-pane\" v-show=\"index === $parent.active\" transition=\"move\">\r\n  <slot></slot>\r\n</div>";
-
-/***/ },
-
-/***/ 69:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab v-bind:active=\"1\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Panel\">\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab color=\"info\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"danger\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"secondary\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n\r\n</div>";
+	module.exports = "<div class=\"grid padding\"><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\"/></div><div class=\"form-control\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\"/></div><div class=\"form-control\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\"/></div><div class=\"form-control\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\"/></div><div class=\"form-control\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\"/></div><div class=\"form-control\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\"></textarea></div><div class=\"form-control\"><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option1</label><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option2</label><label class=\"field-check\"><input type=\"checkbox\" name=\"check1\"/><i></i>Option3</label></div><div class=\"form-control\"><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option1</label><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option2</label><label class=\"field-radio\"><input type=\"radio\" name=\"radio1\"/><i></i>Option3</label></div><div class=\"form-control\"><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>A</label><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>B</label><label class=\"field-switch\"><input type=\"checkbox\" name=\"check2\"/><i></i>C</label></div><div class=\"form-control\"><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A1</label><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A2</label><label class=\"field-switch\"><input type=\"radio\" name=\"radio2\"/><i></i>A3</label></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control\"><label for=\"name2\">Name</label><input type=\"text\" placeholder=\"input your name\" id=\"name2\" class=\"field-md\"/></div><div class=\"form-control\"><label for=\"password2\">Password</label><input type=\"password\" placeholder=\"input password\" id=\"password2\" class=\"field-md\"/></div><div class=\"form-control\"><label for=\"content2\">Textarea</label><textarea id=\"content2\" rows=\"5\" class=\"field-md\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control u-sm-8\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\"/></div><div class=\"form-control u-sm-8\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\"/></div><div class=\"form-control u-sm-8\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\"/></div><div class=\"form-control u-sm-8\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\"/></div><div class=\"form-control u-sm-8\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\"/></div><div class=\"form-control u-sm-8\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control u-sm-16\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><form action=\"/\" class=\"form\"><fieldset><div class=\"form-control u-sm-8\"><label for=\"name\">Name</label><input id=\"name\" type=\"text\" placeholder=\"input your name\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"password\">Password</label><input id=\"password\" type=\"password\" placeholder=\"input password\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"number\">Number</label><input id=\"number\" type=\"number\" placeholder=\"input number\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"email\">Email</label><input id=\"email\" type=\"email\" placeholder=\"input email\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"url\">URL</label><input id=\"url\" type=\"url\" placeholder=\"input url\" class=\"field-md\"/></div><div class=\"form-control u-sm-8\"><label for=\"select\">Select</label><select id=\"select\" name=\"select\" class=\"field-md\"><option value=\"1\">Option1</option><option value=\"2\">Option2</option><option value=\"3\">Option3</option></select></div><div class=\"form-control u-sm-16\"><label for=\"textarea\">Textarea</label><textarea id=\"textarea\" rows=\"5\" class=\"field-md\"></textarea></div></fieldset></form></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><h3>.tag-input</h3><tag-input v-bind:tags.sync=\"tags1\"></tag-input></div></div><div class=\"u-sm-8\"><div class=\"box padding\"><h3>.tag-input</h3><tag-input v-bind:tags.sync=\"tags2\" label-style=\"primary\"></tag-input></div></div></div>";
 
 /***/ }
 

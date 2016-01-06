@@ -1,17 +1,17 @@
 webpackJsonp([3],{
 
-/***/ 30:
+/***/ 32:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(31)
+	module.exports = __webpack_require__(33)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(42)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(44)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\datetimepicker.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageDatetimepicker.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21,7 +21,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 31:
+/***/ 33:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30,11 +30,11 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _datepicker = __webpack_require__(32);
+	var _datepicker = __webpack_require__(34);
 
 	var _datepicker2 = _interopRequireDefault(_datepicker);
 
-	var _dateinput = __webpack_require__(35);
+	var _dateinput = __webpack_require__(37);
 
 	var _dateinput2 = _interopRequireDefault(_dateinput);
 
@@ -135,6 +135,7 @@ webpackJsonp([3],{
 	  },
 
 	  ready: function ready() {
+	    NProgress.done();
 	    this.$dispatch('content-change');
 	  }
 	};
@@ -143,13 +144,13 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 32:
+/***/ 34:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(33)
+	module.exports = __webpack_require__(35)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(34)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(36)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -164,7 +165,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 33:
+/***/ 35:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -519,21 +520,21 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 34:
+/***/ 36:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"datepicker\" v-bind:class=\"{'float': float}\">\r\n\r\n  <div class=\"date-picker\" v-if=\"show === 'date'\">\r\n    <table>\r\n      <thead>\r\n        <tr class=\"header\">\r\n          <th class=\"prev\" v-on:click=\"prevMonth\"><i class=\"fa fa-angle-left\"></i></th>\r\n          <th colspan=\"5\" class=\"switch\" v-on:click=\"switchView2Month\">{{ showYear }} {{ showMonth }}</th>\r\n          <th class=\"next\" v-on:click=\"nextMonth\"><i class=\"fa fa-angle-right\"></i></th>\r\n        </tr>\r\n        <tr><th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th></tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr v-for=\"row in dates\" track-by=\"$index\">\r\n          <td v-for=\"date in row\" track-by=\"$index\" v-on:click=\"selectDate(date)\" v-bind:class=\"['date', date.old ? 'old' : date.new ? 'new' : '', date.active ? 'active': '']\">{{ date.show }}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n  <div class=\"month-picker\" v-if=\"show === 'month'\">\r\n    <table>\r\n      <thead>\r\n        <tr class=\"header\">\r\n          <th class=\"prev\" v-on:click=\"prevYear\"><i class=\"fa fa-angle-left\"></i></th>\r\n          <th colspan=\"5\" class=\"switch\" v-on:click=\"switchView2Year\">{{ showYear }}</th>\r\n          <th class=\"next\" v-on:click=\"nextYear\"><i class=\"fa fa-angle-right\"></i></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr>\r\n          <td colspan=\"7\">\r\n            <span v-for=\"month in months\" track-by=\"$index\" v-on:click=\"selectMonth(month)\" v-bind:class=\"['month', month.old ? 'old' : month.new ? 'new' : '', month.active ? 'active': '']\">{{ month.show }}</span>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n  <div class=\"year-picker\" v-if=\"show === 'year'\">\r\n    <table>\r\n      <thead>\r\n        <tr class=\"header\">\r\n          <th class=\"prev\" v-on:click=\"prevDecade\"><i class=\"fa fa-angle-left\"></i></th>\r\n          <th colspan=\"5\" class=\"switch\">{{ showDecade }}</th>\r\n          <th class=\"next\" v-on:click=\"nextDecade\"><i class=\"fa fa-angle-right\"></i></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr>\r\n          <td colspan=\"7\">\r\n            <span v-for=\"year in years\" track-by=\"$index\" v-on:click=\"selectYear(year)\" v-bind:class=\"['year', year.old ? 'old' : year.new ? 'new' : '', year.active ? 'active': '']\">{{ year.show }}</span>\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n\r\n</div>";
 
 /***/ },
 
-/***/ 35:
+/***/ 37:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(36)
-	module.exports = __webpack_require__(40)
+	__webpack_require__(38)
+	module.exports = __webpack_require__(42)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(41)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(43)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -548,16 +549,16 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 36:
+/***/ 38:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(37);
+	var content = __webpack_require__(39);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(39)(content, {});
+	var update = __webpack_require__(41)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -575,10 +576,10 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 37:
+/***/ 39:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(38)();
+	exports = module.exports = __webpack_require__(40)();
 	// imports
 
 
@@ -590,7 +591,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 38:
+/***/ 40:
 /***/ function(module, exports) {
 
 	/*
@@ -647,7 +648,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 39:
+/***/ 41:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -902,7 +903,7 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 40:
+/***/ 42:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -911,7 +912,7 @@ webpackJsonp([3],{
 	  value: true
 	});
 
-	var _datepicker = __webpack_require__(32);
+	var _datepicker = __webpack_require__(34);
 
 	var _datepicker2 = _interopRequireDefault(_datepicker);
 
@@ -1052,14 +1053,14 @@ webpackJsonp([3],{
 
 /***/ },
 
-/***/ 41:
+/***/ 43:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"form-control\" style=\"position:relative;\">\r\n  <label><slot></slot></label>\r\n  <input type=\"text\" v-model=\"date\" v-on:focus=\"triggerPicker\" v-on:click.stop>\r\n  <date-picker float v-show=\"show\" transition=\"fade\" v-bind:selected-date.sync=\"selectedDate\" v-on:click.stop v-on:date-change=\"handleDateChange\"></date-picker>\r\n</div>";
 
 /***/ },
 
-/***/ 42:
+/***/ 44:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"grid margin-top\">\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <h3>{{ myDate | format 'yyyy年 M月 d日' }}</h3>\r\n      <date-picker v-on:date-change=\"myDateChange\"></date-picker>\r\n    </div>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <date-input v-bind:date.sync=\"yourDate\" format=\"yyyy-MM-dd\">pick a date via date-input</date-input>\r\n    </div>\r\n  </div>\r\n</div>";

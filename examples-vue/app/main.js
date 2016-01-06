@@ -1,6 +1,6 @@
-import Vue from 'vue';
+import Vue       from 'vue';
 import VueRouter from 'vue-router';
-import routes from './routes';
+import routes    from './routes';
 
 // components
 import sidebar from 'components/sidebar.vue';
@@ -29,7 +29,6 @@ let App = Vue.extend({
   },
 
   ready() {
-    $('[data-collapse]').collapse();
     $('.dropdown').dropdown();
     $('.layout-aside .flex').scrollbar({
       style: 'light'
@@ -39,10 +38,7 @@ let App = Vue.extend({
       fade: false,
       speed: 100
     }).data('scrollbar');
-    $('.layout-aside').on('click', '.nav-header', function() {
-      $('.layout-aside, .layout-header, .layout-content').toggleClass('narrow');
-      $(document).trigger('aside-change');
-    });
+    $('.layout-aside .menu.parent').collapse();
   },
 
   events: {
@@ -59,5 +55,10 @@ let App = Vue.extend({
 });
 
 router.map(routes);
+
+router.beforeEach(function (transition) {
+  NProgress.start();
+  transition.next();
+});
 
 router.start(App, '#app-main');

@@ -32,23 +32,28 @@
     .flex
       nav
         ul
-          each menu in menus
+          each menu, index in menus
             li
               if menu.path
                 a(v-link="{ path: '" + menu.path + "' }").menu
                   span.icon.fa(class="fa-#{menu.icon}")
                   span.text= menu.name
+                a(v-link="{ path: '" + menu.path + "' }").menu.narrow
+                  if menu.short
+                    span.text= menu.short
+                  else
+                    span.icon.fa(class="fa-#{menu.icon}")
               else
-                a(href="javascript:;").menu
+                a(href="javascript:;").menu.parent(data-collapse-target="#sidebar-menu-" + index)
                   span.icon.fa(class="fa-#{menu.icon}")
                   span.text= menu.name
-              a(v-link="{ path: '" + menu.path + "' }").menu.narrow
-                if menu.short
-                  span.text= menu.short
-                else
-                  span.icon.fa(class="fa-#{menu.icon}")
+                a(href="javascript:;").menu.narrow.parent(data-collapse-target="#sidebar-menu-" + index)
+                  if menu.short
+                    span.text= menu.short
+                  else
+                    span.icon.fa(class="fa-#{menu.icon}")
               if menu.sub
-                ul
+                ul(id="sidebar-menu-" + index)
                   each submenu in menu.sub
                     li
                       a(v-link="{ path: '" + submenu.path + "' }").menu

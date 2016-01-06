@@ -112,19 +112,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type));
   });
 })(jQuery);
-"use strict";
+'use strict';
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (function ($) {
 
   var defaults = {
-    timeout: 300
+    speed: 300
+  };
+
+  var Collapse = function Collapse($element, options) {
+    _classCallCheck(this, Collapse);
+
+    options = this.options = $.extend(true, {}, defaults, options);
+    this.$element = $element;
+    var $target = $(options.target || $element.data('collapse-target'));
+    $element.on('click', function () {
+      $target.slideToggle(options.speed);
+    });
   };
 
   function collapse(options) {
-    options = $.extend(true, {}, defaults, options);
+
     return this.each(function (index, ele) {
       var $this = $(ele);
-      $this.slideToggle(options.timeout);
+      var collapse = $this.data('collapse');
+      if (collapse == null || !(collapse instanceof Collapse)) {
+        collapse = new Collapse($this, options);
+        $this.data('collapse', collapse);
+      }
     });
   }
 

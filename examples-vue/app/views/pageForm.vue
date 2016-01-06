@@ -145,7 +145,7 @@
   .u-sm-8
     .box.padding
       h3 .tag-input
-      tag-input(v-bind:tags.sync="tags")
+      tag-input(v-bind:tags.sync="tags1")
 
   .u-sm-8
     .box.padding
@@ -163,7 +163,7 @@ export default {
 
   data() {
     return {
-      tags: ['hello', 'dashboard'],
+      tags1: ['hello', 'dashboard'],
       tags2: ['hello', 'dashboard']
     };
   },
@@ -171,6 +171,7 @@ export default {
   components: { tagInput },
 
   ready() {
+    NProgress.done();
     this.$dispatch('content-change');
   }
 
