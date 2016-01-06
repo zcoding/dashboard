@@ -119,17 +119,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 (function ($) {
 
   var defaults = {
-    speed: 300
+    speed: 300,
+    complete: $.noop,
+    before: $.noop
   };
 
   var Collapse = function Collapse($element, options) {
+    var _this = this;
+
     _classCallCheck(this, Collapse);
 
     options = this.options = $.extend(true, {}, defaults, options);
     this.$element = $element;
     var $target = $(options.target || $element.data('collapse-target'));
     $element.on('click', function () {
-      $target.slideToggle(options.speed);
+      _this.options.before.call(_this.$element, _this.$element);
+      $target.slideToggle(options.speed, function () {
+        _this.options.complete.call(_this.$element, _this.$element);
+      });
     });
   };
 

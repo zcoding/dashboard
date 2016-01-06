@@ -47,6 +47,7 @@
                 a(href="javascript:;").menu.parent(data-collapse-target="#sidebar-menu-" + index)
                   span.icon.fa(class="fa-#{menu.icon}")
                   span.text= menu.name
+                  span.icon-right.fa.fa-caret-up
                 a(href="javascript:;").menu.narrow.parent(data-collapse-target="#sidebar-menu-" + index)
                   if menu.short
                     span.text= menu.short

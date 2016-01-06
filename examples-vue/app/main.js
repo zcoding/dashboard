@@ -30,15 +30,22 @@ let App = Vue.extend({
 
   ready() {
     $('.dropdown').dropdown();
-    $('.layout-aside .flex').scrollbar({
+    let asideScrollbar = $('.layout-aside .flex').scrollbar({
       style: 'light'
-    });
+    }).data('scrollbar');
     this.contentScrollbar = $('.layout-content').scrollbar({
       width: 10,
       fade: false,
       speed: 100
     }).data('scrollbar');
-    $('.layout-aside .menu.parent').collapse();
+    $('.layout-aside .menu.parent').collapse({
+      before($element) {
+        $element.children('.icon-right').toggleClass('fa-caret-down fa-caret-up');
+      },
+      complete() {
+        asideScrollbar.repaint();
+      }
+    });
   },
 
   events: {

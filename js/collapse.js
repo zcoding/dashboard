@@ -1,7 +1,9 @@
 (($) => {
 
   const defaults = {
-    speed: 300
+    speed: 300,
+    complete: $.noop,
+    before: $.noop
   };
 
   class Collapse {
@@ -11,7 +13,10 @@
       this.$element = $element;
       let $target = $(options.target || $element.data('collapse-target'));
       $element.on('click', () => {
-        $target.slideToggle(options.speed);
+        this.options.before.call(this.$element, this.$element);
+        $target.slideToggle(options.speed, () => {
+          this.options.complete.call(this.$element, this.$element);
+        });
       });
     }
 

@@ -1308,6 +1308,10 @@ b, strong {
         display: none; }
     .layout-aside .side-nav .icon {
       margin-right: 5px; }
+    .layout-aside .side-nav,
+    .layout-aside .side-nav .icon-right {
+      float: right;
+      line-height: 2.25rem; }
   .layout-aside.narrow {
     width: 50px; }
     .layout-aside.narrow .side-nav .menu {
@@ -1316,6 +1320,11 @@ b, strong {
         display: block;
         padding: 0;
         text-align: center; }
+      .layout-aside.narrow .side-nav .menu:before, .layout-aside.narrow .side-nav .menu:after {
+        content: ' ';
+        display: table; }
+      .layout-aside.narrow .side-nav .menu:after {
+        clear: both; }
     .layout-aside.narrow .nav-header .title {
       display: none; }
     .layout-aside.narrow .nav-header .title.narrow {
