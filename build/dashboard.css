@@ -1671,6 +1671,10 @@ th, td {
     opacity: 1; }
     .modal.fade.in .modal-dialog {
       transform: translate3d(0, 0, 0); }
+  .modal.modal-lg .modal-dialog {
+    width: 960px; }
+  .modal.modal-sm .modal-dialog {
+    width: 320px; }
 
 .modal-dialog {
   width: 640px;

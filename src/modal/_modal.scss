@@ -47,6 +47,15 @@ $baseIndex: $baseIndex+1;
       transform: translate3d(0, 0, 0);
     }
   }
+
+  &.modal-lg .modal-dialog {
+    width: 960px;
+  }
+
+  &.modal-sm .modal-dialog {
+    width: 320px;
+  }
+
 }
 
 $baseIndex: $baseIndex+1;

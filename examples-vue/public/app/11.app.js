@@ -50,7 +50,7 @@ webpackJsonp([11],{
 
 	//       <h3>{{ myDate | format 'yyyy年 M月 d日' }}</h3>
 
-	//       <date-picker v-on:date-change="myDateChange"></date-picker>
+	//       <date-picker v-bind:selected-date.sync="myDateTime" v-on:date-change="myDateChange"></date-picker>
 
 	//     </div>
 
@@ -79,7 +79,8 @@ webpackJsonp([11],{
 	  data: function data() {
 	    return {
 	      myDate: '2015-12-12',
-	      yourDate: '2015-12-20'
+	      yourDate: '2015-12-20',
+	      myDateTime: new Date(2015, 11, 12).getTime()
 	    };
 	  },
 
@@ -1063,7 +1064,7 @@ webpackJsonp([11],{
 /***/ 44:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid margin-top\">\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <h3>{{ myDate | format 'yyyy年 M月 d日' }}</h3>\r\n      <date-picker v-on:date-change=\"myDateChange\"></date-picker>\r\n    </div>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <date-input v-bind:date.sync=\"yourDate\" format=\"yyyy-MM-dd\">pick a date via date-input</date-input>\r\n    </div>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"grid margin-top\">\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <h3>{{ myDate | format 'yyyy年 M月 d日' }}</h3>\r\n      <date-picker v-bind:selected-date.sync=\"myDateTime\" v-on:date-change=\"myDateChange\"></date-picker>\r\n    </div>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n    <div class=\"box padding\">\r\n      <date-input v-bind:date.sync=\"yourDate\" format=\"yyyy-MM-dd\">pick a date via date-input</date-input>\r\n    </div>\r\n  </div>\r\n</div>";
 
 /***/ }
 
