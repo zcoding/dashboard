@@ -2015,6 +2015,39 @@ input.input-info {
     .field-switch input[type=checkbox][disabled] + i:before, .field-switch input[type=radio][disabled] + i:before {
       background-color: #CECECE; }
 
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate; }
+  .input-group .addon, .input-group .field {
+    display: table-cell; }
+    .input-group .addon:first-child, .input-group .field:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0; }
+    .input-group .addon:last-child, .input-group .field:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0; }
+    .input-group .addon:not(:first-child):not(:last-child), .input-group .field:not(:first-child):not(:last-child) {
+      border-radius: 0; }
+  .input-group .addon {
+    width: 1%;
+    height: 36px;
+    font-size: 14px;
+    padding: 6px 12px;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid #CECECE;
+    border-radius: 4px; }
+    .input-group .addon:not(:first-child) {
+      border-left: 0; }
+    .input-group .addon:not(:last-child) {
+      border-right: 0; }
+  .input-group .field {
+    position: relative;
+    float: left;
+    width: 100%; }
+
 .badge {
   display: inline-block;
   margin-right: .5em;
