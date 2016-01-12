@@ -853,6 +853,7 @@ b, strong {
   font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
   font-size: 14px;
   line-height: 1;
+  text-align: center;
   white-space: nowrap;
   -webkit-transition: background-color 150ms linear 0s;
   transition: background-color 150ms linear 0s; }
