@@ -16,19 +16,19 @@
 }
 
 .margin {
-  margin: 1.5rem;
+  margin: .75rem;
 }
 
 .padding {
-  padding: 1.5rem;
+  padding: .75rem;
 }
 
 @each $pos in (top, bottom, left, right) {
   .padding-#{$pos} {
-    padding-#{$pos}: 1.5rem;
+    padding-#{$pos}: .75rem;
   }
   .margin-#{$pos} {
-    margin-#{$pos}: 1.5rem;
+    margin-#{$pos}: .75rem;
   }
 }
 

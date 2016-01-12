@@ -1,17 +1,17 @@
 webpackJsonp([15],{
 
-/***/ 76:
+/***/ 74:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(77)
+	module.exports = __webpack_require__(75)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(78)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(76)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageColor.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageScrollbar.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21,10 +21,10 @@ webpackJsonp([15],{
 
 /***/ },
 
-/***/ 77:
+/***/ 75:
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -33,25 +33,49 @@ webpackJsonp([15],{
 
 	// .grid.margin-top
 
-	//   .u-sm-16
+	//   .u-sm-8
 
-	//     .box.padding
+	//     .box.padding(style="height:300px;overflow-y:auto;" v-el:box)
 
-	//       p.text-primary text color: primary
+	//       p 0
 
-	//       p.text-secondary text color: secondary
+	//       p 1
 
-	//       p.text-success text color: success
+	//       p 2
 
-	//       p.text-danger text color: danger
+	//       p 3
 
-	//       p.text-warning text color: warning
+	//       p 4
 
-	//       p.text-tips text color: tips
+	//       p 5
 
-	//       p.text-info text color: info
+	//       p 6
 
-	//       p.text-dark text color: dark
+	//       p 7
+
+	//       p 8
+
+	//       p 9
+
+	//       p 10
+
+	//       p 11
+
+	//       p 12
+
+	//       p 13
+
+	//       p 14
+
+	//       p 15
+
+	//       p 16
+
+	//       p 17
+
+	//       p 18
+
+	//       p 19
 
 	// </template>
 
@@ -60,6 +84,8 @@ webpackJsonp([15],{
 	exports.default = {
 	  ready: function ready() {
 	    NProgress.done();
+	    this.$dispatch('content-change');
+	    $(this.$els.box).scrollbar();
 	  }
 	};
 
@@ -67,10 +93,10 @@ webpackJsonp([15],{
 
 /***/ },
 
-/***/ 78:
+/***/ 76:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid margin-top\"><div class=\"u-sm-16\"><div class=\"box padding\"><p class=\"text-primary\">text color: primary</p><p class=\"text-secondary\">text color: secondary</p><p class=\"text-success\">text color: success</p><p class=\"text-danger\">text color: danger</p><p class=\"text-warning\">text color: warning</p><p class=\"text-tips\">text color: tips</p><p class=\"text-info\">text color: info</p><p class=\"text-dark\">text color: dark</p></div></div></div>";
+	module.exports = "<div class=\"grid margin-top\"><div class=\"u-sm-8\"><div style=\"height:300px;overflow-y:auto;\" v-el:box=\"v-el:box\" class=\"box padding\"><p>0</p><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p></div></div></div>";
 
 /***/ }
 

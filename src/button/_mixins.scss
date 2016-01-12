@@ -69,10 +69,10 @@
         background-color: $color;
         border-color: darken($color, 5%);
 
-        &:active {
+        &:active, &.active {
           background-color: darken($color, 5%);
         }
-        &.float:active {
+        &.float:active, &.float.active {
           background-color: $color;
         }
       }

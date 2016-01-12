@@ -1,6 +1,6 @@
 webpackJsonp([13],{
 
-/***/ 40:
+/***/ 41:
 /***/ function(module, exports) {
 
 	/*
@@ -57,7 +57,7 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 41:
+/***/ 42:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -312,18 +312,18 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 62:
+/***/ 46:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(63)
+	module.exports = __webpack_require__(47)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(72)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(62)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageTab.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageModal.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -333,7 +333,7 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 63:
+/***/ 47:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -342,13 +342,21 @@ webpackJsonp([13],{
 	  value: true
 	});
 
-	var _tab = __webpack_require__(64);
+	var _modal = __webpack_require__(48);
 
-	var _tab2 = _interopRequireDefault(_tab);
+	var _modal2 = _interopRequireDefault(_modal);
 
-	var _tabitem = __webpack_require__(67);
+	var _alert = __webpack_require__(53);
 
-	var _tabitem2 = _interopRequireDefault(_tabitem);
+	var _alert2 = _interopRequireDefault(_alert);
+
+	var _confirm = __webpack_require__(56);
+
+	var _confirm2 = _interopRequireDefault(_confirm);
+
+	var _prompt = __webpack_require__(59);
+
+	var _prompt2 = _interopRequireDefault(_prompt);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -358,201 +366,67 @@ webpackJsonp([13],{
 
 	//   <div class="u-sm-16">
 
-	//     <div class="margin-top">
+	//     <div class="box margin-top padding">
 
-	//       <tab v-bind:active="1">
+	//       <button class="btn btn-dark float radius" type="button" v-on:click="openModal">open modal</button>
 
-	//         <tab-item menu="Home">
+	//       <button class="btn btn-primary float radius" type="button" v-on:click="openAlert">open alert</button>
 
-	//           <p>content 1</p>
+	//       <button class="btn btn-danger float radius" type="button" v-on:click="openConfirm">open confirm</button>
 
-	//         </tab-item>
-
-	//         <tab-item menu="Button">
-
-	//           <p>content 2</p>
-
-	//           <p>content 2</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Form">
-
-	//           <p>content 3</p>
-
-	//           <p>content 3</p>
-
-	//           <p>content 3</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Tab">
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Panel">
-
-	//           <p>content 5</p>
-
-	//           <p>content 5</p>
-
-	//           <p>content 5</p>
-
-	//           <p>content 5</p>
-
-	//           <p>content 5</p>
-
-	//         </tab-item>
-
-	//       </tab>
+	//       <button class="btn btn-info float radius" type="button" v-on:click="openPrompt">open prompt</button>
 
 	//     </div>
 
 	//   </div>
 
-	//   <div class="u-sm-16">
+	//   <modal v-bind:show.sync="showModal" close-via-dimmer>
 
-	//     <div class="margin-top">
+	//     <div class="modal-header" slot="header">
 
-	//       <tab color="info">
+	//       <div class="title">
 
-	//         <tab-item menu="Home">
+	//         基础模态框
 
-	//           <p>content 1</p>
+	//         <span class="fa fa-close close" v-on:click="closeModal"></span>
 
-	//         </tab-item>
-
-	//         <tab-item menu="Button">
-
-	//           <p>content 2</p>
-
-	//           <p>content 2</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Form">
-
-	//           <p>content 3</p>
-
-	//           <p>content 3</p>
-
-	//           <p>content 3</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Tab">
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//         </tab-item>
-
-	//       </tab>
+	//       </div>
 
 	//     </div>
 
-	//   </div>
+	//     <div class="modal-body" slot="body">
 
-	//   <div class="u-sm-8">
+	//       <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>
 
-	//       <tab color="danger">
+	//     </div>
 
-	//         <tab-item menu="Home">
+	//     <div class="modal-footer cf" slot="footer">
 
-	//           <p>content 1</p>
+	//       <div class="fr">
 
-	//         </tab-item>
+	//         <button class="btn radius">取消</button>
 
-	//         <tab-item menu="Button">
+	//         <button class="btn btn-dark radius">确定</button>
 
-	//           <p>content 2</p>
+	//       </div>
 
-	//           <p>content 2</p>
+	//     </div>
 
-	//         </tab-item>
+	//   </modal>
 
-	//         <tab-item menu="Form">
+	//   <modal-alert v-bind:show.sync="showAlert" title="Alert modal">
 
-	//           <p>content 3</p>
+	//     <p>This is message alert...</p>
 
-	//           <p>content 3</p>
+	//   </modal-alert>
 
-	//           <p>content 3</p>
+	//   <modal-confirm v-bind:show.sync="showConfirm" question="Are you sure to delete this item?" v-on:modal-confrim-ok="confirmOK">
 
-	//         </tab-item>
+	//     <p>Warning: Once you delete, you can never find it back.</p>
 
-	//         <tab-item menu="Tab">
+	//   </modal-confirm>
 
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//         </tab-item>
-
-	//       </tab>
-
-	//   </div>
-
-	//   <div class="u-sm-8">
-
-	//       <tab color="secondary">
-
-	//         <tab-item menu="Home">
-
-	//           <p>content 1</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Button">
-
-	//           <p>content 2</p>
-
-	//           <p>content 2</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Form">
-
-	//           <p>content 3</p>
-
-	//           <p>content 3</p>
-
-	//           <p>content 3</p>
-
-	//         </tab-item>
-
-	//         <tab-item menu="Tab">
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//           <p>content 4</p>
-
-	//         </tab-item>
-
-	//       </tab>
-
-	//   </div>
+	//   <modal-prompt v-bind:show.sync="showPrompt" title="Input what you want:" v-on:modal-prompt-ok="promptOK"></modal-prompt>
 
 	// </div>
 
@@ -562,11 +436,43 @@ webpackJsonp([13],{
 
 	exports.default = {
 
-	  components: { tab: _tab2.default, tabItem: _tabitem2.default },
+	  components: { modal: _modal2.default, modalAlert: _alert2.default, modalConfirm: _confirm2.default, modalPrompt: _prompt2.default },
 
 	  data: function data() {
-	    return {};
+	    return {
+	      showModal: false,
+	      showAlert: false,
+	      showConfirm: false,
+	      showPrompt: false
+	    };
 	  },
+
+	  methods: {
+	    openModal: function openModal() {
+	      this.showModal = true;
+	    },
+	    closeModal: function closeModal() {
+	      this.showModal = false;
+	    },
+	    openAlert: function openAlert() {
+	      this.showAlert = true;
+	    },
+	    openConfirm: function openConfirm() {
+	      this.showConfirm = true;
+	    },
+	    confirmOK: function confirmOK() {
+	      console.log('year');
+	      this.showConfirm = false;
+	    },
+	    openPrompt: function openPrompt() {
+	      this.showPrompt = true;
+	    },
+	    promptOK: function promptOK(output) {
+	      console.log(output);
+	      this.showPrompt = false;
+	    }
+	  },
+
 	  ready: function ready() {
 	    NProgress.done();
 	    this.$dispatch('content-change');
@@ -577,18 +483,19 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 64:
+/***/ 48:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(65)
+	__webpack_require__(49)
+	module.exports = __webpack_require__(51)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(66)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(52)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\tab.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\modal.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -598,138 +505,23 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 65:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-
-	// <div class="tab" v-bind:class="[colorStyle]">
-
-	//   <ul class="nav">
-
-	//     <li v-for="item in items"
-
-	//       v-bind:class="{'active': active === $index}"
-
-	//       v-bind:style="{width: itemWidth}">
-
-	//       <a href="javascript:;" v-on:click.prevent="selectItem($index, item)">{{ item.menu }}</a>
-
-	//     </li>
-
-	//     <div class="indicator" v-bind:style="{width: itemWidth, left: positionLeft}"></div>
-
-	//   </ul>
-
-	//   <div class="tab-content">
-
-	//     <slot></slot>
-
-	//   </div>
-
-	// </div>
-
-	// </template>
-
-	// <script>
-
-	exports.default = {
-
-	  props: {
-	    active: {
-	      type: Number,
-	      default: 0
-	    },
-	    color: {
-	      type: String,
-	      default: 'primary'
-	    }
-	  },
-
-	  data: function data() {
-	    return {
-	      items: []
-	    };
-	  },
-
-	  computed: {
-	    itemWidth: function itemWidth() {
-	      return this.items.length > 0 ? 100 / this.items.length + '%' : '';
-	    },
-	    positionLeft: function positionLeft() {
-	      if (this.items.length === 0) {
-	        return '';
-	      }
-	      return 100 / this.items.length * this.active + '%';
-	    },
-	    colorStyle: function colorStyle() {
-	      return 'tab-' + this.color;
-	    }
-	  },
-
-	  methods: {
-	    selectItem: function selectItem(index, item) {
-	      this.active = index;
-	    }
-	  }
-
-	};
-
-	// </script>
-
-/***/ },
-
-/***/ 66:
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"tab\" v-bind:class=\"[colorStyle]\">\r\n  <ul class=\"nav\">\r\n    <li v-for=\"item in items\"\r\n      v-bind:class=\"{'active': active === $index}\"\r\n      v-bind:style=\"{width: itemWidth}\">\r\n      <a href=\"javascript:;\" v-on:click.prevent=\"selectItem($index, item)\">{{ item.menu }}</a>\r\n    </li>\r\n    <div class=\"indicator\" v-bind:style=\"{width: itemWidth, left: positionLeft}\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
-
-/***/ },
-
-/***/ 67:
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(68)
-	module.exports = __webpack_require__(70)
-
-	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(71)
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\tabitem.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
-	  }
-	})()}
-
-/***/ },
-
-/***/ 68:
+/***/ 49:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(69);
+	var content = __webpack_require__(50);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(41)(content, {});
+	var update = __webpack_require__(42)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea0cadea&file=tabitem.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./tabitem.vue", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-ea0cadea&file=tabitem.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./tabitem.vue");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-781187d0&file=modal.vue!./../../../node_modules/sass-loader/index.js!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./modal.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -740,22 +532,22 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 69:
+/***/ 50:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(40)();
+	exports = module.exports = __webpack_require__(41)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".tab .nav + .tab-content .tab-pane.move-transition {\n  display: block; }\n", ""]);
+	exports.push([module.id, ".modal.fade-transition {\n  display: block;\n  opacity: 1;\n  -webkit-transition: opacity 300ms ease 0s;\n  transition: opacity 300ms ease 0s; }\n  .modal.fade-transition .modal-dialog {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n    -webkit-transition: -webkit-transform 300ms ease 0s;\n    transition: -webkit-transform 300ms ease 0s;\n    transition: transform 300ms ease 0s;\n    transition: transform 300ms ease 0s, -webkit-transform 300ms ease 0s; }\n\n.modal.fade-enter, .modal.fade-leave {\n  opacity: 0; }\n  .modal.fade-enter .modal-dialog, .modal.fade-leave .modal-dialog {\n    -webkit-transform: translate3d(0, -50px, 0);\n            transform: translate3d(0, -50px, 0); }\n\n.modal-dimmer.fade-transition {\n  background-color: rgba(0, 0, 0, 0.6);\n  -webkit-transition: background-color 300ms ease 0s;\n  transition: background-color 300ms ease 0s; }\n\n.modal-dimmer.fade-enter, .modal-dimmer.fade-leave {\n  background-color: transparent; }\n", ""]);
 
 	// exports
 
 
 /***/ },
 
-/***/ 70:
+/***/ 51:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -765,21 +557,75 @@ webpackJsonp([13],{
 	});
 	// <template>
 
-	// <div class="tab-pane" v-show="index === $parent.active" transition="move">
+	// <div class="modal" v-show="show" transition="fade" v-on:click="tryToClose">
 
-	//   <slot></slot>
+	//   <div class="modal-dialog" v-on:click.stop>
+
+	//     <slot name="header"></slot>
+
+	//     <slot name="body"></slot>
+
+	//     <slot name="footer"></slot>
+
+	//   </div>
 
 	// </div>
+
+	// <div class="modal-dimmer" v-show="show" transition="fade"></div>
 
 	// </template>
 
 	// <style lang="sass">
 
-	// .tab .nav+.tab-content .tab-pane {
+	// $transition-duration: 300ms;
 
-	//   &.move-transition {
+	// .modal {
+
+	//   &.fade-transition {
 
 	//     display: block;
+
+	//     opacity: 1;
+
+	//     transition: opacity $transition-duration ease 0s;
+
+	//     .modal-dialog {
+
+	//       transform: translate3d(0, 0, 0);
+
+	//       transition: transform $transition-duration ease 0s;
+
+	//     }
+
+	//   }
+
+	//   &.fade-enter, &.fade-leave {
+
+	//     opacity: 0;
+
+	//     .modal-dialog {
+
+	//       transform: translate3d(0, -50px, 0);
+
+	//     }
+
+	//   }
+
+	// }
+
+	// .modal-dimmer {
+
+	//   &.fade-transition {
+
+	//     background-color: rgba(0, 0, 0, .6);
+
+	//     transition: background-color $transition-duration ease 0s;
+
+	//   }
+
+	//   &.fade-enter, &.fade-leave {
+
+	//     background-color: rgba(0, 0, 0, 0);
 
 	//   }
 
@@ -792,27 +638,21 @@ webpackJsonp([13],{
 	exports.default = {
 
 	  props: {
-	    menu: {
-	      type: String,
-	      required: true
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    closeViaDimmer: {
+	      type: Boolean,
+	      default: false
 	    }
 	  },
 
-	  created: function created() {
-	    this.$parent.items.push({
-	      menu: this.menu
-	    });
-	    this.index = this.$parent.items.length - 1;
-	  },
-	  data: function data() {
-	    return {
-	      index: 0
-	    };
-	  },
-
-	  transitions: {
-	    move: {
-	      css: false
+	  methods: {
+	    tryToClose: function tryToClose(event) {
+	      if (this.closeViaDimmer) {
+	        this.show = false;
+	      }
 	    }
 	  }
 
@@ -822,17 +662,333 @@ webpackJsonp([13],{
 
 /***/ },
 
-/***/ 71:
+/***/ 52:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"tab-pane\" v-show=\"index === $parent.active\" transition=\"move\">\r\n  <slot></slot>\r\n</div>";
+	module.exports = "<div class=\"modal\" v-show=\"show\" transition=\"fade\" v-on:click=\"tryToClose\">\r\n  <div class=\"modal-dialog\" v-on:click.stop>\r\n    <slot name=\"header\"></slot>\r\n    <slot name=\"body\"></slot>\r\n    <slot name=\"footer\"></slot>\r\n  </div>\r\n</div>\r\n<div class=\"modal-dimmer\" v-show=\"show\" transition=\"fade\"></div>";
 
 /***/ },
 
-/***/ 72:
+/***/ 53:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(54)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(55)
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\alert.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 54:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _modal = __webpack_require__(48);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+
+	  components: { modal: _modal2.default },
+
+	  props: {
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    title: {
+	      type: String,
+	      default: 'Message:'
+	    }
+	  },
+
+	  methods: {
+	    closeModal: function closeModal() {
+	      this.show = false;
+	    }
+	  }
+
+	};
+
+	// </script>
+	// <template>
+
+	// <modal v-bind:show.sync="show">
+
+	//   <div class="modal-header" slot="header">
+
+	//     <div class="title">
+
+	//       {{ title }}
+
+	//       <span class="fa fa-close close" v-on:click="closeModal"></span>
+
+	//     </div>
+
+	//   </div>
+
+	//   <div class="modal-body" slot="body">
+
+	//     <slot></slot>
+
+	//   </div>
+
+	// </modal>
+
+	// </template>
+
+	// <script>
+
+/***/ },
+
+/***/ 55:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab v-bind:active=\"1\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Panel\">\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab color=\"info\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"danger\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"secondary\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n\r\n</div>";
+	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">\r\n      {{ title }}\r\n      <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n</modal>";
+
+/***/ },
+
+/***/ 56:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(57)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(58)
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\confirm.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 57:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _modal = __webpack_require__(48);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+
+	  components: { modal: _modal2.default },
+
+	  props: {
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    question: {
+	      type: String,
+	      default: 'Question:'
+	    }
+	  },
+
+	  methods: {
+	    closeModal: function closeModal() {
+	      this.show = false;
+	    },
+	    confirmOK: function confirmOK() {
+	      this.$dispatch('modal-confrim-ok');
+	    }
+	  }
+
+	};
+
+	// </script>
+	// <template>
+
+	// <modal v-bind:show.sync="show">
+
+	//   <div class="modal-header" slot="header">
+
+	//     <div class="title">{{ question }}</div>
+
+	//   </div>
+
+	//   <div class="modal-body" slot="body">
+
+	//     <slot></slot>
+
+	//   </div>
+
+	//   <div class="modal-footer cf" slot="footer">
+
+	//     <div class="fr">
+
+	//       <button class="btn radius" v-on:click="closeModal">取消</button>
+
+	//       <button class="btn btn-dark radius" v-on:click="confirmOK">确定</button>
+
+	//     </div>
+
+	//   </div>
+
+	// </modal>
+
+	// </template>
+
+	// <script>
+
+/***/ },
+
+/***/ 58:
+/***/ function(module, exports) {
+
+	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">{{ question }}</div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <slot></slot>\r\n  </div>\r\n  <div class=\"modal-footer cf\" slot=\"footer\">\r\n    <div class=\"fr\">\r\n      <button class=\"btn radius\" v-on:click=\"closeModal\">取消</button>\r\n      <button class=\"btn btn-dark radius\" v-on:click=\"confirmOK\">确定</button>\r\n    </div>\r\n  </div>\r\n</modal>";
+
+/***/ },
+
+/***/ 59:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(60)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(61)
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\components\\prompt.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+	  }
+	})()}
+
+/***/ },
+
+/***/ 60:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _modal = __webpack_require__(48);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = {
+
+	  components: { modal: _modal2.default },
+
+	  props: {
+	    show: {
+	      type: Boolean,
+	      default: false
+	    },
+	    title: {
+	      type: String,
+	      default: 'Input:'
+	    }
+	  },
+
+	  data: function data() {
+	    return {
+	      output: ''
+	    };
+	  },
+
+	  methods: {
+	    closeModal: function closeModal() {
+	      this.show = false;
+	    },
+	    promptOK: function promptOK() {
+	      this.$dispatch('modal-prompt-ok', this.output);
+	      this.output = '';
+	    }
+	  }
+
+	};
+
+	// </script>
+	// <template>
+
+	// <modal v-bind:show.sync="show">
+
+	//   <div class="modal-header" slot="header">
+
+	//     <div class="title">{{ title }}</div>
+
+	//   </div>
+
+	//   <div class="modal-body" slot="body">
+
+	//     <input type="text" v-model="output" v-on:keydown.enter="promptOK">
+
+	//   </div>
+
+	//   <div class="modal-footer cf" slot="footer">
+
+	//     <div class="fr">
+
+	//       <button class="btn radius" v-on:click="closeModal">取消</button>
+
+	//       <button class="btn btn-dark radius" v-on:click="promptOK">确定</button>
+
+	//     </div>
+
+	//   </div>
+
+	// </modal>
+
+	// </template>
+
+	// <script>
+
+/***/ },
+
+/***/ 61:
+/***/ function(module, exports) {
+
+	module.exports = "<modal v-bind:show.sync=\"show\">\r\n  <div class=\"modal-header\" slot=\"header\">\r\n    <div class=\"title\">{{ title }}</div>\r\n  </div>\r\n  <div class=\"modal-body\" slot=\"body\">\r\n    <input type=\"text\" v-model=\"output\" v-on:keydown.enter=\"promptOK\">\r\n  </div>\r\n  <div class=\"modal-footer cf\" slot=\"footer\">\r\n    <div class=\"fr\">\r\n      <button class=\"btn radius\" v-on:click=\"closeModal\">取消</button>\r\n      <button class=\"btn btn-dark radius\" v-on:click=\"promptOK\">确定</button>\r\n    </div>\r\n  </div>\r\n</modal>";
+
+/***/ },
+
+/***/ 62:
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"box margin-top padding\">\r\n      <button class=\"btn btn-dark float radius\" type=\"button\" v-on:click=\"openModal\">open modal</button>\r\n      <button class=\"btn btn-primary float radius\" type=\"button\" v-on:click=\"openAlert\">open alert</button>\r\n      <button class=\"btn btn-danger float radius\" type=\"button\" v-on:click=\"openConfirm\">open confirm</button>\r\n      <button class=\"btn btn-info float radius\" type=\"button\" v-on:click=\"openPrompt\">open prompt</button>\r\n    </div>\r\n  </div>\r\n\r\n  <modal v-bind:show.sync=\"showModal\" close-via-dimmer>\r\n    <div class=\"modal-header\" slot=\"header\">\r\n      <div class=\"title\">\r\n        基础模态框\r\n        <span class=\"fa fa-close close\" v-on:click=\"closeModal\"></span>\r\n      </div>\r\n    </div>\r\n    <div class=\"modal-body\" slot=\"body\">\r\n      <p>这是一个最基础的模态框，本身不包含header，body或者footer，而且默认不能通过点击dimmer关闭，除非传递一个属性close-via-dimmer</p>\r\n    </div>\r\n    <div class=\"modal-footer cf\" slot=\"footer\">\r\n      <div class=\"fr\">\r\n        <button class=\"btn radius\">取消</button>\r\n        <button class=\"btn btn-dark radius\">确定</button>\r\n      </div>\r\n    </div>\r\n  </modal>\r\n\r\n  <modal-alert v-bind:show.sync=\"showAlert\" title=\"Alert modal\">\r\n    <p>This is message alert...</p>\r\n  </modal-alert>\r\n\r\n  <modal-confirm v-bind:show.sync=\"showConfirm\" question=\"Are you sure to delete this item?\" v-on:modal-confrim-ok=\"confirmOK\">\r\n    <p>Warning: Once you delete, you can never find it back.</p>\r\n  </modal-confirm>\r\n\r\n  <modal-prompt v-bind:show.sync=\"showPrompt\" title=\"Input what you want:\" v-on:modal-prompt-ok=\"promptOK\"></modal-prompt>\r\n</div>";
 
 /***/ }
 

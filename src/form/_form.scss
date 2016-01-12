@@ -4,7 +4,7 @@ form, .form {
   fieldset {
     display: block;
     border: 0;
-    margin: 0 0 1em;
+    margin: 0 0 .75rem;
     padding: 0;
   }
 }
@@ -289,7 +289,8 @@ textarea {
   position: relative;
   display: table;
   border-collapse: separate;
-  .addon, .field {
+  width: 100%;
+  .addon, .field, .btn-addon {
     display: table-cell;
     &:first-child {
       border-top-right-radius: 0;
@@ -312,6 +313,17 @@ textarea {
     white-space: nowrap;
     vertical-align: middle;
     border: 1px solid #CECECE;
+    border-radius: 4px;
+    &:not(:first-child) {
+      border-left: 0;
+    }
+    &:not(:last-child) {
+      border-right: 0;
+    }
+  }
+  .btn-addon {
+    height: 36px;
+    margin-bottom: 0;
     border-radius: 4px;
     &:not(:first-child) {
       border-left: 0;

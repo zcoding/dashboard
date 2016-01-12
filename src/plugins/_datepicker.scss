@@ -11,6 +11,7 @@ $datePickerDefaultColor: #2e3e4e;
   background-color: #FFF;
   width: $pickerDefaultWidth;
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, .5);
+  z-index: 1000;
 
   &.float {
     display: none;

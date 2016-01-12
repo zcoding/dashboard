@@ -1,17 +1,17 @@
-webpackJsonp([1],{
+webpackJsonp([19],{
 
-/***/ 24:
+/***/ 83:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(25)
+	module.exports = __webpack_require__(84)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(26)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(85)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\pageHome.vue"
+	  var id = "D:\\lib.wuzijie\\dashboard\\examples-vue\\app\\views\\page404.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -21,31 +21,31 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 25:
+/***/ 84:
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	// <template lang="jade">
 
-	// .grid.margin-top
+	// .margin-top
 
-	//   .u-sm-16
-
-	//     .box.padding
-
-	//       h1 Hello, Dashboard!
+	//   h1.text-center Page not found.
 
 	// </template>
 
 	// <script>
 
 	exports.default = {
+
+	  route: {
+	    canReuse: false // 必须指定为不可重用
+	  },
+
 	  ready: function ready() {
-	    this.$dispatch('content-change');
 	    NProgress.done();
 	  }
 	};
@@ -54,10 +54,10 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 26:
+/***/ 85:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"grid margin-top\"><div class=\"u-sm-16\"><div class=\"box padding\"><h1>Hello, Dashboard!</h1></div></div></div>";
+	module.exports = "<div class=\"margin-top\"><h1 class=\"text-center\">Page not found.</h1></div>";
 
 /***/ }
 
