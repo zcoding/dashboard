@@ -98,19 +98,19 @@
 
 	'use strict';
 
-	var _vue = __webpack_require__(19);
+	var _vue = __webpack_require__(20);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _vueRouter = __webpack_require__(21);
+	var _vueRouter = __webpack_require__(22);
 
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-	var _routes = __webpack_require__(22);
+	var _routes = __webpack_require__(23);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _sidebar = __webpack_require__(82);
+	var _sidebar = __webpack_require__(86);
 
 	var _sidebar2 = _interopRequireDefault(_sidebar);
 
@@ -184,7 +184,7 @@
 
 /***/ },
 
-/***/ 19:
+/***/ 20:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*!
@@ -9618,11 +9618,11 @@
 	}
 
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)))
 
 /***/ },
 
-/***/ 20:
+/***/ 21:
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9720,7 +9720,7 @@
 
 /***/ },
 
-/***/ 21:
+/***/ 22:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12260,7 +12260,7 @@
 
 /***/ },
 
-/***/ 22:
+/***/ 23:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -12271,104 +12271,62 @@
 	exports.default = {
 
 	  "/": {
-	    component: {
-	      template: '<page-home></page-home>',
-	      components: {
-	        "pageHome": function pageHome(resolve) {
-	          __webpack_require__.e/* require */(9, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(23)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(10, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(24)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/form": {
-	    component: {
-	      template: '<page-form></page-form>',
-	      components: {
-	        "pageForm": function pageForm(resolve) {
-	          __webpack_require__.e/* require */(10, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(26)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(11, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(27)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/datetimepicker": {
-	    component: {
-	      template: '<page-datetimepicker></page-datetimepicker>',
-	      components: {
-	        "pageDatetimepicker": function pageDatetimepicker(resolve) {
-	          __webpack_require__.e/* require */(11, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(32)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(12, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(33)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/modal": {
-	    component: {
-	      template: '<page-modal></page-modal>',
-	      components: {
-	        "pageModal": function pageModal(resolve) {
-	          __webpack_require__.e/* require */(12, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(45)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(13, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(46)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/tab": {
-	    component: {
-	      template: '<page-tab></page-tab>',
-	      components: {
-	        "pageTab": function pageTab(resolve) {
-	          __webpack_require__.e/* require */(13, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(62)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(14, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(63)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/scrollbar": {
-	    component: {
-	      template: '<page-scrollbar></page-scrollbar>',
-	      components: {
-	        "pageScrollbar": function pageScrollbar(resolve) {
-	          __webpack_require__.e/* require */(14, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(73)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(15, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(74)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
+	    }
+	  },
+
+	  "/table": {
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(16, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(90)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/color": {
-	    component: {
-	      template: '<page-color></page-color>',
-	      components: {
-	        "pageColor": function pageColor(resolve) {
-	          __webpack_require__.e/* require */(15, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(76)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(17, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(77)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "/panel": {
-	    component: {
-	      template: '<page-panel></page-panel>',
-	      components: {
-	        "pagePanel": function pagePanel(resolve) {
-	          __webpack_require__.e/* require */(16, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(86)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(18, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(80)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  },
 
 	  "*": {
-	    component: {
-	      template: '<page-404></page-404>',
-	      components: {
-	        "page-404": function page404(resolve) {
-	          __webpack_require__.e/* require */(17, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(79)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
-	        }
-	      },
-	      route: {
-	        canReuse: false // 必须指定为不可重用
-	      }
+	    component: function component(resolve) {
+	      __webpack_require__.e/* require */(19, function(__webpack_require__) { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(83)]; (resolve.apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));});
 	    }
 	  }
 
@@ -12376,13 +12334,13 @@
 
 /***/ },
 
-/***/ 82:
+/***/ 86:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(83)
+	module.exports = __webpack_require__(87)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(84)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(88)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -12397,7 +12355,7 @@
 
 /***/ },
 
-/***/ 83:
+/***/ 87:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -12587,7 +12545,7 @@
 
 /***/ },
 
-/***/ 84:
+/***/ 88:
 /***/ function(module, exports) {
 
 	module.exports = "<div v-bind:class=\"{'narrow': isNarrow}\" class=\"layout-aside\"><div class=\"side-nav\"><div v-on:click=\"toggleSidebar\" class=\"nav-header\"><h1 class=\"title\">Dashboard</h1><h1 class=\"title narrow\"><i class=\"fa fa-chevron-circle-right\"></i></h1></div><div class=\"flex\"><nav><ul><li><a v-link=\"{ path: '/' }\" class=\"menu\"><span class=\"icon fa fa-home\"></span><span class=\"text\">首页</span></a><a v-link=\"{ path: '/' }\" class=\"menu narrow\"><span class=\"icon fa fa-home\"></span></a></li><li><a v-link=\"{ path: '/color' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">颜色</span></a><a v-link=\"{ path: '/color' }\" class=\"menu narrow\"><span class=\"text\">颜色</span></a></li><li><a v-link=\"{ path: '/button' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">按钮</span></a><a v-link=\"{ path: '/button' }\" class=\"menu narrow\"><span class=\"text\">按钮</span></a></li><li><a v-link=\"{ path: '/table' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表格</span></a><a v-link=\"{ path: '/table' }\" class=\"menu narrow\"><span class=\"text\">表格</span></a></li><li><a v-link=\"{ path: '/panel' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">面板</span></a><a v-link=\"{ path: '/panel' }\" class=\"menu narrow\"><span class=\"text\">面板</span></a></li><li><a href=\"javascript:;\" data-collapse-target=\"#sidebar-menu-5\" class=\"menu parent\"><span class=\"icon fa fa-link\"></span><span class=\"text\">表单</span><span class=\"icon-right fa fa-caret-up\"></span></a><a href=\"javascript:;\" data-collapse-target=\"#sidebar-menu-5\" class=\"menu narrow parent\"><span class=\"text\">表单</span></a><ul id=\"sidebar-menu-5\"><li><a v-link=\"{ path: '/form' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">基础表单</span></a><a v-link=\"{ path: '/form' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">日期时间选择器</span></a><a v-link=\"{ path: '/datetimepicker' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></li><li><a v-link=\"{ path: '/grid' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">网格</span></a><a v-link=\"{ path: '/grid' }\" class=\"menu narrow\"><span class=\"text\">网格</span></a></li><li><a v-link=\"{ path: '/list' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">列表</span></a><a v-link=\"{ path: '/list' }\" class=\"menu narrow\"><span class=\"text\">列表</span></a></li><li><a v-link=\"{ path: '/typography' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">排版</span></a><a v-link=\"{ path: '/typography' }\" class=\"menu narrow\"><span class=\"text\">排版</span></a></li><li><a v-link=\"{ path: '/label' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">标签</span></a><a v-link=\"{ path: '/label' }\" class=\"menu narrow\"><span class=\"text\">标签</span></a></li><li><a v-link=\"{ path: '/tab' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">选项卡</span></a><a v-link=\"{ path: '/tab' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/modal' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">模态框</span></a><a v-link=\"{ path: '/modal' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li><li><a v-link=\"{ path: '/chart' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">图表</span></a><a v-link=\"{ path: '/chart' }\" class=\"menu narrow\"><span class=\"text\">图表</span></a></li><li><a v-link=\"{ path: '/dropdown' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">下拉</span></a><a v-link=\"{ path: '/dropdown' }\" class=\"menu narrow\"><span class=\"text\">下拉</span></a></li><li><a v-link=\"{ path: '/scrollbar' }\" class=\"menu\"><span class=\"icon fa fa-link\"></span><span class=\"text\">滚动条</span></a><a v-link=\"{ path: '/scrollbar' }\" class=\"menu narrow\"><span class=\"icon fa fa-link\"></span></a></li></ul></nav></div><div class=\"nav-footer\"><nav><ul><li><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Fork</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu narrow\"><span class=\"text\">Fork</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu\"><span class=\"icon fa fa-github\"></span><span class=\"text\">Star</span></a><a href=\"https://github.com/zcoding/dashboard\" target=\"_blank\" class=\"menu narrow\"><span class=\"text\">Star</span></a></li></ul></nav></div></div></div>";

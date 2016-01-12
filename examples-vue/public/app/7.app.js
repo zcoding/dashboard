@@ -1,12 +1,12 @@
 webpackJsonp([7],{
 
-/***/ 76:
+/***/ 77:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(77)
+	module.exports = __webpack_require__(78)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(78)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(79)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -21,7 +21,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 77:
+/***/ 78:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -67,7 +67,7 @@ webpackJsonp([7],{
 
 /***/ },
 
-/***/ 78:
+/***/ 79:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"grid margin-top\"><div class=\"u-sm-16\"><div class=\"box padding\"><p class=\"text-primary\">text color: primary</p><p class=\"text-secondary\">text color: secondary</p><p class=\"text-success\">text color: success</p><p class=\"text-danger\">text color: danger</p><p class=\"text-warning\">text color: warning</p><p class=\"text-tips\">text color: tips</p><p class=\"text-info\">text color: info</p><p class=\"text-dark\">text color: dark</p></div></div></div>";

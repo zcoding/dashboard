@@ -9,6 +9,10 @@
 
 export default {
 
+  route: {
+    canReuse: false // 必须指定为不可重用
+  },
+
   ready() {
     NProgress.done();
   }

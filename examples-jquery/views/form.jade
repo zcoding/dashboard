@@ -275,6 +275,50 @@ block content
   .grid.margin-top
     .u-sm-16.u-md-16.u-lg-10
       .box.padding
+        form(action="/").form
+          fieldset
+            .form-control
+              label Email
+              .input-group
+                input.field(type="text")
+                span.addon @
+                select.field
+                  option(value="qq.com") qq.com
+                  option(value="163.com") 163.com
+            .form-control
+              label Price
+              .input-group
+                input.field(type="text")
+                span.addon $
+            .form-control
+              label Price
+              .input-group
+                span.addon $
+                input.field(type="text")
+            .form-control
+              label Price
+              .input-group
+                span.addon(style="width:50%;") $
+                input.field(type="text")
+            .form-control
+              label Email
+              .input-group
+                input.field(type="text" style="width:70%;")
+                select.field(style="width:30%;border-left:0;")
+                  option(value="qq.com") qq.com
+                  option(value="163.com") 163.com
+            .form-control
+              label Email
+              .input-group
+                input.field(type="text" style="width:60%;")
+                select.field(style="width:30%;border-left:0;")
+                  option(value="qq.com") qq.com
+                  option(value="163.com") 163.com
+                button.btn.btn-primary.btn-addon(style="width:10%;") OK
+
+  .grid.margin-top
+    .u-sm-16.u-md-16.u-lg-10
+      .box.padding
         h3 .tag-input
         .tag-input
           span.label.label-danger danger <i class="fa fa-close close"></i>

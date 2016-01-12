@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 40:
+/***/ 41:
 /***/ function(module, exports) {
 
 	/*
@@ -57,7 +57,7 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 41:
+/***/ 42:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -312,13 +312,13 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 62:
+/***/ 63:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(63)
+	module.exports = __webpack_require__(64)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(72)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(73)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -333,7 +333,7 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 63:
+/***/ 64:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -342,11 +342,11 @@ webpackJsonp([5],{
 	  value: true
 	});
 
-	var _tab = __webpack_require__(64);
+	var _tab = __webpack_require__(65);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _tabitem = __webpack_require__(67);
+	var _tabitem = __webpack_require__(68);
 
 	var _tabitem2 = _interopRequireDefault(_tabitem);
 
@@ -577,13 +577,13 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 64:
+/***/ 65:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(65)
+	module.exports = __webpack_require__(66)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(66)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(67)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -598,7 +598,7 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 65:
+/***/ 66:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -684,21 +684,21 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 66:
+/***/ 67:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"tab\" v-bind:class=\"[colorStyle]\">\r\n  <ul class=\"nav\">\r\n    <li v-for=\"item in items\"\r\n      v-bind:class=\"{'active': active === $index}\"\r\n      v-bind:style=\"{width: itemWidth}\">\r\n      <a href=\"javascript:;\" v-on:click.prevent=\"selectItem($index, item)\">{{ item.menu }}</a>\r\n    </li>\r\n    <div class=\"indicator\" v-bind:style=\"{width: itemWidth, left: positionLeft}\"></div>\r\n  </ul>\r\n  <div class=\"tab-content\">\r\n    <slot></slot>\r\n  </div>\r\n</div>";
 
 /***/ },
 
-/***/ 67:
+/***/ 68:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(68)
-	module.exports = __webpack_require__(70)
+	__webpack_require__(69)
+	module.exports = __webpack_require__(71)
 
 	if (module.exports.__esModule) module.exports = module.exports.default
-	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(71)
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(72)
 	if (false) {(function () {  module.hot.accept()
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
@@ -713,16 +713,16 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 68:
+/***/ 69:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(69);
+	var content = __webpack_require__(70);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(41)(content, {});
+	var update = __webpack_require__(42)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -740,10 +740,10 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 69:
+/***/ 70:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(40)();
+	exports = module.exports = __webpack_require__(41)();
 	// imports
 
 
@@ -755,7 +755,7 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 70:
+/***/ 71:
 /***/ function(module, exports) {
 
 	"use strict";
@@ -822,14 +822,14 @@ webpackJsonp([5],{
 
 /***/ },
 
-/***/ 71:
+/***/ 72:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"tab-pane\" v-show=\"index === $parent.active\" transition=\"move\">\r\n  <slot></slot>\r\n</div>";
 
 /***/ },
 
-/***/ 72:
+/***/ 73:
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"grid\">\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab v-bind:active=\"1\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Panel\">\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n          <p>content 5</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-16\">\r\n    <div class=\"margin-top\">\r\n      <tab color=\"info\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"danger\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n  <div class=\"u-sm-8\">\r\n      <tab color=\"secondary\">\r\n        <tab-item menu=\"Home\">\r\n          <p>content 1</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Button\">\r\n          <p>content 2</p>\r\n          <p>content 2</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Form\">\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n          <p>content 3</p>\r\n        </tab-item>\r\n        <tab-item menu=\"Tab\">\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n          <p>content 4</p>\r\n        </tab-item>\r\n      </tab>\r\n  </div>\r\n\r\n</div>";

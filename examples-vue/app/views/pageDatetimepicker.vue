@@ -4,7 +4,7 @@
   <div class="u-sm-8">
     <div class="box padding">
       <h3>{{ myDate | format 'yyyy年 M月 d日' }}</h3>
-      <date-picker v-on:date-change="myDateChange"></date-picker>
+      <date-picker v-bind:selected-date.sync="myDateTime" v-on:date-change="myDateChange"></date-picker>
     </div>
   </div>
   <div class="u-sm-8">
@@ -28,7 +28,8 @@ export default {
   data() {
     return {
       myDate: '2015-12-12',
-      yourDate: '2015-12-20'
+      yourDate: '2015-12-20',
+      myDateTime: new Date(2015, 11, 12).getTime()
     };
   },
 
