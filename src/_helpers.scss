@@ -1,5 +1,5 @@
 .radius {
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 // float left, float right, clear float
@@ -15,20 +15,40 @@
   @include clearFloat();
 }
 
+$base-margin-padding-width: .75rem;
+
 .margin {
-  margin: .75rem;
+  margin: $base-margin-padding-width;
 }
 
 .padding {
-  padding: .75rem;
+  padding: $base-margin-padding-width;
+}
+
+@each $w in (5, 10, 15) {
+  .padding-#{$w} {
+    padding: #{$w}px;
+  }
+  .margin-#{$w} {
+    margin: #{$w}px;
+  }
 }
 
 @each $pos in (top, bottom, left, right) {
   .padding-#{$pos} {
-    padding-#{$pos}: .75rem;
+    padding-#{$pos}: $base-margin-padding-width;
   }
   .margin-#{$pos} {
-    margin-#{$pos}: .75rem;
+    margin-#{$pos}: $base-margin-padding-width;
+  }
+
+  @each $w in (5, 10, 15) {
+    .padding-#{$pos}-#{$w} {
+      padding-#{$pos}: #{$w}px;
+    }
+    .margin-#{$pos}-#{$w} {
+      margin-#{$pos}: #{$w}px;
+    }
   }
 }
 

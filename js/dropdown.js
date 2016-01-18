@@ -11,6 +11,10 @@
       this.$element = $element;
       let $trigger = this.$trigger = $element.find('[data-dropdown-trigger]'), $menu = this.$menu = $element.children('.dropdown-menu');
 
+      if ($trigger.length === 0) {
+        $trigger = this.$trigger = $element;
+      }
+
       this.show = this.options.show;
 
       $trigger.on('click', (event) => {
@@ -22,8 +26,9 @@
         event.stopPropagation();
       });
 
-      $menu.on('click', (event) => {
+      $menu.on('click', 'li a', (event) => {
         event.stopPropagation();
+        this.$element.trigger('dropdown-select', event.currentTarget);
       });
 
       $(document).on('click', (event) => {

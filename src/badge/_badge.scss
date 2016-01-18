@@ -33,7 +33,7 @@
   background-color: $black;
   color: $white;
 
-  @each $name, $color in $flatColors {
+  @each $name, $color in $theme-colors {
     &.label-#{$name} {
       background-color: $color;
     }

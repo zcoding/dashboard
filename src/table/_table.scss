@@ -13,7 +13,7 @@ th, td {
   max-width: 100%;
   background-color: transparent;
 
-  & > thead > tr > th {
+  > thead > tr > th {
     padding: 10px 16px;
     vertical-align: bottom;
     line-height: 1.5;
@@ -21,7 +21,7 @@ th, td {
     border-bottom: 2px solid #eceeef;
   }
 
-  & > tbody > tr > td {
+  > tbody > tr > td {
     padding: .75rem 16px;
     line-height: 1.5;
     vertical-align: top;
@@ -33,7 +33,7 @@ th, td {
   }
 
   &.table-hover {
-    & > tbody > tr:hover td {
+    > tbody > tr:hover td {
       background-color: #eceeef;
       color: $black;
     }
@@ -44,7 +44,7 @@ th, td {
 
   &.table-bordered {
     border: 1px solid #eceeef;
-    & > thead > tr > th:not(:first-child) {
+    > thead > tr > th:not(:first-child) {
       border-left: 1px solid #eceeef;
     }
     & > tbody > tr > td:not(:first-child) {

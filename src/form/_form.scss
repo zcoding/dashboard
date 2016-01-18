@@ -52,6 +52,10 @@ input[type=text].field-md, input[type=email].field-md, input[type=number].field-
   }
 }
 
+select.field-md {
+  -webkit-appearance: none;
+}
+
 textarea {
   height: auto;
   resize: vertical;
@@ -290,20 +294,6 @@ textarea {
   display: table;
   border-collapse: separate;
   width: 100%;
-  .addon, .field, .btn-addon {
-    display: table-cell;
-    &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    &:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-    &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-  }
   .addon {
     width: 1%;
     height: 36px;
@@ -314,27 +304,34 @@ textarea {
     vertical-align: middle;
     border: 1px solid #CECECE;
     border-radius: 4px;
-    &:not(:first-child) {
-      border-left: 0;
-    }
-    &:not(:last-child) {
-      border-right: 0;
-    }
+    border-right: 0;
   }
   .btn-addon {
-    height: 36px;
-    margin-bottom: 0;
     border-radius: 4px;
-    &:not(:first-child) {
-      border-left: 0;
-    }
-    &:not(:last-child) {
-      border-right: 0;
-    }
+    vertical-align: middle;
+    width: 1%;
   }
   .field {
     position: relative;
     float: left;
     width: 100%;
+    border: 1px solid #CECECE;
+    border-radius: 4px;
+    border-right: 0;
+  }
+  .addon, .field, .btn-addon {
+    display: table-cell;
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-right: 1px solid #CECECE;
+    }
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
   }
 }

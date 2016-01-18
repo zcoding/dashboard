@@ -177,6 +177,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var $trigger = this.$trigger = $element.find('[data-dropdown-trigger]'),
           $menu = this.$menu = $element.children('.dropdown-menu');
 
+      if ($trigger.length === 0) {
+        $trigger = this.$trigger = $element;
+      }
+
       this.show = this.options.show;
 
       $trigger.on('click', function (event) {
@@ -188,8 +192,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         event.stopPropagation();
       });
 
-      $menu.on('click', function (event) {
+      $menu.on('click', 'li a', function (event) {
         event.stopPropagation();
+        _this.$element.trigger('dropdown-select', event.currentTarget);
       });
 
       $(document).on('click', function (event) {

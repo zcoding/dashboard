@@ -14,6 +14,7 @@
     border: 1px solid #BFBFBF;
     border-radius: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .13);
+    z-index: 100;
     &.active {
       display: block;
       transform: translate3d(0, 0, 0);
@@ -51,6 +52,7 @@
       a {
         display: block;
         padding: 5px 1em;
+        text-align: left;
         color: #333;
         &:hover {
           background-color: rgba(0, 0, 0, .13);

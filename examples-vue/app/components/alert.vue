@@ -3,7 +3,7 @@
 <modal v-bind:show.sync="show">
   <div class="modal-header" slot="header">
     <div class="title">
-      {{ title }}
+      <span>{{ title }}</span>
       <span class="fa fa-close close" v-on:click="closeModal"></span>
     </div>
   </div>
@@ -29,7 +29,7 @@ export default {
     },
     title: {
       type: String,
-      default: 'Message:'
+      required: true
     }
   },
 

@@ -282,9 +282,15 @@ block content
               .input-group
                 input.field(type="text")
                 span.addon @
-                select.field
-                  option(value="qq.com") qq.com
-                  option(value="163.com") 163.com
+                span#dropdown-select.btn.btn-dark.btn-addon.dropdown(style="width:150px;")
+                  span
+                    span.selected-menu qq.com
+                    i.fa.fa-caret-down(style="margin-left:5px;")
+                  ul.dropdown-menu
+                    li
+                      a(href="javascript:;" data-value="qq.com") qq.com
+                    li
+                      a(href="javascript:;" data-value="163.com") 163.com
             .form-control
               label Price
               .input-group
@@ -303,18 +309,24 @@ block content
             .form-control
               label Email
               .input-group
-                input.field(type="text" style="width:70%;")
-                select.field(style="width:30%;border-left:0;")
-                  option(value="qq.com") qq.com
-                  option(value="163.com") 163.com
+                input.field(type="text")
+                span.btn.btn-primary.btn-addon.dropdown(style="width:150px;")
+                  span
+                    span.selected-menu qq.com
+                    i.fa.fa-caret-down.margin-left
+                  ul.dropdown-menu
+                    li
+                      a(href="javascript:;" data-value="qq.com") qq.com
+                    li
+                      a(href="javascript:;" data-value="163.com") 163.com
             .form-control
               label Email
               .input-group
-                input.field(type="text" style="width:60%;")
-                select.field(style="width:30%;border-left:0;")
-                  option(value="qq.com") qq.com
-                  option(value="163.com") 163.com
-                button.btn.btn-primary.btn-addon(style="width:10%;") OK
+                input.field(type="text")
+                .btn-addon
+                  button.btn.btn-primary qq.com
+                .btn-addon
+                  button.btn.btn-primary OK
 
   .grid.margin-top
     .u-sm-16.u-md-16.u-lg-10
@@ -337,4 +349,10 @@ append script
   script.
     $(function() {
       $('.tag-input').tagsinput();
+      var $dropdown = $('#dropdown-select');
+      var dropdown = $dropdown.data('dropdown');
+      $dropdown.on('dropdown-select', function(event, it) {
+        $dropdown.find('.selected-menu').text($(it).data('value'));
+        dropdown.hideMenu();
+      });
     });

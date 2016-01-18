@@ -38,10 +38,11 @@ export default {
 
   methods: {
     closeModal() {
+      this.$dispatch('confirm-cancel');
       this.show = false;
     },
     confirmOK() {
-      this.$dispatch('modal-confrim-ok');
+      this.$dispatch('confrim-ok');
     }
   }
 

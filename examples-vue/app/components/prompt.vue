@@ -32,7 +32,7 @@ export default {
     },
     title: {
       type: String,
-      default: 'Input:'
+      default: '请输入:'
     }
   },
 
@@ -44,10 +44,11 @@ export default {
 
   methods: {
     closeModal() {
+      this.$dispatch('prompt-cancel');
       this.show = false;
     },
     promptOK() {
-      this.$dispatch('modal-prompt-ok', this.output);
+      this.$dispatch('prompt-ok', this.output);
       this.output = '';
     }
   }

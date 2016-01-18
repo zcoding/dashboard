@@ -7,6 +7,7 @@
         fieldset
           .form-control
             label(for="name") Name
+            span.text-danger Too short
             input#name(type="text" placeholder="input your name")
           .form-control
             label(for="password") Password

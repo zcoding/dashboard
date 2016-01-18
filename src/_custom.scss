@@ -1,0 +1,37 @@
+// Variables
+
+// Contents:
+// Theme colors
+// Grid system
+// Typography
+
+// Theme colors
+
+$theme-colors: (
+  dark: #2e3e4e,                            // theme color: dark
+  primary: #0cc2aa,                         // theme color: primary
+  secondary: #3bb4f2,                       // theme color: secondary
+  success: #6cc788,                         // theme color: success
+  danger: #f44455,                          // theme color: danger
+  warning: #fcc100,                         // theme color: warning
+  tips: #f77a99,                            // theme color: tips
+  info: #6887ff                             // theme color: info
+) !default;
+
+$body-bg: #fff !default;
+
+// Grid system
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+// Typography
+
+$font-size-root: 16px !default;
+
+$font-size-base: 1rem !default;

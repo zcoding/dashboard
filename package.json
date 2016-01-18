@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node scripts/test.js",
     "dev": "gulp dev",
+    "sass": "sass --watch src:build-sass",
     "build:example-react": "webpack --colors --progress --config examples-react/webpack.config.js",
     "build:example-vue": "webpack --colors --progress --config examples-vue/webpack.config.js",
     "example": "node examples-jquery/server.js",
