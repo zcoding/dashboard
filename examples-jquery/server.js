@@ -64,6 +64,26 @@ App.use(_.get('/gridtable', function *(next) {
 
 }));
 
+App.use(_.get('/datatable', function *(next) {
+
+  var render = Jade.compileFile(Path.resolve(__dirname, `./views/datatable.jade`), {pretty: true});
+
+  var data = Mock.mock({
+    'list|20': [{
+      'id|+1': 1,
+      'name': '@name',
+      'email': '@email',
+      'age': '@integer(22,33)',
+      'address': '@area',
+      'lastLoginTime': '@datetime'
+    }]
+  })
+
+  this.type = 'text/html';
+  this.body = render(data);
+
+}));
+
 App.use(_.get('/example-list', function *(next) {
 
   var render = Jade.compileFile(Path.resolve(__dirname, `./views/example-list.jade`), {pretty: true});

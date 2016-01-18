@@ -1,0 +1,44 @@
+$scrollbar-width: 17px;
+
+.data-table {
+  display: block;
+  width: 100%;
+  border: 1px solid #eceeef;
+  overflow-x: auto;
+
+  .table {
+    table-layout: fixed;
+    margin: 0;
+    thead > tr > th {
+      &, div {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+    tbody > tr > td {
+      overflow: hidden;
+    }
+    tfoot > tr > td {
+      overflow: hidden;
+    }
+  }
+
+  .data-table-header {
+    min-height: 15px;
+    overflow: hidden;
+    .data-table-header-box {
+      float: left;
+      padding-right: $scrollbar-width;
+    }
+  }
+
+  .data-table-body {
+    min-height: 50px;
+    overflow: auto;
+  }
+
+  .data-table-footer {
+    min-height: 15px;
+  }
+
+}
