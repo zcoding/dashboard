@@ -1520,17 +1520,21 @@ th, td {
   display: block;
   width: 100%;
   border: 1px solid #eceeef;
-  overflow-x: auto; }
+  overflow-x: auto;
+  border-radius: 5px; }
   .data-table .table {
     table-layout: fixed;
     margin: 0; }
-    .data-table .table thead > tr > th, .data-table .table thead > tr > th div {
+    .data-table .table thead > tr > th, .data-table .table tbody > tr > td, .data-table .table tfoot > tr > td {
       overflow: hidden;
-      white-space: nowrap; }
-    .data-table .table tbody > tr > td {
-      overflow: hidden; }
-    .data-table .table tfoot > tr > td {
-      overflow: hidden; }
+      white-space: nowrap;
+      font-size: 14px;
+      padding: 5px;
+      line-height: 1;
+      vertical-align: middle;
+      text-overflow: ellipsis; }
+    .data-table .table tbody > tr:first-child > td {
+      border-top: 0; }
   .data-table .data-table-header {
     min-height: 15px;
     overflow: hidden; }

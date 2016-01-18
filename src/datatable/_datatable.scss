@@ -1,25 +1,28 @@
 $scrollbar-width: 17px;
 
+$border-color: #eceeef;
+
 .data-table {
   display: block;
   width: 100%;
-  border: 1px solid #eceeef;
+  border: 1px solid $border-color;
   overflow-x: auto;
+  border-radius: 5px;
 
   .table {
     table-layout: fixed;
     margin: 0;
-    thead > tr > th {
-      &, div {
-        overflow: hidden;
-        white-space: nowrap;
-      }
-    }
-    tbody > tr > td {
+    thead > tr > th, tbody > tr > td, tfoot > tr > td {
       overflow: hidden;
+      white-space: nowrap;
+      font-size: 14px;
+      padding: 5px;
+      line-height: 1;
+      vertical-align: middle;
+      text-overflow: ellipsis;
     }
-    tfoot > tr > td {
-      overflow: hidden;
+    tbody > tr:first-child > td {
+      border-top: 0;
     }
   }
 

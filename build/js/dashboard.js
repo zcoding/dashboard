@@ -1343,10 +1343,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (function ($) {
 
-  var defaults = {
-    dragable: true // 是否允许通过拖动单元格边框改变单元格大小
-    , gridWidth: false // 初始单元格占宽度百分比，用数组表示，如果没有就等分
-  };
+  var defaults = {};
 
   var DataTable = function DataTable($element, options) {
     _classCallCheck(this, DataTable);
