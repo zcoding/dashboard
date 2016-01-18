@@ -4,54 +4,68 @@ block content
   .grid.margin-top
     .u-sm-16
       .box.padding
-        .grid-table#grid-table
-          .grid-table-header
-            .grid-table-row
-              .grid-table-cell #
-              .grid-table-control
-              .grid-table-cell Name
-              .grid-table-control
-              .grid-table-cell Email
-              .grid-table-control
-              .grid-table-cell Age
-              .grid-table-control
-              .grid-table-cell Address
-              .grid-table-control
-              .grid-table-cell Last-login-time
-              .grid-table-control
-              .grid-table-cell Operation
-          .grid-table-body(style="height:300px;overflow:hidden;")
+        .margin-bottom.cf
+          .btn-group.btn-group-secondary.fr
+            button.btn.btn-sm(type="button") 编辑
+            button.btn.btn-sm(type="button") 导出
+            button.btn.btn-sm(type="button") 删除
+        .data-table#data-table
+          .data-table-header
+            .data-table-row
+              .data-table-cell
+                input(type="checkbox")
+              .data-table-control
+              .data-table-cell #
+              .data-table-control
+              .data-table-cell Name
+              .data-table-control
+              .data-table-cell Email
+              .data-table-control
+              .data-table-cell Age
+              .data-table-control
+              .data-table-cell Address
+              .data-table-control
+              .data-table-cell Last-login-time
+              .data-table-control
+              .data-table-cell Operation
+          .data-table-body(style="height:300px;overflow:hidden;")
             each item in list
-              .grid-table-row
-                .grid-table-cell= item.id
-                .grid-table-control
-                .grid-table-cell= item.name
-                .grid-table-control
-                .grid-table-cell= item.email
-                .grid-table-control
-                .grid-table-cell= item.age
-                .grid-table-control
-                .grid-table-cell= item.address
-                .grid-table-control
-                .grid-table-cell= item.lastLoginTime
-                .grid-table-control
-                .grid-table-cell
+              .data-table-row
+                .data-table-cell
+                  input(type="checkbox")
+                .data-table-control
+                .data-table-cell= item.id
+                .data-table-control
+                .data-table-cell= item.name
+                .data-table-control
+                .data-table-cell= item.email
+                .data-table-control
+                .data-table-cell= item.age
+                .data-table-control
+                .data-table-cell= item.address
+                .data-table-control
+                .data-table-cell= item.lastLoginTime
+                .data-table-control
+                .data-table-cell
                   button(type="button").btn.btn-danger.btn-sm <i class="fa fa-trash"></i> Delete
-          .grid-table-footer
-            .grid-table-row
-              .grid-table-cell a
-              .grid-table-control
-              .grid-table-cell b
-              .grid-table-control
-              .grid-table-cell c
-              .grid-table-control
-              .grid-table-cell d
-              .grid-table-control
-              .grid-table-cell e
-              .grid-table-control
-              .grid-table-cell f
-              .grid-table-control
-              .grid-table-cell g
+          .data-table-footer.text-bold
+            .data-table-row
+              .data-table-cell
+                input(type="checkbox")
+              .data-table-control
+              .data-table-cell #
+              .data-table-control
+              .data-table-cell Name
+              .data-table-control
+              .data-table-cell Email
+              .data-table-control
+              .data-table-cell Age
+              .data-table-control
+              .data-table-cell Address
+              .data-table-control
+              .data-table-cell Last-login-time
+              .data-table-control
+              .data-table-cell Operation
 
 append script
   script.
@@ -62,11 +76,11 @@ append script
       if (tableBodyHeight < 300) {
         tableBodyHeight = 300;
       }
-      var $scrollbar = $('#grid-table .grid-table-body').css({
+      var $scrollbar = $('#data-table .data-table-body').css({
         height: `${tableBodyHeight}px`
       }).scrollbar();
-      var $gridTable = $('#grid-table').gridtable({
-        gridWidth: [10, 20, 20, 8, 10, 20, 12]
+      var $gridTable = $('#data-table').datatable({
+        gridWidth: [5, 10, 20, 20, 8, 10, 15, 12]
       }).on('gridchange.dashboard', function() {
         var scrollbar = $scrollbar.data('scrollbar');
         if (scrollbar != null) {
@@ -74,7 +88,7 @@ append script
         }
       });
       $(document).on('aside-change', function() {
-        var gridtable = $gridTable.data('gridtable');
+        var gridtable = $gridTable.data('datatable');
         gridtable.repaint();
         var scrollbar = $scrollbar.data('scrollbar');
         if (scrollbar != null) {

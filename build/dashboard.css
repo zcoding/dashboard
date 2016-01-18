@@ -1437,6 +1437,12 @@ th, td {
     line-height: 1.5;
     vertical-align: top;
     border-top: 1px solid #eceeef; }
+  .table > tfoot > tr > td {
+    padding: 10px 16px;
+    vertical-align: bottom;
+    line-height: 1.5;
+    font-weight: 700;
+    border-bottom: 2px solid #eceeef; }
   .table.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #eceeef; }
   .table.table-hover > tbody > tr:hover td {
@@ -1449,6 +1455,8 @@ th, td {
     .table.table-bordered > thead > tr > th:not(:first-child) {
       border-left: 1px solid #eceeef; }
     .table.table-bordered > tbody > tr > td:not(:first-child) {
+      border-left: 1px solid #eceeef; }
+    .table.table-bordered > tfoot > tr > td:not(:first-child) {
       border-left: 1px solid #eceeef; }
 
 .table-responsive {
@@ -1507,6 +1515,33 @@ th, td {
     cursor: col-resize; }
   .grid-table.no-drag .grid-table-control {
     cursor: default; }
+
+.data-table {
+  display: block;
+  width: 100%;
+  border: 1px solid #eceeef;
+  overflow-x: auto; }
+  .data-table .table {
+    table-layout: fixed;
+    margin: 0; }
+    .data-table .table thead > tr > th, .data-table .table thead > tr > th div {
+      overflow: hidden;
+      white-space: nowrap; }
+    .data-table .table tbody > tr > td {
+      overflow: hidden; }
+    .data-table .table tfoot > tr > td {
+      overflow: hidden; }
+  .data-table .data-table-header {
+    min-height: 15px;
+    overflow: hidden; }
+    .data-table .data-table-header .data-table-header-box {
+      float: left;
+      padding-right: 17px; }
+  .data-table .data-table-body {
+    min-height: 50px;
+    overflow: auto; }
+  .data-table .data-table-footer {
+    min-height: 15px; }
 
 .panel {
   background: #FFFFFF;
@@ -2693,6 +2728,9 @@ input.input-info {
 
 .text-right {
   text-align: right; }
+
+.text-bold {
+  font-weight: 700; }
 
 html {
   height: 100%;

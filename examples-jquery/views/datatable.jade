@@ -1,0 +1,39 @@
+extends ./layout.jade
+
+block content
+  .grid.padding
+    .u-sm-8
+      .box.padding
+        .data-table#data-table
+          .data-table-header
+            .data-table-header-box
+              table.table.table-bordered(style="width:1000px;")
+                thead
+                  tr
+                    th(style="width:200px;") #
+                    th(style="width:200px;") Name
+                    th(style="width:200px;") Email
+                    th(style="width:100px;") Age
+                    th(style="width:100px;")
+                      div(style="overflow:hidden;") Address
+                    th(style="width:100px;") Last-login-time
+                    th(style="width:100px;") Operation
+          .data-table-body(style="height:500px;")
+            table.table.table-bordered(style="width:1000px;")
+              tbody
+                each item in list
+                  tr
+                    td(style="width:200px;")= item.id
+                    td(style="width:200px;")= item.name
+                    td(style="width:200px;")= item.email
+                    td(style="width:100px;")= item.age
+                    td(style="width:100px;")= item.address
+                    td(style="width:100px;")= item.lastLoginTime
+                    td(style="width:100px;")
+                      button(type="button").btn.btn-danger.btn-sm <i class="fa fa-trash"></i> Delete
+
+append script
+  script.
+    $(function() {
+      $('#data-table').dataTable();
+    });

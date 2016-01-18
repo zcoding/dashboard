@@ -28,6 +28,14 @@ th, td {
     border-top: 1px solid #eceeef;
   }
 
+  & > tfoot > tr > td {
+    padding: 10px 16px;
+    vertical-align: bottom;
+    line-height: 1.5;
+    font-weight: 700;
+    border-bottom: 2px solid #eceeef;
+  }
+
   &.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #eceeef;
   }
@@ -48,6 +56,9 @@ th, td {
       border-left: 1px solid #eceeef;
     }
     & > tbody > tr > td:not(:first-child) {
+      border-left: 1px solid #eceeef;
+    }
+    & > tfoot > tr > td:not(:first-child) {
       border-left: 1px solid #eceeef;
     }
   }
